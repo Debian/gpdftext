@@ -1,0 +1,3 @@
+?package(gpdftext):needs="X11" section="Applications/Editors"\
+  title="ebook PDF editor" command="/usr/bin/gpdftext"\
+ icon="/usr/share/pixmaps/gpdftext.xpm"

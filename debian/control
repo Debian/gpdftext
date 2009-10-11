@@ -6,7 +6,7 @@ Build-Depends: cdbs, debhelper (>= 7), autotools-dev,
  intltool, gnome-doc-utils, libtool, libxml-parser-perl, rarian-compat,
  libpoppler-glib-dev, libglib2.0-dev, libgtk2.0-0 (>= 2.16.5)
 Standards-Version: 3.8.3
-Homepage: <insert the upstream URL, if relevant>
+Homepage: http://gpdftext.sourceforge.net/
 
 Package: gpdftext
 Architecture: any
