@@ -1,2 +1,5 @@
+2009-10-11  Neil Williams  <linux@codehelp.co.uk>
 
-
+	* Makefile.am: No need to install doc files.
+	* gpdftext.png (added):
+	* gpdftext.xpm (added):

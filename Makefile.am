@@ -6,18 +6,15 @@ SUBDIRS = src po
 gpdficonsdir = ${datadir}/pixmaps/
 gpdficons_DATA = gpdftext.png gpdftext.xpm
 
-gpdftextdocdir = ${prefix}/doc/gpdftext
-gpdftextdoc_DATA = \
+EXTRA_DIST = $(gpdftextdoc_DATA) \
+	$(gpdficons_DATA) \
+	COPYING \
+	po/$(PACKAGE).pot
 	README\
-	COPYING\
 	AUTHORS\
 	ChangeLog\
 	INSTALL\
 	NEWS
-
-EXTRA_DIST = $(gpdftextdoc_DATA) \
-	$(gpdficons_DATA) \
-	po/$(PACKAGE).pot
 
 DISTCLEANFILES = intltool-extract \
 	intltool-merge \
@@ -29,6 +26,9 @@ all-local: Makefile
 
 clean-local: Makefile
 	find . -name '*~' -delete
+
+debiantarball: Makefile dist
+	ln $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE)_$(VERSION).orig.tar.gz;
 
 # Remove doc directory on uninstall
 uninstall-local:
