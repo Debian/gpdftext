@@ -1,5 +1,6 @@
 gpdftext (0.0.1-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release. (Closes: #550593: ITP: gpdftext -- convert an ebook
+    PDF to text)
 
- -- Neil Williams <codehelp@debian.org>  Fri, 09 Oct 2009 20:07:59 +0100
+ -- Neil Williams <codehelp@debian.org>  Sun, 11 Oct 2009 14:11:37 +0100
