@@ -1,3 +1,15 @@
 Read a PDF, extract the text into a text window, allow
 simple editing and then reformat the text to remove line
 endings except between paragraphs.
+
+Issues to be completed:
+
+GConf support 
+	- initial window size and default font
+
+RecentEntries
+	- recently opened PDF's
+
+Poppler
+	save as PDF? only seems to be save as PS support.
+

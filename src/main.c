@@ -51,8 +51,6 @@
 
 #include "callbacks.h"
 
-static GtkBuilder * builder;
-
 void
 about_show (void)
 {
@@ -64,11 +62,12 @@ about_show (void)
 		"",
 		NULL
 	};
+	/* no documentation as yet.
 	static const gchar *documentors[] = 
 	{
 		"Neil Williams  <linux@codehelp.co.uk>",
 		NULL
-	};
+	};*/
 	/*
 	 * Translators should localize the following string
 	 * which will give them credit in the About box.
@@ -92,7 +91,7 @@ about_show (void)
 	gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog),
 		_("gPDFText - edit ebook PDF files as ASCII text.\n"));
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
-	gtk_about_dialog_set_documenters (GTK_ABOUT_DIALOG (dialog), documentors);
+/*	gtk_about_dialog_set_documenters (GTK_ABOUT_DIALOG (dialog), documentors);*/
 	gtk_about_dialog_set_translator_credits (GTK_ABOUT_DIALOG (dialog), translators);
 	gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (dialog), logo);
 	gtk_about_dialog_set_website (GTK_ABOUT_DIALOG (dialog), "http://gpdftext.sourceforge.net/");
@@ -124,131 +123,21 @@ about_show (void)
 	return;
 }
 
-extern void
-set_text (gchar * text)
-{
-	GtkTextView * textview;
-	GtkTextBuffer * buffer;
-	GtkTextIter start, end;
-	gssize size;
-	GRegex * line, * page, *hyphen;
-	GError * err;
-
-	err = NULL;
-	size = strlen (text);
-	/* FIXME: don't compile these per page, once per doc instead. */
-	line = g_regex_new ("\n(.[^\\s])", 0, 0, &err);
-	if (err)
-		g_warning ("new line: %s", err->message);
-	page = g_regex_new ("\n\\s+\\d+\\s?\n", 0, 0, &err);
-	if (err)
-		g_warning ("new para: %s", err->message);
-	hyphen = g_regex_new ("\\w- ", 0, 0, &err);
-	if (err)
-		g_warning ("new hyphen: %s", err->message);
-	text = g_regex_replace (line, text, -1, 0, " \\1",0 , &err);
-	if (err)
-		g_warning ("line replace: %s", err->message);
-	text = g_regex_replace_literal (page, text, -1, 0, " ",0 , &err);
-	if (err)
-		g_warning ("page replace: %s", err->message);
-	text = g_regex_replace_literal (hyphen, text, -1, 0, " ",0 , &err);
-	if (err)
-		g_warning ("hyphen replace: %s", err->message);
-	g_regex_unref (line);
-	g_regex_unref (page);
-	if (!g_utf8_validate (text, -1, NULL))
-	{
-		g_warning ("validate %s", text);
-		return;
-	}
-	if (!text)
-		return;
-	size = strlen (text);
-	text = g_utf8_normalize (text, -1, G_NORMALIZE_ALL);
-	textview = GTK_TEXT_VIEW(gtk_builder_get_object (builder, "textview"));
-	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
-	gtk_text_buffer_get_bounds (buffer, &start, &end);
-	gtk_text_buffer_insert (buffer, &end, text, size);
-	gtk_widget_show (GTK_WIDGET(textview));
-}
-
-void
-new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
-{
-	GtkTextBuffer * buffer;
-
-	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
-	gtk_text_buffer_set_text (buffer, "", 0);
-}
-
-GtkWidget*
-create_window (void)
-{
-	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *saveasmenu, *aboutmenu;
-	GtkTextBuffer * buffer;
-	GtkActionGroup  *action_group;
-	GtkUIManager * uimanager;
-	GdkPixbuf *logo;
-	gchar *path;
-
-	builder = load_builder_xml (NULL);
-	if (!builder)
-		return NULL;
-	path = g_build_filename (DATADIR, "pixmaps", "gpdftext.png", NULL);
-	logo = gdk_pixbuf_new_from_file (path, NULL);
-	g_free (path);
-	window = GTK_WIDGET(gtk_builder_get_object (builder, "gpdfwindow"));
-	gtk_window_set_icon (GTK_WINDOW(window), logo);
-	newbtn = GTK_WIDGET(gtk_builder_get_object (builder, "new_button"));
-	open = GTK_WIDGET(gtk_builder_get_object (builder, "open_button"));
-	save = GTK_WIDGET(gtk_builder_get_object (builder, "save_button"));
-	cancel = GTK_WIDGET(gtk_builder_get_object (builder, "quit_button"));
-	about = GTK_WIDGET(gtk_builder_get_object (builder, "about_button"));
-	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
-	action_group = GTK_ACTION_GROUP(gtk_builder_get_object (builder, "actiongroup"));
-	uimanager = GTK_UI_MANAGER(gtk_builder_get_object (builder, "uimanager"));
-	aboutmenu = GTK_WIDGET(gtk_builder_get_object (builder, "aboutmenuitem"));
-	openmenu = GTK_WIDGET(gtk_builder_get_object (builder, "openmenuitem"));
-	newmenu = GTK_WIDGET(gtk_builder_get_object (builder, "newmenuitem"));
-	quitmenu = GTK_WIDGET(gtk_builder_get_object (builder, "quitmenuitem"));
-	savemenu = GTK_WIDGET(gtk_builder_get_object (builder, "savemenuitem"));
-	saveasmenu = GTK_WIDGET(gtk_builder_get_object (builder, "saveasmenuitem"));
-	gtk_widget_set_sensitive (saveasmenu, FALSE);
-	gtk_text_buffer_set_text (buffer, "", 0);
-	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
-	gtk_ui_manager_insert_action_group (uimanager, action_group, 0);
-	g_signal_connect (G_OBJECT (newbtn), "clicked", 
-			G_CALLBACK (new_pdf_cb), window);
-	g_signal_connect (G_OBJECT (open), "clicked", 
-			G_CALLBACK (open_pdf_cb), window);
-	g_signal_connect (G_OBJECT (save), "clicked", 
-			G_CALLBACK (save_txt_cb), window);
-	g_signal_connect (G_OBJECT (cancel), "clicked", 
-			G_CALLBACK (destroy), window);
-	g_signal_connect (G_OBJECT (about), "clicked", 
-			G_CALLBACK (about_show), window);
-	g_signal_connect (G_OBJECT (window), "delete_event",
-			G_CALLBACK (gtk_main_quit), window);
-	g_signal_connect (G_OBJECT (aboutmenu), "activate",
-			G_CALLBACK (about_show), window);
-	g_signal_connect (G_OBJECT (openmenu), "activate",
-			G_CALLBACK (open_pdf_cb), window);
-	g_signal_connect (G_OBJECT (newmenu), "activate",
-			G_CALLBACK (new_pdf_cb), window);
-	g_signal_connect (G_OBJECT (quitmenu), "activate",
-			G_CALLBACK (gtk_main_quit), window);
-	g_signal_connect (G_OBJECT (savemenu), "activate",
-			G_CALLBACK (save_txt_cb), window);
-	
-	return window;
-}
-
 int
 main (int argc, char *argv[])
 {
+	GFile * gfile;
+	gint num_args;
 	GtkWidget *window;
+	gchar **remaining_args;
+	GOptionContext *option_context;
+
+	GOptionEntry option_entries[] = {
+		/* option that collects filenames */
+		{G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_FILENAME_ARRAY,
+			&remaining_args, NULL, _("file")},
+		{NULL, 0, 0, G_OPTION_ARG_NONE, NULL, NULL, NULL}
+	};
 
 #ifdef ENABLE_NLS
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
@@ -256,12 +145,30 @@ main (int argc, char *argv[])
 	textdomain (GETTEXT_PACKAGE);
 #endif
 
+	remaining_args = NULL;
+	gfile = NULL;
+	num_args = 0;
+	option_context = g_option_context_new ("");
+	g_option_context_add_main_entries (option_context,
+		option_entries, GETTEXT_PACKAGE);
+	g_option_context_parse (option_context, &argc, &argv, NULL);
+
 	gtk_set_locale ();
 	gtk_init (&argc, &argv);
 
 	window = create_window ();
 	if (!window)
 		return -1;
+	if (remaining_args != NULL)
+	{
+		num_args = g_strv_length (remaining_args);
+	}
+	if (num_args >= 1)
+	{
+		gchar * filename;
+		filename = g_strdup (remaining_args[num_args - 1]);
+		open_file (GTK_WINDOW(window), filename);
+	}
 	gtk_widget_show (window);
 
 	gtk_main ();

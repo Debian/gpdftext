@@ -25,4 +25,10 @@ void save_txt_cb (GtkWidget *widget, gpointer data);
 
 void open_pdf_cb (GtkWidget *widget, gpointer data);
 
+GtkWidget* create_window (void);
+
 GtkBuilder* load_builder_xml (const gchar *root);
+
+void about_show (void);
+
+gboolean open_file (GtkWindow * window, const gchar * filename);

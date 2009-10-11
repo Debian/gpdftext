@@ -1,5 +1,13 @@
 2009-10-11  Neil Williams  <linux@codehelp.co.uk>
 
+	* README: Notes for 0.1.0
+	* src/callbacks.c: Enable saving files as text.
+	* src/callbacks.h: open files from the command line.
+	* src/gpdftext.glade: tweak default size
+	* src/main.c: GFile and GVFS support.
+
+2009-10-11  Neil Williams  <linux@codehelp.co.uk>
+
 	* Makefile.am: Add manpage generation upstream.
 	* manpage.xml: Add manpage.
 	* src/Makefile.am: Add -Wl,-z,defs -Wl,--as-needed
