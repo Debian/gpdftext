@@ -56,22 +56,23 @@ about_show (void)
 {
 	GdkPixbuf *logo;
 	static GtkWidget *dialog = NULL;
-	static const gchar *authors[] =
-	{
-		"Neil Williams  <linux@codehelp.co.uk>",
-		"",
-		NULL
-	};
 	/* no documentation as yet.
 	static const gchar *documentors[] = 
 	{
 		"Neil Williams  <linux@codehelp.co.uk>",
 		NULL
 	};*/
+	static const gchar *authors[] =
+	{
+		"Neil Williams  <linux@codehelp.co.uk>",
+		"",
+		NULL
+	};
+	
 	/*
-	 * Translators should localize the following string
-	 * which will give them credit in the About box.
-	 * E.g. "Fulano de Tal <fulano@detal.com>" */
+	* Translators should localize the following string
+	* which will give them credit in the About box.
+	* E.g. "Fulano de Tal <fulano@detal.com>" */
 	gchar *path, *translators = g_strdup (_("translator-credits"));
 
 	if (dialog)
