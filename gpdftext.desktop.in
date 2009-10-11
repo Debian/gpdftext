@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=gPDFText ebook editor
+_Comment=Edit text from ebook PDF files
+Exec=gpdftext %U
+Terminal=false
+Type=Application
+Icon=gpdftext.png
+MimeType=application/pdf
+Categories=Utility;TextEditor
+StartupNotify=true
+

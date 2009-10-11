@@ -9,6 +9,7 @@ gpdficons_DATA = gpdftext.png gpdftext.xpm
 EXTRA_DIST = $(gpdftextdoc_DATA) \
 	$(gpdficons_DATA) \
 	$(PACKAGE).1 \
+	$(desktop_in_files)	\
 	manpage.xml \
 	COPYING \
 	po/$(PACKAGE).pot
@@ -43,3 +44,26 @@ man_MANS=$(PACKAGE).1
 # Remove doc directory on uninstall
 uninstall-local:
 	-rm -r $(gpdftextdocdir)
+
+desktopdir  = $(datadir)/applications
+desktop_in_files = gpdftext.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+CLEANFILES = \
+	gpdftext.desktop
+
+@INTLTOOL_DESKTOP_RULE@
+
+install-data-hook:
+if HAVE_NEW_DESKTOP
+	if test -z "$(DESTDIR)"; then \
+		$(UPDATE_DESKTOP_DATABASE); \
+	fi
+endif
+
+uninstall-hook:
+if HAVE_NEW_DESKTOP
+	if test -z "$(DESTDIR)"; then \
+		$(UPDATE_DESKTOP_DATABASE); \
+	fi
+endif

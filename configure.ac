@@ -79,6 +79,24 @@ if test x$enable_gtk_doc = xauto ; then
 fi
 AM_CONDITIONAL(ENABLE_GTK_DOC, test x$enable_gtk_doc = xyes)
 
+#
+# allow the user to disable the desktop database update
+#
+AC_PATH_PROG(UPDATE_DESKTOP_DATABASE, update-desktop-database, no)
+HAVE_NEW_DESKTOP=no
+AC_ARG_ENABLE(desktop-update,
+	AS_HELP_STRING([--disable-desktop-update],
+	[Disable the desktop database update]),
+	[disable_desktop=yes],
+	[disable_desktop=no])
+if test "x$disable_desktop" = "xno"; then
+	if test "x$UPDATE_DESKTOP_DATABASE" != "xno"; then
+		HAVE_NEW_DESKTOP=yes
+		AC_DEFINE(HAVE_NEW_DESKTOP,1,[update desktop database?])
+	fi
+fi
+AM_CONDITIONAL(HAVE_NEW_DESKTOP, test x$HAVE_NEW_DESKTOP = xyes)
+
 
 AC_OUTPUT([
 Makefile

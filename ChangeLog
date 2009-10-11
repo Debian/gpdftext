@@ -1,5 +1,12 @@
 2009-10-11  Neil Williams  <linux@codehelp.co.uk>
 
+	* Makefile.am: Add desktop file support.
+	* configure.ac: Configurable desktop support.
+	* gpdftext.desktop.in: Desktop file.
+	* po/POTFILES.in: Translate desktop file.
+
+2009-10-11  Neil Williams  <linux@codehelp.co.uk>
+
 	* README: Notes for 0.1.0
 	* src/callbacks.c: Enable saving files as text.
 	* src/callbacks.h: open files from the command line.
