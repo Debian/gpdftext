@@ -1,0 +1,24 @@
+Source: gpdftext
+Section: utils
+Priority: optional
+Maintainer: Neil Williams <codehelp@debian.org>
+Build-Depends: cdbs, debhelper (>= 7), autotools-dev,
+ intltool, gnome-doc-utils, libtool, libxml-parser-perl, rarian-compat,
+ libpoppler-glib-dev, libglib2.0-dev, libgtk2.0-0 (>= 2.16.5)
+Standards-Version: 3.8.3
+Homepage: <insert the upstream URL, if relevant>
+
+Package: gpdftext
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: convert an ebook PDF to text
+ gpdftext opens a simple text-based PDF file, typically
+ intended for reading on an ebook reader and loads the
+ text into a text editor window, autoformatting the text
+ for long lines and paragraph breaks.
+ .
+ gpdftext is useful when the downloaded PDF uses a small
+ font or wastes a lot of space in the margins so that
+ a plain text file would display in a more comfortable
+ font.
+

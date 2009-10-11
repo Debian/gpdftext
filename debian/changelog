@@ -1,0 +1,5 @@
+gpdftext (0.0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 09 Oct 2009 20:07:59 +0100
