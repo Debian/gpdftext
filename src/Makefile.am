@@ -22,7 +22,7 @@ gpdftext_SOURCES = \
 	main.c
 
 gpdftext_LDFLAGS = \
-	-Wl,--export-dynamic
+	-Wl,--export-dynamic -Wl,-z,defs -Wl,--as-needed
 
 gpdftext_LDADD = $(GPDFTEXT_LIBS)
 
