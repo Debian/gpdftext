@@ -1,13 +1,8 @@
-## Process this file with automake to produce Makefile.in
-
-## Created by Anjuta
 
 gladedir = $(datadir)/gpdftext/glade
 glade_DATA = gpdftext.glade
 
 AM_CPPFLAGS = \
-	-DPACKAGE_GLADE_FILE=\"$(gladedir)/gpdftext.glade\" \
-	-DDATADIR=\"$(datadir)\" \
 	$(GPDFTEXT_CFLAGS)
 
 AM_CFLAGS =\

@@ -1,5 +1,4 @@
 dnl Process this file with autoconf to produce a configure script.
-dnl Created by Anjuta application wizard.
 
 AC_PREREQ([2.64])
 AC_INIT(gpdftext, 0.0.1)
@@ -29,20 +28,23 @@ AC_CHECK_HEADERS([libintl.h stddef.h stdlib.h string.h unistd.h])
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 
+AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share", "data dir")
+
+GLADEFILE="${prefix}/share/gpdftext/glade/gpdftext.glade"
+AC_DEFINE_UNQUOTED(PACKAGE_GLADE_FILE, "$GLADEFILE", "location of Glade file")
+
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(GPDFTEXT, [gtk+-2.0 >= 2.16 poppler-glib])
+
 dnl ***************************************************************************
 dnl Internatinalization
 dnl ***************************************************************************
 GETTEXT_PACKAGE=gpdftext
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", "definition of GETTEXT_PACKAGE")
-
 AM_GLIB_GNU_GETTEXT
 AM_GLIB_DEFINE_LOCALEDIR([GNOMELOCALEDIR])
-
-AM_PROG_LIBTOOL
-
-PKG_CHECK_MODULES(GPDFTEXT, [gtk+-2.0 >= 2.16 poppler-glib])
-
 
 ##################################################
 # Check for gtk-doc.
