@@ -67,3 +67,7 @@ if HAVE_NEW_DESKTOP
 		$(UPDATE_DESKTOP_DATABASE); \
 	fi
 endif
+
+DISTCHECK_CONFIGURE_FLAGS = \
+ --disable-desktop-update   \
+ --disable-scrollkeeper
