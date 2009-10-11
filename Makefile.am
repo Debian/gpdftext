@@ -9,6 +9,7 @@ gpdficons_DATA = gpdftext.png gpdftext.xpm
 EXTRA_DIST = $(gpdftextdoc_DATA) \
 	$(gpdficons_DATA) \
 	$(PACKAGE).1 \
+	manpage.xml \
 	COPYING \
 	po/$(PACKAGE).pot
 	README\
