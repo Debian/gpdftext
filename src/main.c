@@ -163,7 +163,7 @@ main (int argc, char *argv[])
 		g_assert (error != NULL);
 		g_message (_("GConf init failed: %s"), error->message);
 		g_error_free (error);
-		return (1);
+		return 1;
 	}
 	
 	/* create a context struct here and pass it around. */
@@ -173,7 +173,7 @@ main (int argc, char *argv[])
 
 	window = create_window ();
 	if (!window)
-		return -1;
+		return 2;
 	if (remaining_args != NULL)
 	{
 		num_args = g_strv_length (remaining_args);
