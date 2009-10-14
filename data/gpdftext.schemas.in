@@ -1,13 +1,52 @@
 <gconfschemafile>
 	<schemalist>
 	<schema>
-		<key>/schemas/apps/gpdftext/global_settings/current_user</key>
-		<applyto>/apps/gpdftext/global_settings/current_user</applyto>
+		<key>/schemas/apps/gpdftext/global_settings/paper_size</key>
+		<applyto>/apps/gpdftext/global_settings/paper_size</applyto>
 		<owner>gpdftext</owner>
 		<type>string</type>
 		<default>A5</default>
 		<locale name="C">
 			<short>preferred paper size</short>
+		</locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/gpdftext/global_settings/page_number</key>
+		<applyto>/apps/gpdftext/global_settings/page_number</applyto>
+		<owner>gpdftext</owner>
+		<type>int</type>
+		<default>1</default>
+		<locale name="C">
+			<short>remove page numbers from text</short>
+		</locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/gpdftext/global_settings/page_number</key>
+		<applyto>/apps/gpdftext/global_settings/page_number</applyto>
+		<owner>gpdftext</owner>
+		<type>int</type>
+		<default>1</default>
+		<locale name="C">
+			<short>make short lines into long lines</short>
+		</locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/gpdftext/global_settings/page_number</key>
+		<applyto>/apps/gpdftext/global_settings/page_number</applyto>
+		<owner>gpdftext</owner>
+		<type>int</type>
+		<default>1</default>
+		<locale name="C">
+			<short>rejoin hyphenated words</short>
+		</locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/gpdftext/global_settings/font</key>
+		<applyto>/apps/gpdftext/global_settings/font</applyto>
+		<owner>gpdftext</owner>
+		<type>string</type>
+		<locale name="C">
+			<short>default font for editing and rendering</short>
 		</locale>
 	</schema>
 	</schemalist>

@@ -1,8 +1,13 @@
 #!/bin/sh
 # Run this to generate all the initial makefiles, etc.
+set -e
+touch gnome-doc-utils.make
+
 
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
+
+PKG_NAME="gpdftext"
 
 DIE=0
 
@@ -19,6 +24,29 @@ fi
     echo " top-level package directory"
     exit 1
 }
+
+which gnome-autogen.sh || {
+    echo "You need to install gnome-common from the GNOME CVS or gnome-common package."
+    exit 1
+}
+
+if [ ! -f /usr/share/gnome-common/data/xmldocs.make ]; then
+	echo "You need xmldocs.make which normally comes from the gnome-common package."
+	exit 2
+fi
+cp /usr/share/gnome-common/data/xmldocs.make .
+
+if [ ! -f /usr/share/gnome-common/data/omf.make ]; then
+	echo "You need omf.make which normally comes from the gnome-common package."
+	exit 2
+fi
+cp /usr/share/gnome-common/data/omf.make .
+
+if [ ! -f /usr/share/gnome-doc-utils/gnome-doc-utils.make ]; then
+	echo "You need gnome-doc-utils.make which normally comes from the gnome-doc-utils package."
+	exit 2
+fi
+cp /usr/share/gnome-doc-utils/gnome-doc-utils.make .
 
 (autoconf --version) < /dev/null > /dev/null 2>&1 || {
   echo

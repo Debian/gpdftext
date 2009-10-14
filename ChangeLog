@@ -1,5 +1,20 @@
 2009-10-14  Neil Williams  <linux@codehelp.co.uk>
 
+	* COPYING-DOCS: GFDL-1.3 for Manual.
+	* Makefile.am: Add help
+	* autogen.sh: Include the help macros
+	* configure.ac: Add help dir.
+	* data/gpdftext.schemas.in: Extended a bit, not
+	active yet.
+	* help/C/gpdftext.xml: Initial help content.
+	* help/C/legal.xml: Help licence.
+	* help/ChangeLog: New file.
+	* help/Makefile.am: Default help rules.
+	* help/gpdftext.omf.in: Help support.
+	* src/gpdftext.glade: Initial preferences dialog.
+
+2009-10-14  Neil Williams  <linux@codehelp.co.uk>
+
 	* Makefile.am: Use the new data directory.
 	* configure.ac: Add GConf and GtkSpell checks
 	* data/Makefile.am: New subdirectory

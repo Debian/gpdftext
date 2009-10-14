@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "
+http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY app "<application>gPDFText</application>">
+<!ENTITY appversion "0.0.1">
+<!ENTITY date "Oct 2009">
+<!ENTITY legal SYSTEM "legal.xml">
+]>
+<article id="index" lang="en">
+
+<articleinfo>
+	<title>gPDFText Manual</title>
+	<date>2009-10-14</date>
+	<copyright>
+		<year>2009</year>
+		<holder>Neil Williams</holder>
+ 	</copyright>
+	<publisher>
+		<publishername>Neil Williams</publishername>
+	</publisher>
+	&legal;
+	<abstract role="description">
+		<para>
+		User manual for the gPDFText ebook PDF editor.
+		</para>
+	</abstract>
+	<authorgroup>
+		<author role="maintainer">
+			<firstname>Neil</firstname>
+			<surname>Williams</surname>
+			<affiliation>
+				<orgname>gPDFText Development Team</orgname>
+				<address>
+					<email>linux@codehelp.co.uk</email>
+				</address>
+			</affiliation>
+		</author>
+	</authorgroup>
+<revhistory>
+<revision>
+  <revnumber>&appversion;</revnumber>
+  <date>14 Oct 2009</date>
+</revision>
+</revhistory>
+</articleinfo>
+
+<indexterm zone="index">
+	<primary>gPDFText</primary>
+</indexterm>
+<indexterm zone="index">
+	<primary>gpdftext</primary>
+</indexterm>
+
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+     the application is and what it does. -->
+
+<sect1 id="gpdftext-introduction">
+	<title>Introduction</title>
+	<para>
+		&app; allows you to load the text from an ebook PDF file and
+		restore a more natural flow to the story.
+	</para>
+	<para>
+		&app; supports in-line spell-checking, and keyboard shortcuts.
+	</para>
+</sect1>
+
+<!-- =========== Getting Started ============================== -->
+<!-- Use the Getting Started section to describe the steps required
+     to start the application and to describe the user interface components
+     of the application. If there is other information that it is important
+     for readers to know before they start using the application, you should
+     also include this information here.
+     If the information about how to get started is very short, you can
+     include it in the Introduction and omit this section. -->
+<sect1 id="gpdftext-getting-started">
+	<title>Getting Started</title>
+	<para>
+		You can start &app; in the following ways:
+		<variablelist>
+			<varlistentry>
+				<term><guimenu>Applications</guimenu> menu</term>
+					<listitem>
+						<para>
+							Choose <menuchoice> <guisubmenu>Internet</guisubmenu>
+							<guimenuitem>Drivel Journal Editor</guimenuitem> </menuchoice>.
+						</para>
+					</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term>Command line</term>
+					<listitem>
+						<para>
+							Type <command>gpdftext</command>, then press <keycap>Return</keycap>.
+						</para>
+					</listitem>
+			</varlistentry>
+		</variablelist>
+	</para>
+</sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the application to perform the tasks for
+  which the application is designed. -->
+
+<sect1 id="gpdftext-usage">
+	<title>Usage</title>
+	<para>
+	</para>
+	<sect2 id="editing-ebook-entry">
+		<title>Editing an Existing ebook</title>
+		<para>&app; allows you to edit the text from the ebook PDF.</para>
+		<sect3 id="editing-recent-entry">
+			<title>Edit a Recent Entry</title>
+			<para>&app; builds a list of the fifteen most-recent ebooks.
+			</para>
+		</sect3>
+		<sect3 id="editing-old-entry">
+			<title>Editing any Existing Entry (LiveJournal only)</title>
+			<para>To edit any previously-posted journal entry, choose <menuchoice>
+			<guisubmenu>Edit</guisubmenu><guimenuitem>History</guimenuitem>
+			</menuchoice> from the menu bar.  This will open a window with a calendar.
+			Any bold dates in the calendar have journal entries associated with them.
+			The controls on the calendar can be used to go back months or even years.
+			Once you've selected the date the entry you'd like to modify was posted, a
+			list of entries from that day will appear in the bottom of the window.
+			Select the entry to modify and click <guilabel>Edit</guilabel>.
+			Once you have completed your modifications, click
+			<guilabel>Update</guilabel> to update the entry in your journal.
+			</para>
+		</sect3>
+	</sect2>
+	<sect2 id="editor-window">
+		<title>Working in the gPDFText Editor Window</title>
+		<para>The editor built into &app; includes inline spell-checking.</para>
+		<sect3 id="editor-window-spelling">
+			<title>Spell Checking</title>
+			<para>To enable inline spell-checking, click <menuchoice>
+			<guisubmenu>View</guisubmenu><guimenuitem>Highlight Spelling Errors</guimenuitem>
+			</menuchoice> in the menu bar.  A wavy red line will appear underneath
+			misspelled words.  Right-clicking on the word will display a menu with a
+			<guimenuitem>Spelling Suggestions</guimenuitem> submenu.  Clicking on a
+			displayed suggestion will insert it in place of the misspelled word.
+			</para>
+			<para>Press the <emphasis>F7</emphasis> key to quickly enable or disable
+			the spell-checker.</para>
+		</sect3>
+	</sect2>
+</sect1>
+
+<!-- ============= FAQ ============================= -->
+<!-- Use this section to list frequently-asked questions. -->
+
+<sect1 id="gpdftext-faq">
+	<title>Frequently Asked Questions</title>
+		<para>
+		</para>
+</sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the application. -->
+
+<!-- ============= About ================================== -->
+<!-- This section contains info about the program (not docs), such as
+      author's name(s), web page, license, feedback address. This
+      section is optional: primary place for this info is "About.." box of
+      the program. However, if you do wish to include this info in the
+      manual, this is the place to put it. Alternatively, you can put this
+      information in the title page.-->
+
+<sect1 id="gpdftext-about">
+	<title>About &app;</title>
+	<para>
+	&app; was written by Neil Williams (<email>linux@codehelp.co.uk</email>).
+	To find more information about &app;, please visit the <ulink
+	url="http://sourceforge.net/apps/mediawiki/gpdftext/" type="http">gPDFText Wiki</ulink>.
+	</para>
+
+	<para>
+	This program is distributed under the terms of the GNU General Public
+	license as published by the Free Software Foundation; either version 3 of the
+	License, or (at your option) any later version. A copy of this license can
+	be found at this <ulink url="ghelp:gpl" type="help">link</ulink>, or in the
+	file COPYING included with the source code of this program.
+	</para>
+</sect1>
+</article>

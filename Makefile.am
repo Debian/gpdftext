@@ -1,10 +1,11 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = src po data
+SUBDIRS = src po data help
 
 EXTRA_DIST = $(gpdftextdoc_DATA) \
 	$(desktop_in_files)	\
 	COPYING \
+	COPYING-DOCS \
 	po/$(PACKAGE).pot
 	README\
 	AUTHORS\

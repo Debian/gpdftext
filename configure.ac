@@ -150,5 +150,6 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 data/Makefile
+help/Makefile
 po/Makefile.in
 ])
