@@ -3,5 +3,5 @@
 src/main.c
 src/callbacks.c
 src/gpdftext.glade
-gpdftext.desktop.in
-
+data/gpdftext.desktop.in
+data/gpdftext.schemas.in

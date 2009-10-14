@@ -1,0 +1,14 @@
+<gconfschemafile>
+	<schemalist>
+	<schema>
+		<key>/schemas/apps/gpdftext/global_settings/current_user</key>
+		<applyto>/apps/gpdftext/global_settings/current_user</applyto>
+		<owner>gpdftext</owner>
+		<type>string</type>
+		<default>A5</default>
+		<locale name="C">
+			<short>preferred paper size</short>
+		</locale>
+	</schema>
+	</schemalist>
+</gconfschemafile>

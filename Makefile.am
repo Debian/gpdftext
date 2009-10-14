@@ -1,16 +1,9 @@
 ## Process this file with automake to produce Makefile.in
-## Created by Anjuta
 
-SUBDIRS = src po
-
-gpdficonsdir = ${datadir}/pixmaps/
-gpdficons_DATA = gpdftext.png gpdftext.xpm
+SUBDIRS = src po data
 
 EXTRA_DIST = $(gpdftextdoc_DATA) \
-	$(gpdficons_DATA) \
-	$(PACKAGE).1 \
 	$(desktop_in_files)	\
-	manpage.xml \
 	COPYING \
 	po/$(PACKAGE).pot
 	README\
@@ -29,45 +22,17 @@ all-local: Makefile
 
 clean-local: Makefile
 	find . -name '*~' -delete
+	rm -f intltool-*.in
 
 debiantarball: Makefile dist
 	ln $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE)_$(VERSION).orig.tar.gz;
-
-DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
-XP = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
-
-$(PACKAGE).1: manpage.xml
-	$(XP) $(DB2MAN) $<
-
-man_MANS=$(PACKAGE).1
 
 # Remove doc directory on uninstall
 uninstall-local:
 	-rm -r $(gpdftextdocdir)
 
-desktopdir  = $(datadir)/applications
-desktop_in_files = gpdftext.desktop.in
-desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-
-CLEANFILES = \
-	gpdftext.desktop
-
-@INTLTOOL_DESKTOP_RULE@
-
-install-data-hook:
-if HAVE_NEW_DESKTOP
-	if test -z "$(DESTDIR)"; then \
-		$(UPDATE_DESKTOP_DATABASE); \
-	fi
-endif
-
-uninstall-hook:
-if HAVE_NEW_DESKTOP
-	if test -z "$(DESTDIR)"; then \
-		$(UPDATE_DESKTOP_DATABASE); \
-	fi
-endif
-
 DISTCHECK_CONFIGURE_FLAGS = \
+ --disable-schemas-install  \
  --disable-desktop-update   \
  --disable-scrollkeeper
+

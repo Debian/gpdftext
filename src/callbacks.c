@@ -17,16 +17,19 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+/* main GTK+ interface functions */
 
+#include <config.h>
 
 #include "callbacks.h"
 #include <glib/gi18n.h>
 #include <glib/poppler-document.h>
 #include <glib/poppler-page.h>
 
+/** these need to be in a context struct */
 static PopplerDocument * PDFDoc;
 static GtkBuilder * builder = NULL;
+static gchar * filename = NULL;
 
 GtkBuilder*
 load_builder_xml (const gchar *root)
@@ -70,13 +73,50 @@ destroy (GtkWidget *widget, gpointer data)
 	gtk_main_quit ();
 }
 
+static void
+save_file (void)
+{
+	GtkProgressBar * progressbar;
+	GtkStatusbar * statusbar;
+	GtkTextView * textview;
+	GtkTextBuffer * buffer;
+	GtkTextIter start, end;
+	gchar * text;
+	GError * err;
+	guint id;
+
+	builder = load_builder_xml (NULL);
+	if (!builder)
+		return;
+	if (!filename)
+		return;
+	err = NULL;
+	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (builder, "progressbar"));
+	gtk_progress_bar_set_fraction (progressbar, 0.0);
+	statusbar = GTK_STATUSBAR(gtk_builder_get_object (builder, "statusbar"));
+	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+	gtk_statusbar_push (statusbar, id, _("Saving text file"));
+	textview = GTK_TEXT_VIEW(gtk_builder_get_object (builder, "textview"));
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+	text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
+	g_file_set_contents (filename, text, -1, &err);
+	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+	gtk_statusbar_push (statusbar, id, _("Saved text file."));
+}
+
 void
 save_txt_cb (GtkWidget *widget, gpointer data)
 {
 	GtkWidget *dialog, *window;
 	GtkFileFilter *filter;
-	guint id;
 
+	/* for a save_as_txt_cb, just omit this check */
+	if (filename)
+	{
+		save_file ();
+		return;
+	}
 	window = (GtkWidget *)data;
 	dialog = gtk_file_chooser_dialog_new (_("Save as text file"),
 										  GTK_WINDOW (window),
@@ -94,30 +134,13 @@ save_txt_cb (GtkWidget *widget, gpointer data)
 
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
-		gchar *filename;
-		GtkProgressBar * progressbar;
-		GtkStatusbar * statusbar;
-		GtkTextView * textview;
-		GtkTextBuffer * buffer;
-		GtkTextIter start, end;
-		gchar * text;
 		GError * err;
 
 		err = NULL;
 		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+		/* should set the text filename in the window title here? */
 		gtk_widget_destroy (dialog);
-		progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (builder, "progressbar"));
-		gtk_progress_bar_set_fraction (progressbar, 0.0);
-		statusbar = GTK_STATUSBAR(gtk_builder_get_object (builder, "statusbar"));
-		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-		gtk_statusbar_push (statusbar, id, _("Saving text file"));
-		textview = GTK_TEXT_VIEW(gtk_builder_get_object (builder, "textview"));
-		buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
-		gtk_text_buffer_get_bounds (buffer, &start, &end);
-		text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
-		g_file_set_contents (filename, text, -1, &err);
-		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-		gtk_statusbar_push (statusbar, id, _("Saved text file."));
+		save_file ();
 	}
 	else
 		gtk_widget_destroy (dialog);
@@ -144,22 +167,25 @@ set_text (gchar * text)
 	page = g_regex_new ("\n\\s+\\d+\\s?\n", 0, 0, &err);
 	if (err)
 		g_warning ("new para: %s", err->message);
-	hyphen = g_regex_new ("\\w- ", 0, 0, &err);
+	hyphen = g_regex_new ("(\\w)-[\\s\n]+", 0, 0, &err);
 	if (err)
 		g_warning ("new hyphen: %s", err->message);
+
 	text = g_regex_replace (line, text, -1, 0, " \\1",0 , &err);
 	if (err)
 		g_warning ("line replace: %s", err->message);
 	text = g_regex_replace_literal (page, text, -1, 0, " ",0 , &err);
 	if (err)
 		g_warning ("page replace: %s", err->message);
-	text = g_regex_replace_literal (hyphen, text, -1, 0, " ",0 , &err);
+	text = g_regex_replace (hyphen, text, -1, 0, "\\1",0 , &err);
 	if (err)
 		g_warning ("hyphen replace: %s", err->message);
 	g_regex_unref (line);
 	g_regex_unref (page);
 	if (!g_utf8_validate (text, -1, NULL))
 	{
+		/** FIXME: this should be a user-level warning. 
+		 Needs a dialog. */
 		g_warning ("validate %s", text);
 		return;
 	}
@@ -190,6 +216,11 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	builder = load_builder_xml (NULL);
 	if (!builder)
 		return;
+	if (filename)
+	{
+		g_free (filename);
+		filename = NULL;
+	}
 	window = GTK_WINDOW(gtk_builder_get_object (builder, "gpdfwindow"));
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
 	gtk_text_buffer_set_text (buffer, "", 0);
@@ -201,6 +232,8 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	gtk_window_set_title (window, _("eBook PDF editor"));
 }
 
+/* FIXME: accept a context struct and attach it to signals
+ instead of window (or attach a pointer to the struct to the window). */
 GtkWidget*
 create_window (void)
 {
@@ -369,7 +402,9 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 
 		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
 		open_file (GTK_WINDOW(window), filename);
+		/* this is the PDF filename, so free it. */
 		g_free (filename);
+		filename = NULL;
 	}
 	gtk_widget_destroy (dialog);
 	return;

@@ -55,8 +55,8 @@ Designed to help reformat PDF files for ebook readers.</property>
   <object class="GtkWindow" id="gpdfwindow">
     <property name="title" translatable="yes">eBook PDF editor</property>
     <property name="window_position">center</property>
-    <property name="default_width">540</property>
-    <property name="default_height">400</property>
+    <property name="default_width">440</property>
+    <property name="default_height">630</property>
     <accel-groups>
       <group name="accelgroup1"/>
     </accel-groups>

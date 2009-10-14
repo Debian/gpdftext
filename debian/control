@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: Neil Williams <codehelp@debian.org>
 Build-Depends: cdbs, debhelper (>= 7), docbook-xsl, autotools-dev,
  intltool, gnome-doc-utils, libtool, libxml-parser-perl, rarian-compat,
- libpoppler-glib-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.16.5)
+ libgconf2-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.16.5),
+ libpoppler-glib-dev
 Standards-Version: 3.8.3
 Homepage: http://gpdftext.sourceforge.net/
 

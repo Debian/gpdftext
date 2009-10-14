@@ -14,7 +14,9 @@ bin_PROGRAMS = gpdftext
 gpdftext_SOURCES = \
 	callbacks.c \
 	callbacks.h \
-	main.c
+	main.c \
+	pdf.c \
+	pdf.h
 
 gpdftext_LDFLAGS = \
 	-Wl,--export-dynamic -Wl,-z,defs -Wl,--as-needed

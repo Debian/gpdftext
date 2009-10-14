@@ -1,3 +1,21 @@
+2009-10-14  Neil Williams  <linux@codehelp.co.uk>
+
+	* Makefile.am: Use the new data directory.
+	* configure.ac: Add GConf and GtkSpell checks
+	* data/Makefile.am: New subdirectory
+	* data/gpdftext.schemas.in: New GConf schema
+	* debian/control: Add GConf and gtkspell
+	* debian/rules: Add GConf support.
+	* po/POTFILES.in: Add GConf
+	* src/Makefile.am: 
+	* src/callbacks.c: Allow the text file to be
+	  saved with the name already specified.
+	* src/gpdftext.glade: Set default window size
+	  to the same proportions as A5 and most books.
+	* src/main.c: Initialise GConf.
+	* src/pdf.h: Ideas for creating new PDF files
+	* src/pdf.c: PDF and PS export ideas/
+
 2009-10-11  Neil Williams  <linux@codehelp.co.uk>
 
 	* Makefile.am: Add desktop file support.

@@ -5,6 +5,7 @@ AC_INIT(gpdftext, 0.0.1)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
 
 GNOME_COMMON_INIT
 GNOME_DOC_INIT
@@ -35,7 +36,55 @@ AC_DEFINE_UNQUOTED(PACKAGE_GLADE_FILE, "$GLADEFILE", "location of Glade file")
 
 AM_PROG_LIBTOOL
 
-PKG_CHECK_MODULES(GPDFTEXT, [gtk+-2.0 >= 2.16 poppler-glib])
+POPPLER_REQUIRED=0.8.7
+GCONF_REQUIRED=2.0.0
+GLIB_REQUIRED=2.16.6
+# need 2.16 for GtkBuilder
+GTK_REQUIRED=2.16.5
+
+AC_SUBST(POPPLER_REQUIRED)
+AC_SUBST(GCONF_REQUIRED)
+AC_SUBST(GLIB_REQUIRED)
+AC_SUBST(GTK_REQUIRED)
+
+MODULES="
+	glib-2.0 >= $GLIB_REQUIRED
+	gmodule-2.0 >= $GLIB_REQUIRED
+	gtk+-2.0 >= $GTK_REQUIRED
+	gconf-2.0 >= $GCONF_REQUIRED
+	poppler-glib >= $POPPLER_REQUIRED
+"
+
+# Append GtkSpell to the pkg-config module list if desired
+HAVE_GTKSPELL=no
+AC_ARG_WITH(gtkspell, AS_HELP_STRING([--with-gtkspell],
+		      [Compile with GtkSpell support (default=autodetect)]), 
+		      [with_gtkspell=yes], [with_gtkspell=yes])
+if test "$with_gtkspell" = "yes"; then
+  AC_MSG_CHECKING(for gtkspell-2.0)
+  if $PKG_CONFIG --exists "gtkspell-2.0" ; then
+	AC_MSG_RESULT(yes)
+	HAVE_GTKSPELL=yes
+	AC_DEFINE(HAVE_GTKSPELL,1,[do we have gtkspell?])
+	MODULES="$MODULES	gtkspell-2.0
+"
+  else
+	AC_MSG_RESULT(not found)
+  fi
+fi
+
+PKG_CHECK_MODULES(GPDFTEXT, $MODULES) 
+AC_SUBST(GPDFTEXT_CFLAGS)
+AC_SUBST(GPDFTEXT_LIBS)
+
+dnl #
+dnl # GConf related settings
+dnl #
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+if test x"$GCONFTOOL" = xno; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+fi
+AM_GCONF_SOURCE_2
 
 dnl ***************************************************************************
 dnl Internatinalization
@@ -97,9 +146,9 @@ if test "x$disable_desktop" = "xno"; then
 fi
 AM_CONDITIONAL(HAVE_NEW_DESKTOP, test x$HAVE_NEW_DESKTOP = xyes)
 
-
 AC_OUTPUT([
 Makefile
 src/Makefile
+data/Makefile
 po/Makefile.in
 ])

@@ -22,10 +22,11 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <gconf/gconf.h>
+#include <gtk/gtk.h>
 
 #include <config.h>
 
-#include <gtk/gtk.h>
 
 /*
  * Standard gettext macros.
@@ -86,7 +87,7 @@ about_show (void)
 	g_free (path);
 	dialog = gtk_about_dialog_new ();
 	gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (dialog), VERSION);
-	gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog), _("eBook PDF editor"));
+	gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog),_("eBook PDF editor"));
 	gtk_about_dialog_set_copyright (GTK_ABOUT_DIALOG (dialog),
 		"Copyright 2009 Neil Williams");
 	gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog),
@@ -127,6 +128,7 @@ about_show (void)
 int
 main (int argc, char *argv[])
 {
+	GError * error;
 	GFile * gfile;
 	gint num_args;
 	GtkWidget *window;
@@ -149,10 +151,22 @@ main (int argc, char *argv[])
 	remaining_args = NULL;
 	gfile = NULL;
 	num_args = 0;
+	error = NULL;
 	option_context = g_option_context_new ("");
 	g_option_context_add_main_entries (option_context,
 		option_entries, GETTEXT_PACKAGE);
 	g_option_context_parse (option_context, &argc, &argv, NULL);
+
+	/* GConf setup */
+	if (gconf_init (argc, argv, &error) == FALSE)
+	{
+		g_assert (error != NULL);
+		g_message (_("GConf init failed: %s"), error->message);
+		g_error_free (error);
+		return (1);
+	}
+	
+	/* create a context struct here and pass it around. */
 
 	gtk_set_locale ();
 	gtk_init (&argc, &argv);
@@ -175,4 +189,3 @@ main (int argc, char *argv[])
 	gtk_main ();
 	return 0;
 }
-
