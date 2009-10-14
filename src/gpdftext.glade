@@ -127,6 +127,45 @@ Designed to help reformat PDF files for ebook readers.</property>
               </object>
             </child>
             <child>
+              <object class="GtkMenuItem" id="editmenuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Edit</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu2">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="prefmenuitem">
+                        <property name="label">gtk-preferences</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuItem" id="viewmenuitem">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_View</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkCheckMenuItem" id="spellcheckmenuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Spell _check</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
               <object class="GtkMenuItem" id="helpmenuitem">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_Help</property>
@@ -134,6 +173,14 @@ Designed to help reformat PDF files for ebook readers.</property>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu3">
                     <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="manualmenuitem">
+                        <property name="label">gtk-help</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
                     <child>
                       <object class="GtkImageMenuItem" id="aboutmenuitem">
                         <property name="label">gtk-about</property>
@@ -192,11 +239,35 @@ Designed to help reformat PDF files for ebook readers.</property>
               </packing>
             </child>
             <child>
+              <object class="GtkToolButton" id="pref_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Preferences</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-preferences</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkToolButton" id="about_button">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_About</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-about</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="help_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">_Help</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-help</property>
               </object>
               <packing>
                 <property name="expand">False</property>

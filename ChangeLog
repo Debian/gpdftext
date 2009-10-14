@@ -1,5 +1,12 @@
 2009-10-14  Neil Williams  <linux@codehelp.co.uk>
 
+	* src/callbacks.c: Add support for preferences
+	and user manual.
+	* src/gpdftext.glade: Add help, preferences
+	and spell check support.
+
+2009-10-14  Neil Williams  <linux@codehelp.co.uk>
+
 	* COPYING-DOCS: GFDL-1.3 for Manual.
 	* Makefile.am: Add help
 	* autogen.sh: Include the help macros

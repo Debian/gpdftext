@@ -232,13 +232,46 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	gtk_window_set_title (window, _("eBook PDF editor"));
 }
 
+static void
+pref_cb (GtkWidget *menu, gpointer data)
+{
+	GtkWidget *dialog, * window;
+	GdkPixbuf *logo;
+	gchar * path;
+
+	window = (GtkWidget *)data;
+	builder = load_builder_xml (NULL);
+	if (!builder)
+		return;
+	path = g_build_filename (DATADIR, "pixmaps", "gpdftext.png", NULL);
+	logo = gdk_pixbuf_new_from_file (path, NULL);
+	g_free (path);
+	dialog = GTK_WIDGET(gtk_builder_get_object (builder, "prefdialog"));
+	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
+	{
+		g_message ("preferences not yet active.");
+	}
+	gtk_widget_destroy (dialog);
+}
+
+static void
+help_cb (GtkWidget *menu, gpointer data)
+{
+	g_app_info_launch_default_for_uri ("ghelp:" PACKAGE, NULL, NULL);
+	return;
+}
+
 /* FIXME: accept a context struct and attach it to signals
  instead of window (or attach a pointer to the struct to the window). */
 GtkWidget*
 create_window (void)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *saveasmenu, *aboutmenu;
+	GtkWidget *pref_btn, *manualbtn;
+	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
+	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkTextBuffer * buffer;
 	GtkActionGroup  *action_group;
 	GtkUIManager * uimanager;
@@ -259,6 +292,8 @@ create_window (void)
 	save = GTK_WIDGET(gtk_builder_get_object (builder, "save_button"));
 	cancel = GTK_WIDGET(gtk_builder_get_object (builder, "quit_button"));
 	about = GTK_WIDGET(gtk_builder_get_object (builder, "about_button"));
+	pref_btn = GTK_WIDGET(gtk_builder_get_object (builder, "pref_button"));
+	manualbtn = GTK_WIDGET(gtk_builder_get_object (builder, "help_button"));
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (builder, "textbuffer1"));
 	action_group = GTK_ACTION_GROUP(gtk_builder_get_object (builder, "actiongroup"));
 	uimanager = GTK_UI_MANAGER(gtk_builder_get_object (builder, "uimanager"));
@@ -268,6 +303,12 @@ create_window (void)
 	quitmenu = GTK_WIDGET(gtk_builder_get_object (builder, "quitmenuitem"));
 	savemenu = GTK_WIDGET(gtk_builder_get_object (builder, "savemenuitem"));
 	saveasmenu = GTK_WIDGET(gtk_builder_get_object (builder, "saveasmenuitem"));
+	manualmenu = GTK_WIDGET(gtk_builder_get_object (builder, "manualmenuitem"));
+	spellmenu = GTK_WIDGET(gtk_builder_get_object (builder, "spellcheckmenuitem"));
+	prefmenu = GTK_WIDGET(gtk_builder_get_object (builder, "prefmenuitem"));
+#ifndef HAVE_GTKSPELL
+	gtk_widget_set_sensitive (spellcheckmenuitem, FALSE);
+#endif
 	gtk_widget_set_sensitive (saveasmenu, FALSE);
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
@@ -282,6 +323,10 @@ create_window (void)
 			G_CALLBACK (destroy), window);
 	g_signal_connect (G_OBJECT (about), "clicked", 
 			G_CALLBACK (about_show), window);
+	g_signal_connect (G_OBJECT (manualbtn), "clicked", 
+			G_CALLBACK (help_cb), window);
+	g_signal_connect (G_OBJECT (pref_btn), "clicked", 
+			G_CALLBACK (pref_cb), window);
 	g_signal_connect (G_OBJECT (window), "delete_event",
 			G_CALLBACK (destroy), window);
 	g_signal_connect (G_OBJECT (aboutmenu), "activate",
@@ -290,10 +335,14 @@ create_window (void)
 			G_CALLBACK (open_pdf_cb), window);
 	g_signal_connect (G_OBJECT (newmenu), "activate",
 			G_CALLBACK (new_pdf_cb), window);
+	g_signal_connect (G_OBJECT (prefmenu), "activate",
+			G_CALLBACK (pref_cb), window);
 	g_signal_connect (G_OBJECT (quitmenu), "activate",
 			G_CALLBACK (destroy), window);
 	g_signal_connect (G_OBJECT (savemenu), "activate",
 			G_CALLBACK (save_txt_cb), window);
+	g_signal_connect (G_OBJECT (manualmenu), "activate",
+			G_CALLBACK (help_cb), window);
 	
 	return window;
 }
