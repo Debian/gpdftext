@@ -1,3 +1,13 @@
+2009-10-15  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/callbacks.c: Move to an Ebook context struct
+	for ready access to GConf and Poppler settings. Add
+	gtkspell outline.
+	* src/callbacks.h: Ebook access functions.
+	* src/gpdftext.glade: GConf will make the preferences
+	update immediately, so drop the Cancel button.
+	* src/main.c: Use the Ebook context.
+
 2009-10-14  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/callbacks.c: Add support for preferences

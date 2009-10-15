@@ -641,22 +641,11 @@ Designed to help reformat PDF files for ebook readers.</property>
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="cancel_pref_button">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
               <object class="GtkButton" id="accept_pref_button">
-                <property name="label">gtk-apply</property>
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -678,7 +667,6 @@ Designed to help reformat PDF files for ebook readers.</property>
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">cancel_pref_button</action-widget>
       <action-widget response="0">accept_pref_button</action-widget>
     </action-widgets>
   </object>

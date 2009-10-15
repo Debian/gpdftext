@@ -134,6 +134,7 @@ main (int argc, char *argv[])
 	GtkWidget *window;
 	gchar **remaining_args;
 	GOptionContext *option_context;
+	Ebook * ebook;
 
 	GOptionEntry option_entries[] = {
 		/* option that collects filenames */
@@ -167,11 +168,12 @@ main (int argc, char *argv[])
 	}
 	
 	/* create a context struct here and pass it around. */
+	ebook = new_ebook ();
 
 	gtk_set_locale ();
 	gtk_init (&argc, &argv);
 
-	window = create_window ();
+	window = create_window (ebook);
 	if (!window)
 		return 2;
 	if (remaining_args != NULL)
@@ -182,7 +184,7 @@ main (int argc, char *argv[])
 	{
 		gchar * filename;
 		filename = g_strdup (remaining_args[num_args - 1]);
-		open_file (GTK_WINDOW(window), filename);
+		open_file (ebook, filename);
 	}
 	gtk_widget_show (window);
 
