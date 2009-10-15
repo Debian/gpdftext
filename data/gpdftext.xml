@@ -56,8 +56,12 @@
   <refsect1 id="description">
     <title>DESCRIPTION</title>
     <para>This manual page documents briefly the
-      <command>&dhpackage;</command> and <command>bar</command>
-      commands.</para>
+      <command>&dhpackage;</command> package. For more
+      information on <command>&dhpackage;</command>, see the
+      gPDFText Manual:</para>
+    <programlisting>
+$ yelp ghelp:gpdftext
+    </programlisting>
     <para><command>&dhpackage;</command> is a GTK+ text editor
     for ebook PDF files.</para>
     <para><command>&dhpackage;</command> loads the PDF, extracts the
@@ -70,7 +74,7 @@
     </refsect1>
   <refsect1 id="options">
     <title>OPTIONS</title>
-    <para>There are no command-line options supported.</para>
+    <para>There are no command-line options supported currently.</para>
     <para>PDF files passed on the command line will be opened
     by <command>&dhpackage;</command>.</para>
   </refsect1>
