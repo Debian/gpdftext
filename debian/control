@@ -12,6 +12,7 @@ Homepage: http://gpdftext.sourceforge.net/
 Package: gpdftext
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: yelp
 Description: GTK+ text editor for ebook PDF files
  gpdftext opens a simple text-based PDF file, typically
  intended for reading on an ebook reader and loads the
