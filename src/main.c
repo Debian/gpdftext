@@ -50,7 +50,7 @@
 #  define N_(String) (String)
 #endif
 
-#include "callbacks.h"
+#include "ebookui.h"
 
 void
 about_show (void)

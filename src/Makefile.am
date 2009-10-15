@@ -12,8 +12,8 @@ AM_CFLAGS =\
 bin_PROGRAMS = gpdftext
 
 gpdftext_SOURCES = \
-	callbacks.c \
-	callbacks.h \
+	ebookui.c \
+	ebookui.h \
 	main.c \
 	pdf.c \
 	pdf.h

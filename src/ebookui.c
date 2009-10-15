@@ -3,12 +3,12 @@
  * ebookui.c
  * Copyright (C) Neil Williams 2009 <linux@codehelp.co.uk>
  * 
- * callbacks.c is free software: you can redistribute it and/or modify it
+ * ebookui.c is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * callbacks.c is distributed in the hope that it will be useful, but
+ * ebookui.c is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
@@ -21,7 +21,7 @@
 
 #include <config.h>
 
-#include "callbacks.h"
+#include "ebookui.h"
 #include <glib/gi18n.h>
 #include <glib/poppler-document.h>
 #include <glib/poppler-page.h>
