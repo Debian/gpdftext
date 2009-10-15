@@ -1,0 +1,7 @@
+2009-10-15  Neil Williams  <linux@codehelp.co.uk>
+
+	* data/gpdftext.xml: Shorten manpage.
+	* help/C/gpdftext.xml: Move manpage content into
+	the Manual.
+	* help/gpdftext.omf.in: Fix series-id and file
+	location for yelp support.

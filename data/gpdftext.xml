@@ -1,18 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-
-<!--
-To disable the automatic creation of the AUTHOR(S) and COPYRIGHT sections
-read /usr/share/doc/docbook-xsl/doc/manpages/authors.html. This file can be
-found in the docbook-xsl-doc-html package.
-
-Validation can be done using: `xmllint -''-noout -''-valid manpage.xml`
-
-General documentation about man-pages and man-page-formatting:
-man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
--->
-
   <!ENTITY dhfirstname "Williams">
   <!ENTITY dhsurname   "Neil">
   <!ENTITY dhusername  "&dhfirstname; &dhsurname;">
@@ -22,7 +10,6 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   <!ENTITY dhucpackage "GPDFTEXT">
   <!ENTITY dhpackage   "gpdftext">
 ]>
-
 <refentry>
   <refentryinfo>
     <title>&dhtitle;</title>
@@ -73,53 +60,14 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
       commands.</para>
     <para><command>&dhpackage;</command> is a GTK+ text editor
     for ebook PDF files.</para>
-    <para>Many downloaded PDF files for ebook readers still use the A4
-    paper type (or letter which is similar in size) and when the PDF is
-    displayed on the ebook reader, the zoom required to display the
-    entire page makes the text too small. Simply exporting the PDF into
-    text causes problems with line wrapping and the various ways that
-    ebook PDFs indicate page headers and footers make it hard to
-    automate the conversion.
-    </para>
     <para><command>&dhpackage;</command> loads the PDF, extracts the
     text, reformats the paragraphs into single long lines and then puts
     the text into a standard GTK+ editor where you can make other
     adjustments.
     </para>
     <para>On the ebook reader, the plain text file then has no unwanted
-    line breaks and can be zoomed to whatever text size you prefer.
-    </para>
+    line breaks and can be zoomed to whatever text size you prefer.</para>
     </refsect1>
-    <refsect1>
-    <title>Limitations</title>
-      <para>ebook PDF files often contain headers and footers - chapter and
-      book titles as well as page numbers. These count as part of the text of
-      the PDF file and are retained by <command>&dhpackage;</command>. As these
-      are often specific to any one book, it is hard to reliably remove these and
-      yet the insertions will disrupt the flow of the text.
-      </para>
-      <para>Currently, the only solution is to edit the text before saving.
-      </para>
-      <para>If the text from the PDF cannot be reliably converted into ASCII
-      text, the text will be omitted, usually one page at a time - more
-      examples of PDF files that suffer from these issues would be helpful.
-      </para>
-    </refsect1>
-    <refsect1>
-      <title>Future additions</title>
-      <para>The plan is to enable <command>&dhpackage;</command> to also
-      save the modified text as a new PDF file as well as saving as a
-      normal ASCII text file.
-      </para>
-      <para>Other ebook formats might be supportable, depending on
-      whether there is free software support for reading the format in
-      the first place. 
-      </para>
-      <para>Some form of search/replace will be needed in the editor as well - more
-      than just the default Find and Find Next. Spelling support could also help
-      identify areas where the text has not been fully reconstructed.
-      </para>
-  </refsect1>
   <refsect1 id="options">
     <title>OPTIONS</title>
     <para>There are no command-line options supported.</para>
@@ -130,7 +78,7 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
     <title>BUGS</title>
     <para>Please use the Debian BTS or the upstream Trac
     tickets.</para>
-    <ulink href="http://bugs.debian.org/gpdftext">Debian BTS</ulink>
+    <ulink href="http://bugs.debian.org/gpdftext">Debian BTS</ulink> or
     <ulink href="https://sourceforge.net/apps/trac/gpdftext/newticket">
     SourceForge Trac tickets</ulink>.
   </refsect1>

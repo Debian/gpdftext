@@ -57,13 +57,61 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 
 <sect1 id="gpdftext-introduction">
 	<title>Introduction</title>
+	<para><command>&app;</command> is a GTK+ text editor
+	for ebook PDF files.</para>
 	<para>
 		&app; allows you to load the text from an ebook PDF file and
 		restore a more natural flow to the story.
 	</para>
+	<para>Many downloaded PDF files for ebook readers still use the A4
+	paper type (or letter which is similar in size) and when the PDF is
+	displayed on the ebook reader, the zoom required to display the
+	entire page makes the text too small. Simply exporting the PDF into
+	text causes problems with line wrapping and the various ways that
+	ebook PDFs indicate page headers and footers make it hard to
+	automate the conversion.
+	</para>
+	<para><command>&app;</command> loads the PDF, extracts the
+	text, reformats the paragraphs into single long lines and then puts
+	the text into a standard GTK+ editor where you can make other
+	adjustments.
+	</para>
+	<para>On the ebook reader, the plain text file then has no unwanted
+	line breaks and can be zoomed to whatever text size you prefer.
+	</para>
 	<para>
 		&app; supports in-line spell-checking, and keyboard shortcuts.
 	</para>
+	<sect2 id="limitations">
+	<title>Limitations</title>
+		<para>ebook PDF files often contain headers and footers - chapter and
+		book titles as well as page numbers. These count as part of the text of
+		the PDF file and are retained by <command>&app;</command>. As these
+		are often specific to any one book, it is hard to reliably remove these and
+		yet the insertions will disrupt the flow of the text.
+		</para>
+		<para>Currently, the only solution is to edit the text before saving.
+		</para>
+		<para>If the text from the PDF cannot be reliably converted into ASCII
+		text, the text will be omitted, usually one page at a time - more
+		examples of PDF files that suffer from these issues would be helpful.
+		</para>
+	</sect2>
+	<sect2 id="future">
+		<title>Future additions</title>
+		<para>The plan is to enable <command>&app;</command> to also
+		save the modified text as a new PDF file as well as saving as a
+		normal ASCII text file.
+		</para>
+		<para>Other ebook formats might be supportable, depending on
+		whether there is free software support for reading the format in
+		the first place. 
+		</para>
+		<para>Some form of search/replace will be needed in the editor as well - more
+		than just the default Find and Find Next. Spelling support could also help
+		identify areas where the text has not been fully reconstructed.
+		</para>
+	</sect2>
 </sect1>
 
 <!-- =========== Getting Started ============================== -->
@@ -83,8 +131,9 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 				<term><guimenu>Applications</guimenu> menu</term>
 					<listitem>
 						<para>
-							Choose <menuchoice> <guisubmenu>Internet</guisubmenu>
-							<guimenuitem>Drivel Journal Editor</guimenuitem> </menuchoice>.
+							Choose <menuchoice> <guisubmenu>Accessories</guisubmenu>
+							<guimenuitem>gPDFText ebook editor</guimenuitem>
+							</menuchoice>.
 						</para>
 					</listitem>
 			</varlistentry>
@@ -93,6 +142,12 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 					<listitem>
 						<para>
 							Type <command>gpdftext</command>, then press <keycap>Return</keycap>.
+						</para>
+						<para>There are no command-line options supported
+						currently.
+						</para>
+						<para>PDF files passed on the command line will
+						be opened by <command>&app;</command>.
 						</para>
 					</listitem>
 			</varlistentry>
@@ -116,20 +171,6 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 			<para>&app; builds a list of the fifteen most-recent ebooks.
 			</para>
 		</sect3>
-		<sect3 id="editing-old-entry">
-			<title>Editing any Existing Entry (LiveJournal only)</title>
-			<para>To edit any previously-posted journal entry, choose <menuchoice>
-			<guisubmenu>Edit</guisubmenu><guimenuitem>History</guimenuitem>
-			</menuchoice> from the menu bar.  This will open a window with a calendar.
-			Any bold dates in the calendar have journal entries associated with them.
-			The controls on the calendar can be used to go back months or even years.
-			Once you've selected the date the entry you'd like to modify was posted, a
-			list of entries from that day will appear in the bottom of the window.
-			Select the entry to modify and click <guilabel>Edit</guilabel>.
-			Once you have completed your modifications, click
-			<guilabel>Update</guilabel> to update the entry in your journal.
-			</para>
-		</sect3>
 	</sect2>
 	<sect2 id="editor-window">
 		<title>Working in the gPDFText Editor Window</title>
@@ -149,6 +190,14 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	</sect2>
 </sect1>
 
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the application. -->
+<sect1 id="preferences">
+	<title>Editing preferences</title>
+		<para>
+		</para>
+</sect1>
+
 <!-- ============= FAQ ============================= -->
 <!-- Use this section to list frequently-asked questions. -->
 
@@ -157,9 +206,6 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		<para>
 		</para>
 </sect1>
-
-<!-- ============= Customization ============================= -->
-<!-- Use this section to describe how to customize the application. -->
 
 <!-- ============= About ================================== -->
 <!-- This section contains info about the program (not docs), such as
@@ -174,9 +220,16 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	<para>
 	&app; was written by Neil Williams (<email>linux@codehelp.co.uk</email>).
 	To find more information about &app;, please visit the <ulink
-	url="http://sourceforge.net/apps/mediawiki/gpdftext/" type="http">gPDFText Wiki</ulink>.
+	url="http://sourceforge.net/apps/mediawiki/gpdftext/"
+	type="http">gPDFText Wiki</ulink>.
 	</para>
-
+	<para>Please use the Debian Bug Tracking System or the upstream
+	Trac tickets to file bug reports.</para>
+	<para>
+	<ulink url="http://bugs.debian.org/gpdftext" type="http">Debian BTS</ulink> or
+	<ulink url="http://sourceforge.net/apps/trac/gpdftext/newticket" type="http">
+	SourceForge Trac tickets</ulink> (an SF login is required).
+	</para>
 	<para>
 	This program is distributed under the terms of the GNU General Public
 	license as published by the Free Software Foundation; either version 3 of the

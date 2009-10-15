@@ -16,9 +16,9 @@
       user's guide
     </type>
     <format mime="text/xml" dtd="-//OASIS//DTD DocBook XML V4.1.2//EN"/>
-    <identifier url="gpdftext-user-guide.xml"/>
+    <identifier url="gpdftext.xml"/>
     <language code="C"/>
-    <relation seriesid="cf2bed6a-3e28-11d6-88f3-c2f7a14f1d6b"/>
-    <rights type="GNU FDL" license.version="1.1" holder="Todd Kulesza"/>
+    <relation seriesid="039dd61e-1565-8a44-5ec1-632d3fe49f1d90"/>
+    <rights type="GNU FDL" license.version="1.3" holder="Neil Williams"/>
   </resource>
 </omf>
