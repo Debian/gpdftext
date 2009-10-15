@@ -8,7 +8,7 @@ DOC_FIGURES =
 gpdftext-help.pot: Makefile
 	xml2po -e -o $(PACKAGE)-help.pot $(top_srcdir)/help/C/${PACKAGE}.xml
 
-EXTRA_DIST = gpdftext-help.pot
+EXTRA_DIST = gpdftext-help.pot ChangeLog
 
 DISTCLEANFILES = gpdftext-help.pot
 
