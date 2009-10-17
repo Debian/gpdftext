@@ -87,7 +87,7 @@ fi
 AM_GCONF_SOURCE_2
 
 dnl ***************************************************************************
-dnl Internatinalization
+dnl Internationalization
 dnl ***************************************************************************
 GETTEXT_PACKAGE=gpdftext
 AC_SUBST(GETTEXT_PACKAGE)
