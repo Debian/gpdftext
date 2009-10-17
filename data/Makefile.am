@@ -26,13 +26,6 @@ CLEANFILES = \
 
 @INTLTOOL_DESKTOP_RULE@
 
-install-data-local:
-if GCONF_SCHEMAS_INSTALL
-	if test -z "$(DESTDIR)"; then \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA); \
-	fi
-endif
-
 install-data-hook:
 if HAVE_NEW_DESKTOP
 	if test -z "$(DESTDIR)"; then \
