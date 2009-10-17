@@ -4,4 +4,3 @@ src/main.c
 src/ebookui.c
 src/gpdftext.glade
 data/gpdftext.desktop.in
-data/gpdftext.schemas.in

@@ -34,3 +34,5 @@ void about_show (void);
 gboolean open_file (Ebook * ebook, const gchar * filename);
 
 Ebook * new_ebook (void);
+
+void gconf_data_fill (Ebook *ebook);

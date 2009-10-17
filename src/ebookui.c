@@ -30,6 +30,12 @@
 #endif /* HAVE_GTKSPELL */
 #include <gconf/gconf-client.h>
 
+typedef struct _gconf
+{
+	guint id;
+	gchar * key;
+} ebGconf;
+
 /** the gpdftext context struct 
 
 Try to *not* add lots of GtkWidget pointers here, confine things
@@ -39,6 +45,13 @@ struct _eb
 {
 	/** preference settings */
 	GConfClient *client;
+	/** one Gconf for each setting. */
+	ebGconf paper_size;
+	ebGconf editor_font;
+	ebGconf spell_check;
+	ebGconf page_number;
+	ebGconf long_lines;
+	ebGconf join_hyphens;
 	PopplerDocument * PDFDoc;
 	/** everything else can be found from the one builder */
 	GtkBuilder * builder;
@@ -59,7 +72,6 @@ new_ebook (void)
 	err = NULL;
 	ebook = g_new0 (Ebook, 1);
 	ebook->client = gconf_client_get_default ();
-	/* FIXME: also make the header/footer removal configurable. */
 	ebook->line = g_regex_new ("\n(.[^\\s])", 0, 0, &err);
 	if (err)
 		g_warning ("new line: %s", err->message);
@@ -69,6 +81,7 @@ new_ebook (void)
 	ebook->hyphen = g_regex_new ("(\\w)-[\\s\n]+", 0, 0, &err);
 	if (err)
 		g_warning ("new hyphen: %s", err->message);
+	gconf_data_fill (ebook);
 	return ebook;
 }
 
@@ -110,6 +123,23 @@ load_builder_xml (const gchar *root)
 }
 
 static void
+gconf_data_free (Ebook *ebook)
+{
+	gconf_client_notify_remove (ebook->client, ebook->spell_check.id);
+	gconf_client_notify_remove (ebook->client, ebook->paper_size.id);
+	gconf_client_notify_remove (ebook->client, ebook->editor_font.id);
+	gconf_client_notify_remove (ebook->client, ebook->page_number.id);
+	gconf_client_notify_remove (ebook->client, ebook->long_lines.id);
+	gconf_client_notify_remove (ebook->client, ebook->join_hyphens.id);
+	g_free (ebook->paper_size.key);
+	g_free (ebook->editor_font.key);
+	g_free (ebook->spell_check.key);
+	g_free (ebook->page_number.key);
+	g_free (ebook->long_lines.key);
+	g_free (ebook->join_hyphens.key);
+}
+
+static void
 destroy_cb (GtkWidget * window, gpointer user_data)
 {
 	Ebook * ebook;
@@ -117,6 +147,7 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 	ebook = (Ebook *)user_data;
 	g_regex_unref (ebook->line);
 	g_regex_unref (ebook->page);
+	gconf_data_free (ebook);
 	g_free (ebook);
 	gtk_main_quit ();
 }
@@ -187,11 +218,7 @@ save_txt_cb (GtkWidget * widget, gpointer user_data)
 
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
-		GError * err;
-
-		err = NULL;
 		ebook->filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
-		/* should set the text filename in the window title here? */
 		gtk_widget_destroy (dialog);
 		save_file (ebook);
 	}
@@ -200,10 +227,11 @@ save_txt_cb (GtkWidget * widget, gpointer user_data)
 }
 
 /** 
- run once per page
+ runs once per page
 */
 static void
-set_text (Ebook * ebook, gchar * text)
+set_text (Ebook * ebook, gchar * text, 
+			gboolean lines_state, gboolean page_state, gboolean hyphens_state)
 {
 	GtkTextView * textview;
 	GtkTextBuffer * buffer;
@@ -213,17 +241,22 @@ set_text (Ebook * ebook, gchar * text)
 
 	err = NULL;
 	size = strlen (text);
-	/* FIXME: make the header/footer removal configurable. */
 
-	text = g_regex_replace (ebook->line, text, -1, 0, " \\1",0 , &err);
+	if (lines_state)
+		text = g_regex_replace (ebook->line, text, -1, 0, " \\1",0 , &err);
 	if (err)
 		g_warning ("line replace: %s", err->message);
-	text = g_regex_replace_literal (ebook->page, text, -1, 0, " ",0 , &err);
+
+	if (page_state)
+		text = g_regex_replace_literal (ebook->page, text, -1, 0, " ",0 , &err);
 	if (err)
 		g_warning ("page replace: %s", err->message);
-	text = g_regex_replace (ebook->hyphen, text, -1, 0, "\\1",0 , &err);
+
+	if (hyphens_state)
+		text = g_regex_replace (ebook->hyphen, text, -1, 0, "\\1",0 , &err);
 	if (err)
 		g_warning ("hyphen replace: %s", err->message);
+
 	if (!g_utf8_validate (text, -1, NULL))
 	{
 		/** FIXME: this should be a user-level warning. 
@@ -281,8 +314,75 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 static void
 preferences_close_cb (GtkWidget *widget, gint arg, gpointer data)
 {
-	g_message ("preferences not yet active.");
+	g_message ("Not all preferences are yet active.");
 	gtk_widget_hide (widget);
+}
+
+static void
+paper_radio_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * a4, * a5, * b5;
+	gboolean a4state, a5state, b5state;
+	Ebook * ebook;
+
+	ebook = (Ebook *)data;
+	a5 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a5radiobutton"));
+	b5 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "b5radiobutton"));
+	a4 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a4radiobutton"));
+	a5state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (a5));
+	if (a5state)
+	{
+		gconf_client_set_string (ebook->client, ebook->paper_size.key, "A5", NULL);
+		return;
+	}
+	b5state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (b5));
+	if (b5state)
+	{
+		gconf_client_set_string (ebook->client, ebook->paper_size.key, "B5", NULL);
+		return;
+	}
+	a4state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (a4));
+	if (a4state)
+		gconf_client_set_string (ebook->client, ebook->paper_size.key, "A4", NULL);
+}
+
+static void
+page_check_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * check;
+	Ebook * ebook;
+	gboolean state;
+
+	ebook = (Ebook *)data;
+	check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "pagecheckbutton"));
+	state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(check));
+	gconf_client_set_bool (ebook->client, ebook->page_number.key, state, NULL);
+}
+
+static void
+line_check_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * check;
+	gboolean state;
+	Ebook * ebook;
+
+	ebook = (Ebook *)data;
+	check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
+	state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(check));
+	gconf_client_set_bool (ebook->client, ebook->long_lines.key, state, NULL);
+}
+
+static void
+hyphen_check_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * check;
+	Ebook * ebook;
+	gboolean state;
+
+	ebook = (Ebook *)data;
+	check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
+	state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(check));
+	gconf_client_set_bool (ebook->client, ebook->join_hyphens.key, state, NULL);
 }
 
 /**
@@ -293,9 +393,10 @@ static void
 pref_cb (GtkWidget *menu, gpointer data)
 {
 	static GtkWidget *dialog;
-	GtkWidget * window;
+	GtkWidget * window, * a5, *b5, *a4, * pages, * lines, *hyphens;
 	GdkPixbuf *logo;
-	gchar * path;
+	gchar * path, * page_size;
+	gboolean state;
 	Ebook * ebook;
 
 	if (dialog)
@@ -305,20 +406,54 @@ pref_cb (GtkWidget *menu, gpointer data)
 	}
 	ebook = (Ebook *)data;
 	if (!ebook->builder)
-		ebook->builder = load_builder_xml (NULL);
-	if (!ebook->builder)
 		return;
 	path = g_build_filename (DATADIR, "pixmaps", "gpdftext.png", NULL);
 	logo = gdk_pixbuf_new_from_file (path, NULL);
 	g_free (path);
 	window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	dialog = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefdialog"));
+	a5 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a5radiobutton"));
+	b5 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "b5radiobutton"));
+	a4 = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a4radiobutton"));
+	pages = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "pagecheckbutton"));
+	lines = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
+	hyphens = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
 	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+	/* set the widgets from the gconf data */
+	page_size = gconf_client_get_string (ebook->client, ebook->paper_size.key, NULL);
+	if (0 == g_strcmp0 (page_size, "B5"))
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (b5), TRUE);
+	else if (0 == g_strcmp0 (page_size, "A4"))
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (a4), TRUE);
+	else /* A5 default */
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (a5), TRUE);
+
+	state = gconf_client_get_bool (ebook->client, ebook->page_number.key, NULL);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(pages), state);
+
+	state = gconf_client_get_bool (ebook->client, ebook->long_lines.key, NULL);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(pages), state);
+
+	state = gconf_client_get_bool (ebook->client, ebook->join_hyphens.key, NULL);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(pages), state);
+
 	g_signal_connect (G_OBJECT (dialog), "destroy",
 			G_CALLBACK (gtk_widget_destroyed), &dialog);
 	g_signal_connect (G_OBJECT (dialog), "response",
 			G_CALLBACK (preferences_close_cb), ebook);
+	g_signal_connect (G_OBJECT (a5), "toggled",
+			G_CALLBACK (paper_radio_cb), ebook);
+	g_signal_connect (G_OBJECT (b5), "toggled",
+			G_CALLBACK (paper_radio_cb), ebook);
+	g_signal_connect (G_OBJECT (a4), "toggled",
+			G_CALLBACK (paper_radio_cb), ebook);
+	g_signal_connect (G_OBJECT (pages), "toggled",
+			G_CALLBACK (page_check_cb), ebook);
+	g_signal_connect (G_OBJECT (lines), "toggled",
+			G_CALLBACK (line_check_cb), ebook);
+	g_signal_connect (G_OBJECT (hyphens), "toggled",
+			G_CALLBACK (hyphen_check_cb), ebook);
 	gtk_widget_show_all (dialog);
 }
 
@@ -326,14 +461,25 @@ static void
 help_cb (GtkWidget *menu, gpointer data)
 {
 	g_app_info_launch_default_for_uri ("ghelp:" PACKAGE, NULL, NULL);
-	return;
+}
+
+static void
+view_misspelled_words_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * spell_menu;
+	gboolean state;
+	Ebook *ebook = (Ebook *)data;
+
+	spell_menu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
+	state = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (spell_menu));
+	gconf_client_set_bool (ebook->client, ebook->spell_check.key, state, NULL);
 }
 
 GtkWidget*
 create_window (Ebook * ebook)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *pref_btn, *manualbtn;
+	GtkWidget *pref_btn, *manualbtn, *langbox;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkTextBuffer * buffer;
@@ -370,21 +516,33 @@ create_window (Ebook * ebook)
 	manualmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "manualmenuitem"));
 	spellmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
 	prefmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefmenuitem"));
+	langbox = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "langboxentry"));
 #ifndef HAVE_GTKSPELL
 	gtk_widget_set_sensitive (spellmenu, FALSE);
+	gtk_widget_set_sensitive (langbox, FALSE);
 #else
+	/* not active yet. */
+	gtk_widget_set_sensitive (langbox, FALSE);
 /*
-	if (gconf_client_get_bool (dc->client, dc->gconf->spellcheck, NULL))
+	if (gconf_client_get_bool (ebook->client, ebook->spell_check.data, NULL))
 	{
 		const gchar *spell_lang;
-		spell_lang = gconf_client_get_string (dc->client, dc->gconf->spell_language, NULL);
+		spell_lang = gconf_client_get_string (ebook->client, ebook->spell_language, NULL);
 		gtkspell_new_attach (GTK_TEXT_VIEW (text_area),
 				     (spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang,
 				     NULL);
 	}
 */
 #endif /* HAVE_GTKSPELL */
+	/** FIXME: remove once we have PDF/PS export support. */
 	gtk_widget_set_sensitive (saveasmenu, FALSE);
+
+	/** FIXME: remove once editor change support is available. */
+	{
+		GtkWidget * fontbut;
+		fontbut = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "fontbutton"));
+		gtk_widget_set_sensitive (fontbut, FALSE);
+	}
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
 	gtk_ui_manager_insert_action_group (uimanager, action_group, 0);
@@ -418,7 +576,8 @@ create_window (Ebook * ebook)
 			G_CALLBACK (save_txt_cb), ebook);
 	g_signal_connect (G_OBJECT (manualmenu), "activate",
 			G_CALLBACK (help_cb), ebook);
-	
+	g_signal_connect (G_OBJECT (spellmenu), "activate",
+			G_CALLBACK (view_misspelled_words_cb), ebook);
 	return window;
 }
 
@@ -438,6 +597,8 @@ open_file (Ebook * ebook, const gchar * filename)
 	GVfs * vfs;
 	GFileInfo * ginfo;
 	GError * result;
+	GConfValue *value;
+	gboolean lines, hyphens, pagenums;
 
 	vfs = g_vfs_get_default ();
 
@@ -473,6 +634,28 @@ open_file (Ebook * ebook, const gchar * filename)
 	gtk_statusbar_push (statusbar, id, msg);
 	ebook->PDFDoc = poppler_document_new_from_file (uri, NULL, &err);
 	gtk_progress_bar_set_fraction (progressbar, 0.2);
+
+	/* long lines support */
+	value = gconf_client_get(ebook->client, ebook->long_lines.key, NULL);
+	if (value)
+		lines = gconf_value_get_bool(value);
+	else
+		lines = TRUE;
+
+	/* page numbers support */
+	value = gconf_client_get(ebook->client, ebook->page_number.key, NULL);
+	if (value)
+		pagenums = gconf_value_get_bool(value);
+	else
+		pagenums = TRUE;
+
+	/* join hyphens support */
+	value = gconf_client_get(ebook->client, ebook->join_hyphens.key, NULL);
+	if (value)
+		hyphens = gconf_value_get_bool(value);
+	else
+		hyphens = TRUE;
+
 	if (POPPLER_IS_DOCUMENT (ebook->PDFDoc))
 	{
 		pages = poppler_document_get_n_pages (ebook->PDFDoc);
@@ -484,7 +667,7 @@ open_file (Ebook * ebook, const gchar * filename)
 			rect->x2 = width;
 			rect->y2 = height;
 			page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, rect);
-			set_text (ebook, page);
+			set_text (ebook, page, lines, pagenums, hyphens);
 			g_free (page);
 		}
 	}
@@ -536,6 +719,206 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 	gtk_widget_destroy (dialog);
 	return;
 }
+/*
+
+static void
+editor_set_font (GtkWidget   *journal_text,
+		     gboolean     def,
+		     const gchar *font_name)
+{
+
+	if (!def)
+	{
+		PangoFontDescription *font_desc = NULL;
+		g_return_if_fail (font_name != NULL);
+
+		font_desc = pango_font_description_from_string (font_name);
+		g_return_if_fail (font_desc != NULL);
+		gtk_widget_modify_font (GTK_WIDGET (journal_text), font_desc);
+
+		pango_font_description_free (font_desc);
+	}
+	else
+	{
+		GtkRcStyle *rc_style;
+		rc_style = gtk_widget_get_modifier_style (GTK_WIDGET (journal_text));
+
+		if (rc_style->font_desc)
+			pango_font_description_free (rc_style->font_desc);
+
+		rc_style->font_desc = NULL;
+		gtk_widget_modify_style (GTK_WIDGET (journal_text), rc_style);
+	}
+}
+
+static void
+editor_update_font(DrivelClient   *dc)
+{
+
+	GConfValue *value;
+	gboolean state;
+	gchar *editor_font;
+
+	if (!dc->journal_window)
+		return;
+
+	value = gconf_client_get(dc->client, dc->gconf->use_default_font, NULL);
+	if (value)
+		state = gconf_value_get_bool(value);
+	else
+		state = TRUE;
+
+	editor_font = gconf_client_get_string(dc->client, dc->gconf->editor_font, NULL);
+
+	editor_set_font( GTK_WIDGET(dc->journal_text), state,
+			(editor_font == NULL || *editor_font=='\0') ? NULL : editor_font);
+
+	g_free (editor_font);
+
+	return;
+}
+*/
+
+static void
+font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	const gchar *string;
+	GtkWidget * editor;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	string = gconf_value_get_string (value);
+	editor = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
+	/* FIXME: umm, do something here . .  . */
+	g_message ("Oops, changing font not working yet.");
+}
+
+static void
+spell_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	GtkWidget * spell_menu;
+	gboolean state;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	state = gconf_value_get_bool (value);
+	spell_menu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
+	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (spell_menu), state);
+}
+
+static void
+number_regexp_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	gboolean state;
+	GtkWidget * pagecheck;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	state = gconf_value_get_bool (value);
+	pagecheck = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "pagecheckbutton"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pagecheck), state);
+}
+
+static void
+lines_regexp_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	gboolean state;
+	GtkWidget * linecheck;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	state = gconf_value_get_bool (value);
+	linecheck = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (linecheck), state);
+}
+
+static void
+hyphens_regexp_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	gboolean state;
+	GtkWidget * hyphens;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	state = gconf_value_get_bool (value);
+	hyphens = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (hyphens), state);
+}
+
+static void
+paper_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
+{
+	GConfValue *value;
+	GtkWidget * paper;
+	const gchar *string;
+	Ebook *ebook = (Ebook *) data;
+
+	value = gconf_entry_get_value (entry);
+	string = gconf_value_get_string (value);
+
+	/* A5 is the default */
+	paper = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a5radiobutton"));
+	if (0 == g_strcmp0 (string, "B5"))
+		paper = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "b5radiobutton"));
+	if (0 == g_strcmp0 (string, "A4"))
+		paper = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "a4radiobutton"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (paper), TRUE);
+}
+
+void
+gconf_data_fill (Ebook *ebook)
+{
+	gchar *base;
+	GError * err;
+
+	g_return_if_fail (ebook);
+	base = g_strdup_printf ("/apps/%s", PACKAGE);
+	err = NULL;
+	ebook->paper_size.key = g_strdup_printf ("%s/paper_size", base);
+	ebook->editor_font.key = g_strdup_printf ("%s/editor_font", base);
+	ebook->spell_check.key = g_strdup_printf ("%s/spell_check", base);
+	ebook->page_number.key = g_strdup_printf ("%s/page_number", base);
+	ebook->long_lines.key = g_strdup_printf ("%s/long_lines", base);
+	ebook->join_hyphens.key = g_strdup_printf ("%s/join_hyphens", base);
+
+	gconf_client_add_dir (ebook->client, base, GCONF_CLIENT_PRELOAD_NONE, &err);
+	if (err)
+		g_message ("%s", err->message);
+
+	ebook->paper_size.id = gconf_client_notify_add (ebook->client,
+		ebook->paper_size.key, paper_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	ebook->editor_font.id = gconf_client_notify_add (ebook->client,
+		ebook->editor_font.key, font_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	ebook->spell_check.id = gconf_client_notify_add (ebook->client,
+		ebook->spell_check.key, spell_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	ebook->page_number.id = gconf_client_notify_add (ebook->client,
+		ebook->page_number.key, number_regexp_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	ebook->long_lines.id = gconf_client_notify_add (ebook->client,
+		ebook->long_lines.key, lines_regexp_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	ebook->join_hyphens.id = gconf_client_notify_add (ebook->client,
+		ebook->join_hyphens.key, hyphens_regexp_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+	if (err)
+		g_message ("%s", err->message);
+	g_free (base);
+}
+
 /*
 #ifdef HAVE_GTKSPELL
 static void

@@ -79,24 +79,9 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	<para>On the ebook reader, the plain text file then has no unwanted
 	line breaks and can be zoomed to whatever text size you prefer.
 	</para>
-	<para>
-		&app; supports in-line spell-checking, and keyboard shortcuts.
+	<para>Each reformatting option can be turned off using the &app;
+	preferences window. See <link linkend="preferences">preferences</link>.
 	</para>
-	<sect2 id="limitations">
-	<title>Limitations</title>
-		<para>ebook PDF files often contain headers and footers - chapter and
-		book titles as well as page numbers. These count as part of the text of
-		the PDF file and are retained by <command>&app;</command>. As these
-		are often specific to any one book, it is hard to reliably remove these and
-		yet the insertions will disrupt the flow of the text.
-		</para>
-		<para>Currently, the only solution is to edit the text before saving.
-		</para>
-		<para>If the text from the PDF cannot be reliably converted into ASCII
-		text, the text will be omitted, usually one page at a time - more
-		examples of PDF files that suffer from these issues would be helpful.
-		</para>
-	</sect2>
 	<sect2 id="future">
 		<title>Future additions</title>
 		<para>The plan is to enable <command>&app;</command> to also
@@ -129,27 +114,27 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		<variablelist>
 			<varlistentry>
 				<term><guimenu>Applications</guimenu> menu</term>
-					<listitem>
-						<para>
-							Choose <menuchoice> <guisubmenu>Accessories</guisubmenu>
-							<guimenuitem>gPDFText ebook editor</guimenuitem>
-							</menuchoice>.
-						</para>
-					</listitem>
+				<listitem>
+				<para>
+				Choose <menuchoice> <guisubmenu>Accessories</guisubmenu>
+				<guimenuitem>gPDFText ebook editor</guimenuitem>
+				</menuchoice>.
+				</para>
+				</listitem>
 			</varlistentry>
 			<varlistentry>
 				<term>Command line</term>
-					<listitem>
-						<para>
-							Type <command>gpdftext</command>, then press <keycap>Return</keycap>.
-						</para>
-						<para>There are no command-line options supported
-						currently.
-						</para>
-						<para>PDF files passed on the command line will
-						be opened by <command>&app;</command>.
-						</para>
-					</listitem>
+				<listitem>
+				<para>
+				Type <command>gpdftext</command>, then press <keycap>Return</keycap>.
+				</para>
+				<para>There are no command-line options supported
+				currently.
+				</para>
+				<para>PDF files passed on the command line will
+				be opened by <command>&app;</command>.
+				</para>
+				</listitem>
 			</varlistentry>
 		</variablelist>
 	</para>
@@ -158,20 +143,11 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!-- ================ Usage ================================ -->
 <!-- Use this section to describe how to use the application to perform the tasks for
   which the application is designed. -->
-
+<!--
 <sect1 id="gpdftext-usage">
 	<title>Usage</title>
 	<para>
 	</para>
-	<sect2 id="editing-ebook-entry">
-		<title>Editing an Existing ebook</title>
-		<para>&app; allows you to edit the text from the ebook PDF.</para>
-		<sect3 id="editing-recent-entry">
-			<title>Edit a Recent Entry</title>
-			<para>&app; builds a list of the fifteen most-recent ebooks.
-			</para>
-		</sect3>
-	</sect2>
 	<sect2 id="editor-window">
 		<title>Working in the gPDFText Editor Window</title>
 		<para>The editor built into &app; includes inline spell-checking.</para>
@@ -189,24 +165,85 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		</sect3>
 	</sect2>
 </sect1>
-
+-->
 <!-- ============= Customization ============================= -->
 <!-- Use this section to describe how to customize the application. -->
 <sect1 id="preferences">
 	<title>Editing preferences</title>
-		<para>
+		<para>Preferences provide ways to customise &app; to suit
+		how a particular PDF file was prepared. Activate 
+		Choose <menuchoice> <guisubmenu>Edit</guisubmenu>
+		<guimenuitem>Preferences</guimenuitem></menuchoice> or
+		click the preferences button on the toolbar to show the
+		preferences window.
 		</para>
+	<sect2 id="reformatting">
+	<title>Reformatting PDF text</title>
+	<para>
+		&app; makes three sets of changes to the text extracted from the
+		ebook PDF file which can be disabled by the user, depending on
+		how the opened PDF file was prepared.
+	</para>
+	<orderedlist>
+		<listitem>
+		<para><emphasis>Long lines support.</emphasis>
+		</para>
+		<blockquote>
+		<para>Most users will retain this setting which joins single lines
+		back into original paragraphs so that the reader can format the
+		long lines cleanly.
+		</para>
+		<programlisting>
+		Otherwise you end up with the text of your novel
+		appearing like this
+		when it should really be a single paragraph.
+		</programlisting>
+		</blockquote>
+		</listitem>
+		<listitem>
+		<para><emphasis>Collapsing hyphenated words.</emphasis>
+		</para>
+		<blockquote>
+		<para>Most users will also retain this setting which joins up
+		hyphenated words which would otherwise appear in the middle of
+		the line after reformatting.
+		</para>
+		<programlisting>
+		Otherwise you end up with the text of your novel appe- aring like
+		this when it should really be a single paragraph.
+		</programlisting>
+		</blockquote>
+		</listitem>
+		<listitem>
+		<para><emphasis>Removing page number footers.</emphasis>
+		</para>
+		<blockquote>
+		<para>Only the simplest page number footers can be removed using
+		this method. If your PDF contains the book name, chapter name or
+		some other content (like an advert for the download site) in the
+		page footer, you will need to remove such footers manually.
+		</para>
+		<para>In some cases, the page number pattern (whitespace, numbers
+		and a line ending) can cause problems with some books. &app;
+		may then skip entire pages from the PDF, so disable this option
+		and re-open the PDF.
+		</para>
+		</blockquote>
+		</listitem>
+	</orderedlist>
+	<para/>
+	</sect2>
 </sect1>
 
 <!-- ============= FAQ ============================= -->
 <!-- Use this section to list frequently-asked questions. -->
-
+<!--
 <sect1 id="gpdftext-faq">
 	<title>Frequently Asked Questions</title>
 		<para>
 		</para>
 </sect1>
-
+-->
 <!-- ============= About ================================== -->
 <!-- This section contains info about the program (not docs), such as
       author's name(s), web page, license, feedback address. This
@@ -226,9 +263,10 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	<para>Please use the Debian Bug Tracking System or the upstream
 	Trac tickets to file bug reports.</para>
 	<para>
-	<ulink url="http://bugs.debian.org/gpdftext" type="http">Debian BTS</ulink> or
+	<ulink url="http://bugs.debian.org/gpdftext" type="http">Debian BTS</ulink>
+	(email based, no login required) or
 	<ulink url="http://sourceforge.net/apps/trac/gpdftext/newticket" type="http">
-	SourceForge Trac tickets</ulink> (an SF login is required).
+	SourceForge Trac tickets</ulink> (an SF login is required for Trac).
 	</para>
 	<para>
 	This program is distributed under the terms of the GNU General Public

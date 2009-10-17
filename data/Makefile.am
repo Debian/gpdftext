@@ -6,7 +6,6 @@ EXTRA_DIST = \
 	$(gpdficons_DATA) \
 	$(PACKAGE).1 \
 	$(desktop_in_files) \
-	$(schema_in_files) \
 	$(PACKAGE).xml
 
 DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
@@ -26,12 +25,6 @@ CLEANFILES = \
 	gpdftext.schemas
 
 @INTLTOOL_DESKTOP_RULE@
-
-schema_in_files = gpdftext.schemas.in
-schemadir = $(GCONF_SCHEMA_FILE_DIR)
-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
 
 install-data-local:
 if GCONF_SCHEMAS_INSTALL

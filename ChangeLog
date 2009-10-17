@@ -1,3 +1,15 @@
+2009-10-17  Neil Williams  <linux@codehelp.co.uk>
+
+	* data/Makefile.am: Drop the schemas, there is no
+	global data for gconf.
+	* help/C/gpdftext.xml: Expand on the preferences.
+	* po/POTFILES.in: Drop schemas.
+	* src/ebookui.c: Implement GConf support.
+	* src/ebookui.h:
+	* src/gpdftext.glade: Add a language selection box.
+	Disabled until GtkSpell support is ready.
+	* data/gpdftext.schemas.in (deleted):
+
 2009-10-15  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/callbacks.c: Move to an Ebook context struct
