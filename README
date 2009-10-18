@@ -5,7 +5,7 @@ endings except between paragraphs.
 Issues to be completed:
 
 GConf support 
-	- initial window size and default font
+	- initial window size
 
 RecentEntries
 	- recently opened PDF's
