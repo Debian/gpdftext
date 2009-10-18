@@ -675,65 +675,6 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 	gtk_widget_destroy (dialog);
 	return;
 }
-/*
-
-static void
-editor_set_font (GtkWidget   *journal_text,
-		     gboolean     def,
-		     const gchar *font_name)
-{
-
-	if (!def)
-	{
-		PangoFontDescription *font_desc = NULL;
-		g_return_if_fail (font_name != NULL);
-
-		font_desc = pango_font_description_from_string (font_name);
-		g_return_if_fail (font_desc != NULL);
-		gtk_widget_modify_font (GTK_WIDGET (journal_text), font_desc);
-
-		pango_font_description_free (font_desc);
-	}
-	else
-	{
-		GtkRcStyle *rc_style;
-		rc_style = gtk_widget_get_modifier_style (GTK_WIDGET (journal_text));
-
-		if (rc_style->font_desc)
-			pango_font_description_free (rc_style->font_desc);
-
-		rc_style->font_desc = NULL;
-		gtk_widget_modify_style (GTK_WIDGET (journal_text), rc_style);
-	}
-}
-
-static void
-editor_update_font(DrivelClient   *dc)
-{
-
-	GConfValue *value;
-	gboolean state;
-	gchar *editor_font;
-
-	if (!dc->journal_window)
-		return;
-
-	value = gconf_client_get(dc->client, dc->gconf->use_default_font, NULL);
-	if (value)
-		state = gconf_value_get_bool(value);
-	else
-		state = TRUE;
-
-	editor_font = gconf_client_get_string(dc->client, dc->gconf->editor_font, NULL);
-
-	editor_set_font( GTK_WIDGET(dc->journal_text), state,
-			(editor_font == NULL || *editor_font=='\0') ? NULL : editor_font);
-
-	g_free (editor_font);
-
-	return;
-}
-*/
 
 static void
 font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
