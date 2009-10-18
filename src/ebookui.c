@@ -119,6 +119,12 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 	gtk_main_quit ();
 }
 
+/** FIXME: Needs to be able to open text files too. */
+
+/** FIXME: Add undo support. */
+
+/** FIXME: need a handler for changes in the textview
+ and then make the save icon sensitive. */
 static void
 save_file (Ebook * ebook)
 {
@@ -209,6 +215,7 @@ set_text (Ebook * ebook, gchar * text,
 	err = NULL;
 	size = strlen (text);
 
+	/** FIXME: need to temporarily disable gtkspell when loading */
 	if (lines_state)
 		text = g_regex_replace (ebook->line, text, -1, 0, " \\1",0 , &err);
 	if (err)
