@@ -2,5 +2,6 @@
 
 src/main.c
 src/ebookui.c
+src/spell.c
 src/gpdftext.glade
 data/gpdftext.desktop.in

@@ -1,3 +1,15 @@
+2009-10-18  Neil Williams  <linux@codehelp.co.uk>
+
+	* configure.ac: Add extra compiler warnings, optional.
+	* po/POTFILES.in: Add spell.c
+	* src/Makefile.am: Add spell.c
+	* src/ebookui.c: Enable spellchecking and font selection.
+	* src/ebookui.h: Make the EBook struct public.
+	* src/gpdftext.glade: Remove duplicate licence text.
+	* src/main.c: Remove duplicate about box comment.
+	* src/spell.c: New file for spelling and font handling.
+	* src/spell.h: New file.
+
 2009-10-17  Neil Williams  <linux@codehelp.co.uk>
 
 	* data/Makefile.am: Drop the schemas, there is no

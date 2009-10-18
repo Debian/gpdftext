@@ -55,6 +55,9 @@ MODULES="
 	poppler-glib >= $POPPLER_REQUIRED
 "
 
+# Make sure we have pkg-config installed
+AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+
 # Append GtkSpell to the pkg-config module list if desired
 HAVE_GTKSPELL=no
 AC_ARG_WITH(gtkspell, AS_HELP_STRING([--with-gtkspell],
@@ -85,6 +88,15 @@ if test x"$GCONFTOOL" = xno; then
   AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
 fi
 AM_GCONF_SOURCE_2
+
+#
+# Check for Scrollkeeper
+#
+AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config, no)
+if test x$SCROLLKEEPER_CONFIG = xno; then
+  AC_MSG_ERROR(Could not find scrollkeeper-config, please install the scrollkeeper package)
+fi
+
 
 dnl ***************************************************************************
 dnl Internationalization
@@ -145,6 +157,64 @@ if test "x$disable_desktop" = "xno"; then
 	fi
 fi
 AM_CONDITIONAL(HAVE_NEW_DESKTOP, test x$HAVE_NEW_DESKTOP = xyes)
+
+dnl # ***********************************************
+dnl # Extra warnings - even more than GNOME (maximum)
+dnl # ***********************************************
+AC_MSG_CHECKING(what extra warning flags to pass to the C compiler)
+if test ${GCC}x = yesx; then
+  WARN_CFLAGS=
+  CFLAGS="${CFLAGS} -g2 -Wall"
+  AC_ARG_ENABLE(error-on-warning,
+        [  --disable-error-on-warning
+                          disable treating compile warnings as errors],
+        [case "${enableval}" in
+        yes) WARN_CFLAGS="${WARN_CFLAGS} -Werror" ;;
+        no)  ;;
+        *) AC_MSG_ERROR(bad value ${enableval} for --enable-error-on-warning) ;;
+        esac],
+        [  WARN_CFLAGS="${WARN_CFLAGS} -Werror" ])
+  GCC_VERSION=`${CC} -dumpversion`
+  if test `echo ${GCC_VERSION} | cut -d. -f1` -ge 3; then
+     # This is gcc >= 3.x.x
+     if test `echo ${GCC_VERSION} | cut -d. -f2` -ge 4; then
+        # This is gcc >= 3.4.x
+        WARN_CFLAGS="${WARN_CFLAGS} -Wdeclaration-after-statement"
+     else if test `echo ${GCC_VERSION} | cut -d. -f1` -ge 4; then
+        # This is gcc == 4.x.x
+        WARN_CFLAGS="${WARN_CFLAGS} -Wdeclaration-after-statement -Wno-pointer-sign"
+        fi
+     fi
+  fi
+dnl  CFLAGS="${CFLAGS} ${WARN_CFLAGS}"
+else
+  WARN_CFLAGS=
+fi
+AC_MSG_RESULT($WARN_CFLAGS)
+
+set_compile_warnings=no
+
+AC_ARG_ENABLE(compile-warnings,
+              [  --enable-compile-warnings
+                          Enable verbose compiler warnings],
+              set_compile_warnings=yes)
+
+if test "$GCC" = "yes" -a "$set_compile_warnings" != "no"; then
+        WARN_CFLAGS="$WARN_CFLAGS -Wcast-align -Wsign-compare \
+ -Wmissing-prototypes -Wmissing-declarations -Werror -Wmissing-include-dirs \
+ -Winline -Wnested-externs -Wpointer-arith \
+ -Wmissing-field-initializers"
+# LDFLAGS="$LDFLAGS -Wl,-z,defs"
+fi
+AC_SUBST(WARN_CFLAGS)
+
+#
+# Pass user-specified flags on to our Makefiles
+#
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
 
 AC_OUTPUT([
 Makefile

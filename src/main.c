@@ -91,7 +91,8 @@ about_show (void)
 	gtk_about_dialog_set_copyright (GTK_ABOUT_DIALOG (dialog),
 		"Copyright 2009 Neil Williams");
 	gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog),
-		_("gPDFText - edit ebook PDF files as ASCII text.\n"));
+		_("gPDFText converts ebook PDF content into ASCII text, "
+		  "reformatted for long line paragraphs."));
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
 /*	gtk_about_dialog_set_documenters (GTK_ABOUT_DIALOG (dialog), documentors);*/
 	gtk_about_dialog_set_translator_credits (GTK_ABOUT_DIALOG (dialog), translators);
@@ -121,8 +122,6 @@ about_show (void)
 	gtk_widget_destroy (dialog);
 	
 	g_free (translators);
-	
-	return;
 }
 
 int

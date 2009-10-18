@@ -6,6 +6,7 @@ AM_CPPFLAGS = \
 	$(GPDFTEXT_CFLAGS)
 
 AM_CFLAGS =\
+	$(WARN_CFLAGS) \
 	 -Wall\
 	 -g
 
@@ -16,7 +17,9 @@ gpdftext_SOURCES = \
 	ebookui.h \
 	main.c \
 	pdf.c \
-	pdf.h
+	pdf.h \
+	spell.c \
+	spell.h
 
 gpdftext_LDFLAGS = \
 	-Wl,--export-dynamic -Wl,-z,defs -Wl,--as-needed

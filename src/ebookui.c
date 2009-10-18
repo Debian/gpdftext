@@ -21,47 +21,12 @@
 
 #include <config.h>
 
-#include "ebookui.h"
 #include <glib/gi18n.h>
-#include <glib/poppler-document.h>
-#include <glib/poppler-page.h>
+#include "ebookui.h"
 #ifdef HAVE_GTKSPELL
 #include <gtkspell/gtkspell.h>
 #endif /* HAVE_GTKSPELL */
-#include <gconf/gconf-client.h>
-
-typedef struct _gconf
-{
-	guint id;
-	gchar * key;
-} ebGconf;
-
-/** the gpdftext context struct 
-
-Try to *not* add lots of GtkWidget pointers here, confine things
- to other stuff and get the widgets via builder.
- */
-struct _eb
-{
-	/** preference settings */
-	GConfClient *client;
-	/** one Gconf for each setting. */
-	ebGconf paper_size;
-	ebGconf editor_font;
-	ebGconf spell_check;
-	ebGconf page_number;
-	ebGconf long_lines;
-	ebGconf join_hyphens;
-	PopplerDocument * PDFDoc;
-	/** everything else can be found from the one builder */
-	GtkBuilder * builder;
-	/** returned by the file_chooser as the export filename */
-	gchar * filename;
-	/** built from the PDF filename opened */
-	GFile * gfile;
-	/** the regular expressions - compiled once per app */
-	GRegex * line, * page, *hyphen;
-};
+#include "spell.h"
 
 Ebook *
 new_ebook (void)
@@ -131,12 +96,14 @@ gconf_data_free (Ebook *ebook)
 	gconf_client_notify_remove (ebook->client, ebook->page_number.id);
 	gconf_client_notify_remove (ebook->client, ebook->long_lines.id);
 	gconf_client_notify_remove (ebook->client, ebook->join_hyphens.id);
+	gconf_client_notify_remove (ebook->client, ebook->language.id);
 	g_free (ebook->paper_size.key);
 	g_free (ebook->editor_font.key);
 	g_free (ebook->spell_check.key);
 	g_free (ebook->page_number.key);
 	g_free (ebook->long_lines.key);
 	g_free (ebook->join_hyphens.key);
+	g_free (ebook->language.key);
 }
 
 static void
@@ -279,7 +246,7 @@ set_text (Ebook * ebook, gchar * text,
 	gtk_widget_show (GTK_WIDGET(textview));
 }
 
-void
+static void
 new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 {
 	guint id;
@@ -314,7 +281,6 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 static void
 preferences_close_cb (GtkWidget *widget, gint arg, gpointer data)
 {
-	g_message ("Not all preferences are yet active.");
 	gtk_widget_hide (widget);
 }
 
@@ -394,6 +360,7 @@ pref_cb (GtkWidget *menu, gpointer data)
 {
 	static GtkWidget *dialog;
 	GtkWidget * window, * a5, *b5, *a4, * pages, * lines, *hyphens;
+	GtkWidget * fontbut;
 	GdkPixbuf *logo;
 	gchar * path, * page_size;
 	gboolean state;
@@ -418,6 +385,7 @@ pref_cb (GtkWidget *menu, gpointer data)
 	pages = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "pagecheckbutton"));
 	lines = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
 	hyphens = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
+	fontbut = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "fontbutton"));
 	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 	/* set the widgets from the gconf data */
@@ -438,6 +406,9 @@ pref_cb (GtkWidget *menu, gpointer data)
 	state = gconf_client_get_bool (ebook->client, ebook->join_hyphens.key, NULL);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(pages), state);
 
+#ifdef HAVE_GTKSPELL
+	setup_languages (ebook);
+#endif
 	g_signal_connect (G_OBJECT (dialog), "destroy",
 			G_CALLBACK (gtk_widget_destroyed), &dialog);
 	g_signal_connect (G_OBJECT (dialog), "response",
@@ -454,6 +425,8 @@ pref_cb (GtkWidget *menu, gpointer data)
 			G_CALLBACK (line_check_cb), ebook);
 	g_signal_connect (G_OBJECT (hyphens), "toggled",
 			G_CALLBACK (hyphen_check_cb), ebook);
+	g_signal_connect (G_OBJECT (fontbut), "font-set",
+			G_CALLBACK (editor_font_cb), ebook);
 	gtk_widget_show_all (dialog);
 }
 
@@ -463,23 +436,11 @@ help_cb (GtkWidget *menu, gpointer data)
 	g_app_info_launch_default_for_uri ("ghelp:" PACKAGE, NULL, NULL);
 }
 
-static void
-view_misspelled_words_cb (GtkWidget *w, gpointer data)
-{
-	GtkWidget * spell_menu;
-	gboolean state;
-	Ebook *ebook = (Ebook *)data;
-
-	spell_menu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
-	state = gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (spell_menu));
-	gconf_client_set_bool (ebook->client, ebook->spell_check.key, state, NULL);
-}
-
 GtkWidget*
 create_window (Ebook * ebook)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *pref_btn, *manualbtn, *langbox;
+	GtkWidget *pref_btn, *manualbtn, *langbox, * textview;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkTextBuffer * buffer;
@@ -517,32 +478,25 @@ create_window (Ebook * ebook)
 	spellmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
 	prefmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefmenuitem"));
 	langbox = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "langboxentry"));
+	textview = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
 #ifndef HAVE_GTKSPELL
 	gtk_widget_set_sensitive (spellmenu, FALSE);
 	gtk_widget_set_sensitive (langbox, FALSE);
 #else
-	/* not active yet. */
-	gtk_widget_set_sensitive (langbox, FALSE);
-/*
-	if (gconf_client_get_bool (ebook->client, ebook->spell_check.data, NULL))
+	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
 		const gchar *spell_lang;
-		spell_lang = gconf_client_get_string (ebook->client, ebook->spell_language, NULL);
-		gtkspell_new_attach (GTK_TEXT_VIEW (text_area),
+		spell_lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
+		gtkspell_new_attach (GTK_TEXT_VIEW (textview),
 				     (spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang,
 				     NULL);
 	}
-*/
+	editor_update_font (ebook);
+
 #endif /* HAVE_GTKSPELL */
 	/** FIXME: remove once we have PDF/PS export support. */
 	gtk_widget_set_sensitive (saveasmenu, FALSE);
 
-	/** FIXME: remove once editor change support is available. */
-	{
-		GtkWidget * fontbut;
-		fontbut = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "fontbutton"));
-		gtk_widget_set_sensitive (fontbut, FALSE);
-	}
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
 	gtk_ui_manager_insert_action_group (uimanager, action_group, 0);
@@ -576,8 +530,10 @@ create_window (Ebook * ebook)
 			G_CALLBACK (save_txt_cb), ebook);
 	g_signal_connect (G_OBJECT (manualmenu), "activate",
 			G_CALLBACK (help_cb), ebook);
+#ifdef HAVE_GTKSPELL
 	g_signal_connect (G_OBJECT (spellmenu), "activate",
 			G_CALLBACK (view_misspelled_words_cb), ebook);
+#endif
 	return window;
 }
 
@@ -790,22 +746,7 @@ font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data
 	value = gconf_entry_get_value (entry);
 	string = gconf_value_get_string (value);
 	editor = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
-	/* FIXME: umm, do something here . .  . */
-	g_message ("Oops, changing font not working yet.");
-}
-
-static void
-spell_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
-{
-	GConfValue *value;
-	GtkWidget * spell_menu;
-	gboolean state;
-	Ebook *ebook = (Ebook *) data;
-
-	value = gconf_entry_get_value (entry);
-	state = gconf_value_get_bool (value);
-	spell_menu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (spell_menu), state);
+	editor_update_font (ebook);
 }
 
 static void
@@ -885,6 +826,7 @@ gconf_data_fill (Ebook *ebook)
 	ebook->page_number.key = g_strdup_printf ("%s/page_number", base);
 	ebook->long_lines.key = g_strdup_printf ("%s/long_lines", base);
 	ebook->join_hyphens.key = g_strdup_printf ("%s/join_hyphens", base);
+	ebook->language.key = g_strdup_printf ("%s/language", base);
 
 	gconf_client_add_dir (ebook->client, base, GCONF_CLIENT_PRELOAD_NONE, &err);
 	if (err)
@@ -899,7 +841,7 @@ gconf_data_fill (Ebook *ebook)
 	if (err)
 		g_message ("%s", err->message);
 	ebook->spell_check.id = gconf_client_notify_add (ebook->client,
-		ebook->spell_check.key, spell_changed_cb, ebook, NULL, &err);
+		ebook->spell_check.key, spellcheck_changed_cb, ebook, NULL, &err);
 	if (err)
 		g_message ("%s", err->message);
 	ebook->page_number.id = gconf_client_notify_add (ebook->client,
@@ -914,209 +856,15 @@ gconf_data_fill (Ebook *ebook)
 		ebook->join_hyphens.key, hyphens_regexp_changed_cb, ebook, NULL, &err);
 	if (err)
 		g_message ("%s", err->message);
+	ebook->editor_font.id = gconf_client_notify_add (ebook->client,
+		ebook->editor_font.key, editor_font_changed_cb, ebook, NULL, &err);
 	if (err)
 		g_message ("%s", err->message);
+#ifdef HAVE_GTKSPELL
+	ebook->language.id = gconf_client_notify_add (ebook->client,
+		ebook->language.key, spell_language_changed_cb, ebook, NULL, &err);
+	if (err)
+		g_message ("%s", err->message);
+#endif
 	g_free (base);
 }
-
-/*
-#ifdef HAVE_GTKSPELL
-static void
-spell_language_select_menuitem (Ebook *ebook, const gchar *lang)
-{
-	GtkComboBox *combo = GTK_COMBO_BOX (ebook->pref_dictionary);
-	GtkTreeModel *model;
-	GtkTreeIter iter;
-	gchar *tmp_lang;
-	gint i = 0, found = -1;
-
-	if (!combo)
-		return;
-	if (lang == NULL)
-	{
-		gtk_combo_box_set_active (combo, 0);
-		return;
-	}
-	model = gtk_combo_box_get_model (combo);
-
-	if (!gtk_tree_model_get_iter_first (model, &iter))
-		return;
-
-	do
-	{
-		gtk_tree_model_get (model, &iter, 0, &tmp_lang, -1);
-		if (g_str_equal (tmp_lang, lang))
-			found = i;
-		g_free (tmp_lang);
-		i++;
-	} while (gtk_tree_model_iter_next (model, &iter) && found < 0);
-
-
-	if (found >= 0)
-		gtk_combo_box_set_active (combo, found);
-	else
-		g_warning ("Language %s from GConf isn't in the list of available languages\n", lang);
-
-	return;
-}
-#endif *//* HAVE_GTKSPELL */
-/*
-static void
-spell_language_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer user_data)
-{
-#ifdef HAVE_GTKSPELL
-	Ebook *ebook;
-	GConfValue *value;
-	GtkSpell *spell;
-	const gchar *gconf_lang;
-	gchar *lang;
-	gboolean spellcheck_wanted;
-
-	g_return_if_fail (user_data);
-
-	ebook = (Ebook *) user_data;
-	value = gconf_entry_get_value (entry);
-	gconf_lang = gconf_value_get_string (value);
-
-	if (*gconf_lang == '\0' || gconf_lang == NULL)
-		lang = NULL;
-	else
-		lang = g_strdup (gconf_lang);
-
-	if (ebook->window)
-	{
-		spellcheck_wanted = gconf_client_get_bool (dc->client, dc->gconf->spellcheck, NULL);
-		spell = gtkspell_get_from_text_view (GTK_TEXT_VIEW (dc->journal_text));
-
-		if (spellcheck_wanted)
-		{
-			if (spell && lang)
-*/				/* Only if we have both spell and lang non-null we can use _set_language() */
-/*				gtkspell_set_language (spell, lang, NULL);
-			else
-			{
-*/				/* We need to create a new spell widget if we want to use lang == NULL (use default lang)
-				 * or if the spell isn't initialized */
-/*				if (spell)
-					gtkspell_detach (spell);
-				spell = gtkspell_new_attach (GTK_TEXT_VIEW (dc->journal_text), lang, NULL);
-			}
-			gtkspell_recheck_all (spell);
-
-		}
-	}
-
-	spell_language_select_menuitem ((DrivelClient *) user_data, lang);
-
-	g_free (lang);
-#endif *//* HAVE_GTKSPELL */
-/*	return;
-}
-
-static void
-spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer user_data)
-{
-#ifdef HAVE_GTKSPELL
-	GConfValue *value;
-	GtkSpell *spell;
-	gboolean state;
-	gchar *lang;
-	Ebook *ebook = (Ebook *) user_data;
-
-	value = gconf_entry_get_value (entry);
-	state = gconf_value_get_bool (value);
-
-*/	/* if the preferences dialog exists, toggle the sensitivity of the
-	 * dictionary list */
-/*	if (dc->pref_dictionary)
-			gtk_widget_set_sensitive (dc->pref_dictionary_box, state);
-*/
-	/* if the journal hasn't been built yet, skip this */
-/*	if (!dc->journal_window)
-		return;
-
-	spell = gtkspell_get_from_text_view (GTK_TEXT_VIEW (dc->journal_text));
-	lang = gconf_client_get_string (dc->client, dc->gconf->spell_language, NULL);
-
-	if (state)
-	{
-		if (!spell)
-			gtkspell_new_attach (GTK_TEXT_VIEW (dc->journal_text),
-					     (lang == NULL || *lang == '\0') ? NULL : lang,
-					     NULL);
-	}
-	else
-	{
-		if (spell)
-			gtkspell_detach (spell);
-	}
-
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (dc->menu_view_misspelled_words), state);
-
-#endif *//* HAVE_GTKSPELL */
-/*
-	return;
-}
-
-static void
-editor_set_font (GtkWidget   *journal_text,
-		     gboolean     def,
-		     const gchar *font_name)
-{
-
-	if (!def)
-	{
-		PangoFontDescription *font_desc = NULL;
-		g_return_if_fail (font_name != NULL);
-
-		font_desc = pango_font_description_from_string (font_name);
-		g_return_if_fail (font_desc != NULL);
-		gtk_widget_modify_font (GTK_WIDGET (journal_text), font_desc);
-
-		pango_font_description_free (font_desc);
-	}
-	else
-	{
-		GtkRcStyle *rc_style;
-		rc_style = gtk_widget_get_modifier_style (GTK_WIDGET (journal_text));
-
-		if (rc_style->font_desc)
-			pango_font_description_free (rc_style->font_desc);
-
-		rc_style->font_desc = NULL;
-		gtk_widget_modify_style (GTK_WIDGET (journal_text), rc_style);
-	}
-}
-
-static void
-editor_update_font(Ebook * ebook)
-{
-
-	GConfValue *value;
-	gboolean state;
-	gchar *editor_font;
-
-	value = gconf_client_get(dc->client, dc->gconf->use_default_font, NULL);
-	if (value)
-		state = gconf_value_get_bool(value);
-	else
-		state = TRUE;
-
-	editor_font = gconf_client_get_string(ebook->client, dc->gconf->editor_font, NULL);
-
-	editor_set_font( GTK_WIDGET(dc->journal_text), state,
-			(editor_font == NULL || *editor_font=='\0') ? NULL : editor_font);
-
-	g_free (editor_font);
-
-	return;
-}
-
-static void
-editor_font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer user_data)
-{
-	Ebook *ebook = (Ebook *) user_data;
-	editor_update_font(ebook);
-}
-
-*/
