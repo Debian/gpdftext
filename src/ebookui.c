@@ -127,6 +127,9 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 
 /** FIXME: Needs to be able to open text files too. */
 
+/** FIXME: build a regexp to convert inverted commas? 
+ * might need to cope with '" types. */
+
 /** FIXME: Add undo support. */
 
 /** FIXME: need a handler for changes in the textview
