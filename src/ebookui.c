@@ -119,6 +119,12 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 	gtk_main_quit ();
 }
 
+/** support dropping line-wrapping to make it easier to
+ * spot shortened lines. */
+
+/** optional regexp for lines that do not start with spaces
+ * - replace newline with a space. */
+
 /** FIXME: Needs to be able to open text files too. */
 
 /** FIXME: Add undo support. */
