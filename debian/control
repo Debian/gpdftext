@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Neil Williams <codehelp@debian.org>
 Build-Depends: cdbs, debhelper (>= 7), docbook-xsl, autotools-dev,
  intltool, gnome-doc-utils, libtool, libxml-parser-perl, rarian-compat,
- libgconf2-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.16.5),
+ libgconf2-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.16.5), libgtkspell-dev,
  libpoppler-glib-dev
 Standards-Version: 3.8.3
 Homepage: http://sourceforge.net/apps/mediawiki/gpdftext/
@@ -25,4 +25,6 @@ Description: GTK+ text editor for ebook PDF files
  font or wastes a lot of space in the margins so that
  a plain text file would display in a more comfortable
  font.
+ .
+ gpdftext supports spell checking and editor font selection.
 
