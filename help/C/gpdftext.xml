@@ -171,7 +171,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <sect1 id="preferences">
 	<title>Editing preferences</title>
 		<para>Preferences provide ways to customise &app; to suit
-		how a particular PDF file was prepared. Activate 
+		how a particular PDF file was prepared. 
 		Choose <menuchoice> <guisubmenu>Edit</guisubmenu>
 		<guimenuitem>Preferences</guimenuitem></menuchoice> or
 		click the preferences button on the toolbar to show the

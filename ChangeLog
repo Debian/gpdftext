@@ -1,5 +1,14 @@
 2009-10-20  Neil Williams  <linux@codehelp.co.uk>
 
+	* help/C/gpdftext.xml: Fix duplication, Activate +
+	  Choose.
+	* help/de/de.po: Tweak for XML change.
+	* po/de.po: Correct translation of 'Lengthen lines'.
+	* src/gpdftext.glade: Add comment to help explain
+	  the translation of 'Lengthen lines'.
+
+2009-10-20  Neil Williams  <linux@codehelp.co.uk>
+
 	* help/Makefile.am: Add German translation.
 	* help/de/de.po: German translation of Manual by
 	  "Hilmar Ackermann" <Hilmar.Ackermann@gmx.de>

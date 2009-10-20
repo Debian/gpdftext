@@ -148,7 +148,7 @@ msgstr "_Hilfe"
 
 #: ../src/gpdftext.glade.h:15
 msgid "_Lengthen lines"
-msgstr "_Zeilen dehnen"
+msgstr "Einzelne _Zeilen zusammenfügen"
 
 #: ../src/gpdftext.glade.h:16
 msgid "_New"

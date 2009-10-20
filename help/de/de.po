@@ -162,7 +162,7 @@ msgid "Editing preferences"
 msgstr "Einstellungen verändern"
 
 #: ../help/C/gpdftext.xml:173(para)
-msgid "Preferences provide ways to customise <application>gPDFText</application> to suit how a particular PDF file was prepared. Activate Choose <menuchoice><guisubmenu>Edit</guisubmenu><guimenuitem>Preferences</guimenuitem></menuchoice> or click the preferences button on the toolbar to show the preferences window."
+msgid "Preferences provide ways to customise <application>gPDFText</application> to suit how a particular PDF file was prepared. Choose <menuchoice><guisubmenu>Edit</guisubmenu><guimenuitem>Preferences</guimenuitem></menuchoice> or click the preferences button on the toolbar to show the preferences window."
 msgstr "Die Einstellungen ermöglichen eine individuelle Anpassung von <application>gPDFText</application>. Sie können bestimmen, wie eine PDF-Datei geladen und verändert werden soll. Wählen Sie dazu <menuchoice><guisubmenu>Bearbeiten</guisubmenu><guimenuitem>Einstellungen</guimenuitem></menuchoice> oder klicken Sie den Einstellungen-Button auf der Toolbar, um die Einstellungen anzuzeigen."
 
 #: ../help/C/gpdftext.xml:181(title)
