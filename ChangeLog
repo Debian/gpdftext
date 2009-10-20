@@ -1,3 +1,9 @@
+2009-10-20  Neil Williams  <linux@codehelp.co.uk>
+
+	* help/Makefile.am: Add German translation.
+	* help/de/de.po: German translation of Manual by
+	  "Hilmar Ackermann" <Hilmar.Ackermann@gmx.de>
+
 2009-10-18  Neil Williams  <linux@codehelp.co.uk>
 
 	* configure.ac: Add extra compiler warnings, optional.
