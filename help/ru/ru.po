@@ -92,7 +92,7 @@ msgstr "Введение"
 #: ../help/C/gpdftext.xml:60(para)
 msgid "<command><application>gPDFText</application></command> is a GTK+ text editor for ebook PDF files."
 msgstr ""
-"<command><application>gPDFText</application></command> - это текстовый "
+"<command><application>gPDFText</application></command> -- это текстовый "
 "редактор для файлов ebook PDF, написанный с использованием библиотеки GTK+."
 
 #: ../help/C/gpdftext.xml:62(para)
