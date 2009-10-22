@@ -1,0 +1,28 @@
+gPDFText 0.0.1 ("getting started")
+=================================
+
+	* Features:
+	- Uses poppler-glib to read in text content from PDF
+		files.
+		: Remove line wrapping and restore original
+			paragraphs.
+		: Rejoin words separated by hyphens.
+		: Saves text as simple ASCII content.
+	- Simple GTK+ interface with instant-apply GConf
+		preferences.
+	- Selectable editor font.
+	- GtkSpell support.
+	- Uses GtkBuilder support in latest GTK+.
+	- Minimal dependencies, small binary.
+	- gPDFText Manual via yelp.
+	- German and Russian translations of program
+		output and the gPDFText Manual.
+
+	* Future additions:
+	- The plan is to enable gPDFText to also save the
+		modified text as a new PDF file as well as saving
+		as a normal ASCII text file.
+	- Other ebook formats might be supportable, depending
+		on whether there is free software support for
+		reading the format in the first place.
+
