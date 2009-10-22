@@ -553,6 +553,90 @@ create_window (Ebook * ebook)
 	return window;
 }
 
+typedef struct _async
+{
+	Ebook * ebook;
+	PopplerRectangle * rect;
+	gint c;
+	gboolean lines;
+	gboolean hyphens;
+	gboolean pagenums;
+	/* whether to re-enable spell checking once loading is complete. */
+	gboolean spell_state;
+} Equeue;
+
+/**
+ called repeatedly to add more text to the editor as each
+ page is read from the PDF file, via g_timeout_add.
+
+ Spelling needs to be turned off during loading, re-attached it at the end
+ if GConf says spelling should be enabled.
+
+ This function is asynchronous - a background task.
+ Don't do things with the progress bar or status bar whilst a load
+ task could be running.
+ */
+static gboolean
+load_pdf (gpointer data)
+{
+	GtkProgressBar * progressbar;
+	GtkStatusbar * statusbar;
+	GtkTextView * text_view;
+	gchar *page, * msg, * lang;
+	gdouble fraction, step, width, height;
+	PopplerPage * PDFPage;
+	gint pages;
+	guint id;
+	Equeue * queue;
+
+	queue= (Equeue *)data;
+	if (!queue)
+		return FALSE;
+	if (!queue->ebook)
+		return FALSE;
+	text_view = GTK_TEXT_VIEW(gtk_builder_get_object (queue->ebook->builder, "textview"));
+	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (queue->ebook->builder, "progressbar"));
+	statusbar = GTK_STATUSBAR(gtk_builder_get_object (queue->ebook->builder, "statusbar"));
+	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+	pages = poppler_document_get_n_pages (queue->ebook->PDFDoc);
+	if (queue->c >= pages)
+	{
+		lang = gconf_client_get_string (queue->ebook->client,
+			queue->ebook->language.key, NULL);
+		/* spell_attach is already a background task. */
+		if (queue->spell_state)
+			gtkspell_new_attach (text_view,
+				(lang == NULL || *lang == '\0') ? NULL : lang, NULL);
+		gtk_progress_bar_set_text (progressbar, "");
+		gtk_progress_bar_set_fraction (progressbar, 0.0);
+		gtk_statusbar_push (statusbar, id, _("Done"));
+		return FALSE;
+	}
+	PDFPage = poppler_document_get_page (queue->ebook->PDFDoc, queue->c);
+	fraction = 0.0;
+	/* fraction never reaches 1.0 - allow room for spelling attachment. */
+	if (queue->spell_state)
+		step = 0.90/(gdouble)pages;
+	else
+		step = 0.99/(gdouble)pages;
+	fraction += step * queue->c;
+	/* update progress bar as we go */
+	gtk_progress_bar_set_fraction (progressbar, fraction);
+	poppler_page_get_size (PDFPage, &width, &height);
+	queue->rect->x2 = width;
+	queue->rect->y2 = height;
+	page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);
+	set_text (queue->ebook, page, queue->lines, queue->pagenums, queue->hyphens);
+	g_free (page);
+	queue->c++;
+	/* add the page to the progressbar count. */
+	msg = g_strdup_printf ("%d/%d", queue->c, pages);
+	gtk_progress_bar_set_text (progressbar, msg);
+	g_free (msg);
+	/* more to do yet, so return TRUE to call me again. */
+	return TRUE;
+}
+
 gboolean
 open_file (Ebook * ebook, const gchar * filename)
 {
@@ -560,12 +644,10 @@ open_file (Ebook * ebook, const gchar * filename)
 	GtkStatusbar * statusbar;
 	guint id;
 	GtkWidget * window;
-	PopplerPage * PDFPage;
 	PopplerRectangle * rect;
 	GError * err;
-	gdouble width, height;
-	gint pages, c;
-	gchar *page, * uri, * msg;
+	gint pages;
+	gchar * uri, * msg;
 	GVfs * vfs;
 	GFileInfo * ginfo;
 	GError * result;
@@ -605,7 +687,7 @@ open_file (Ebook * ebook, const gchar * filename)
 	msg = g_strconcat (_("Loading ebook:"), g_file_get_basename (ebook->gfile), NULL);
 	gtk_statusbar_push (statusbar, id, msg);
 	ebook->PDFDoc = poppler_document_new_from_file (uri, NULL, &err);
-	gtk_progress_bar_set_fraction (progressbar, 0.2);
+	gtk_progress_bar_set_fraction (progressbar, 0.0);
 
 	/* long lines support */
 	value = gconf_client_get(ebook->client, ebook->long_lines.key, NULL);
@@ -630,29 +712,42 @@ open_file (Ebook * ebook, const gchar * filename)
 
 	if (POPPLER_IS_DOCUMENT (ebook->PDFDoc))
 	{
+		GtkSpell *spell;
+		GtkWidget * spell_check;
+		GtkTextView * text_view;
+		gboolean state;
+		gchar *lang;
+		gdouble fraction, step;
+		static Equeue queue;
+
+		spell_check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
+		text_view = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
+		state = gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL);
+		spell = gtkspell_get_from_text_view (text_view);
+		lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
+		/* updating the text area with spell enabled is very slow */
+		if (state)
+			gtkspell_detach (spell);
 		pages = poppler_document_get_n_pages (ebook->PDFDoc);
-		for (c = 0; c < pages; c++)
-		{
-			PDFPage = poppler_document_get_page (ebook->PDFDoc, c);
-			gtk_progress_bar_set_fraction (progressbar, (c+1)/pages);
-			poppler_page_get_size (PDFPage, &width, &height);
-			rect->x2 = width;
-			rect->y2 = height;
-			page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, rect);
-			set_text (ebook, page, lines, pagenums, hyphens);
-			g_free (page);
-		}
+		fraction = 0.0;
+		step = 0.99/(gdouble)pages;
+		queue.ebook = ebook;
+		queue.c = 0;
+		queue.lines = lines;
+		queue.hyphens = hyphens;
+		queue.pagenums = pagenums;
+		queue.rect = rect;
+		/* whether to enable spell once all pages are loaded. */
+		queue.spell_state = state;
+		g_timeout_add (30, load_pdf, &queue);
 	}
 	else
 	{
 		g_message ("err: %s", err->message);
 		return FALSE;
 	}
-	gtk_progress_bar_set_fraction (progressbar, 0.0);
-	
 	msg = g_strconcat (PACKAGE, " - " , g_file_get_basename (ebook->gfile), NULL);
 	gtk_window_set_title (GTK_WINDOW(window), msg);
-	gtk_statusbar_push (statusbar, id, _("Done"));
 	return TRUE;
 }
 
@@ -683,13 +778,15 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 		gchar *filename;
 
 		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+		/* get the dialog out of the way before the work starts. */
+		gtk_widget_destroy (dialog);
 		open_file (ebook, filename);
 		/* this is the PDF filename, so free it. */
 		g_free (filename);
 		filename = NULL;
+		return;
 	}
 	gtk_widget_destroy (dialog);
-	return;
 }
 
 static void

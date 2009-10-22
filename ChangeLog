@@ -1,3 +1,12 @@
+2009-10-22  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Enable progressbar monitoring of
+	PDF load as a background task.
+	* src/main.c: Enable documentors now that the Manual
+	exists.
+	* src/spell.c: Ensure a usable font is requested
+	before trying to change to it.
+
 2009-10-20  Neil Williams  <linux@codehelp.co.uk>
 
 	* help/C/gpdftext.xml: Fix duplication, Activate +

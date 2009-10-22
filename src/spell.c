@@ -374,7 +374,10 @@ editor_update_font(Ebook * ebook)
 	GtkTextView * textview;
 	gchar *editor_font;
 
+	editor_font = NULL;
 	editor_font = gconf_client_get_string(ebook->client, ebook->editor_font.key, NULL);
+	if (!editor_font)
+		return;
 	textview = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
 	editor_set_font( GTK_WIDGET(textview), 
 			(editor_font == NULL || *editor_font=='\0') ? NULL : editor_font);

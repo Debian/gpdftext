@@ -57,12 +57,11 @@ about_show (void)
 {
 	GdkPixbuf *logo;
 	static GtkWidget *dialog = NULL;
-	/* no documentation as yet.
 	static const gchar *documentors[] = 
 	{
 		"Neil Williams  <linux@codehelp.co.uk>",
 		NULL
-	};*/
+	};
 	static const gchar *authors[] =
 	{
 		"Neil Williams  <linux@codehelp.co.uk>",
@@ -94,7 +93,7 @@ about_show (void)
 		_("gPDFText converts ebook PDF content into ASCII text, "
 		  "reformatted for long line paragraphs."));
 	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
-/*	gtk_about_dialog_set_documenters (GTK_ABOUT_DIALOG (dialog), documentors);*/
+	gtk_about_dialog_set_documenters (GTK_ABOUT_DIALOG (dialog), documentors);
 	gtk_about_dialog_set_translator_credits (GTK_ABOUT_DIALOG (dialog), translators);
 	gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (dialog), logo);
 	gtk_about_dialog_set_website (GTK_ABOUT_DIALOG (dialog), "http://gpdftext.sourceforge.net/");
