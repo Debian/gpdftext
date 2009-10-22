@@ -1,3 +1,10 @@
+2009-10-22  Neil Williams  <linux@codehelp.co.uk>
+
+	patch by: Yuri Kozlov <yuray@komyakino.ru>
+
+	* Makefile.am: Add ru
+	* ru/ru.po: Russian translation.
+
 2009-10-15  Neil Williams  <linux@codehelp.co.uk>
 
 	* data/gpdftext.xml: Shorten manpage.
