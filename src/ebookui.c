@@ -224,7 +224,6 @@ set_text (Ebook * ebook, gchar * text,
 	err = NULL;
 	size = strlen (text);
 
-	/** FIXME: need to temporarily disable gtkspell when loading */
 	if (lines_state)
 		text = g_regex_replace (ebook->line, text, -1, 0, " \\1",0 , &err);
 	if (err)
