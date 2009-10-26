@@ -2,5 +2,7 @@ gpdftext (0.0.1-1) unstable; urgency=low
 
   * Initial release. (Closes: #550593: ITP: gpdftext -- convert an ebook
     PDF to text)
+  * [INTL:pt] New Portuguese translation for gPDFText Manual
+    (Closes: #552333)
 
- -- Neil Williams <codehelp@debian.org>  Sun, 11 Oct 2009 14:11:37 +0100
+ -- Neil Williams <codehelp@debian.org>  Mon, 26 Oct 2009 19:38:40 +0000
