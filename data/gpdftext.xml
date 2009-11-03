@@ -84,7 +84,7 @@ $ yelp ghelp:gpdftext
     tickets.</para>
     <para>
     <ulink url="http://bugs.debian.org/gpdftext">Debian BTS</ulink> or
-    <ulink url="https://sourceforge.net/apps/trac/gpdftext/newticket">
+    <ulink url="http://sourceforge.net/apps/trac/gpdftext/newticket">
     SourceForge Trac tickets</ulink>. (Trac requires a SourceForge
     login to file new tickets.)
     </para>
