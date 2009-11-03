@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY dhfirstname "Williams">
-  <!ENTITY dhsurname   "Neil">
+  <!ENTITY dhfirstname "Neil">
+  <!ENTITY dhsurname   "Williams">
   <!ENTITY dhusername  "&dhfirstname; &dhsurname;">
   <!ENTITY dhemail     "codehelp@debian.org">
   <!ENTITY dhsection   "1">
@@ -82,8 +82,11 @@ $ yelp ghelp:gpdftext
     <title>BUGS</title>
     <para>Please use the Debian BTS or the upstream Trac
     tickets.</para>
-    <ulink href="http://bugs.debian.org/gpdftext">Debian BTS</ulink> or
-    <ulink href="https://sourceforge.net/apps/trac/gpdftext/newticket">
-    SourceForge Trac tickets</ulink>.
+    <para>
+    <ulink url="http://bugs.debian.org/gpdftext">Debian BTS</ulink> or
+    <ulink url="https://sourceforge.net/apps/trac/gpdftext/newticket">
+    SourceForge Trac tickets</ulink>. (Trac requires a SourceForge
+    login to file new tickets.)
+    </para>
   </refsect1>
 </refentry>
