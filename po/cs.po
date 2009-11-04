@@ -1,0 +1,193 @@
+# Czech translation for package gpdftext.
+# Copyright (C) 2009 Michal Simunek
+# This file is distributed under the same license as the gpdftext package.
+# Michal Simunek <michal.simunek@gmail.com>, 2009.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gpdftext 0.0.1-1\n"
+"Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
+"POT-Creation-Date: 2009-10-22 11:23+0100\n"
+"PO-Revision-Date: 2009-11-04 18:40+0100\n"
+"Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. * Translators should localize the following string
+#. * which will give them credit in the About box.
+#. * E.g. "Fulano de Tal <fulano@detal.com>"
+#: ../src/main.c:76
+msgid "translator-credits"
+msgstr "Michal Šimůnek <michal.simunek@gmail.com>"
+
+#: ../src/main.c:89 ../src/ebookui.c:294 ../src/gpdftext.glade.h:23
+msgid "eBook PDF editor"
+msgstr "Editor elektronických knih PDF"
+
+#: ../src/main.c:93
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFText převádí obsah elektronických knih PDF do ASCII textu, "
+"přeformátovaného na odstavce s dlouhými řádky."
+
+#: ../src/main.c:100
+msgid "Homepage"
+msgstr "Domovská stránka"
+
+#: ../src/main.c:140
+msgid "file"
+msgstr "soubor"
+
+#: ../src/main.c:163
+#, c-format
+msgid "GConf init failed: %s"
+msgstr "Selhala inicializace GConf: %s"
+
+#: ../src/ebookui.c:160
+msgid "Saving text file"
+msgstr "Ukládání textového souboru"
+
+#: ../src/ebookui.c:167
+msgid "Saved text file."
+msgstr "Textový soubor uložen"
+
+#: ../src/ebookui.c:187
+msgid "Save as text file"
+msgstr "Uložit jako textový soubor"
+
+#: ../src/ebookui.c:196
+msgid "All text files"
+msgstr "Všechny textové soubory"
+
+#: ../src/ebookui.c:293
+msgid "new file"
+msgstr "nový soubor"
+
+#: ../src/ebookui.c:612
+msgid "Done"
+msgstr "Proveď"
+
+#: ../src/ebookui.c:687
+msgid "Loading ebook:"
+msgstr "Nahrávání elektronické knihy:"
+
+#: ../src/ebookui.c:763
+msgid "Open ebook (PDF)"
+msgstr "Otevřít elektronickou knihu (PDF)"
+
+#: ../src/ebookui.c:772
+msgid "All PDF Files (*.pdf)"
+msgstr "Všechny PDF soubory (*.pdf)"
+
+#: ../src/spell.c:85 ../src/spell.c:345
+#, c-format
+msgid "Language '%s' from GConf isn't in the list of available languages\n"
+msgstr "Jazyk '%s' z GConf není na seznamu dostupných jazyků\n"
+
+#. Context: Spell check dictionary
+#: ../src/spell.c:240
+msgid "System default"
+msgstr "Výchozí nastavení systému"
+
+#: ../src/gpdftext.glade.h:1
+msgid "A_4 paper size (portrait)"
+msgstr "Velikost papíru A4 (na výšku)"
+
+#: ../src/gpdftext.glade.h:2
+msgid "A_5 book size (portrait)"
+msgstr "Velikost knihy A5 (na výšku)"
+
+#: ../src/gpdftext.glade.h:3
+msgid "Default paper size"
+msgstr "Výchozí velikost papíru"
+
+#: ../src/gpdftext.glade.h:4
+msgid "Di_ctionary"
+msgstr "S_lovník"
+
+#: ../src/gpdftext.glade.h:5
+msgid "Page _number removal"
+msgstr "Ods_traňovat čísla stránek"
+
+#: ../src/gpdftext.glade.h:6
+msgid "Re_join hyphenated words"
+msgstr "Spo_jovat rozdělená slova"
+
+#: ../src/gpdftext.glade.h:7
+msgid "Regular expression preferences"
+msgstr "Volby regulárních výrazů"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Spell _check"
+msgstr "Kont_rola pravopisu"
+
+#: ../src/gpdftext.glade.h:9
+msgid "_About"
+msgstr "_O aplikaci"
+
+#: ../src/gpdftext.glade.h:10
+msgid "_B5 book size (portrait)"
+msgstr "Velikost knihy _B5 (na výšku)"
+
+#: ../src/gpdftext.glade.h:11
+msgid "_Default font"
+msgstr "Výchozí _písmo"
+
+#: ../src/gpdftext.glade.h:12
+msgid "_Edit"
+msgstr "U_pravit"
+
+#: ../src/gpdftext.glade.h:13
+msgid "_File"
+msgstr "_Soubor"
+
+#: ../src/gpdftext.glade.h:14
+msgid "_Help"
+msgstr "Nápo_věda"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:16
+msgid "_Lengthen lines"
+msgstr "Prodlouž_it řádky"
+
+#: ../src/gpdftext.glade.h:17
+msgid "_New"
+msgstr "_Nový"
+
+#: ../src/gpdftext.glade.h:18
+msgid "_Open"
+msgstr "_Otevřít"
+
+#: ../src/gpdftext.glade.h:19
+msgid "_Preferences"
+msgstr "_Předvolby"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_Quit"
+msgstr "Kon_ec"
+
+#: ../src/gpdftext.glade.h:21
+msgid "_Save"
+msgstr "_Uložit"
+
+#: ../src/gpdftext.glade.h:22
+msgid "_View"
+msgstr "_Zobrazit"
+
+#: ../src/gpdftext.glade.h:24
+msgid "gPDFText preferences"
+msgstr "Předvolby gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:1
+msgid "Edit text from ebook PDF files"
+msgstr "Upravuje text ze souborů elektronických knih PDF"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "gPDFText ebook editor"
+msgstr "Editor elektronických knih gPDFText"
