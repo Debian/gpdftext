@@ -1,3 +1,8 @@
+2009-11-04  Neil Williams  <linux@codehelp.co.uk>
+
+	* configure.ac: Add -Wl,--no-add-needed in extra-compile-warning
+	mode to catch missing linkages.
+
 2009-10-22  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Enable progressbar monitoring of

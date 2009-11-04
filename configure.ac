@@ -53,6 +53,7 @@ MODULES="
 	gtk+-2.0 >= $GTK_REQUIRED
 	gconf-2.0 >= $GCONF_REQUIRED
 	poppler-glib >= $POPPLER_REQUIRED
+	gdk-pixbuf-2.0
 "
 
 # Make sure we have pkg-config installed
@@ -204,7 +205,7 @@ if test "$GCC" = "yes" -a "$set_compile_warnings" != "no"; then
  -Wmissing-prototypes -Wmissing-declarations -Werror -Wmissing-include-dirs \
  -Winline -Wnested-externs -Wpointer-arith \
  -Wmissing-field-initializers"
-# LDFLAGS="$LDFLAGS -Wl,-z,defs"
+	LDFLAGS="$LDFLAGS -Wl,--no-add-needed"
 fi
 AC_SUBST(WARN_CFLAGS)
 
