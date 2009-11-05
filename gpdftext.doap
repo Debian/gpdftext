@@ -1,0 +1,46 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+xmlns="http://usefulinc.com/ns/doap#"
+xmlns:foaf="http://xmlns.com/foaf/0.1/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:admin="http://webns.net/mvcb/">
+ <name>gPDFText</name>
+ <shortname>gpdftext</shortname>
+ <shortdesc>ebook PDF editor for GTK+ </shortdesc>
+ <description>a text editor for GTK+ that opens PDF documents for ebook
+ readers, converts the text contents into plain ASCII text, restores the
+ original paragraphs and removes unwanted line breaks to allow easier
+ zooming on the reader.</description>
+ <homepage rdf:resource="http://gpdftext.sourceforge.net/" />
+ <wiki rdf:resource="https://sourceforge.net/apps/mediawiki/gpdftext/index.php?title=Main_Page" />
+ <download-page rdf:resource="http://sourceforge.net/projects/gpdftext/" />
+ <bug-database rdf:resource="http://sourceforge.net/apps/trac/gpdftext/" />
+ <programming-language>C</programming-language>
+ <license rdf:resource="http://www.gnu.org/licenses/gpl.html" />
+ <maintainer>
+  <foaf:Person>
+     <foaf:name>Neil Williams</foaf:name>
+     <foaf:homepage rdf:resource="http://www.linux.codehelp.co.uk/"/>
+  </foaf:Person>
+ </maintainer>
+
+ <release>
+  <Version>
+   <revision>0.0.1</revision>
+   <branch>trunk</branch>
+   <name>Getting Started</name>
+   <created>2009-11-05</created>
+   <file-release rdf:resource="http://sourceforge.net/projects/pilot-qof/files/gpdftext/0.0.1/gpdftext-0.0.1.tar.gz/download" />
+   <dc:description>Uses poppler-glib to read in text content from PDF files.
+   Removes line wrapping and restore original paragraphs. Rejoins words
+   separated by hyphens. Saves text as simple ASCII content. Simple
+   GTK+ interface with instant-apply GConf preferences. Selectable 
+   editor font. GtkSpell support. Uses GtkBuilder support in latest GTK+.
+   Minimal dependencies, small binary. gPDFText Manual via yelp.
+   Czech, German, Portuguese and Russian translations of program output
+   and German, Portuguese and Russian translations of the gPDFText Manual.
+    </dc:description>
+  </Version>
+ </release>
+
+</Project>
