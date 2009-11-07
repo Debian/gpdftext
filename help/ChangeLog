@@ -1,3 +1,10 @@
+2009-11-05  Neil Williams  <linux@codehelp.co.uk>
+
+	patch by: Michal Simunek <michal.simunek@gmail.com>
+
+	* Makefile.am: Add cs
+	* cs/cs.po: Czech translation.
+
 2009-10-26  Neil Williams  <linux@codehelp.co.uk>
 
 	patch by: Américo Monteiro <a_monteiro@netcabo.pt>
