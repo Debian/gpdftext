@@ -1,3 +1,9 @@
+gpdftext (0.0.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Neil Williams <codehelp@debian.org>  Sat, 07 Nov 2009 22:33:45 +0000
+
 gpdftext (0.0.1-1) unstable; urgency=low
 
   * Initial release. (Closes: #550593: ITP: gpdftext -- convert an ebook
