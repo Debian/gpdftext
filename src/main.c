@@ -151,6 +151,7 @@ main (int argc, char *argv[])
 	gfile = NULL;
 	num_args = 0;
 	error = NULL;
+	g_type_init ();
 	option_context = g_option_context_new ("");
 	g_option_context_add_main_entries (option_context,
 		option_entries, GETTEXT_PACKAGE);
