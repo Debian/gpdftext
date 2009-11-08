@@ -1,3 +1,9 @@
+2009-11-08  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Wrap gtk_spell attach/detach hook when
+	loading files to allow compilation when gtkspell is not
+	available. (Closes: #7)
+
 2009-11-07  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/main.c: Ensure g_type_init is called before testing

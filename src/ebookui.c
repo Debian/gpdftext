@@ -602,10 +602,12 @@ load_pdf (gpointer data)
 	{
 		lang = gconf_client_get_string (queue->ebook->client,
 			queue->ebook->language.key, NULL);
+#ifdef HAVE_GTKSPELL
 		/* spell_attach is already a background task. */
 		if (queue->spell_state)
 			gtkspell_new_attach (text_view,
 				(lang == NULL || *lang == '\0') ? NULL : lang, NULL);
+#endif
 		gtk_progress_bar_set_text (progressbar, "");
 		gtk_progress_bar_set_fraction (progressbar, 0.0);
 		gtk_statusbar_push (statusbar, id, _("Done"));
@@ -711,22 +713,26 @@ open_file (Ebook * ebook, const gchar * filename)
 
 	if (POPPLER_IS_DOCUMENT (ebook->PDFDoc))
 	{
+#ifdef HAVE_GTKSPELL
 		GtkSpell *spell;
+		gchar *lang;
+#endif
 		GtkWidget * spell_check;
 		GtkTextView * text_view;
 		gboolean state;
-		gchar *lang;
 		gdouble fraction, step;
 		static Equeue queue;
 
 		spell_check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
 		text_view = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
 		state = gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL);
+#ifdef HAVE_GTKSPELL
 		spell = gtkspell_get_from_text_view (text_view);
 		lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
 		/* updating the text area with spell enabled is very slow */
 		if (state)
 			gtkspell_detach (spell);
+#endif
 		pages = poppler_document_get_n_pages (ebook->PDFDoc);
 		fraction = 0.0;
 		step = 0.99/(gdouble)pages;
