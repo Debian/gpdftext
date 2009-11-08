@@ -107,6 +107,19 @@ gconf_data_free (Ebook *ebook)
 }
 
 static void
+destroy_event_cb (GtkWidget * window, GdkEvent * e, gpointer user_data)
+{
+	Ebook * ebook;
+
+	ebook = (Ebook *)user_data;
+	g_regex_unref (ebook->line);
+	g_regex_unref (ebook->page);
+	gconf_data_free (ebook);
+	g_free (ebook);
+	gtk_main_quit();
+}
+
+static void
 destroy_cb (GtkWidget * window, gpointer user_data)
 {
 	Ebook * ebook;
@@ -530,7 +543,7 @@ create_window (Ebook * ebook)
 	g_signal_connect (G_OBJECT (pref_btn), "clicked", 
 			G_CALLBACK (pref_cb), ebook);
 	g_signal_connect (G_OBJECT (window), "delete_event",
-			G_CALLBACK (destroy_cb), ebook);
+			G_CALLBACK (destroy_event_cb), ebook);
 	g_signal_connect (G_OBJECT (aboutmenu), "activate",
 			G_CALLBACK (about_show), ebook);
 	g_signal_connect (G_OBJECT (openmenu), "activate",

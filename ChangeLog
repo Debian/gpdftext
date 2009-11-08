@@ -1,5 +1,11 @@
 2009-11-08  Neil Williams  <linux@codehelp.co.uk>
 
+	* src/ebookui.c: Wrong prototype for delete_cb when
+	called as a delete_event, add delete_event_cb and use
+	only in the delete_event signal. (Closes: #8)
+
+2009-11-08  Neil Williams  <linux@codehelp.co.uk>
+
 	* src/ebookui.c: Wrap gtk_spell attach/detach hook when
 	loading files to allow compilation when gtkspell is not
 	available. (Closes: #7)
