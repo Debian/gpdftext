@@ -1,0 +1,196 @@
+# Translation of gPDFtext to Swedish
+# Copyright (C) 2009 Martin Bagge <brother@bsnet.se>
+# This file is distributed under the same license as the gPDFtext package.
+#
+# Martin Bagge <brother@bsnet.se>, 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: gpdftext 0.0.2\n"
+"Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
+"POT-Creation-Date: 2009-10-22 11:23+0100\n"
+"PO-Revision-Date: 2009-11-17 00:32+0100\n"
+"Last-Translator: Martin Bagge <brother@bsnet.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. * Translators should localize the following string
+#. * which will give them credit in the About box.
+#. * E.g. "Fulano de Tal <fulano@detal.com>"
+#: ../src/main.c:76
+msgid "translator-credits"
+msgstr ""
+"Martin Bagge <brother@bsnet.se>, 2009\n"
+"Kommentarer och förslag rörande översättningen kan skickas till\n"
+"tp-sv@listor.tp-sv.se"
+
+#: ../src/main.c:89
+#: ../src/ebookui.c:294
+#: ../src/gpdftext.glade.h:23
+msgid "eBook PDF editor"
+msgstr "ebok-redigerare"
+
+#: ../src/main.c:93
+msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
+msgstr "gPDFText konverterar eböcker i PDF-format till vanlig text, långa rader omformatteras till stycken."
+
+#: ../src/main.c:100
+msgid "Homepage"
+msgstr "Webbplats"
+
+#: ../src/main.c:140
+msgid "file"
+msgstr "fil"
+
+#: ../src/main.c:163
+#, c-format
+msgid "GConf init failed: %s"
+msgstr "GConf misslyckades vid uppstart: %s"
+
+#: ../src/ebookui.c:160
+msgid "Saving text file"
+msgstr "Sparar textfil"
+
+#: ../src/ebookui.c:167
+msgid "Saved text file."
+msgstr "Sparade textfil."
+
+#: ../src/ebookui.c:187
+msgid "Save as text file"
+msgstr "Spara som textfil"
+
+#: ../src/ebookui.c:196
+msgid "All text files"
+msgstr "Alla textfiler"
+
+#: ../src/ebookui.c:293
+msgid "new file"
+msgstr "ny fil"
+
+#: ../src/ebookui.c:612
+msgid "Done"
+msgstr "Klar"
+
+#: ../src/ebookui.c:687
+msgid "Loading ebook:"
+msgstr "Laddar ebok:"
+
+#: ../src/ebookui.c:763
+msgid "Open ebook (PDF)"
+msgstr "Öppna ebok (PDF)"
+
+#: ../src/ebookui.c:772
+msgid "All PDF Files (*.pdf)"
+msgstr "Alla PDF-filer (*.pdf)"
+
+#: ../src/spell.c:85
+#: ../src/spell.c:345
+#, c-format
+msgid "Language '%s' from GConf isn't in the list of available languages\n"
+msgstr "Språket \"%s\" från GConf finns inte i listan med tillgängliga språk\n"
+
+#. Context: Spell check dictionary
+#: ../src/spell.c:240
+msgid "System default"
+msgstr "Systemstandard"
+
+#: ../src/gpdftext.glade.h:1
+msgid "A_4 paper size (portrait)"
+msgstr "A_4-storlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:2
+msgid "A_5 book size (portrait)"
+msgstr "A_5, bokstorlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:3
+msgid "Default paper size"
+msgstr "Standard storlek för sidor"
+
+#: ../src/gpdftext.glade.h:4
+msgid "Di_ctionary"
+msgstr "Lexikon"
+
+#: ../src/gpdftext.glade.h:5
+msgid "Page _number removal"
+msgstr "Ta bort sid_nummer."
+
+#: ../src/gpdftext.glade.h:6
+msgid "Re_join hyphenated words"
+msgstr "Slå samman avstavade o_rd"
+
+#: ../src/gpdftext.glade.h:7
+msgid "Regular expression preferences"
+msgstr "Egenskaper för reguljära uttryck"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Spell _check"
+msgstr "Stavningskontroll"
+
+#: ../src/gpdftext.glade.h:9
+msgid "_About"
+msgstr "_Om"
+
+#: ../src/gpdftext.glade.h:10
+msgid "_B5 book size (portrait)"
+msgstr "_B5, bokstorlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:11
+msgid "_Default font"
+msgstr "_Standard typsnitt"
+
+#: ../src/gpdftext.glade.h:12
+msgid "_Edit"
+msgstr "_redigera"
+
+#: ../src/gpdftext.glade.h:13
+msgid "_File"
+msgstr "_Arkiv"
+
+#: ../src/gpdftext.glade.h:14
+msgid "_Help"
+msgstr "_Hjälp"
+
+# den här funktionen bör man nog testa för att få bra översättning på =)
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:16
+msgid "_Lengthen lines"
+msgstr "S_lå samman rader"
+
+#: ../src/gpdftext.glade.h:17
+msgid "_New"
+msgstr "_Ny"
+
+#: ../src/gpdftext.glade.h:18
+msgid "_Open"
+msgstr "_Öppna"
+
+#: ../src/gpdftext.glade.h:19
+msgid "_Preferences"
+msgstr "_Egenskaper"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_Quit"
+msgstr "A_vsluta"
+
+#: ../src/gpdftext.glade.h:21
+msgid "_Save"
+msgstr "_Spara"
+
+#: ../src/gpdftext.glade.h:22
+msgid "_View"
+msgstr "_Visa"
+
+#: ../src/gpdftext.glade.h:24
+msgid "gPDFText preferences"
+msgstr "Egenskaper för gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:1
+msgid "Edit text from ebook PDF files"
+msgstr "Redigera text från eböcker i PDF-format."
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "gPDFText ebook editor"
+msgstr "gPDFText ebok-redigerare"
+

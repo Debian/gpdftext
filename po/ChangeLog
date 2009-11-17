@@ -1,3 +1,10 @@
+2009-11-17  Neil Williams  <linux@codehelp.co.uk>
+
+	patch by: Martin Bagge <brother@bsnet.se>
+
+	* LINGUAS: Add sv
+	* sv.po: Add Swedish translation. (Closes: #9)
+
 2009-11-04  Neil Williams  <linux@codehelp.co.uk>
 
 	patch by: Michal Simunek <michal.simunek@gmail.com>

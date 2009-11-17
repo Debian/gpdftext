@@ -30,7 +30,7 @@ xmlns:admin="http://webns.net/mvcb/">
    <branch>trunk</branch>
    <name>Getting Started</name>
    <created>2009-11-05</created>
-   <file-release rdf:resource="http://sourceforge.net/projects/pilot-qof/files/gpdftext/0.0.1/gpdftext-0.0.1.tar.gz/download" />
+   <file-release rdf:resource="http://sourceforge.net/projects/gpdftext/files/gpdftext/0.0.1/gpdftext-0.0.1.tar.gz/download" />
    <dc:description>Uses poppler-glib to read in text content from PDF files.
    Removes line wrapping and restore original paragraphs. Rejoins words
    separated by hyphens. Saves text as simple ASCII content. Simple
@@ -43,4 +43,16 @@ xmlns:admin="http://webns.net/mvcb/">
   </Version>
  </release>
 
+ <release>
+  <Version>
+   <revision>0.0.2</revision>
+   <branch>trunk</branch>
+   <name/>
+   <created/>
+   <file-release/>
+   <dc:description>New Czech and Swedish translation of the Manual, new
+   Swedish translation of program messages.
+   </dc:description>
+  </Version>
+ </release>
 </Project>

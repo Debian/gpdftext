@@ -14,5 +14,5 @@ DISTCLEANFILES = gpdftext-help.pot
 
 #figures/main_window.png  figures/open_document.png
 
-DOC_LINGUAS = cs de pt ru
+DOC_LINGUAS = cs de pt ru sv
 
