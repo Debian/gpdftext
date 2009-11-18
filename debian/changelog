@@ -1,8 +1,9 @@
 gpdftext (0.0.2-1) unstable; urgency=low
 
   * New upstream release.
+  * Update copyright with GFDL-1.3 notice.
 
- -- Neil Williams <codehelp@debian.org>  Sat, 07 Nov 2009 22:33:45 +0000
+ -- Neil Williams <codehelp@debian.org>  Wed, 18 Nov 2009 18:00:34 +0000
 
 gpdftext (0.0.1-1) unstable; urgency=low
 
