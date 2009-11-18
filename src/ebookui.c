@@ -145,8 +145,21 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 
 /** FIXME: Add undo support. */
 
-/** FIXME: need a handler for changes in the textview
- and then make the save icon sensitive. */
+static void
+save_sensitive_cb (GtkTextBuffer *textbuffer, gpointer user_data)
+{
+	GtkWidget * button, * menu;
+	gboolean modified;
+	Ebook * ebook;
+
+	ebook = (Ebook *)user_data;
+	menu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "savemenuitem"));
+	button = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "save_button"));
+	modified = gtk_text_buffer_get_modified (textbuffer);
+	gtk_widget_set_sensitive (button, modified);
+	gtk_widget_set_sensitive (menu, modified);
+}
+
 static void
 save_file (Ebook * ebook)
 {
@@ -180,6 +193,7 @@ save_file (Ebook * ebook)
 	gtk_statusbar_push (statusbar, id, _("Saved text file."));
 	msg = g_strconcat (PACKAGE, " - " , g_path_get_basename (ebook->filename), NULL);
 	gtk_window_set_title (GTK_WINDOW(window), msg);
+	gtk_text_buffer_set_modified (buffer, FALSE);
 }
 
 void
@@ -271,6 +285,7 @@ set_text (Ebook * ebook, gchar * text,
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
 	gtk_text_buffer_get_bounds (buffer, &start, &end);
 	gtk_text_buffer_insert (buffer, &end, text, size);
+	gtk_text_buffer_set_modified (buffer, TRUE);
 	gtk_widget_show (GTK_WIDGET(textview));
 }
 
@@ -304,6 +319,7 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
 	gtk_statusbar_push (statusbar, id, _("new file"));
 	gtk_window_set_title (window, _("eBook PDF editor"));
+	gtk_text_buffer_set_modified (buffer, FALSE);
 }
 
 static void
@@ -388,7 +404,7 @@ pref_cb (GtkWidget *menu, gpointer data)
 {
 	static GtkWidget *dialog;
 	GtkWidget * window, * a5, *b5, *a4, * pages, * lines, *hyphens;
-	GtkWidget * fontbut;
+	GtkWidget * fontbut, * buffer;
 	GdkPixbuf *logo;
 	gchar * path, * page_size;
 	gboolean state;
@@ -414,6 +430,7 @@ pref_cb (GtkWidget *menu, gpointer data)
 	lines = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
 	hyphens = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
 	fontbut = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "fontbutton"));
+	buffer = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "texview"));
 	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 	/* set the widgets from the gconf data */
@@ -511,6 +528,9 @@ create_window (Ebook * ebook)
 	gtk_widget_set_sensitive (spellmenu, FALSE);
 	gtk_widget_set_sensitive (langbox, FALSE);
 #else
+	gtk_text_buffer_set_modified (buffer, FALSE);
+	gtk_widget_set_sensitive (savemenu, FALSE);
+	gtk_widget_set_sensitive (save, FALSE);
 	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
 		const gchar *spell_lang;
@@ -562,6 +582,8 @@ create_window (Ebook * ebook)
 	g_signal_connect (G_OBJECT (spellmenu), "activate",
 			G_CALLBACK (view_misspelled_words_cb), ebook);
 #endif
+	g_signal_connect (G_OBJECT (buffer), "modified-changed",
+			G_CALLBACK (save_sensitive_cb), ebook);
 	return window;
 }
 
