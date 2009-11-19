@@ -657,8 +657,6 @@ create_window (Ebook * ebook)
 	gtk_text_buffer_set_modified (buffer, FALSE);
 	gtk_widget_set_sensitive (savemenu, FALSE);
 	gtk_widget_set_sensitive (save, FALSE);
-	gtk_widget_set_sensitive (redobutton, FALSE);
-	gtk_widget_set_sensitive (undobutton, FALSE);
 	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
 		const gchar *spell_lang;
@@ -666,12 +664,15 @@ create_window (Ebook * ebook)
 		gtkspell_new_attach (GTK_TEXT_VIEW (textview),
 				     (spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang,
 				     NULL);
+		gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(spellmenu), TRUE);
 	}
 	editor_update_font (ebook);
 
 #endif /* HAVE_GTKSPELL */
 	/** FIXME: remove once we have PDF/PS export support. */
 	gtk_widget_set_sensitive (saveasmenu, FALSE);
+	gtk_widget_set_sensitive (redobutton, FALSE);
+	gtk_widget_set_sensitive (undobutton, FALSE);
 
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);

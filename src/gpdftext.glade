@@ -304,11 +304,14 @@
               <object class="GtkTextView" id="textview">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="wrap_mode">word</property>
                 <property name="justification">fill</property>
+                <property name="left_margin">5</property>
+                <property name="right_margin">5</property>
                 <property name="buffer">textbuffer1</property>
               </object>
             </child>
