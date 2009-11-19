@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-10-18 16:46+0100\n"
+"POT-Creation-Date: 2009-11-19 19:15+0000\n"
 "PO-Revision-Date: 2009-10-20 15:00+0100\n"
 "Last-Translator: Hilmar Ackermann <debian-l10n-german@lists.debian.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -19,23 +19,27 @@ msgstr ""
 #. * Translators should localize the following string
 #. * which will give them credit in the About box.
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
-#: ../src/main.c:77
+#: ../src/main.c:76
 msgid "translator-credits"
 msgstr "Hilmar Ackermann <debian-l10n-german@lists.debian.org>"
 
-#: ../src/main.c:90 ../src/ebookui.c:278 ../src/gpdftext.glade.h:22
+#: ../src/main.c:89 ../src/ebookui.c:445 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "eBook PDF Editor"
 
-#: ../src/main.c:94
-msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
-msgstr "gPDFText wandelt ebook PDFs in ASCII Text um und fügt dabei die einzelnen Zeilen zu Absätzen zusammen, sodass ein gut leserlicher Text entsteht."
+#: ../src/main.c:93
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFText wandelt ebook PDFs in ASCII Text um und fügt dabei die einzelnen "
+"Zeilen zu Absätzen zusammen, sodass ein gut leserlicher Text entsteht."
 
-#: ../src/main.c:101
+#: ../src/main.c:100
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/main.c:141
+#: ../src/main.c:140
 msgid "file"
 msgstr "Datei"
 
@@ -44,46 +48,47 @@ msgstr "Datei"
 msgid "GConf init failed: %s"
 msgstr "GConf Initialisierung ist fehlgeschlagen: %s"
 
-#: ../src/ebookui.c:145
+#: ../src/ebookui.c:307
 msgid "Saving text file"
 msgstr "Speichere Text-Datei"
 
-#: ../src/ebookui.c:152
+#: ../src/ebookui.c:314
 msgid "Saved text file."
 msgstr "Text-Datei gespeichert."
 
-#: ../src/ebookui.c:172
+#: ../src/ebookui.c:335
 msgid "Save as text file"
 msgstr "Speichere als Text-Datei"
 
-#: ../src/ebookui.c:181
+#: ../src/ebookui.c:344
 msgid "All text files"
 msgstr "Alle Textdateien"
 
-#: ../src/ebookui.c:277
+#: ../src/ebookui.c:444
 msgid "new file"
 msgstr "Neue Datei"
 
-#: ../src/ebookui.c:589
-msgid "Loading ebook:"
-msgstr "Lade ebook:"
-
-#: ../src/ebookui.c:639
+#: ../src/ebookui.c:796
 msgid "Done"
 msgstr "Fertig"
 
-#: ../src/ebookui.c:652
+#: ../src/ebookui.c:871
+msgid "Loading ebook:"
+msgstr "Lade ebook:"
+
+#: ../src/ebookui.c:955
 msgid "Open ebook (PDF)"
 msgstr "Öffne ebook (PDF)"
 
-#: ../src/ebookui.c:661
+#: ../src/ebookui.c:964
 msgid "All PDF Files (*.pdf)"
 msgstr "Alle PDF-Dateien (*.pdf)"
 
 #: ../src/spell.c:85 ../src/spell.c:345
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
-msgstr "Sprache '%s' von GConf ist nicht in der Liste der verfügbaren Sprachen\n"
+msgstr ""
+"Sprache '%s' von GConf ist nicht in der Liste der verfügbaren Sprachen\n"
 
 #. Context: Spell check dictionary
 #: ../src/spell.c:240
@@ -123,58 +128,35 @@ msgid "Spell _check"
 msgstr "Rechtschreibüber_prüfung"
 
 #: ../src/gpdftext.glade.h:9
-msgid "_About"
-msgstr "_Über"
-
-#: ../src/gpdftext.glade.h:10
 msgid "_B5 book size (portrait)"
 msgstr "_B5 Buchformat (Porträt)"
 
-#: ../src/gpdftext.glade.h:11
+#: ../src/gpdftext.glade.h:10
 msgid "_Default font"
 msgstr "_Standard Schriftart"
 
-#: ../src/gpdftext.glade.h:12
+#: ../src/gpdftext.glade.h:11
 msgid "_Edit"
 msgstr "Bea_rbeiten"
 
-#: ../src/gpdftext.glade.h:13
+#: ../src/gpdftext.glade.h:12
 msgid "_File"
 msgstr "_Datei"
 
-#: ../src/gpdftext.glade.h:14
+#: ../src/gpdftext.glade.h:13
 msgid "_Help"
 msgstr "_Hilfe"
 
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
 #: ../src/gpdftext.glade.h:15
 msgid "_Lengthen lines"
 msgstr "Einzelne _Zeilen zusammenfügen"
 
 #: ../src/gpdftext.glade.h:16
-msgid "_New"
-msgstr "_Neu"
-
-#: ../src/gpdftext.glade.h:17
-msgid "_Open"
-msgstr "_Öffnen"
-
-#: ../src/gpdftext.glade.h:18
-msgid "_Preferences"
-msgstr "E_instellungen"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Quit"
-msgstr "B_eenden"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Save"
-msgstr "Spei_chern"
-
-#: ../src/gpdftext.glade.h:21
 msgid "_View"
 msgstr "_Ansicht"
 
-#: ../src/gpdftext.glade.h:23
+#: ../src/gpdftext.glade.h:18
 msgid "gPDFText preferences"
 msgstr "gPDFText Einstellungen"
 
@@ -185,3 +167,31 @@ msgstr "Text von ebook PDF Dateien bearbeiten"
 #: ../data/gpdftext.desktop.in.h:2
 msgid "gPDFText ebook editor"
 msgstr "gPDFText ebook Editor"
+
+#, fuzzy
+#~ msgid "Help"
+#~ msgstr "_Hilfe"
+
+#, fuzzy
+#~ msgid "About"
+#~ msgstr "_Über"
+
+#, fuzzy
+#~ msgid "New"
+#~ msgstr "_Neu"
+
+#, fuzzy
+#~ msgid "Open"
+#~ msgstr "_Öffnen"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "E_instellungen"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "B_eenden"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Spei_chern"
