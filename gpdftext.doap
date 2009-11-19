@@ -47,7 +47,7 @@ xmlns:admin="http://webns.net/mvcb/">
   <Version>
    <revision>0.0.2</revision>
    <branch>trunk</branch>
-   <name/>
+   <name>Undo/redo</name>
    <created/>
    <file-release/>
    <dc:description>New Czech and Swedish translation of the Manual, new
