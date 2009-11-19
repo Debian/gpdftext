@@ -113,13 +113,9 @@ about_show (void)
 		" You should have received a copy of the GNU General Public License along\n"
 		" with this program.  If not, see <http://www.gnu.org/licenses/>.\n");
 
-//	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (dc->current_window));
-	
 	g_object_add_weak_pointer (G_OBJECT (dialog), (void **)&dialog);
-	
 	gtk_dialog_run (GTK_DIALOG(dialog));
 	gtk_widget_destroy (dialog);
-	
 	g_free (translators);
 }
 
@@ -176,9 +172,7 @@ main (int argc, char *argv[])
 	if (!window)
 		return 2;
 	if (remaining_args != NULL)
-	{
 		num_args = g_strv_length (remaining_args);
-	}
 	if (num_args >= 1)
 	{
 		gchar * filename;
@@ -186,7 +180,6 @@ main (int argc, char *argv[])
 		open_file (ebook, filename);
 	}
 	gtk_widget_show (window);
-
 	gtk_main ();
 	return 0;
 }

@@ -78,7 +78,6 @@ spell_language_select_menuitem (Ebook *ebook, const gchar *lang)
 		i++;
 	} while (gtk_tree_model_iter_next (model, &iter) && found < 0);
 
-
 	if (found >= 0)
 		gtk_combo_box_set_active (combo, found);
 	else
@@ -118,7 +117,6 @@ spell_language_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpo
 	{
 		spellcheck_wanted = gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL);
 		spell = gtkspell_get_from_text_view (text_view);
-
 		if (spellcheck_wanted)
 		{
 			if (spell && lang)
@@ -133,12 +131,9 @@ spell_language_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpo
 				spell = gtkspell_new_attach (text_view, lang, NULL);
 			}
 			gtkspell_recheck_all (spell);
-
 		}
 	}
-
 	spell_language_select_menuitem (ebook, lang);
-
 	g_free (lang);
 #endif /* HAVE_GTKSPELL */
 }
@@ -168,18 +163,12 @@ spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointe
 	lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
 
 	if (state)
-	{
 		if (!spell)
 			gtkspell_new_attach (text_view,
-					     (lang == NULL || *lang == '\0') ? NULL : lang,
-					     NULL);
-	}
+						(lang == NULL || *lang == '\0') ? NULL : lang, NULL);
 	else
-	{
 		if (spell)
 			gtkspell_detach (spell);
-	}
-
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (spell_check), state);
 
 #endif /* HAVE_GTKSPELL */
@@ -228,7 +217,6 @@ get_available_spell_languages (void)
 			/* For now, set realname == label */
 			lang->realname = g_strdup (lang_arr[i]);
 			lang->label = g_strdup (lang_arr[i]);
-//			rv = g_slist_insert_sorted (rv, lang, (GCompareFunc) du_str_cmp);
 			rv = g_slist_insert_sorted (rv, lang, (GCompareFunc) g_str_equal);
 		}
 		i++;
@@ -253,10 +241,8 @@ get_default_text (GConfClient *client, const gchar *key, const gchar *standard_t
 	gchar *string;
 
 	string = gconf_client_get_string (client, key, NULL);
-
 	if (!string)
 		string = g_strdup (standard_text);
-
 	return string;
 }
 
@@ -320,9 +306,9 @@ setup_languages (Ebook * ebook)
 			lang_struct = list->data;
 			gtk_list_store_append (language_store, &iter);
 			gtk_list_store_set (language_store, &iter,
-					    0, lang_struct->realname,
-					    1, lang_struct->label,
-					    -1);
+					0, lang_struct->realname,
+					1, lang_struct->label,
+					-1);
 			if (!g_strcmp0 (lang_struct->realname, string))
 			{
 				gtk_combo_box_set_active_iter (combo, &iter);
@@ -337,8 +323,7 @@ setup_languages (Ebook * ebook)
 	renderer = gtk_cell_renderer_text_new ();
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
 	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
-					"text", 1,
-					NULL);
+					"text", 1, NULL);
 	if (sel < 0)
 	{
 		if (!g_strcmp0 (string, ""))
@@ -347,12 +332,11 @@ setup_languages (Ebook * ebook)
 	}
 
 	gtk_combo_box_set_active (combo, sel);
-
 	pref_window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefdialog"));
 	g_signal_connect (G_OBJECT (combo), "changed",
-			  G_CALLBACK (spellcheck_language_cb), ebook);
+			G_CALLBACK (spellcheck_language_cb), ebook);
 	g_signal_connect (G_OBJECT (pref_window), "destroy",
-			  G_CALLBACK (free_store), G_OBJECT (language_store));
+			G_CALLBACK (free_store), G_OBJECT (language_store));
 #endif /* HAVE_GTKSPELL */
 }
 
@@ -403,5 +387,6 @@ void
 editor_font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer user_data)
 {
 	Ebook *ebook = (Ebook *) user_data;
+
 	editor_update_font(ebook);
 }

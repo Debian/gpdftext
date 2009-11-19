@@ -330,11 +330,9 @@ save_txt_cb (GtkWidget * widget, gpointer user_data)
 	}
 	window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	dialog = gtk_file_chooser_dialog_new (_("Save as text file"),
-										  GTK_WINDOW (window),
-										  GTK_FILE_CHOOSER_ACTION_SAVE,
-										  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-										  GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
-										  NULL);
+		GTK_WINDOW (window),GTK_FILE_CHOOSER_ACTION_SAVE,
+		GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_SAVE,
+		GTK_RESPONSE_ACCEPT, NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
 
 	filter = gtk_file_filter_new ();
@@ -655,21 +653,20 @@ create_window (Ebook * ebook)
 	gtk_widget_set_sensitive (langbox, FALSE);
 #else
 	gtk_text_buffer_set_modified (buffer, FALSE);
-	gtk_widget_set_sensitive (savemenu, FALSE);
-	gtk_widget_set_sensitive (save, FALSE);
 	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
 		const gchar *spell_lang;
 		spell_lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
-		gtkspell_new_attach (GTK_TEXT_VIEW (textview),
-				     (spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang,
-				     NULL);
+		gtkspell_new_attach (GTK_TEXT_VIEW (textview), 
+			(spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang, NULL);
 		gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(spellmenu), TRUE);
 	}
 	editor_update_font (ebook);
 
 #endif /* HAVE_GTKSPELL */
 	/** FIXME: remove once we have PDF/PS export support. */
+	gtk_widget_set_sensitive (savemenu, FALSE);
+	gtk_widget_set_sensitive (save, FALSE);
 	gtk_widget_set_sensitive (saveasmenu, FALSE);
 	gtk_widget_set_sensitive (redobutton, FALSE);
 	gtk_widget_set_sensitive (undobutton, FALSE);
@@ -838,13 +835,9 @@ open_file (Ebook * ebook, const gchar * filename)
 	vfs = g_vfs_get_default ();
 
 	if (g_vfs_is_active(vfs))
-	{
 		ebook->gfile = g_vfs_get_file_for_path (vfs, filename);
-	}
 	else
-	{
 		ebook->gfile = g_file_new_for_commandline_arg (filename);
-	}
 	ginfo = g_file_query_info (ebook->gfile, G_FILE_ATTRIBUTE_STANDARD_SIZE,
 		G_FILE_QUERY_INFO_NONE, NULL, &result);
 	if (0 == g_file_info_get_attribute_uint64 (ginfo, 
@@ -935,7 +928,7 @@ open_file (Ebook * ebook, const gchar * filename)
 		g_message ("err: %s", err->message);
 		return FALSE;
 	}
-	msg = g_strconcat (PACKAGE, " - " , g_file_get_basename (ebook->gfile), NULL);
+	msg = g_strconcat (PACKAGE, " - ", g_file_get_basename (ebook->gfile), NULL);
 	gtk_window_set_title (GTK_WINDOW(window), msg);
 	return TRUE;
 }
@@ -950,11 +943,9 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 	ebook = (Ebook *)data;
 	window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	dialog = gtk_file_chooser_dialog_new (_("Open ebook (PDF)"),
-										  GTK_WINDOW (window),
-										  GTK_FILE_CHOOSER_ACTION_OPEN,
-										  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-										  GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-										  NULL);
+		GTK_WINDOW (window), GTK_FILE_CHOOSER_ACTION_OPEN,
+		GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN,
+		GTK_RESPONSE_ACCEPT, NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
 
 	filter = gtk_file_filter_new ();
