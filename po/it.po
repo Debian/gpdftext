@@ -1,0 +1,186 @@
+# ITALIAN TRANSLATION OF GPDF-TEXT.
+# COPYRIGHT (C) 2009 THE GPDF-TEXT'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gpdf-text package.
+#
+# Vincenzo Campanella <vinz65@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: gpdf-text\n"
+"Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
+"POT-Creation-Date: 2009-11-19 19:15+0000\n"
+"PO-Revision-Date: 2009-11-14 14:01+0100\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. * Translators should localize the following string
+#. * which will give them credit in the About box.
+#. * E.g. "Fulano de Tal <fulano@detal.com>"
+#: ../src/main.c:76
+msgid "translator-credits"
+msgstr "Vincenzo Campanella <vinz65@gmail.com>"
+
+#: ../src/main.c:89 ../src/ebookui.c:445 ../src/gpdftext.glade.h:17
+msgid "eBook PDF editor"
+msgstr "Editor di file PDF eBook"
+
+#: ../src/main.c:93
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFText converte il contenuto di file PDF eBook in testo ASCII riformattato "
+"per paragrafi a righe lunghe."
+
+#: ../src/main.c:100
+msgid "Homepage"
+msgstr "Pagina iniziale"
+
+#: ../src/main.c:140
+msgid "file"
+msgstr "file"
+
+#: ../src/main.c:164
+#, c-format
+msgid "GConf init failed: %s"
+msgstr "Inizializzazione di GConf fallita: %s"
+
+#: ../src/ebookui.c:307
+msgid "Saving text file"
+msgstr "Salvataggio del file di testo in corso..."
+
+#: ../src/ebookui.c:314
+msgid "Saved text file."
+msgstr "File di testo salvato."
+
+#: ../src/ebookui.c:335
+msgid "Save as text file"
+msgstr "Salva come file di testo"
+
+#: ../src/ebookui.c:344
+msgid "All text files"
+msgstr "Tutti i file di testo"
+
+#: ../src/ebookui.c:444
+msgid "new file"
+msgstr "nuovo file"
+
+#: ../src/ebookui.c:796
+msgid "Done"
+msgstr "Eseguito"
+
+#: ../src/ebookui.c:871
+msgid "Loading ebook:"
+msgstr "Caricamento dell'eBook in corso:"
+
+#: ../src/ebookui.c:955
+msgid "Open ebook (PDF)"
+msgstr "Apri eBook (PDF)"
+
+#: ../src/ebookui.c:964
+msgid "All PDF Files (*.pdf)"
+msgstr "Tutti i file PDF (*.pdf)"
+
+#: ../src/spell.c:85 ../src/spell.c:345
+#, c-format
+msgid "Language '%s' from GConf isn't in the list of available languages\n"
+msgstr "La lingua «%s» da GConf non è nell'elenco delle lingue disponibili\n"
+
+#. Context: Spell check dictionary
+#: ../src/spell.c:240
+msgid "System default"
+msgstr "Predefinito di sistema"
+
+#: ../src/gpdftext.glade.h:1
+msgid "A_4 paper size (portrait)"
+msgstr "Formato della carta A_4 (verticale)"
+
+#: ../src/gpdftext.glade.h:2
+msgid "A_5 book size (portrait)"
+msgstr "Formato della carta A_5 (verticale)"
+
+#: ../src/gpdftext.glade.h:3
+msgid "Default paper size"
+msgstr "Formato predefinito della carta"
+
+#: ../src/gpdftext.glade.h:4
+msgid "Di_ctionary"
+msgstr "Di_zionario"
+
+#: ../src/gpdftext.glade.h:5
+msgid "Page _number removal"
+msgstr "Rimuovi il _numero di pagina"
+
+#: ../src/gpdftext.glade.h:6
+msgid "Re_join hyphenated words"
+msgstr "Ri_unisci le parole sillabate"
+
+#: ../src/gpdftext.glade.h:7
+msgid "Regular expression preferences"
+msgstr "Preferenze relative alle espressioni regolari"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Spell _check"
+msgstr "_Controllo ortografico"
+
+#: ../src/gpdftext.glade.h:9
+msgid "_B5 book size (portrait)"
+msgstr "Formato libro _B5 (verticale)"
+
+#: ../src/gpdftext.glade.h:10
+msgid "_Default font"
+msgstr "Carattere pre_definito"
+
+#: ../src/gpdftext.glade.h:11
+msgid "_Edit"
+msgstr "_Modifica"
+
+#: ../src/gpdftext.glade.h:12
+msgid "_File"
+msgstr "_File"
+
+#: ../src/gpdftext.glade.h:13
+msgid "_Help"
+msgstr "A_iuto"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:15
+msgid "_Lengthen lines"
+msgstr "A_llunga le righe"
+
+#: ../src/gpdftext.glade.h:16
+msgid "_View"
+msgstr "_Visualizza"
+
+#: ../src/gpdftext.glade.h:18
+msgid "gPDFText preferences"
+msgstr "Preferenze di gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:1
+msgid "Edit text from ebook PDF files"
+msgstr "Modifica il testo da file PDF eBook"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "gPDFText ebook editor"
+msgstr "Editor di eBook gPDFText"
+
+#~ msgid "_About"
+#~ msgstr "_Informazioni su..."
+
+#~ msgid "_New"
+#~ msgstr "_Nuovo"
+
+#~ msgid "_Open"
+#~ msgstr "_Apri"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Preferenze"
+
+#~ msgid "_Quit"
+#~ msgstr "_Esci"
+
+#~ msgid "_Save"
+#~ msgstr "_Salva"
