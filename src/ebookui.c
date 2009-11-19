@@ -143,7 +143,125 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 /** FIXME: build a regexp to convert inverted commas? 
  * might need to cope with '" types. */
 
-/** FIXME: Add undo support. */
+typedef struct _udata
+{
+	GTrashStack * next;
+	gint command;
+	gint start;
+	gint end;
+	gssize len;
+	gboolean add;
+	gchar * str;
+} UData;
+
+static void
+delete_range_cb (GtkTextBuffer *textbuffer, GtkTextIter *start,
+    GtkTextIter *end, gpointer user_data)
+{
+	GtkWidget * undo;
+	gchar * str;
+	Ebook * ebook;
+	UData * ud;
+
+	ebook = (Ebook *)user_data;
+	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	ud = g_new0(UData, 1);
+	str = gtk_text_iter_get_text (start, end);
+	ud->str = g_strdup(str);
+	ud->add = FALSE;
+	ud->start = gtk_text_iter_get_offset (start);
+	ud->end = gtk_text_iter_get_offset(end);
+	ud->len = strlen (str);
+	g_trash_stack_push (&ebook->undo_stack, ud);
+	gtk_widget_set_sensitive (undo, TRUE);
+}
+
+static void
+insert_text_cb (GtkTextBuffer *textbuffer, GtkTextIter *location,
+    gchar *text, gint len, gpointer user_data)
+{
+	GtkWidget * undo;
+	Ebook * ebook;
+	UData * ud;
+
+	ebook = (Ebook *)user_data;
+	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	ud = g_new0(UData, 1);
+	ud->str = g_strdup(text);
+	ud->add = TRUE;
+	ud->start = gtk_text_iter_get_offset(location);
+	ud->len = strlen (text);
+	ud->end = gtk_text_iter_get_offset(location) + (gint)len;
+	g_trash_stack_push (&ebook->undo_stack, ud);
+	gtk_widget_set_sensitive (undo, TRUE);
+}
+
+static void
+undo_cb (GtkWidget * widget, gpointer user_data)
+{
+	GtkWidget * redo, * undo;
+	GtkTextBuffer * buffer;
+	GtkTextIter start, end;
+	Ebook * ebook;
+	UData * ud;
+
+	ebook = (Ebook *)user_data;
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
+	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	// to undo, reverse the action from the first item in the stack.
+	ud = g_trash_stack_pop (&ebook->undo_stack);
+	g_return_if_fail (ud);
+	g_trash_stack_push (&ebook->redo_stack, ud);
+	if (ud->add)
+	{
+		gtk_text_buffer_get_iter_at_offset (buffer, &start, ud->start);
+		gtk_text_buffer_get_iter_at_offset (buffer, &end, ud->end);
+		gtk_text_buffer_delete (buffer, &start, &end);
+		g_trash_stack_pop (&ebook->undo_stack);
+	}
+	else
+	{
+		gtk_text_buffer_get_iter_at_offset (buffer, &start, ud->start);
+		gtk_text_buffer_insert (buffer, &start, ud->str, ud->len);
+		g_trash_stack_pop (&ebook->undo_stack);
+	}
+	gtk_widget_set_sensitive (redo, TRUE);
+	if (!ebook->undo_stack)
+		gtk_widget_set_sensitive (undo, FALSE);
+}
+
+static void
+redo_cb (GtkWidget * widget, gpointer user_data)
+{
+	GtkWidget * redo, * undo;
+	GtkTextBuffer * buffer;
+	GtkTextIter start, end;
+	Ebook * ebook;
+	UData * ud;
+
+	ebook = (Ebook *)user_data;
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
+	// to redo, replay the action from the next item in the stack.
+	ud = g_trash_stack_pop (&ebook->redo_stack);
+	g_return_if_fail (ud);
+	if (ud->add)
+	{
+		gtk_text_buffer_get_iter_at_offset (buffer, &start, ud->start);
+		gtk_text_buffer_insert (buffer, &start, ud->str, ud->len);
+	}
+	else
+	{
+		gtk_text_buffer_get_iter_at_offset (buffer, &start, ud->start);
+		gtk_text_buffer_get_iter_at_offset (buffer, &end, ud->end);
+		gtk_text_buffer_delete (buffer, &start, &end);
+	}
+	gtk_widget_set_sensitive (undo, TRUE);
+	if (!ebook->redo_stack)
+		gtk_widget_set_sensitive (redo, FALSE);
+}
 
 static void
 save_sensitive_cb (GtkTextBuffer *textbuffer, gpointer user_data)
@@ -293,6 +411,7 @@ static void
 new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 {
 	guint id;
+	GtkWidget * undo, * redo;
 	GtkTextBuffer * buffer;
 	GtkProgressBar * progressbar;
 	GtkStatusbar * statusbar;
@@ -312,6 +431,8 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	}
 	window = GTK_WINDOW(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
 	gtk_text_buffer_set_text (buffer, "", 0);
 	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
 	gtk_progress_bar_set_fraction (progressbar, 0.0);
@@ -320,6 +441,8 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	gtk_statusbar_push (statusbar, id, _("new file"));
 	gtk_window_set_title (window, _("eBook PDF editor"));
 	gtk_text_buffer_set_modified (buffer, FALSE);
+	gtk_widget_set_sensitive (redo, FALSE);
+	gtk_widget_set_sensitive (undo, FALSE);
 }
 
 static void
@@ -488,6 +611,7 @@ create_window (Ebook * ebook)
 	GtkWidget *pref_btn, *manualbtn, *langbox, * textview;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
+	GtkWidget *undobutton, *redobutton;
 	GtkTextBuffer * buffer;
 	GtkActionGroup  *action_group;
 	GtkUIManager * uimanager;
@@ -524,6 +648,8 @@ create_window (Ebook * ebook)
 	prefmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefmenuitem"));
 	langbox = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "langboxentry"));
 	textview = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
+	undobutton = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	redobutton = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
 #ifndef HAVE_GTKSPELL
 	gtk_widget_set_sensitive (spellmenu, FALSE);
 	gtk_widget_set_sensitive (langbox, FALSE);
@@ -531,6 +657,8 @@ create_window (Ebook * ebook)
 	gtk_text_buffer_set_modified (buffer, FALSE);
 	gtk_widget_set_sensitive (savemenu, FALSE);
 	gtk_widget_set_sensitive (save, FALSE);
+	gtk_widget_set_sensitive (redobutton, FALSE);
+	gtk_widget_set_sensitive (undobutton, FALSE);
 	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
 		const gchar *spell_lang;
@@ -562,6 +690,10 @@ create_window (Ebook * ebook)
 			G_CALLBACK (help_cb), ebook);
 	g_signal_connect (G_OBJECT (pref_btn), "clicked", 
 			G_CALLBACK (pref_cb), ebook);
+	g_signal_connect (G_OBJECT (undobutton), "clicked", 
+			G_CALLBACK (undo_cb), ebook);
+	g_signal_connect (G_OBJECT (redobutton), "clicked", 
+			G_CALLBACK (redo_cb), ebook);
 	g_signal_connect (G_OBJECT (window), "delete_event",
 			G_CALLBACK (destroy_event_cb), ebook);
 	g_signal_connect (G_OBJECT (aboutmenu), "activate",
@@ -584,6 +716,10 @@ create_window (Ebook * ebook)
 #endif
 	g_signal_connect (G_OBJECT (buffer), "modified-changed",
 			G_CALLBACK (save_sensitive_cb), ebook);
+	g_signal_connect (G_OBJECT (buffer), "delete_range",
+			G_CALLBACK (delete_range_cb), ebook);
+	g_signal_connect (G_OBJECT (buffer), "insert_text",
+			G_CALLBACK (insert_text_cb), ebook);
 	return window;
 }
 
@@ -616,6 +752,7 @@ load_pdf (gpointer data)
 	GtkProgressBar * progressbar;
 	GtkStatusbar * statusbar;
 	GtkTextView * text_view;
+	GtkTextBuffer * buffer;
 	gchar *page, * msg, * lang;
 	gdouble fraction, step, width, height;
 	PopplerPage * PDFPage;
@@ -624,11 +761,18 @@ load_pdf (gpointer data)
 	Equeue * queue;
 
 	queue= (Equeue *)data;
-	if (!queue)
-		return FALSE;
-	if (!queue->ebook)
-		return FALSE;
 	text_view = GTK_TEXT_VIEW(gtk_builder_get_object (queue->ebook->builder, "textview"));
+	buffer = gtk_text_view_get_buffer (text_view);
+	if (!queue)
+	{
+		gtk_text_buffer_end_user_action (buffer);
+		return FALSE;
+	}
+	if (!queue->ebook)
+	{
+		gtk_text_buffer_end_user_action (buffer);
+		return FALSE;
+	}
 	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (queue->ebook->builder, "progressbar"));
 	statusbar = GTK_STATUSBAR(gtk_builder_get_object (queue->ebook->builder, "statusbar"));
 	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
@@ -754,12 +898,14 @@ open_file (Ebook * ebook, const gchar * filename)
 #endif
 		GtkWidget * spell_check;
 		GtkTextView * text_view;
+		GtkTextBuffer * buffer;
 		gboolean state;
 		gdouble fraction, step;
 		static Equeue queue;
 
 		spell_check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
 		text_view = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
+		buffer = gtk_text_view_get_buffer (text_view);
 		state = gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL);
 #ifdef HAVE_GTKSPELL
 		spell = gtkspell_get_from_text_view (text_view);
@@ -779,6 +925,8 @@ open_file (Ebook * ebook, const gchar * filename)
 		queue.rect = rect;
 		/* whether to enable spell once all pages are loaded. */
 		queue.spell_state = state;
+		/* loading a file is a single user action */
+		gtk_text_buffer_begin_user_action (buffer);
 		g_timeout_add (30, load_pdf, &queue);
 	}
 	else

@@ -59,6 +59,10 @@ typedef struct _eb
 	GRegex * line, * page, *hyphen;
 	/** the language for spell checking */
 	gchar * lang;
+	/** the undo stack - gets all user events */
+	GTrashStack * undo_stack;
+	/** the redo stack - only gets events popped off undo_stack */
+	GTrashStack * redo_stack;
 } Ebook;
 
 void save_txt_cb (GtkWidget * widget, gpointer data);

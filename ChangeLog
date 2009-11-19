@@ -1,3 +1,9 @@
+2009-11-19  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Add undo/redo support. (Closes: #2)
+	* src/ebookui.h: Add GTrashStacks for undo and redo.
+	* src/gpdftext.glade: Add buttons for undo and redo.
+
 2009-11-18  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Add handler for activating and
