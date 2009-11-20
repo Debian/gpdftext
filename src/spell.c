@@ -163,9 +163,11 @@ spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointe
 	lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
 
 	if (state)
+	{
 		if (!spell)
 			gtkspell_new_attach (text_view,
 						(lang == NULL || *lang == '\0') ? NULL : lang, NULL);
+	}
 	else
 		if (spell)
 			gtkspell_detach (spell);
