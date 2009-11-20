@@ -1,8 +1,9 @@
-gPDFText 0.0.2
-==============
+gPDFText 0.0.2 "undo/redo"
+==========================
 
+	* Add undo/redo support using trash stacks.
 	* New Czech and Swedish translation of the Manual, new
-	Swedish translation of program messages.
+	Swedish and Italian translations of program messages.
 
 gPDFText 0.0.1 ("getting started")
 =================================

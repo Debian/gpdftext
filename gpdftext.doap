@@ -12,7 +12,7 @@ xmlns:admin="http://webns.net/mvcb/">
  original paragraphs and removes unwanted line breaks to allow easier
  zooming on the reader.</description>
  <homepage rdf:resource="http://gpdftext.sourceforge.net/" />
- <wiki rdf:resource="https://sourceforge.net/apps/mediawiki/gpdftext/index.php?title=Main_Page" />
+ <wiki rdf:resource="http://sourceforge.net/apps/mediawiki/gpdftext/index.php?title=Main_Page" />
  <download-page rdf:resource="http://sourceforge.net/projects/gpdftext/" />
  <bug-database rdf:resource="http://sourceforge.net/apps/trac/gpdftext/" />
  <programming-language>C</programming-language>
@@ -48,10 +48,11 @@ xmlns:admin="http://webns.net/mvcb/">
    <revision>0.0.2</revision>
    <branch>trunk</branch>
    <name>Undo/redo</name>
-   <created/>
-   <file-release/>
+   <created>2009-11-20</created>
+   <file-release rdf:resource="http://sourceforge.net/projects/gpdftext/files/gpdftext/0.0.1/gpdftext-0.0.2.tar.gz/download" />
    <dc:description>New Czech and Swedish translation of the Manual, new
-   Swedish translation of program messages.
+   Swedish and Italian translations of program messages.
+   Add undo/redo support in the editor.
    </dc:description>
   </Version>
  </release>
