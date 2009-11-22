@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.1-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-19 19:15+0000\n"
+"POT-Creation-Date: 2009-11-22 00:36+0000\n"
 "PO-Revision-Date: 2009-11-04 18:40+0100\n"
 "Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Michal Šimůnek <michal.simunek@gmail.com>"
 
-#: ../src/main.c:89 ../src/ebookui.c:445 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "Editor elektronických knih PDF"
 
@@ -40,58 +40,58 @@ msgstr ""
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/main.c:140
+#: ../src/main.c:136
 msgid "file"
 msgstr "soubor"
 
-#: ../src/main.c:164
+#: ../src/main.c:160
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Selhala inicializace GConf: %s"
 
-#: ../src/ebookui.c:307
+#: ../src/ebookui.c:305
 msgid "Saving text file"
 msgstr "Ukládání textového souboru"
 
-#: ../src/ebookui.c:314
+#: ../src/ebookui.c:312
 msgid "Saved text file."
 msgstr "Textový soubor uložen"
 
-#: ../src/ebookui.c:335
+#: ../src/ebookui.c:333
 msgid "Save as text file"
 msgstr "Uložit jako textový soubor"
 
-#: ../src/ebookui.c:344
+#: ../src/ebookui.c:340
 msgid "All text files"
 msgstr "Všechny textové soubory"
 
-#: ../src/ebookui.c:444
+#: ../src/ebookui.c:386
 msgid "new file"
 msgstr "nový soubor"
 
-#: ../src/ebookui.c:796
+#: ../src/pdf.c:255
 msgid "Done"
 msgstr "Proveď"
 
-#: ../src/ebookui.c:871
+#: ../src/pdf.c:326
 msgid "Loading ebook:"
 msgstr "Nahrávání elektronické knihy:"
 
-#: ../src/ebookui.c:955
+#: ../src/pdf.c:410
 msgid "Open ebook (PDF)"
 msgstr "Otevřít elektronickou knihu (PDF)"
 
-#: ../src/ebookui.c:964
+#: ../src/pdf.c:417
 msgid "All PDF Files (*.pdf)"
 msgstr "Všechny PDF soubory (*.pdf)"
 
-#: ../src/spell.c:85 ../src/spell.c:345
+#: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "Jazyk '%s' z GConf není na seznamu dostupných jazyků\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:240
+#: ../src/spell.c:230
 msgid "System default"
 msgstr "Výchozí nastavení systému"
 

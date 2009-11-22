@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-19 19:15+0000\n"
+"POT-Creation-Date: 2009-11-22 00:36+0000\n"
 "PO-Revision-Date: 2009-10-20 15:00+0100\n"
 "Last-Translator: Hilmar Ackermann <debian-l10n-german@lists.debian.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Hilmar Ackermann <debian-l10n-german@lists.debian.org>"
 
-#: ../src/main.c:89 ../src/ebookui.c:445 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "eBook PDF Editor"
 
@@ -39,59 +39,59 @@ msgstr ""
 msgid "Homepage"
 msgstr "Homepage"
 
-#: ../src/main.c:140
+#: ../src/main.c:136
 msgid "file"
 msgstr "Datei"
 
-#: ../src/main.c:164
+#: ../src/main.c:160
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GConf Initialisierung ist fehlgeschlagen: %s"
 
-#: ../src/ebookui.c:307
+#: ../src/ebookui.c:305
 msgid "Saving text file"
 msgstr "Speichere Text-Datei"
 
-#: ../src/ebookui.c:314
+#: ../src/ebookui.c:312
 msgid "Saved text file."
 msgstr "Text-Datei gespeichert."
 
-#: ../src/ebookui.c:335
+#: ../src/ebookui.c:333
 msgid "Save as text file"
 msgstr "Speichere als Text-Datei"
 
-#: ../src/ebookui.c:344
+#: ../src/ebookui.c:340
 msgid "All text files"
 msgstr "Alle Textdateien"
 
-#: ../src/ebookui.c:444
+#: ../src/ebookui.c:386
 msgid "new file"
 msgstr "Neue Datei"
 
-#: ../src/ebookui.c:796
+#: ../src/pdf.c:255
 msgid "Done"
 msgstr "Fertig"
 
-#: ../src/ebookui.c:871
+#: ../src/pdf.c:326
 msgid "Loading ebook:"
 msgstr "Lade ebook:"
 
-#: ../src/ebookui.c:955
+#: ../src/pdf.c:410
 msgid "Open ebook (PDF)"
 msgstr "Öffne ebook (PDF)"
 
-#: ../src/ebookui.c:964
+#: ../src/pdf.c:417
 msgid "All PDF Files (*.pdf)"
 msgstr "Alle PDF-Dateien (*.pdf)"
 
-#: ../src/spell.c:85 ../src/spell.c:345
+#: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr ""
 "Sprache '%s' von GConf ist nicht in der Liste der verfügbaren Sprachen\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:240
+#: ../src/spell.c:230
 msgid "System default"
 msgstr "Systemvorgabe"
 

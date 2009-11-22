@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-19 19:15+0000\n"
+"POT-Creation-Date: 2009-11-22 00:36+0000\n"
 "PO-Revision-Date: 2009-11-17 00:32+0100\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Kommentarer och förslag rörande översättningen kan skickas till\n"
 "tp-sv@listor.tp-sv.se"
 
-#: ../src/main.c:89 ../src/ebookui.c:445 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "ebok-redigerare"
 
@@ -42,58 +42,58 @@ msgstr ""
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/main.c:140
+#: ../src/main.c:136
 msgid "file"
 msgstr "fil"
 
-#: ../src/main.c:164
+#: ../src/main.c:160
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GConf misslyckades vid uppstart: %s"
 
-#: ../src/ebookui.c:307
+#: ../src/ebookui.c:305
 msgid "Saving text file"
 msgstr "Sparar textfil"
 
-#: ../src/ebookui.c:314
+#: ../src/ebookui.c:312
 msgid "Saved text file."
 msgstr "Sparade textfil."
 
-#: ../src/ebookui.c:335
+#: ../src/ebookui.c:333
 msgid "Save as text file"
 msgstr "Spara som textfil"
 
-#: ../src/ebookui.c:344
+#: ../src/ebookui.c:340
 msgid "All text files"
 msgstr "Alla textfiler"
 
-#: ../src/ebookui.c:444
+#: ../src/ebookui.c:386
 msgid "new file"
 msgstr "ny fil"
 
-#: ../src/ebookui.c:796
+#: ../src/pdf.c:255
 msgid "Done"
 msgstr "Klar"
 
-#: ../src/ebookui.c:871
+#: ../src/pdf.c:326
 msgid "Loading ebook:"
 msgstr "Laddar ebok:"
 
-#: ../src/ebookui.c:955
+#: ../src/pdf.c:410
 msgid "Open ebook (PDF)"
 msgstr "Öppna ebok (PDF)"
 
-#: ../src/ebookui.c:964
+#: ../src/pdf.c:417
 msgid "All PDF Files (*.pdf)"
 msgstr "Alla PDF-filer (*.pdf)"
 
-#: ../src/spell.c:85 ../src/spell.c:345
+#: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "Språket \"%s\" från GConf finns inte i listan med tillgängliga språk\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:240
+#: ../src/spell.c:230
 msgid "System default"
 msgstr "Systemstandard"
 
