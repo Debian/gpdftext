@@ -1,3 +1,10 @@
+gpdftext (0.1.0-1) unstable; urgency=low
+
+  * New upstream version.
+  * Add cairo and pango to build-depends for PDF export.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 22 Nov 2009 00:32:56 +0000
+
 gpdftext (0.0.2-1) unstable; urgency=low
 
   * New upstream release.

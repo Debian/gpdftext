@@ -67,8 +67,6 @@ typedef struct _eb
 
 void save_txt_cb (GtkWidget * widget, gpointer data);
 
-void open_pdf_cb (GtkWidget *widget, gpointer data);
-
 GtkWidget* create_window (Ebook * ebook);
 
 GtkBuilder* load_builder_xml (const gchar *root);

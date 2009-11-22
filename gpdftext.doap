@@ -56,4 +56,17 @@ xmlns:admin="http://webns.net/mvcb/">
    </dc:description>
   </Version>
  </release>
+
+ <release>
+  <Version>
+   <revision>0.1.0</revision>
+   <branch>trunk</branch>
+   <name>Import/Export</name>
+   <created/>
+   <dc:description>Adds support for writing custom PDF files and opening
+   ordinary text files.
+   </dc:description>
+  </Version>
+ </release>
+
 </Project>

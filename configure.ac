@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT(gpdftext, 0.0.2)
+AC_INIT(gpdftext, 0.1.0)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
@@ -41,11 +41,15 @@ GCONF_REQUIRED=2.0.0
 GLIB_REQUIRED=2.16.6
 # need 2.16 for GtkBuilder
 GTK_REQUIRED=2.16.5
+CAIRO_REQUIRED=1.6.4
+PANGO_REQUIRED=1.20.5
 
 AC_SUBST(POPPLER_REQUIRED)
 AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
+AC_SUBST(CAIRO_REQUIRED)
+AC_SUBST(PANGO_REQUIRED)
 
 MODULES="
 	glib-2.0 >= $GLIB_REQUIRED
@@ -53,7 +57,9 @@ MODULES="
 	gtk+-2.0 >= $GTK_REQUIRED
 	gconf-2.0 >= $GCONF_REQUIRED
 	poppler-glib >= $POPPLER_REQUIRED
-	gdk-pixbuf-2.0
+	gdk-pixbuf-2.0 >= $GTK_REQUIRED
+	cairo-pdf >= $CAIRO_REQUIRED
+	pango >= $PANGO_REQUIRED
 "
 
 # Make sure we have pkg-config installed
@@ -97,7 +103,6 @@ AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config, no)
 if test x$SCROLLKEEPER_CONFIG = xno; then
   AC_MSG_ERROR(Could not find scrollkeeper-config, please install the scrollkeeper package)
 fi
-
 
 dnl ***************************************************************************
 dnl Internationalization

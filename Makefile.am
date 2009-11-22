@@ -2,6 +2,8 @@
 
 SUBDIRS = src po data help
 
+ACLOCAL_AMFLAGS = -I m4
+
 EXTRA_DIST = $(gpdftextdoc_DATA) \
 	$(desktop_in_files)	\
 	COPYING \
@@ -36,4 +38,3 @@ DISTCHECK_CONFIGURE_FLAGS = \
  --disable-schemas-install  \
  --disable-desktop-update   \
  --disable-scrollkeeper
-

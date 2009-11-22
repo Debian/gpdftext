@@ -21,3 +21,17 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
  
+
+#ifndef _EPDF_H_
+#define _EPDF_H_
+
+#include <glib/poppler-document.h>
+#include <glib/poppler-page.h>
+#include "ebookui.h"
+
+/** ensure the export filename is set before requesting the conversion. */
+void buffer_to_ps (Ebook * ebook);
+
+void open_pdf_cb (GtkWidget *widget, gpointer data);
+
+#endif // _EPDF_H
