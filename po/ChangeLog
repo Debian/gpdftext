@@ -1,3 +1,8 @@
+2009-11-23 "Łukasz A. Grabowski" <www@lucas.net.pl>
+
+	* LINGUAS: Add pl.
+	* pl.po: Add Polish translation.
+
 2009-11-22 Miriam Ruiz <miriam@debian.org> 
 
 	* LINGUAS: Add es.

@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
+"POT-Creation-Date: 2009-11-22 00:36+0000\n"
+"PO-Revision-Date: 2009-10-20 15:00+0100\n"
+"Last-Translator: Hilmar Ackermann <debian-l10n-german@lists.debian.org>\n"
+"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#.
+#. * Translators should localize the following string
+#. * which will give them credit in the About box.
+#. * E.g. "Fulano de Tal <fulano@detal.com>"
+#: ../src/main.c:76
+msgid "translator-credits"
+msgstr "£ukasz A. Grabowski <www@lucas.net.pl>"
+
+#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
+msgid "eBook PDF editor"
+msgstr "eBook - Edytor PDF"
+
+#: ../src/main.c:93
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFText konwertuje zawarto¶æ ebooków PDF w tekst ASCII, przeformatowany "
+"w d³ugoliniowe paragrafy."
+
+#: ../src/main.c:100
+msgid "Homepage"
+msgstr "Strona domowa"
+
+#: ../src/main.c:136
+msgid "file"
+msgstr "plik"
+
+#: ../src/main.c:160
+#, c-format
+msgid "GConf init failed: %s"
+msgstr "B³±d inicjalizacji GConf: %s"
+
+#: ../src/ebookui.c:305
+msgid "Saving text file"
+msgstr "Zapisywanie pliku tekstowego"
+
+#: ../src/ebookui.c:312
+msgid "Saved text file."
+msgstr "Plik tekstowy zapisany."
+
+#: ../src/ebookui.c:333
+msgid "Save as text file"
+msgstr "Zapisz jako plik tekstowy"
+
+#: ../src/ebookui.c:340
+msgid "All text files"
+msgstr "Wszystkie pliki tekstowe"
+
+#: ../src/ebookui.c:386
+msgid "new file"
+msgstr "nowy plik"
+
+#: ../src/pdf.c:255
+msgid "Done"
+msgstr "Zrobione"
+
+#: ../src/pdf.c:326
+msgid "Loading ebook:"
+msgstr "£adowanie ebooka:"
+
+#: ../src/pdf.c:410
+msgid "Open ebook (PDF)"
+msgstr "Otwórz ebook (PDF)"
+
+#: ../src/pdf.c:417
+msgid "All PDF Files (*.pdf)"
+msgstr "Wszystkie pliki PDF (*.pdf)"
+
+#: ../src/spell.c:84 ../src/spell.c:332
+#, c-format
+msgid "Language '%s' from GConf isn't in the list of available languages\n"
+msgstr ""
+"Jêzyk '%s' z GConf nie istnieje na li¶cie dostêpnych jêzyków\n"
+
+#. Context: Spell check dictionary
+#: ../src/spell.c:230
+msgid "System default"
+msgstr "Domy¶lny systemowy"
+
+#: ../src/gpdftext.glade.h:1
+msgid "A_4 paper size (portrait)"
+msgstr "Format papieru A4 (Portret)"
+
+#: ../src/gpdftext.glade.h:2
+msgid "A_5 book size (portrait)"
+msgstr "Format ksi±¿ki A5 (Portret)"
+
+#: ../src/gpdftext.glade.h:3
+msgid "Default paper size"
+msgstr "Domy¶lny rozmiar papieru"
+
+#: ../src/gpdftext.glade.h:4
+msgid "Di_ctionary"
+msgstr "S³_ownik"
+
+#: ../src/gpdftext.glade.h:5
+msgid "Page _number removal"
+msgstr "Usuñ stronê _numer"
+
+#: ../src/gpdftext.glade.h:6
+msgid "Re_join hyphenated words"
+msgstr "Ponownie po³±cz rozdzie_lone s³owa"
+
+#: ../src/gpdftext.glade.h:7
+msgid "Regular expression preferences"
+msgstr "Ustawienia wyra¿eñ regularnych"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Spell _check"
+msgstr "_Sprawdzanie pisowni"
+
+#: ../src/gpdftext.glade.h:9
+msgid "_B5 book size (portrait)"
+msgstr "Format ksi±¿ki _B5 (Portret)"
+
+#: ../src/gpdftext.glade.h:10
+msgid "_Default font"
+msgstr "_Domy¶lna czcionka"
+
+#: ../src/gpdftext.glade.h:11
+msgid "_Edit"
+msgstr "_Edytuj"
+
+#: ../src/gpdftext.glade.h:12
+msgid "_File"
+msgstr "_Plik"
+
+#: ../src/gpdftext.glade.h:13
+msgid "_Help"
+msgstr "Po_moc"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:15
+msgid "_Lengthen lines"
+msgstr "£±czenie _linii"
+
+#: ../src/gpdftext.glade.h:16
+msgid "_View"
+msgstr "Pd_gl±d"
+
+#: ../src/gpdftext.glade.h:18
+msgid "gPDFText preferences"
+msgstr "Preferencje gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:1
+msgid "Edit text from ebook PDF files"
+msgstr "Edytuj tekst z pliku ebooka PDF"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "gPDFText ebook editor"
+msgstr "gPDFText Edytor ebook-ów"
+
+#, fuzzy
+#~ msgid "Help"
+#~ msgstr "Po_moc"
+
+#, fuzzy
+#~ msgid "About"
+#~ msgstr "O programie"
+
+#, fuzzy
+#~ msgid "New"
+#~ msgstr "_Nowy"
+
+#, fuzzy
+#~ msgid "Open"
+#~ msgstr "_Otwórz"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "Preferencje"
+
+#, fuzzy
+#~ msgid "Quit"
+#~ msgstr "Wyj¶cie"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Zapisz"
