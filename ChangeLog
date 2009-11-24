@@ -1,3 +1,14 @@
+2009-11-24  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Add support for SaveAs PDF.
+	* src/ebookui.h: Flag as saved to a PDF
+	* src/gpdftext.glade: Pad the textview to something
+	close to the PDF output for almost WYSIWYG PDFs.
+	* src/pdf.c: Convert sizes to inches for conversion to
+	points. Determine width of page and set pango wrapping.
+	Work out how many pages are needed.
+	* src/pdf.h: buffer_to_pdf() is more logical.
+
 2009-11-22  Neil Williams  <linux@codehelp.co.uk>
 
 	* Makefile.am: Add ACOCAL_AMFLAGS.

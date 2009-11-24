@@ -77,16 +77,20 @@ the preferences values. (Add to Ebook).
 #include "spell.h"
 #include "pdf.h"
 
-/** width for an A5 PDF file in mm. */
-static gdouble a5_width = 148.0;
-/** height for an A5 PDF file in mm. */
-static gdouble a5_height = 210.0;
-/** width for a B5 PDF file in mm. */
-static gdouble b5_width = 176.0;
-/** height for a B5 PDF file in mm. */
-static gdouble b5_height = 250.0;
+/** width for an A5 PDF file in inches. */
+static gdouble a5_width = 5.8;
+/** height for an A5 PDF file in inches. */
+static gdouble a5_height = 8.3;
+/** width for a B5 PDF file in inches. */
+static gdouble b5_width = 6.9;
+/** height for a B5 PDF file in inches. */
+static gdouble b5_height = 9.8;
 
-void buffer_to_ps (Ebook * ebook)
+#define POINTS 72.0
+#define SIDE_MARGIN 20
+#define EDGE_MARGIN 40
+
+void buffer_to_pdf (Ebook * ebook)
 {
 	GtkTextBuffer * buffer;
 	GtkTextIter start, end;
@@ -94,11 +98,16 @@ void buffer_to_ps (Ebook * ebook)
 	cairo_surface_t *surface;
 	PangoLayout *layout;
 	PangoFontDescription *desc;
+	PangoCairoFontMap * map;
+	PangoLayoutLine * line;
+	PangoRectangle ink_rect, logical_rect;
 	gchar * size, * text, *editor_font;
-	gdouble width, height;
+	gdouble width, height, line_height, page_height;
+	gint lines_per_page, i;
 
-	width = 210.0;
-	height = 297.0;
+	width = 8.3 * POINTS;
+	height = 11.7 * POINTS;
+	page_height = 0.0;
 	g_return_if_fail (ebook);
 	g_return_if_fail (ebook->filename);
 	size = gconf_client_get_string (ebook->client, ebook->paper_size.key, NULL);
@@ -108,26 +117,46 @@ void buffer_to_ps (Ebook * ebook)
 	editor_font = gconf_client_get_string(ebook->client, ebook->editor_font.key, NULL);
 	if (0 == g_strcmp0 (size, "A5"))
 	{
-		width = a5_width;
-		height = a5_height;
+		width = a5_width * POINTS;
+		height = a5_height * POINTS;
 	}
 	if (0 == g_strcmp0 (size, "B5"))
 	{
-		width = b5_width;
-		height = b5_height;
+		width = b5_width * POINTS;
+		height = b5_height * POINTS;
 	}
 	surface = cairo_pdf_surface_create (ebook->filename, width, height);
+	map = (PangoCairoFontMap*)pango_cairo_font_map_get_default ();
 	cr = cairo_create (surface);
 	cairo_surface_destroy(surface);
 	layout = pango_cairo_create_layout (cr);
+	pango_layout_set_justify (layout, TRUE);
+	pango_layout_set_spacing (layout, 1.5);
+	pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
+	pango_layout_set_height (layout, pango_units_from_double(height - EDGE_MARGIN));
+	pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
 	pango_layout_set_text (layout, text, -1);
-	cairo_move_to (cr, 10, 30);
-	cairo_set_font_size (cr, 90.0);
+	cairo_move_to (cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
 	/* editor_font contains font name and font size. */
 	desc = pango_font_description_from_string (editor_font);
 	pango_layout_set_font_description (layout, desc);
+	lines_per_page = pango_layout_get_line_count (layout);
 	pango_font_description_free (desc);
-	pango_cairo_show_layout (cr, layout);
+	for (i = 0; i < lines_per_page; i++)
+	{
+		line = pango_layout_get_line (layout, i);
+		pango_layout_get_extents (layout, &ink_rect, &logical_rect);
+		line_height = logical_rect.height / PANGO_SCALE;
+		if (page_height + line_height > height)
+		{
+			page_height = 0;
+			g_message ("page number=%d", i);
+			/* need a version of set_text to prepare each page */
+		}
+		pango_cairo_show_layout_line (cr, line);
+		page_height += line_height;
+	}
+//	pango_cairo_show_layout (cr, layout);
 	g_object_unref (layout);
 	cairo_destroy (cr);
 }

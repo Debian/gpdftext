@@ -310,8 +310,8 @@
                 <property name="receives_default">True</property>
                 <property name="wrap_mode">word</property>
                 <property name="justification">fill</property>
-                <property name="left_margin">5</property>
-                <property name="right_margin">5</property>
+                <property name="left_margin">24</property>
+                <property name="right_margin">24</property>
                 <property name="buffer">textbuffer1</property>
               </object>
             </child>

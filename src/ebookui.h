@@ -63,6 +63,8 @@ typedef struct _eb
 	GTrashStack * undo_stack;
 	/** the redo stack - only gets events popped off undo_stack */
 	GTrashStack * redo_stack;
+	/** boolean to save as PDF */
+	gboolean save_pdf;
 } Ebook;
 
 void save_txt_cb (GtkWidget * widget, gpointer data);

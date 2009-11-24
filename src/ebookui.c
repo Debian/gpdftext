@@ -299,30 +299,57 @@ save_file (Ebook * ebook)
 	err = NULL;
 	window = GTK_WINDOW(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
 	gtk_progress_bar_set_fraction (progressbar, 0.0);
 	statusbar = GTK_STATUSBAR(gtk_builder_get_object (ebook->builder, "statusbar"));
 	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-	gtk_statusbar_push (statusbar, id, _("Saving text file"));
-	textview = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
-	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
-	gtk_text_buffer_get_bounds (buffer, &start, &end);
-	text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
-	g_file_set_contents (ebook->filename, text, -1, &err);
-	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-	gtk_statusbar_push (statusbar, id, _("Saved text file."));
+	if (ebook->save_pdf)
+	{
+		gtk_statusbar_push (statusbar, id, _("Saving PDF file"));
+		buffer_to_pdf (ebook);
+		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+		gtk_statusbar_push (statusbar, id, _("Saved PDF file."));
+	}
+	else
+	{
+		gtk_statusbar_push (statusbar, id, _("Saving text file"));
+		textview = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
+		gtk_text_buffer_get_bounds (buffer, &start, &end);
+		text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
+		g_file_set_contents (ebook->filename, text, -1, &err);
+		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+		gtk_statusbar_push (statusbar, id, _("Saved text file."));
+	}
 	msg = g_strconcat (PACKAGE, " - " , g_path_get_basename (ebook->filename), NULL);
 	gtk_window_set_title (GTK_WINDOW(window), msg);
 	gtk_text_buffer_set_modified (buffer, FALSE);
+}
+
+static void
+saveas_cb (GtkWidget * widget, gpointer user_data)
+{
+	Ebook * ebook;
+
+	ebook = (Ebook *)user_data;
+	g_return_if_fail (ebook);
+	if (ebook->filename)
+	{
+		g_free (ebook->filename);
+		ebook->filename = NULL;
+	}
+	ebook->save_pdf = FALSE;
+	save_txt_cb (widget, user_data);
 }
 
 void
 save_txt_cb (GtkWidget * widget, gpointer user_data)
 {
 	GtkWidget *dialog, *window;
-	GtkFileFilter *filter;
+	GtkFileFilter *txt_filter, *pdf_filter;
 	Ebook * ebook;
 
 	ebook = (Ebook *)user_data;
+	g_return_if_fail (ebook);
 	/* for a save_as_txt_cb, just omit this check */
 	if (ebook->filename)
 	{
@@ -336,15 +363,24 @@ save_txt_cb (GtkWidget * widget, gpointer user_data)
 		GTK_RESPONSE_ACCEPT, NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
 
-	filter = gtk_file_filter_new ();
-	gtk_file_filter_set_name (filter, _("All text files"));
-	gtk_file_filter_add_mime_type (filter, "text/plain");
-	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
-	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
-
+	txt_filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (txt_filter, _("All text files"));
+	gtk_file_filter_add_mime_type (txt_filter, "text/plain");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), txt_filter);
+	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), txt_filter);
+	pdf_filter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (pdf_filter, _("PDF files"));
+	gtk_file_filter_add_mime_type (pdf_filter, "application/x-pdf");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), pdf_filter);
+	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
+		GtkFileFilter * f;
 		ebook->filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+		// read the filter property.
+		g_object_get (G_OBJECT(GTK_FILE_CHOOSER (dialog)), "filter", &f, NULL);
+		if (f == pdf_filter)
+			ebook->save_pdf = TRUE;
 		gtk_widget_destroy (dialog);
 		save_file (ebook);
 	}
@@ -611,10 +647,9 @@ create_window (Ebook * ebook)
 	editor_update_font (ebook);
 
 #endif /* HAVE_GTKSPELL */
-	/** FIXME: remove once we have PDF/PS export support. */
+
 	gtk_widget_set_sensitive (savemenu, FALSE);
 	gtk_widget_set_sensitive (save, FALSE);
-	gtk_widget_set_sensitive (saveasmenu, FALSE);
 	gtk_widget_set_sensitive (redobutton, FALSE);
 	gtk_widget_set_sensitive (undobutton, FALSE);
 
@@ -652,9 +687,11 @@ create_window (Ebook * ebook)
 	g_signal_connect (G_OBJECT (quitmenu), "activate",
 			G_CALLBACK (destroy_cb), ebook);
 	g_signal_connect (G_OBJECT (savemenu), "activate",
-			G_CALLBACK (save_txt_cb), ebook);
+			G_CALLBACK (saveas_cb), ebook);
 	g_signal_connect (G_OBJECT (manualmenu), "activate",
 			G_CALLBACK (help_cb), ebook);
+	g_signal_connect (G_OBJECT (saveasmenu), "activate",
+			G_CALLBACK (save_txt_cb), ebook);
 #ifdef HAVE_GTKSPELL
 	g_signal_connect (G_OBJECT (spellmenu), "activate",
 			G_CALLBACK (view_misspelled_words_cb), ebook);

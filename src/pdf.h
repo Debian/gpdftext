@@ -30,7 +30,7 @@
 #include "ebookui.h"
 
 /** ensure the export filename is set before requesting the conversion. */
-void buffer_to_ps (Ebook * ebook);
+void buffer_to_pdf (Ebook * ebook);
 
 void open_pdf_cb (GtkWidget *widget, gpointer data);
 
