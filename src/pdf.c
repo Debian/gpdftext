@@ -27,13 +27,8 @@
 Idea: file_selector SaveAs to get a filename, then create a
  new PDF - without preview support - and choice of font.
 
-Need to add a new window to the GTKBuilder XML using glade-3
- that just shows a GdkPixbuf, also with controls for next page
- first page etc. or just use libevview? (nah, part of libevince1,
- too big.)
-
-The problem (and the goal) is to harness poppler to change the
-paper size from A4 to something more like a book.
+The problem (and the goal) is to harness pango and cairo
+to change the paper size from A4 to something more like a book.
 Something like A5 portrait or B5 portrait.
 http://www.cl.cam.ac.uk/~mgk25/iso-paper.html
 http://www.hintsandthings.co.uk/office/paper.htm
@@ -55,14 +50,6 @@ Use cairo-pdf.
 
 The main window size should also be configurable via GConf, with the
 default values retained.
-
-This will also probably need some kind of context object
-that can be passed around between functions to provide the
-pointer to the builder: GPContext * context; The context could
-then have other bits that may become necessary, like
-the preferences values. (Add to Ebook).
-
-(See spell.c : editor_update_font )
 
 */
 
@@ -87,6 +74,8 @@ static gdouble b5_width = 6.9;
 static gdouble b5_height = 9.8;
 
 #define POINTS 72.0
+/** FIXME: make margins configurable via GConf
+ (means making the preferences dialog use a notebook and tabs. */
 #define SIDE_MARGIN 20
 #define EDGE_MARGIN 40
 
@@ -98,13 +87,14 @@ void buffer_to_pdf (Ebook * ebook)
 	cairo_surface_t *surface;
 	PangoLayout *layout;
 	PangoFontDescription *desc;
-	PangoCairoFontMap * map;
+	PangoContext * context; /* only one */
 	PangoLayoutLine * line;
 	PangoRectangle ink_rect, logical_rect;
 	gchar * size, * text, *editor_font;
 	gdouble width, height, line_height, page_height;
 	gint lines_per_page, i;
 
+	/* A4 initial */
 	width = 8.3 * POINTS;
 	height = 11.7 * POINTS;
 	page_height = 0.0;
@@ -126,10 +116,10 @@ void buffer_to_pdf (Ebook * ebook)
 		height = b5_height * POINTS;
 	}
 	surface = cairo_pdf_surface_create (ebook->filename, width, height);
-	map = (PangoCairoFontMap*)pango_cairo_font_map_get_default ();
 	cr = cairo_create (surface);
-	cairo_surface_destroy(surface);
-	layout = pango_cairo_create_layout (cr);
+	context = pango_cairo_create_context (cr);
+	/* pango_cairo_create_layout is wasteful with a lot of text. */
+	layout = pango_layout_new (context);
 	pango_layout_set_justify (layout, TRUE);
 	pango_layout_set_spacing (layout, 1.5);
 	pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
@@ -141,22 +131,35 @@ void buffer_to_pdf (Ebook * ebook)
 	desc = pango_font_description_from_string (editor_font);
 	pango_layout_set_font_description (layout, desc);
 	lines_per_page = pango_layout_get_line_count (layout);
-	pango_font_description_free (desc);
+	pango_cairo_show_layout (cr, layout);
 	for (i = 0; i < lines_per_page; i++)
 	{
 		line = pango_layout_get_line (layout, i);
 		pango_layout_get_extents (layout, &ink_rect, &logical_rect);
 		line_height = logical_rect.height / PANGO_SCALE;
-		if (page_height + line_height > height)
+		if ((page_height + line_height) > height)
 		{
 			page_height = 0;
-			g_message ("page number=%d", i);
-			/* need a version of set_text to prepare each page */
+			/* need a version of set_text to prepare each page
+			 based on PangoLayoutIter so that we keep track of
+			 what has been output so far. */
+			cairo_move_to (cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
+			layout = pango_layout_new (context);
+			pango_layout_set_justify (layout, TRUE);
+			pango_layout_set_spacing (layout, 1.5);
+			pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
+			pango_layout_set_height (layout, pango_units_from_double(height - EDGE_MARGIN));
+			pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
+			pango_layout_set_text (layout, text, -1);
+			cairo_show_page (cr);
 		}
-		pango_cairo_show_layout_line (cr, line);
+		pango_cairo_show_layout (cr, layout);
 		page_height += line_height;
 	}
+	cairo_surface_destroy(surface);
+	pango_font_description_free (desc);
 //	pango_cairo_show_layout (cr, layout);
+	g_object_unref (context);
 	g_object_unref (layout);
 	cairo_destroy (cr);
 }
