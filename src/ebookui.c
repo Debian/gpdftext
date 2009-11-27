@@ -715,11 +715,11 @@ create_window (Ebook * ebook)
 	g_signal_connect (G_OBJECT (quitmenu), "activate",
 			G_CALLBACK (destroy_cb), ebook);
 	g_signal_connect (G_OBJECT (savemenu), "activate",
-			G_CALLBACK (saveas_cb), ebook);
+			G_CALLBACK (save_txt_cb), ebook);
 	g_signal_connect (G_OBJECT (manualmenu), "activate",
 			G_CALLBACK (help_cb), ebook);
 	g_signal_connect (G_OBJECT (saveasmenu), "activate",
-			G_CALLBACK (save_txt_cb), ebook);
+			G_CALLBACK (saveas_cb), ebook);
 #ifdef HAVE_GTKSPELL
 	g_signal_connect (G_OBJECT (spellmenu), "activate",
 			G_CALLBACK (view_misspelled_words_cb), ebook);

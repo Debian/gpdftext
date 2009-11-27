@@ -1,5 +1,12 @@
 2009-11-27  Neil Williams  <linux@codehelp.co.uk>
 
+	* src/ebookui.c: Fix bug with save_as being called
+	for save actions.
+	* src/pdf.c: Add user warning if text does not
+	validate. (Closes: #4)
+
+2009-11-27  Neil Williams  <linux@codehelp.co.uk>
+
 	* src/pdf.c: Support opening text files. (Closes: #1)
 
 2009-11-24  Neil Williams  <linux@codehelp.co.uk>

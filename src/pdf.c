@@ -199,18 +199,26 @@ set_text (Ebook * ebook, gchar * text,
 	if (err)
 		g_warning ("hyphen replace: %s", err->message);
 
-	if (!g_utf8_validate (text, -1, NULL))
-	{
-		/** FIXME: this should be a user-level warning. 
-		 Needs a dialog. */
-		g_warning ("validate %s", text);
-		return;
-	}
-	if (!text)
-		return;
 	if (!ebook->builder)
 		ebook->builder = load_builder_xml (NULL);
 	if (!ebook->builder)
+		return;
+	if (!g_utf8_validate (text, -1, NULL))
+	{
+		GtkWidget * dialog, *window;
+		gchar * msg;
+
+		window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
+		msg = _("Error: Unable to validate incoming text as UTF-8.");
+		dialog = gtk_message_dialog_new (GTK_WINDOW(window),
+			GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_WARNING,
+			GTK_BUTTONS_CLOSE, "%s", msg);
+		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG(dialog), text);
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+		return;
+	}
+	if (!text)
 		return;
 	size = strlen (text);
 	text = g_utf8_normalize (text, -1, G_NORMALIZE_ALL);
