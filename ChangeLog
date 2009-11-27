@@ -1,3 +1,7 @@
+2009-11-27  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/pdf.c: Support opening text files. (Closes: #1)
+
 2009-11-24  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Add support for SaveAs PDF.

@@ -438,30 +438,64 @@ void
 open_pdf_cb (GtkWidget *widget, gpointer data)
 {
 	GtkWidget *dialog, * window;
-	GtkFileFilter *filter;
+	GtkTextView * text_view;
+	GtkFileFilter *pdffilter, *txtfilter;
 	Ebook * ebook;
 
 	ebook = (Ebook *)data;
 	window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
-	dialog = gtk_file_chooser_dialog_new (_("Open ebook (PDF)"),
+	text_view = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
+	dialog = gtk_file_chooser_dialog_new (_("Open file"),
 		GTK_WINDOW (window), GTK_FILE_CHOOSER_ACTION_OPEN,
 		GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN,
 		GTK_RESPONSE_ACCEPT, NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
 
-	filter = gtk_file_filter_new ();
-	gtk_file_filter_set_name (filter, _("All PDF Files (*.pdf)"));
-	gtk_file_filter_add_mime_type (filter, "application/pdf");
-	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
-	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
+	pdffilter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (pdffilter, _("All PDF Files (*.pdf)"));
+	gtk_file_filter_add_mime_type (pdffilter, "application/pdf");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), pdffilter);
+	gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), pdffilter);
+	txtfilter = gtk_file_filter_new ();
+	gtk_file_filter_set_name (txtfilter, _("ASCII text files (*.txt)"));
+	gtk_file_filter_add_mime_type (txtfilter, "text/plain");
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), txtfilter);
 	if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
 	{
 		gchar *filename;
+		GtkFileFilter * f;
 
 		filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
-		/* get the dialog out of the way before the work starts. */
-		gtk_widget_destroy (dialog);
-		open_file (ebook, filename);
+		// read the filter property.
+		g_object_get (G_OBJECT(GTK_FILE_CHOOSER (dialog)), "filter", &f, NULL);
+		if (f == pdffilter)
+		{
+			/* get the dialog out of the way before the work starts. */
+			gtk_widget_destroy (dialog);
+			open_file (ebook, filename);
+		}
+		else
+		{
+			gchar * contents, * msg;
+			GtkTextBuffer * buffer;
+			GtkStatusbar * statusbar;
+			GtkProgressBar * progressbar;
+			guint id;
+
+			/* get the dialog out of the way before the work starts. */
+			gtk_widget_destroy (dialog);
+			progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
+			statusbar = GTK_STATUSBAR(gtk_builder_get_object (ebook->builder, "statusbar"));
+			id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+			g_file_get_contents (filename, &contents, NULL, NULL);
+			buffer = gtk_text_view_get_buffer (text_view);
+			gtk_text_buffer_set_text (buffer, contents, -1);
+			msg = g_strconcat (PACKAGE, " - ", g_filename_display_basename (filename), NULL);
+			gtk_window_set_title (GTK_WINDOW(window), msg);
+			gtk_progress_bar_set_text (progressbar, "");
+			gtk_progress_bar_set_fraction (progressbar, 0.0);
+			gtk_statusbar_push (statusbar, id, _("Done"));
+		}
 		/* this is the PDF filename, so free it. */
 		g_free (filename);
 		filename = NULL;
