@@ -159,13 +159,14 @@ static void
 delete_range_cb (GtkTextBuffer *textbuffer, GtkTextIter *start,
     GtkTextIter *end, gpointer user_data)
 {
-	GtkWidget * undo;
+	GtkWidget * undo, * undomenu;
 	gchar * str;
 	Ebook * ebook;
 	UData * ud;
 
 	ebook = (Ebook *)user_data;
 	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
 	ud = g_new0(UData, 1);
 	str = gtk_text_iter_get_text (start, end);
 	ud->str = g_strdup(str);
@@ -175,18 +176,20 @@ delete_range_cb (GtkTextBuffer *textbuffer, GtkTextIter *start,
 	ud->len = strlen (str);
 	g_trash_stack_push (&ebook->undo_stack, ud);
 	gtk_widget_set_sensitive (undo, TRUE);
+	gtk_widget_set_sensitive (undomenu, TRUE);
 }
 
 static void
 insert_text_cb (GtkTextBuffer *textbuffer, GtkTextIter *location,
     gchar *text, gint len, gpointer user_data)
 {
-	GtkWidget * undo;
+	GtkWidget * undo, * undomenu;
 	Ebook * ebook;
 	UData * ud;
 
 	ebook = (Ebook *)user_data;
 	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
 	ud = g_new0(UData, 1);
 	ud->str = g_strdup(text);
 	ud->add = TRUE;
@@ -195,12 +198,13 @@ insert_text_cb (GtkTextBuffer *textbuffer, GtkTextIter *location,
 	ud->end = gtk_text_iter_get_offset(location) + (gint)len;
 	g_trash_stack_push (&ebook->undo_stack, ud);
 	gtk_widget_set_sensitive (undo, TRUE);
+	gtk_widget_set_sensitive (undomenu, TRUE);
 }
 
 static void
 undo_cb (GtkWidget * widget, gpointer user_data)
 {
-	GtkWidget * redo, * undo;
+	GtkWidget * redo, * undo, * redomenu, * undomenu;
 	GtkTextBuffer * buffer;
 	GtkTextIter start, end;
 	Ebook * ebook;
@@ -210,6 +214,8 @@ undo_cb (GtkWidget * widget, gpointer user_data)
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
 	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
 	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
+	redomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redomenuitem"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
 	// to undo, reverse the action from the first item in the stack.
 	ud = g_trash_stack_pop (&ebook->undo_stack);
 	g_return_if_fail (ud);
@@ -228,14 +234,18 @@ undo_cb (GtkWidget * widget, gpointer user_data)
 		g_trash_stack_pop (&ebook->undo_stack);
 	}
 	gtk_widget_set_sensitive (redo, TRUE);
+	gtk_widget_set_sensitive (redomenu, TRUE);
 	if (!ebook->undo_stack)
+	{
 		gtk_widget_set_sensitive (undo, FALSE);
+		gtk_widget_set_sensitive (undomenu, FALSE);
+	}
 }
 
 static void
 redo_cb (GtkWidget * widget, gpointer user_data)
 {
-	GtkWidget * redo, * undo;
+	GtkWidget * redo, * undo, * redomenu, * undomenu;
 	GtkTextBuffer * buffer;
 	GtkTextIter start, end;
 	Ebook * ebook;
@@ -245,6 +255,8 @@ redo_cb (GtkWidget * widget, gpointer user_data)
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
 	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
 	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
+	redomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redomenuitem"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
 	// to redo, replay the action from the next item in the stack.
 	ud = g_trash_stack_pop (&ebook->redo_stack);
 	g_return_if_fail (ud);
@@ -260,8 +272,12 @@ redo_cb (GtkWidget * widget, gpointer user_data)
 		gtk_text_buffer_delete (buffer, &start, &end);
 	}
 	gtk_widget_set_sensitive (undo, TRUE);
+	gtk_widget_set_sensitive (undomenu, TRUE);
 	if (!ebook->redo_stack)
+	{
 		gtk_widget_set_sensitive (redo, FALSE);
+		gtk_widget_set_sensitive (redomenu, FALSE);
+	}
 }
 
 static void
@@ -357,7 +373,7 @@ save_txt_cb (GtkWidget * widget, gpointer user_data)
 		return;
 	}
 	window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
-	dialog = gtk_file_chooser_dialog_new (_("Save as text file"),
+	dialog = gtk_file_chooser_dialog_new (_("Save file as"),
 		GTK_WINDOW (window),GTK_FILE_CHOOSER_ACTION_SAVE,
 		GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_SAVE,
 		GTK_RESPONSE_ACCEPT, NULL);
@@ -392,7 +408,7 @@ static void
 new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 {
 	guint id;
-	GtkWidget * undo, * redo;
+	GtkWidget * redo, * undo, * redomenu, * undomenu;
 	GtkTextBuffer * buffer;
 	GtkProgressBar * progressbar;
 	GtkStatusbar * statusbar;
@@ -414,6 +430,8 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
 	undo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
 	redo = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
+	redomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redomenuitem"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
 	gtk_text_buffer_set_text (buffer, "", 0);
 	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
 	gtk_progress_bar_set_fraction (progressbar, 0.0);
@@ -424,6 +442,8 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	gtk_text_buffer_set_modified (buffer, FALSE);
 	gtk_widget_set_sensitive (redo, FALSE);
 	gtk_widget_set_sensitive (undo, FALSE);
+	gtk_widget_set_sensitive (redomenu, FALSE);
+	gtk_widget_set_sensitive (undomenu, FALSE);
 }
 
 static void
@@ -592,7 +612,7 @@ create_window (Ebook * ebook)
 	GtkWidget *pref_btn, *manualbtn, *langbox, * textview;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
-	GtkWidget *undobutton, *redobutton;
+	GtkWidget *undobutton, *redobutton, *undomenu, *redomenu;
 	GtkTextBuffer * buffer;
 	GtkActionGroup  *action_group;
 	GtkUIManager * uimanager;
@@ -631,6 +651,8 @@ create_window (Ebook * ebook)
 	textview = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
 	undobutton = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undo_button"));
 	redobutton = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redo_button"));
+	undomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "undomenuitem"));
+	redomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redomenuitem"));
 #ifndef HAVE_GTKSPELL
 	gtk_widget_set_sensitive (spellmenu, FALSE);
 	gtk_widget_set_sensitive (langbox, FALSE);
@@ -652,6 +674,8 @@ create_window (Ebook * ebook)
 	gtk_widget_set_sensitive (save, FALSE);
 	gtk_widget_set_sensitive (redobutton, FALSE);
 	gtk_widget_set_sensitive (undobutton, FALSE);
+	gtk_widget_set_sensitive (redomenu, FALSE);
+	gtk_widget_set_sensitive (undomenu, FALSE);
 
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
@@ -673,6 +697,10 @@ create_window (Ebook * ebook)
 	g_signal_connect (G_OBJECT (undobutton), "clicked", 
 			G_CALLBACK (undo_cb), ebook);
 	g_signal_connect (G_OBJECT (redobutton), "clicked", 
+			G_CALLBACK (redo_cb), ebook);
+	g_signal_connect (G_OBJECT (undomenu), "activate", 
+			G_CALLBACK (undo_cb), ebook);
+	g_signal_connect (G_OBJECT (redomenu), "activate", 
 			G_CALLBACK (redo_cb), ebook);
 	g_signal_connect (G_OBJECT (window), "delete_event",
 			G_CALLBACK (destroy_event_cb), ebook);
