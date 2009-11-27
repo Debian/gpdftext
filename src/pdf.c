@@ -82,6 +82,7 @@ static gdouble b5_height = 9.8;
 void buffer_to_pdf (Ebook * ebook)
 {
 	GtkTextBuffer * buffer;
+	GtkProgressBar * progressbar;
 	GtkTextIter start, end;
 	cairo_t *cr;
 	cairo_surface_t *surface;
@@ -102,6 +103,7 @@ void buffer_to_pdf (Ebook * ebook)
 	g_return_if_fail (ebook->filename);
 	size = gconf_client_get_string (ebook->client, ebook->paper_size.key, NULL);
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
 	gtk_text_buffer_get_bounds (buffer, &start, &end);
 	text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
 	editor_font = gconf_client_get_string(ebook->client, ebook->editor_font.key, NULL);
@@ -127,6 +129,7 @@ void buffer_to_pdf (Ebook * ebook)
 	pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
 	pango_layout_set_text (layout, text, -1);
 	cairo_move_to (cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
+	gtk_progress_bar_set_fraction (progressbar, 0.0);
 	/* editor_font contains font name and font size. */
 	desc = pango_font_description_from_string (editor_font);
 	pango_layout_set_font_description (layout, desc);
@@ -140,6 +143,7 @@ void buffer_to_pdf (Ebook * ebook)
 		if ((page_height + line_height) > height)
 		{
 			page_height = 0;
+			gtk_progress_bar_pulse (progressbar);
 			/* need a version of set_text to prepare each page
 			 based on PangoLayoutIter so that we keep track of
 			 what has been output so far. */
@@ -156,9 +160,9 @@ void buffer_to_pdf (Ebook * ebook)
 		pango_cairo_show_layout (cr, layout);
 		page_height += line_height;
 	}
+	gtk_progress_bar_set_fraction (progressbar, 0.0);
 	cairo_surface_destroy(surface);
 	pango_font_description_free (desc);
-//	pango_cairo_show_layout (cr, layout);
 	g_object_unref (context);
 	g_object_unref (layout);
 	cairo_destroy (cr);
