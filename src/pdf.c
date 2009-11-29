@@ -79,93 +79,136 @@ static gdouble b5_height = 9.8;
 #define SIDE_MARGIN 20
 #define EDGE_MARGIN 40
 
-void buffer_to_pdf (Ebook * ebook)
+typedef struct _psync
 {
-	GtkTextBuffer * buffer;
-	GtkProgressBar * progressbar;
-	GtkTextIter start, end;
+	Ebook * ebook;
+	PangoContext * context;
+	PangoLayout * layout;
+	PangoLayoutIter * iter;
+	PangoFontDescription * desc;
+	gdouble height;
+	gdouble width;
+	gdouble page_height;
+	guint lines_per_page;
 	cairo_t *cr;
 	cairo_surface_t *surface;
-	PangoLayout *layout;
-	PangoFontDescription *desc;
-	PangoContext * context; /* only one */
-	PangoLayoutLine * line;
-	PangoRectangle ink_rect, logical_rect;
-	gchar * size, * text, *editor_font;
-	gdouble width, height, line_height, page_height;
-	gint lines_per_page, i;
+	gchar * text;
+	gsize pos;
+	GtkProgressBar * progressbar;
+	GtkStatusbar * statusbar;
+} Pqueue;
 
-	/* A4 initial */
-	width = 8.3 * POINTS;
-	height = 11.7 * POINTS;
-	page_height = 0.0;
-	g_return_if_fail (ebook);
-	g_return_if_fail (ebook->filename);
-	size = gconf_client_get_string (ebook->client, ebook->paper_size.key, NULL);
-	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
-	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
-	gtk_text_buffer_get_bounds (buffer, &start, &end);
-	text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
-	editor_font = gconf_client_get_string(ebook->client, ebook->editor_font.key, NULL);
-	if (0 == g_strcmp0 (size, "A5"))
-	{
-		width = a5_width * POINTS;
-		height = a5_height * POINTS;
-	}
-	if (0 == g_strcmp0 (size, "B5"))
-	{
-		width = b5_width * POINTS;
-		height = b5_height * POINTS;
-	}
-	surface = cairo_pdf_surface_create (ebook->filename, width, height);
-	cr = cairo_create (surface);
-	context = pango_cairo_create_context (cr);
-	/* pango_cairo_create_layout is wasteful with a lot of text. */
+static PangoLayout *
+make_new_page (PangoContext * context, PangoFontDescription * desc,
+				gdouble height, gdouble width)
+{
+	PangoLayout *layout;
+
 	layout = pango_layout_new (context);
 	pango_layout_set_justify (layout, TRUE);
 	pango_layout_set_spacing (layout, 1.5);
 	pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
 	pango_layout_set_height (layout, pango_units_from_double(height - EDGE_MARGIN));
 	pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
-	pango_layout_set_text (layout, text, -1);
-	cairo_move_to (cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
-	gtk_progress_bar_set_fraction (progressbar, 0.0);
-	/* editor_font contains font name and font size. */
-	desc = pango_font_description_from_string (editor_font);
 	pango_layout_set_font_description (layout, desc);
-	lines_per_page = pango_layout_get_line_count (layout);
-	pango_cairo_show_layout (cr, layout);
-	for (i = 0; i < lines_per_page; i++)
+	return layout;
+}
+
+static void
+create_pages (Pqueue * queue)
+{
+	gdouble line_height;
+	guint i, index, id;
+	PangoLayoutLine * line;
+	PangoRectangle ink_rect, logical_rect;
+
+	g_return_if_fail (queue);
+	g_return_if_fail (queue->pos < strlen(queue->text));
+	while (queue->pos < strlen (queue->text))
 	{
-		line = pango_layout_get_line (layout, i);
-		pango_layout_get_extents (layout, &ink_rect, &logical_rect);
-		line_height = logical_rect.height / PANGO_SCALE;
-		if ((page_height + line_height) > height)
+		while (gtk_events_pending ())
+			gtk_main_iteration ();
+		for (i = 0; i < queue->lines_per_page; i++)
 		{
-			page_height = 0;
-			gtk_progress_bar_pulse (progressbar);
-			/* need a version of set_text to prepare each page
-			 based on PangoLayoutIter so that we keep track of
-			 what has been output so far. */
-			cairo_move_to (cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
-			layout = pango_layout_new (context);
-			pango_layout_set_justify (layout, TRUE);
-			pango_layout_set_spacing (layout, 1.5);
-			pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
-			pango_layout_set_height (layout, pango_units_from_double(height - EDGE_MARGIN));
-			pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
-			pango_layout_set_text (layout, text, -1);
-			cairo_show_page (cr);
+			line = pango_layout_iter_get_line (queue->iter);
+			pango_layout_iter_next_line (queue->iter);
+			pango_layout_iter_get_line_extents (queue->iter, &ink_rect, &logical_rect);
+			index = pango_layout_iter_get_index (queue->iter);
+			line_height = logical_rect.height / PANGO_SCALE;
+			if ((queue->page_height + line_height) > (queue->height - (EDGE_MARGIN/2)))
+			{
+				queue->pos += index;
+				queue->page_height = EDGE_MARGIN;
+				gtk_progress_bar_pulse (queue->progressbar);
+				pango_cairo_update_layout (queue->cr, queue->layout);
+				queue->layout = make_new_page (queue->context, queue->desc, queue->height, queue->width);
+				pango_layout_set_text (queue->layout, (queue->text+queue->pos), -1);
+				queue->iter = pango_layout_get_iter (queue->layout);
+				pango_cairo_show_layout_line (queue->cr, line);
+				pango_cairo_update_layout (queue->cr, queue->layout);
+				cairo_show_page (queue->cr);
+			}
+			else
+				pango_cairo_show_layout_line (queue->cr, line);
+			queue->page_height += line_height;
+			cairo_move_to (queue->cr, SIDE_MARGIN / 2, queue->page_height);
 		}
-		pango_cairo_show_layout (cr, layout);
-		page_height += line_height;
 	}
-	gtk_progress_bar_set_fraction (progressbar, 0.0);
-	cairo_surface_destroy(surface);
-	pango_font_description_free (desc);
-	g_object_unref (context);
-	g_object_unref (layout);
-	cairo_destroy (cr);
+	pango_layout_iter_free (queue->iter);
+	gtk_progress_bar_set_fraction (queue->progressbar, 0.0);
+	cairo_surface_destroy(queue->surface);
+	pango_font_description_free (queue->desc);
+	g_object_unref (queue->context);
+	g_object_unref (queue->layout);
+	cairo_destroy (queue->cr);
+	id = gtk_statusbar_get_context_id (queue->statusbar, PACKAGE);
+	gtk_statusbar_push (queue->statusbar, id, _("Saved PDF file."));
+}
+
+void buffer_to_pdf (Ebook * ebook)
+{
+	GtkTextBuffer * buffer;
+	GtkTextIter start, end;
+	Pqueue queue;
+	gchar * size, *editor_font;
+
+	/* A4 initial */
+	queue.ebook = ebook;
+	queue.pos = 0;
+	queue.width = 8.3 * POINTS;
+	queue.height = 11.7 * POINTS;
+	queue.page_height = 40.0;
+	g_return_if_fail (ebook);
+	g_return_if_fail (ebook->filename);
+	size = gconf_client_get_string (ebook->client, ebook->paper_size.key, NULL);
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	queue.progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
+	queue.statusbar = GTK_STATUSBAR(gtk_builder_get_object (ebook->builder, "statusbar"));
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+	queue.text = g_strdup(gtk_text_buffer_get_text (buffer, &start, &end, TRUE));
+	editor_font = gconf_client_get_string(ebook->client, ebook->editor_font.key, NULL);
+	if (0 == g_strcmp0 (size, "A5"))
+	{
+		queue.width = a5_width * POINTS;
+		queue.height = a5_height * POINTS;
+	}
+	if (0 == g_strcmp0 (size, "B5"))
+	{
+		queue.width = b5_width * POINTS;
+		queue.height = b5_height * POINTS;
+	}
+	queue.surface = cairo_pdf_surface_create (ebook->filename, queue.width, queue.height);
+	queue.cr = cairo_create (queue.surface);
+	queue.context = pango_cairo_create_context (queue.cr);
+	/* pango_cairo_create_layout is wasteful with a lot of text. */
+	queue.desc = pango_font_description_from_string (editor_font);
+	queue.layout = make_new_page (queue.context, queue.desc, queue.height, queue.width);
+	pango_layout_set_text (queue.layout, queue.text, -1);
+	cairo_move_to (queue.cr, SIDE_MARGIN / 2, EDGE_MARGIN / 2);
+	gtk_progress_bar_set_fraction (queue.progressbar, 0.0);
+	queue.lines_per_page = pango_layout_get_line_count (queue.layout);
+	queue.iter = pango_layout_get_iter (queue.layout);
+	create_pages (&queue);
 }
 
 /** 
@@ -495,6 +538,7 @@ open_pdf_cb (GtkWidget *widget, gpointer data)
 			progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
 			statusbar = GTK_STATUSBAR(gtk_builder_get_object (ebook->builder, "statusbar"));
 			id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+			/* typical text files are v.large and this can block. FIXME. */
 			g_file_get_contents (filename, &contents, NULL, NULL);
 			buffer = gtk_text_view_get_buffer (text_view);
 			gtk_text_buffer_set_text (buffer, contents, -1);

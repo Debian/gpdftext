@@ -1,3 +1,10 @@
+2009-11-29  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Move completion message to the
+	background task.
+	* src/pdf.c: Save PDF files as a background task.
+	(Closes: #5)
+
 2009-11-27  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Fix bug with save_as being called

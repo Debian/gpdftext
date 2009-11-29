@@ -323,8 +323,6 @@ save_file (Ebook * ebook)
 	{
 		gtk_statusbar_push (statusbar, id, _("Saving PDF file"));
 		buffer_to_pdf (ebook);
-		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-		gtk_statusbar_push (statusbar, id, _("Saved PDF file."));
 	}
 	else
 	{
