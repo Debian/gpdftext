@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.1-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-22 00:36+0000\n"
+"POT-Creation-Date: 2009-12-04 15:35+0000\n"
 "PO-Revision-Date: 2009-11-04 18:40+0100\n"
 "Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Michal Šimůnek <michal.simunek@gmail.com>"
 
-#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:440 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "Editor elektronických knih PDF"
 
@@ -49,41 +49,72 @@ msgstr "soubor"
 msgid "GConf init failed: %s"
 msgstr "Selhala inicializace GConf: %s"
 
-#: ../src/ebookui.c:305
+#: ../src/ebookui.c:324
+#, fuzzy
+msgid "Saving PDF file"
+msgstr "Ukládání textového souboru"
+
+#: ../src/ebookui.c:329
 msgid "Saving text file"
 msgstr "Ukládání textového souboru"
 
-#: ../src/ebookui.c:312
+#: ../src/ebookui.c:335
 msgid "Saved text file."
 msgstr "Textový soubor uložen"
 
-#: ../src/ebookui.c:333
-msgid "Save as text file"
-msgstr "Uložit jako textový soubor"
+#: ../src/ebookui.c:374
+#, fuzzy
+msgid "Save file as"
+msgstr "Textový soubor uložen"
 
-#: ../src/ebookui.c:340
+#: ../src/ebookui.c:381
 msgid "All text files"
 msgstr "Všechny textové soubory"
 
 #: ../src/ebookui.c:386
+#, fuzzy
+msgid "PDF files"
+msgstr "soubor"
+
+#: ../src/ebookui.c:439
 msgid "new file"
 msgstr "nový soubor"
 
-#: ../src/pdf.c:255
+#: ../src/pdf.c:165
+#, fuzzy
+msgid "Saved PDF file."
+msgstr "Textový soubor uložen"
+
+#. Translators: Please try to keep this string brief,
+#. there often isn't a lot of room in the statusbar.
+#: ../src/pdf.c:334
+#, c-format
+msgid "%ld non-UTF8 character was removed"
+msgid_plural "%ld non-UTF-8 characters were removed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/pdf.c:343 ../src/pdf.c:551
 msgid "Done"
 msgstr "Proveď"
 
-#: ../src/pdf.c:326
+#: ../src/pdf.c:415
 msgid "Loading ebook:"
 msgstr "Nahrávání elektronické knihy:"
 
-#: ../src/pdf.c:410
-msgid "Open ebook (PDF)"
-msgstr "Otevřít elektronickou knihu (PDF)"
+#: ../src/pdf.c:501
+#, fuzzy
+msgid "Open file"
+msgstr "nový soubor"
 
-#: ../src/pdf.c:417
+#: ../src/pdf.c:508
 msgid "All PDF Files (*.pdf)"
 msgstr "Všechny PDF soubory (*.pdf)"
+
+#: ../src/pdf.c:513
+#, fuzzy
+msgid "ASCII text files (*.txt)"
+msgstr "Všechny textové soubory"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
@@ -167,6 +198,12 @@ msgstr "Upravuje text ze souborů elektronických knih PDF"
 #: ../data/gpdftext.desktop.in.h:2
 msgid "gPDFText ebook editor"
 msgstr "Editor elektronických knih gPDFText"
+
+#~ msgid "Save as text file"
+#~ msgstr "Uložit jako textový soubor"
+
+#~ msgid "Open ebook (PDF)"
+#~ msgstr "Otevřít elektronickou knihu (PDF)"
 
 #~ msgid "Help"
 #~ msgstr "Nápověda"

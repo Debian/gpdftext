@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-22 00:36+0000\n"
+"POT-Creation-Date: 2009-12-04 15:35+0000\n"
 "PO-Revision-Date: 2009-11-22 15:49+0100\n"
 "Last-Translator: Miriam Ruiz <miriam@debian.org>\n"
 "Language-Team: español <es@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Miriam Ruiz <little_miry@yahoo.es>"
 
-#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:440 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "Editor de PDFs para eBooks"
 
@@ -34,7 +34,9 @@ msgstr "Editor de PDFs para eBooks"
 msgid ""
 "gPDFText converts ebook PDF content into ASCII text, reformatted for long "
 "line paragraphs."
-msgstr "gPDFText convierte el contenido de los archivos PDF en texto ASCII, reformateado para párrafos con líneas largas."
+msgstr ""
+"gPDFText convierte el contenido de los archivos PDF en texto ASCII, "
+"reformateado para párrafos con líneas largas."
 
 #: ../src/main.c:100
 msgid "Homepage"
@@ -49,41 +51,72 @@ msgstr "archivo"
 msgid "GConf init failed: %s"
 msgstr "Error en la inicialización de GConf: %s"
 
-#: ../src/ebookui.c:305
+#: ../src/ebookui.c:324
+#, fuzzy
+msgid "Saving PDF file"
+msgstr "Guardando archivo de texto"
+
+#: ../src/ebookui.c:329
 msgid "Saving text file"
 msgstr "Guardando archivo de texto"
 
-#: ../src/ebookui.c:312
+#: ../src/ebookui.c:335
 msgid "Saved text file."
 msgstr "Archivo de texto guardado."
 
-#: ../src/ebookui.c:333
-msgid "Save as text file"
-msgstr "Guardar como archivo de texto"
+#: ../src/ebookui.c:374
+#, fuzzy
+msgid "Save file as"
+msgstr "Archivo de texto guardado."
 
-#: ../src/ebookui.c:340
+#: ../src/ebookui.c:381
 msgid "All text files"
 msgstr "Todos los archivos de texto"
 
 #: ../src/ebookui.c:386
+#, fuzzy
+msgid "PDF files"
+msgstr "archivo"
+
+#: ../src/ebookui.c:439
 msgid "new file"
 msgstr "archivo nuevo"
 
-#: ../src/pdf.c:255
+#: ../src/pdf.c:165
+#, fuzzy
+msgid "Saved PDF file."
+msgstr "Archivo de texto guardado."
+
+#. Translators: Please try to keep this string brief,
+#. there often isn't a lot of room in the statusbar.
+#: ../src/pdf.c:334
+#, c-format
+msgid "%ld non-UTF8 character was removed"
+msgid_plural "%ld non-UTF-8 characters were removed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/pdf.c:343 ../src/pdf.c:551
 msgid "Done"
 msgstr "Hecho"
 
-#: ../src/pdf.c:326
+#: ../src/pdf.c:415
 msgid "Loading ebook:"
 msgstr "Cargando libro electrónico:"
 
-#: ../src/pdf.c:410
-msgid "Open ebook (PDF)"
-msgstr "Abrir libro electrónico (PDF)"
+#: ../src/pdf.c:501
+#, fuzzy
+msgid "Open file"
+msgstr "archivo nuevo"
 
-#: ../src/pdf.c:417
+#: ../src/pdf.c:508
 msgid "All PDF Files (*.pdf)"
 msgstr "Todos los archivos PDF (*.pdf)"
+
+#: ../src/pdf.c:513
+#, fuzzy
+msgid "ASCII text files (*.txt)"
+msgstr "Todos los archivos de texto"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
@@ -168,3 +201,8 @@ msgstr "Editar texto de los archivos PDF"
 msgid "gPDFText ebook editor"
 msgstr "Editor gPDFText para libros electrónicos"
 
+#~ msgid "Save as text file"
+#~ msgstr "Guardar como archivo de texto"
+
+#~ msgid "Open ebook (PDF)"
+#~ msgstr "Abrir libro electrónico (PDF)"

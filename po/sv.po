@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-22 00:36+0000\n"
+"POT-Creation-Date: 2009-12-04 15:35+0000\n"
 "PO-Revision-Date: 2009-11-17 00:32+0100\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Kommentarer och förslag rörande översättningen kan skickas till\n"
 "tp-sv@listor.tp-sv.se"
 
-#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:440 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "ebok-redigerare"
 
@@ -51,41 +51,72 @@ msgstr "fil"
 msgid "GConf init failed: %s"
 msgstr "GConf misslyckades vid uppstart: %s"
 
-#: ../src/ebookui.c:305
+#: ../src/ebookui.c:324
+#, fuzzy
+msgid "Saving PDF file"
+msgstr "Sparar textfil"
+
+#: ../src/ebookui.c:329
 msgid "Saving text file"
 msgstr "Sparar textfil"
 
-#: ../src/ebookui.c:312
+#: ../src/ebookui.c:335
 msgid "Saved text file."
 msgstr "Sparade textfil."
 
-#: ../src/ebookui.c:333
-msgid "Save as text file"
-msgstr "Spara som textfil"
+#: ../src/ebookui.c:374
+#, fuzzy
+msgid "Save file as"
+msgstr "Sparade textfil."
 
-#: ../src/ebookui.c:340
+#: ../src/ebookui.c:381
 msgid "All text files"
 msgstr "Alla textfiler"
 
 #: ../src/ebookui.c:386
+#, fuzzy
+msgid "PDF files"
+msgstr "fil"
+
+#: ../src/ebookui.c:439
 msgid "new file"
 msgstr "ny fil"
 
-#: ../src/pdf.c:255
+#: ../src/pdf.c:165
+#, fuzzy
+msgid "Saved PDF file."
+msgstr "Sparade textfil."
+
+#. Translators: Please try to keep this string brief,
+#. there often isn't a lot of room in the statusbar.
+#: ../src/pdf.c:334
+#, c-format
+msgid "%ld non-UTF8 character was removed"
+msgid_plural "%ld non-UTF-8 characters were removed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/pdf.c:343 ../src/pdf.c:551
 msgid "Done"
 msgstr "Klar"
 
-#: ../src/pdf.c:326
+#: ../src/pdf.c:415
 msgid "Loading ebook:"
 msgstr "Laddar ebok:"
 
-#: ../src/pdf.c:410
-msgid "Open ebook (PDF)"
-msgstr "Öppna ebok (PDF)"
+#: ../src/pdf.c:501
+#, fuzzy
+msgid "Open file"
+msgstr "ny fil"
 
-#: ../src/pdf.c:417
+#: ../src/pdf.c:508
 msgid "All PDF Files (*.pdf)"
 msgstr "Alla PDF-filer (*.pdf)"
+
+#: ../src/pdf.c:513
+#, fuzzy
+msgid "ASCII text files (*.txt)"
+msgstr "Alla textfiler"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
@@ -170,6 +201,12 @@ msgstr "Redigera text från eböcker i PDF-format."
 #: ../data/gpdftext.desktop.in.h:2
 msgid "gPDFText ebook editor"
 msgstr "gPDFText ebok-redigerare"
+
+#~ msgid "Save as text file"
+#~ msgstr "Spara som textfil"
+
+#~ msgid "Open ebook (PDF)"
+#~ msgstr "Öppna ebok (PDF)"
 
 #, fuzzy
 #~ msgid "Help"

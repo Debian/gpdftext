@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.1-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-11-22 00:36+0000\n"
+"POT-Creation-Date: 2009-12-04 15:35+0000\n"
 "PO-Revision-Date: 2009-10-22 18:51+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Юрий Козлов <yuray@komyakino.ru>, 2009"
 
-#: ../src/main.c:89 ../src/ebookui.c:387 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:440 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "Редактор eBook PDF"
 
@@ -51,41 +51,73 @@ msgstr "файл"
 msgid "GConf init failed: %s"
 msgstr "Не удалось инициализировать GConf: %s"
 
-#: ../src/ebookui.c:305
+#: ../src/ebookui.c:324
+#, fuzzy
+msgid "Saving PDF file"
+msgstr "Сохранение в текстовый файл"
+
+#: ../src/ebookui.c:329
 msgid "Saving text file"
 msgstr "Сохранение в текстовый файл"
 
-#: ../src/ebookui.c:312
+#: ../src/ebookui.c:335
 msgid "Saved text file."
 msgstr "Текстовый файл сохранён."
 
-#: ../src/ebookui.c:333
-msgid "Save as text file"
-msgstr "Сохранить как текстовый файл"
+#: ../src/ebookui.c:374
+#, fuzzy
+msgid "Save file as"
+msgstr "Текстовый файл сохранён."
 
-#: ../src/ebookui.c:340
+#: ../src/ebookui.c:381
 msgid "All text files"
 msgstr "Все текстовые файлы"
 
 #: ../src/ebookui.c:386
+#, fuzzy
+msgid "PDF files"
+msgstr "файл"
+
+#: ../src/ebookui.c:439
 msgid "new file"
 msgstr "новый файл"
 
-#: ../src/pdf.c:255
+#: ../src/pdf.c:165
+#, fuzzy
+msgid "Saved PDF file."
+msgstr "Текстовый файл сохранён."
+
+#. Translators: Please try to keep this string brief,
+#. there often isn't a lot of room in the statusbar.
+#: ../src/pdf.c:334
+#, c-format
+msgid "%ld non-UTF8 character was removed"
+msgid_plural "%ld non-UTF-8 characters were removed"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: ../src/pdf.c:343 ../src/pdf.c:551
 msgid "Done"
 msgstr "Выполнено"
 
-#: ../src/pdf.c:326
+#: ../src/pdf.c:415
 msgid "Loading ebook:"
 msgstr "Загрузить ebook:"
 
-#: ../src/pdf.c:410
-msgid "Open ebook (PDF)"
-msgstr "Открыть ebook (PDF)"
+#: ../src/pdf.c:501
+#, fuzzy
+msgid "Open file"
+msgstr "новый файл"
 
-#: ../src/pdf.c:417
+#: ../src/pdf.c:508
 msgid "All PDF Files (*.pdf)"
 msgstr "Все файлы PDF (*.pdf)"
+
+#: ../src/pdf.c:513
+#, fuzzy
+msgid "ASCII text files (*.txt)"
+msgstr "Все текстовые файлы"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
@@ -169,6 +201,12 @@ msgstr "Редактировать текст из файлов ebook PDF"
 #: ../data/gpdftext.desktop.in.h:2
 msgid "gPDFText ebook editor"
 msgstr "Редактор ebook gPDFText"
+
+#~ msgid "Save as text file"
+#~ msgstr "Сохранить как текстовый файл"
+
+#~ msgid "Open ebook (PDF)"
+#~ msgstr "Открыть ebook (PDF)"
 
 #, fuzzy
 #~ msgid "Help"
