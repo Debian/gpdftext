@@ -1,3 +1,9 @@
+2009-12-04  Neil Williams  <linux@codehelp.co.uk>
+
+	* src/ebookui.c: Reset PDF flag once set.
+	* src/pdf.c: Migrate UTF8 warning from a dialog
+	to the status bar and display at the end of processing.
+
 2009-11-29  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Move completion message to the

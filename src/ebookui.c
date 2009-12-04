@@ -423,6 +423,7 @@ new_pdf_cb (GtkImageMenuItem *self, gpointer user_data)
 	{
 		g_free (ebook->filename);
 		ebook->filename = NULL;
+		ebook->save_pdf = FALSE;
 	}
 	window = GTK_WINDOW(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
@@ -674,6 +675,7 @@ create_window (Ebook * ebook)
 	gtk_widget_set_sensitive (undobutton, FALSE);
 	gtk_widget_set_sensitive (redomenu, FALSE);
 	gtk_widget_set_sensitive (undomenu, FALSE);
+	ebook->save_pdf = FALSE;
 
 	gtk_text_buffer_set_text (buffer, "", 0);
 	gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
