@@ -8,8 +8,6 @@ DOC_FIGURES =
 gpdftext-help.pot: Makefile
 	xml2po -e -o $(PACKAGE)-help.pot $(top_srcdir)/help/C/${PACKAGE}.xml
 
-check: update-po
-
 update-po: Makefile
 	for l in $(DOC_LINGUAS); do \
 	xml2po -u $(top_srcdir)/help/$$l/$$l.po $(top_srcdir)/help/C/$(PACKAGE).xml; \

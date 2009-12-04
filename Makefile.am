@@ -5,7 +5,6 @@ SUBDIRS = src po data help
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = $(gpdftextdoc_DATA) \
-	m4/*.m4 \
 	$(desktop_in_files) \
 	COPYING \
 	COPYING-DOCS \
