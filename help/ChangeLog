@@ -1,5 +1,11 @@
 2009-12-04  Neil Williams  <linux@codehelp.co.uk>
 
+	* C/gpdftext.xml: Describe saving PDF support.
+	* Makefile.am: Add msgmerge support, missing in
+	gnome-doc-utils.
+
+2009-12-04  Neil Williams  <linux@codehelp.co.uk>
+
 	patch by: Omar Campagne <ocampagne@gmail.com>
 
 	* Makefile.am: Add es

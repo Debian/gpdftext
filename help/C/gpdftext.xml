@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "
 http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY app "<application>gPDFText</application>">
-<!ENTITY appversion "0.0.1">
+<!ENTITY appversion "0.1.0">
 <!ENTITY date "Oct 2009">
 <!ENTITY legal SYSTEM "legal.xml">
 ]>
@@ -10,7 +10,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 
 <articleinfo>
 	<title>gPDFText Manual</title>
-	<date>2009-10-14</date>
+	<date>2009-12-04</date>
 	<copyright>
 		<year>2009</year>
 		<holder>Neil Williams</holder>
@@ -39,7 +39,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <revhistory>
 <revision>
   <revnumber>&appversion;</revnumber>
-  <date>14 Oct 2009</date>
+  <date>04 Dec 2009</date>
 </revision>
 </revhistory>
 </articleinfo>
@@ -80,23 +80,21 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	line breaks and can be zoomed to whatever text size you prefer.
 	</para>
 	<para>Each reformatting option can be turned off using the &app;
-	preferences window. See <link linkend="preferences">preferences</link>.
+	preferences window. See <link linkend="regexps">changing regular
+	expressions</link>.
 	</para>
-	<sect2 id="future">
-		<title>Future additions</title>
-		<para>The plan is to enable <command>&app;</command> to also
-		save the modified text as a new PDF file as well as saving as a
-		normal ASCII text file.
-		</para>
-		<para>Other ebook formats might be supportable, depending on
-		whether there is free software support for reading the format in
-		the first place. 
-		</para>
-		<para>Some form of search/replace will be needed in the editor as well - more
-		than just the default Find and Find Next. Spelling support could also help
-		identify areas where the text has not been fully reconstructed.
-		</para>
-	</sect2>
+	<para>Spelling support helps identify areas where further editing may
+	be needed or where page titles still remain in the extracted text.
+	</para>
+	<para>The extracted and edited text can be saved as a new PDF file
+	based on more useful paper sizes (A5 or B5) so that the ebook reader
+	can display the entire page at a time at a comfortable zoom. Once
+	saved, the PDF can be updated from within the editor.
+	</para>
+	<para>Any text file can also be opened and written out as a PDF,
+	although files passed to &app; on the command line need to be
+	of PDF type.
+	</para>
 </sect1>
 
 <!-- =========== Getting Started ============================== -->
@@ -143,7 +141,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!-- ================ Usage ================================ -->
 <!-- Use this section to describe how to use the application to perform the tasks for
   which the application is designed. -->
-<!--
+
 <sect1 id="gpdftext-usage">
 	<title>Usage</title>
 	<para>
@@ -154,7 +152,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		<sect3 id="editor-window-spelling">
 			<title>Spell Checking</title>
 			<para>To enable inline spell-checking, click <menuchoice>
-			<guisubmenu>View</guisubmenu><guimenuitem>Highlight Spelling Errors</guimenuitem>
+			<guisubmenu>View</guisubmenu><guimenuitem>Spell Check</guimenuitem>
 			</menuchoice> in the menu bar.  A wavy red line will appear underneath
 			misspelled words.  Right-clicking on the word will display a menu with a
 			<guimenuitem>Spelling Suggestions</guimenuitem> submenu.  Clicking on a
@@ -164,12 +162,24 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 			the spell-checker.</para>
 		</sect3>
 	</sect2>
+	<sect2 id="undo-redo">
+		<title>Undo and Redo</title>
+		<para>Use <emphasis>Ctrl-Z</emphasis> to undo edits and
+		<emphasis>Shift-Ctrl-Z</emphasis> to redo the original change.
+		</para>
+	</sect2>
+	<sect2 id="savingfiles">
+	<title>Saving files</title>
+	<para>&app; can save the text content as ASCII text files or as a
+	customised PDF.
+	</para>
+	</sect2>
 </sect1>
--->
+
 <!-- ============= Customization ============================= -->
 <!-- Use this section to describe how to customize the application. -->
-<sect1 id="preferences">
-	<title>Editing preferences</title>
+<sect1 id="regexps">
+	<title>Selecting regular expressions</title>
 		<para>Preferences provide ways to customise &app; to suit
 		how a particular PDF file was prepared. 
 		Choose <menuchoice> <guisubmenu>Edit</guisubmenu>
@@ -177,18 +187,13 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		click the preferences button on the toolbar to show the
 		preferences window.
 		</para>
-	<sect2 id="reformatting">
-	<title>Reformatting PDF text</title>
 	<para>
 		&app; makes three sets of changes to the text extracted from the
 		ebook PDF file which can be disabled by the user, depending on
 		how the opened PDF file was prepared.
 	</para>
-	<orderedlist>
-		<listitem>
-		<para><emphasis>Long lines support.</emphasis>
-		</para>
-		<blockquote>
+	<sect2 id="longlines">
+		<title>Long lines support.</title>
 		<para>Most users will retain this setting which joins single lines
 		back into original paragraphs so that the reader can format the
 		long lines cleanly.
@@ -198,12 +203,9 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		appearing like this
 		when it should really be a single paragraph.
 		</programlisting>
-		</blockquote>
-		</listitem>
-		<listitem>
-		<para><emphasis>Collapsing hyphenated words.</emphasis>
-		</para>
-		<blockquote>
+	</sect2>
+	<sect2 id="hyphens">
+		<title>Collapsing hyphenated words.</title>
 		<para>Most users will also retain this setting which joins up
 		hyphenated words which would otherwise appear in the middle of
 		the line after reformatting.
@@ -212,12 +214,9 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		Otherwise you end up with the text of your novel appe- aring like
 		this when it should really be a single paragraph.
 		</programlisting>
-		</blockquote>
-		</listitem>
-		<listitem>
-		<para><emphasis>Removing page number footers.</emphasis>
-		</para>
-		<blockquote>
+	</sect2>
+	<sect2 id="pagenum">
+		<title>Removing page number footers.</title>
 		<para>Only the simplest page number footers can be removed using
 		this method. If your PDF contains the book name, chapter name or
 		some other content (like an advert for the download site) in the
@@ -228,22 +227,76 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		may then skip entire pages from the PDF, so disable this option
 		and re-open the PDF.
 		</para>
-		</blockquote>
-		</listitem>
-	</orderedlist>
-	<para/>
+	</sect2>
+</sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the application. -->
+<sect1 id="pdfgenerate">
+	<title>Options to manage PDF files</title>
+	<sect2 id="paper-sizes">
+		<title>Choosing a paper size for the PDF</title>
+		<para>ebook files are usually easiest to read if the paper size
+		of the PDF is reduced from the default A4. A4 remains an option
+		for other PDF files.
+		</para>
+		<para>Paper sizes use a ratio of 0.7:1 and this is also why
+		&app; has a slightly unusual shape of the main window by
+		default.
+		</para>
+		<para>A4 210mm x 297mm   8.3 x 11.7 inches</para>
+		<para>A5 148mm × 210mm   5.8 x  8.3 inches</para>
+		<para>B5 176mm × 250mm   6.9 x  9.8 inches</para>
+		<para>See also: <ulink 
+		url="http://www.cl.cam.ac.uk/~mgk25/iso-paper.html">
+		http://www.cl.cam.ac.uk/~mgk25/iso-paper.html</ulink> and
+		<ulink url="http://www.hintsandthings.co.uk/office/paper.htm">
+		http://www.hintsandthings.co.uk/office/paper.htm</ulink>
+		</para>
+	</sect2>
+	<sect2 id="selectfont">
+		<title>Font selection</title>
+		<para>The font selected for the editor is the same font
+		(at the same size) used to generate the PDF. This provides an
+		approximation of WYSIWYG PDF editing. (What You See Is What You Get.)
+		</para>
 	</sect2>
 </sect1>
 
 <!-- ============= FAQ ============================= -->
 <!-- Use this section to list frequently-asked questions. -->
-<!--
+
 <sect1 id="gpdftext-faq">
 	<title>Frequently Asked Questions</title>
-		<para>
+	<sect2 id="opening-pdf">
+		<title>Creating text based PDF files for other uses</title>
+		<para>Creating text-based PDF files in &app; can mean that
+		the resulting PDF does not provide text content when the
+		PDF is opened by &app;, depending on the kind of text content.
 		</para>
+		<para>Where the text content is a story or novel, this should
+		be reported as a bug. Where the text content is some other kind
+		of text file (like a source code file or other a file with a
+		similarly strict format), the original file should be reopened
+		instead of extracting from the PDF.
+		</para>
+		<para>In particular, &app; is not able to extract text from
+		PDF files that put text into tables or non-paragraph styles.
+		</para>
+	</sect2>
+	<sect2 id="future">
+		<title>Future additions</title>
+		<para>Other ebook formats might be supportable, depending on
+		whether there is free software support for reading the format in
+		the first place. 
+		</para>
+		<para>Some form of search/replace will be needed in the editor as well - more
+		than just the default Find and Find Next. Spelling support could also help
+		identify areas where the text has not been fully reconstructed.
+		</para>
+	</sect2>
 </sect1>
--->
+
 <!-- ============= About ================================== -->
 <!-- This section contains info about the program (not docs), such as
       author's name(s), web page, license, feedback address. This
