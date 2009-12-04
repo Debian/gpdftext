@@ -32,6 +32,9 @@
 /** ensure the export filename is set before requesting the conversion. */
 void buffer_to_pdf (Ebook * ebook);
 
+/** ensure the export filename is set before requesting the conversion. */
+void buffer_to_txt (Ebook * ebook);
+
 void open_pdf_cb (GtkWidget *widget, gpointer data);
 
 #endif // _EPDF_H

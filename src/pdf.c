@@ -165,6 +165,43 @@ create_pages (Pqueue * queue)
 	gtk_statusbar_push (queue->statusbar, id, _("Saved PDF file."));
 }
 
+static void
+async_cb (GObject * obj, GAsyncResult * res, gpointer data)
+{
+	Ebook * ebook;
+	GtkProgressBar * progressbar;
+	GtkStatusbar * statusbar;
+	guint id;
+
+	ebook = (Ebook*)data;
+	g_file_replace_contents_finish (ebook->gfile, res, NULL, NULL);
+	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
+	statusbar = GTK_STATUSBAR(gtk_builder_get_object (ebook->builder, "statusbar"));
+	gtk_progress_bar_set_fraction (progressbar, 0.0);
+	id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
+	gtk_statusbar_push (statusbar, id, _("Saved text file."));
+}
+
+void buffer_to_txt (Ebook * ebook)
+{
+	GtkTextBuffer * buffer;
+	GtkTextIter start, end;
+	gboolean exists;
+	gchar * text;
+
+	g_return_if_fail (ebook);
+	g_return_if_fail (ebook->filename);
+	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
+	gtk_text_buffer_get_bounds (buffer, &start, &end);
+	text = g_strdup(gtk_text_buffer_get_text (buffer, &start, &end, TRUE));
+	ebook->gfile = g_file_new_for_path (ebook->filename);
+	exists = g_file_query_exists (ebook->gfile, NULL);
+	if (!exists)
+		g_file_set_contents (ebook->filename, " ", -1, NULL);
+	g_file_replace_contents_async (ebook->gfile, text, strlen(text), NULL, FALSE, 0,
+		NULL, async_cb, ebook);
+}
+
 void buffer_to_pdf (Ebook * ebook)
 {
 	GtkTextBuffer * buffer;

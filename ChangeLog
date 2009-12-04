@@ -1,5 +1,11 @@
 2009-12-04  Neil Williams  <linux@codehelp.co.uk>
 
+	* src/ebookui.c: Switch to async writes for text files.
+	* src/pdf.c: async write support for text files.
+	* src/pdf.h: export buffer_to_txt
+
+2009-12-04  Neil Williams  <linux@codehelp.co.uk>
+
 	* src/ebookui.c: Reset PDF flag once set.
 	* src/pdf.c: Migrate UTF8 warning from a dialog
 	to the status bar and display at the end of processing.

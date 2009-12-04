@@ -139,8 +139,6 @@ destroy_cb (GtkWidget * window, gpointer user_data)
 /** optional regexp for lines that do not start with spaces
  * - replace newline with a space. */
 
-/** FIXME: Needs to be able to open text files too. */
-
 /** FIXME: build a regexp to convert inverted commas? 
  * might need to cope with '" types. */
 
@@ -330,9 +328,7 @@ save_file (Ebook * ebook)
 		textview = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
 		gtk_text_buffer_get_bounds (buffer, &start, &end);
 		text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
-		g_file_set_contents (ebook->filename, text, -1, &err);
-		id = gtk_statusbar_get_context_id (statusbar, PACKAGE);
-		gtk_statusbar_push (statusbar, id, _("Saved text file."));
+		buffer_to_txt (ebook);
 	}
 	msg = g_strconcat (PACKAGE, " - " , g_path_get_basename (ebook->filename), NULL);
 	gtk_window_set_title (GTK_WINDOW(window), msg);
