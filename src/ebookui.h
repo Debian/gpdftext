@@ -65,6 +65,8 @@ typedef struct _eb
 	GTrashStack * redo_stack;
 	/** boolean to save as PDF */
 	gboolean save_pdf;
+	/** count of non-utf8 characters removed during processing. */
+	glong utf8_count;
 } Ebook;
 
 void save_txt_cb (GtkWidget * widget, gpointer data);
