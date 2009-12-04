@@ -26,5 +26,5 @@ Description: GTK+ text editor for ebook PDF files
  a plain text file would display in a more comfortable
  font.
  .
- gpdftext supports spell checking and editor font selection.
-
+ gpdftext supports spell checking and editor font selection
+ and can save ASCII content as PDF.
