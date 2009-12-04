@@ -2,8 +2,10 @@ gpdftext (0.1.0-1) unstable; urgency=low
 
   * New upstream version.
   * Add cairo and pango to build-depends for PDF export.
+  * [INTL:es] Spanish user manual translation for gpdftext
+    (Closes: #559434)
 
- -- Neil Williams <codehelp@debian.org>  Sun, 22 Nov 2009 00:32:56 +0000
+ -- Neil Williams <codehelp@debian.org>  Fri, 04 Dec 2009 11:55:29 +0000
 
 gpdftext (0.0.2-1) unstable; urgency=low
 

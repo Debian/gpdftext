@@ -1,0 +1,441 @@
+# gpdftext po translation to Spanish
+# Copyright (C) 2009 Software in the Public Interest
+# This file is distributed under the same license as the gpdftext package.
+# Changes:
+# - Initial translation
+# Omar Campagne <ocampagne@gmail.com>, 2009
+# - Updates
+# TRADUCTOR <CORREO>, AÑO
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Equipo de traducción al español, por favor, lean antes de traducir
+# los siguientes documentos:
+# - El proyecto de traducción de Debian al español
+# http://www.debian.org/intl/spanish/
+# especialmente las notas de traducción en
+# http://www.debian.org/intl/spanish/notas
+# - La guía de traducción de po's de debconf:
+# /usr/share/doc/po-debconf/README-trans
+# o http://www.debian.org/intl/l10n/po-debconf/README-trans
+msgid ""
+msgstr ""
+"Project-Id-Version: gpdftext 0.0.2\n"
+"POT-Creation-Date: 2009-11-20 07:45+0000\n"
+"PO-Revision-Date: 2009-12-04 12:28+0100\n"
+"Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
+"Language-Team: vim-doc-es\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.4.1\n"
+
+#: ../help/C/gpdftext.xml:12(title)
+msgid "gPDFText Manual"
+msgstr "Manual de gPDFText"
+
+#: ../help/C/gpdftext.xml:13(date)
+msgid "2009-10-14"
+msgstr "14/10/2009"
+
+#: ../help/C/gpdftext.xml:15(year)
+msgid "2009"
+msgstr "2009"
+
+#: ../help/C/gpdftext.xml:16(holder) ../help/C/gpdftext.xml:19(publishername)
+msgid "Neil Williams"
+msgstr "Neil Williams"
+
+#: ../help/C/gpdftext.xml:2(para)
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"GNU Free Documentation License\". You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgstr "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"GNU Free Documentation License\". You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+
+#: ../help/C/gpdftext.xml:14(para)
+msgid "Many of the names used by companies to distinguish their products and services are claimed as trademarks. Where those names appear in any GNOME documentation, and the members of the GNOME Documentation Project are made aware of those trademarks, then the names are in capital letters or initial capital letters."
+msgstr "Many of the names used by companies to distinguish their products and services are claimed as trademarks. Where those names appear in any GNOME documentation, and the members of the GNOME Documentation Project are made aware of those trademarks, then the names are in capital letters or initial capital letters."
+
+#: ../help/C/gpdftext.xml:30(para)
+msgid "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+msgstr "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+
+#: ../help/C/gpdftext.xml:50(para)
+msgid ""
+"UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
+"NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
+"CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE "
+"DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON "
+"FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF "
+"ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, "
+"WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES "
+"OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED "
+"VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE "
+"POSSIBILITY OF SUCH DAMAGES."
+msgstr ""
+"UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
+"NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
+"CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE "
+"DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON "
+"FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF "
+"ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, "
+"WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES "
+"OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED "
+"VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE "
+"POSSIBILITY OF SUCH DAMAGES."
+
+#: ../help/C/gpdftext.xml:23(para)
+msgid "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: <placeholder-1/>"
+msgstr "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: <placeholder-1/>"
+
+#: ../help/C/gpdftext.xml:23(para)
+msgid "User manual for the gPDFText ebook PDF editor."
+msgstr "Manual de usuario para el editor de eBook PDF gPDFText"
+
+#: ../help/C/gpdftext.xml:29(firstname)
+msgid "Neil"
+msgstr "Neil"
+
+#: ../help/C/gpdftext.xml:30(surname)
+msgid "Williams"
+msgstr "Williams"
+
+#: ../help/C/gpdftext.xml:32(orgname)
+msgid "gPDFText Development Team"
+msgstr "Equipo de desarrollo de gPDFText"
+
+#: ../help/C/gpdftext.xml:34(email)
+msgid "linux@codehelp.co.uk"
+msgstr "linux@codehelp.co.uk"
+
+#: ../help/C/gpdftext.xml:41(revnumber)
+msgid "0.0.1"
+msgstr "0.0.1"
+
+#: ../help/C/gpdftext.xml:42(date)
+msgid "14 Oct 2009"
+msgstr "14/19/2009"
+
+#: ../help/C/gpdftext.xml:48(primary)
+msgid "gPDFText"
+msgstr "gPDFText"
+
+#: ../help/C/gpdftext.xml:51(primary)
+msgid "gpdftext"
+msgstr "gpdftext"
+
+#: ../help/C/gpdftext.xml:59(title)
+msgid "Introduction"
+msgstr "Introducción"
+
+#: ../help/C/gpdftext.xml:60(para)
+msgid ""
+"<command><application>gPDFText</application></command> is a GTK+ text editor "
+"for ebook PDF files."
+msgstr ""
+"<command><application>gPDFText</application></command> es un editor GTK+ de "
+"texto para archivos PDF de ebook."
+
+#: ../help/C/gpdftext.xml:62(para)
+msgid ""
+"<application>gPDFText</application> allows you to load the text from an "
+"ebook PDF file and restore a more natural flow to the story."
+msgstr ""
+"<application>gPDFText</application> le permite cargar el texto desde un "
+"archivo PDF de ebook, y devolver una estructura más natural al mismo."
+
+#: ../help/C/gpdftext.xml:66(para)
+msgid ""
+"Many downloaded PDF files for ebook readers still use the A4 paper type (or "
+"letter which is similar in size) and when the PDF is displayed on the ebook "
+"reader, the zoom required to display the entire page makes the text too "
+"small. Simply exporting the PDF into text causes problems with line wrapping "
+"and the various ways that ebook PDFs indicate page headers and footers make "
+"it hard to automate the conversion."
+msgstr ""
+"Muchos archivos PDF descargados para lectores ebook aún usan el formato de "
+"papel A4 (o carta, similar en tamaño). La ampliación necesaria para poder "
+"mostrar en este caso la página completa hace que el texto sea demasiado "
+"pequeño. Exportar el PDF a texto genera problemas con el justificado de "
+"línea, y las diferentes maneras en que los PDF de ebook indican las "
+"cabeceras y pie de las páginas dificultan automatizar la conversión."
+
+#: ../help/C/gpdftext.xml:74(para)
+msgid ""
+"<command><application>gPDFText</application></command> loads the PDF, "
+"extracts the text, reformats the paragraphs into single long lines and then "
+"puts the text into a standard GTK+ editor where you can make other "
+"adjustments."
+msgstr ""
+"<command><application>gPDFText</application></command> carga el PDF, extrae "
+"el texto, da formato a los párrafos como líneas únicas y por último envía el "
+"texto a un editor estándar GTK+ en el que puede hacer otros ajustes."
+
+#: ../help/C/gpdftext.xml:79(para)
+msgid ""
+"On the ebook reader, the plain text file then has no unwanted line breaks "
+"and can be zoomed to whatever text size you prefer."
+msgstr ""
+"En el lector ebook el archivo de texto simple no tiene ningún salto de "
+"línea, y permite usar la ampliación para así disponer del tamaño de texto "
+"deseado."
+
+#: ../help/C/gpdftext.xml:82(para)
+msgid ""
+"Each reformatting option can be turned off using the "
+"<application>gPDFText</application> preferences window. See <link "
+"linkend=\"preferences\">preferences</link>."
+msgstr ""
+"Cada opción de formato se puede desactivar con el uso de la ventana de "
+"preferencias de <application>gPDFText</application>. Consulte <link "
+"linkend=\"preferences\">preferencias</link>."
+
+#: ../help/C/gpdftext.xml:86(title)
+msgid "Future additions"
+msgstr "Adiciones futuras"
+
+#: ../help/C/gpdftext.xml:87(para)
+msgid ""
+"The plan is to enable <command><application>gPDFText</application></command> "
+"to also save the modified text as a new PDF file as well as saving as a "
+"normal ASCII text file."
+msgstr ""
+"La meta es posibilitar que "
+"<command><application>gPDFText</application></command> pueda grabar el "
+"archivo modificado como un nuevo archivo PDF, así como guardarlo como "
+"archivo de texto ASCII."
+
+#: ../help/C/gpdftext.xml:91(para)
+msgid "Other ebook formats might be supportable, depending on whether there is free software support for reading the format in the first place."
+msgstr "Otros formatos de ebook podrían ganar compatibilidad, dependiendo en "
+"primer lugar de si hay compatibilidad con software libre para poder leer "
+"el formato."
+
+#: ../help/C/gpdftext.xml:95(para)
+msgid ""
+"Some form of search/replace will be needed in the editor as well - more than "
+"just the default Find and Find Next. Spelling support could also help "
+"identify areas where the text has not been fully reconstructed."
+msgstr ""
+"El editor también necesita alguna forma de «Buscar/Reemplazar», además del "
+"«Buscar/Buscar siguiente» ofrecido por omisión. La corrección ortográfica "
+"también ayudaría a identificar dónde no se reconstruyo el texto "
+"completamente."
+
+#: ../help/C/gpdftext.xml:111(title)
+msgid "Getting Started"
+msgstr "Empezar"
+
+#: ../help/C/gpdftext.xml:116(term)
+msgid "<guimenu>Applications</guimenu> menu"
+msgstr "Menú <guimenu>Applicaciones</guimenu>"
+
+#: ../help/C/gpdftext.xml:118(para)
+msgid ""
+"Choose <menuchoice><guisubmenu>Accessories</guisubmenu><guimenuitem>gPDFText "
+"ebook editor</guimenuitem></menuchoice>."
+msgstr ""
+"Escoja <menuchoice><guisubmenu>Accesorios</guisubmenu><guimenuitem>Editor de "
+"ebook gPDFText</guimenuitem></menuchoice>"
+
+#: ../help/C/gpdftext.xml:126(term)
+msgid "Command line"
+msgstr "Línea de órdenes"
+
+#: ../help/C/gpdftext.xml:128(para)
+msgid "Type <command>gpdftext</command>, then press <keycap>Return</keycap>."
+msgstr "Teclee <command>gpdftext</command> y pulse después "
+"<keycap>Return</keycap>."
+
+#: ../help/C/gpdftext.xml:131(para)
+msgid "There are no command-line options supported currently."
+msgstr "A día de hoy no hay opciones disponibles en la línea de órdenes."
+
+#: ../help/C/gpdftext.xml:134(para)
+msgid ""
+"PDF files passed on the command line will be opened by "
+"<command><application>gPDFText</application></command>."
+msgstr ""
+"Los archivos PDF introducidos en la línea de órdenes se abrirán mediante "
+"<command><application>gPDFText</application>."
+
+#: ../help/C/gpdftext.xml:112(para)
+msgid ""
+"You can start <application>gPDFText</application> in the following ways: "
+"<placeholder-1/>"
+msgstr ""
+"Puede iniciar <application>gPDFText</application> de las siguientes maneras: "
+"<placeholder-1/>"
+
+#: ../help/C/gpdftext.xml:172(title)
+msgid "Editing preferences"
+msgstr "Editar preferencias"
+
+#: ../help/C/gpdftext.xml:173(para)
+msgid ""
+"Preferences provide ways to customise <application>gPDFText</application> to "
+"suit how a particular PDF file was prepared. Choose <menuchoice><guisubmenu"
+">Edit</guisubmenu><guimenuitem>Preferences</guimenuitem></menuchoice> or "
+"click the preferences button on the toolbar to show the preferences window."
+msgstr ""
+"Las preferencias ofrecen una manera de personalizar "
+"<application>gPDFText</application> para definir cómo tratar un archivo PDF "
+"en particular. Escoja <menuchoice><guisubmenu>Editar</guisubmenu><guimenuite"
+"m>Preferencias</guimenuitem></menuchoice> o pulse el botón de "
+"preferencias en la barra de herramientas para mostrar la ventana de "
+"preferencias."
+
+#: ../help/C/gpdftext.xml:181(title)
+msgid "Reformatting PDF text"
+msgstr "Dar nuevo formato a texto en PDF"
+
+#: ../help/C/gpdftext.xml:182(para)
+msgid ""
+"<application>gPDFText</application> makes three sets of changes to the text "
+"extracted from the ebook PDF file which can be disabled by the user, "
+"depending on how the opened PDF file was prepared."
+msgstr ""
+"<application>gPDFText</application> realiza tres cambios al texto extraído "
+"del archivo PDF de ebook que el usuario puede desactivar, dependiendo de "
+"cómo se definió el archivo PDF abierto."
+
+#: ../help/C/gpdftext.xml:189(emphasis)
+msgid "Long lines support."
+msgstr "Compatibilidad con líneas largas."
+
+#: ../help/C/gpdftext.xml:192(para)
+msgid ""
+"Most users will retain this setting which joins single lines back into "
+"original paragraphs so that the reader can format the long lines cleanly."
+msgstr ""
+"La mayoría de usuarios emplean esta opción, que une líneas únicas en el "
+"párrafo original para que así el lector ebook pueda dar limpiamente formato "
+"a las líneas largas."
+
+#: ../help/C/gpdftext.xml:196(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t\tOtherwise you end up with the text of your novel\n"
+"\t\tappearing like this\n"
+"\t\twhen it should really be a single paragraph.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tDe no ser así, el texto de su novela tendrá\n"
+"\t\teste aspecto cuando\n"
+"\t\tcuando en realidad debería ser un único párrafo.\n"
+"\t\t"
+
+#: ../help/C/gpdftext.xml:204(emphasis)
+msgid "Collapsing hyphenated words."
+msgstr "Unir palabras con guiones."
+
+#: ../help/C/gpdftext.xml:207(para)
+msgid ""
+"Most users will also retain this setting which joins up hyphenated words "
+"which would otherwise appear in the middle of the line after reformatting."
+msgstr ""
+"La mayoría de usuarios usan también esta opción, que une palabras unidas por "
+"un guión, ya que de otra manera aparecerían en medio de la línea de la "
+"siguiente manera."
+
+#: ../help/C/gpdftext.xml:211(programlisting)
+#, no-wrap
+msgid ""
+"\n"
+"\t\tOtherwise you end up with the text of your novel appe- aring like\n"
+"\t\tthis when it should really be a single paragraph.\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\tDe no ser así, al final el texto de su novela apa- recería así\n"
+"\t\tcuando esto debería ser un único párrafo."
+
+#: ../help/C/gpdftext.xml:218(emphasis)
+msgid "Removing page number footers."
+msgstr "Eliminar el número de pie de página."
+
+#: ../help/C/gpdftext.xml:221(para)
+msgid ""
+"Only the simplest page number footers can be removed using this method. If "
+"your PDF contains the book name, chapter name or some other content (like an "
+"advert for the download site) in the page footer, you will need to remove "
+"such footers manually."
+msgstr ""
+"Este método sólo puede eliminar los números a pie de página más simples. Si "
+"el PDF contiene el nombre del libro, nombre del capítulo u otro contenido "
+"(como un anuncio de la página de descarga) a pie de página, tendrá que "
+"eliminar estos elementos manualmente."
+
+#: ../help/C/gpdftext.xml:226(para)
+msgid ""
+"In some cases, the page number pattern (whitespace, numbers and a line "
+"ending) can cause problems with some books. "
+"<application>gPDFText</application> may then skip entire pages from the PDF, "
+"so disable this option and re-open the PDF."
+msgstr ""
+"En algunos casos, el patrón del número de página (espacio en blanco, números "
+"y un fin de línea) pueden causar problemas con algunos libros. "
+"<application>gPDFText</application> obviaría páginas enteras del PDF, con lo "
+"cual tendría que desactivar esta opción y abrir nuevamente el PDF."
+
+#: ../help/C/gpdftext.xml:256(title)
+msgid "About <application>gPDFText</application>"
+msgstr "Acerca de <application>gPDFText</application>"
+
+#: ../help/C/gpdftext.xml:257(para)
+msgid ""
+"<application>gPDFText</application> was written by Neil Williams "
+"(<email>linux@codehelp.co.uk</email>). To find more information about "
+"<application>gPDFText</application>, please visit the <ulink "
+"url=\"http://sourceforge.net/apps/mediawiki/gpdftext/\" type=\"http\">gPDFText "
+"Wiki</ulink>."
+msgstr ""
+"<application>gPDFText</application> fue escrito por Neil Williams "
+"(<email>linux@codehelp.co.uk</email>). Para encontrar más información acerca "
+"de <application>gPDFText</application>, visite la página <ulink "
+"url=\"http://sourceforge.net/apps/mediawiki/gpdftext/\" type=\"http\">gPDFText "
+"Wiki</ulink>."
+
+#: ../help/C/gpdftext.xml:263(para)
+msgid ""
+"Please use the Debian Bug Tracking System or the upstream Trac tickets to "
+"file bug reports."
+msgstr ""
+"Emplee por favor el sistema de seguimiento de fallos de Debian (BTS) o los "
+"Trac tickets de la fuente de software original para remitir informes de "
+"fallo."
+
+#: ../help/C/gpdftext.xml:265(para)
+msgid ""
+"<ulink url=\"http://bugs.debian.org/gpdftext\" type=\"http\">Debian BTS</ulink> "
+"(email based, no login required) or <ulink "
+"url=\"http://sourceforge.net/apps/trac/gpdftext/newticket\" type=\"http\"> "
+"SourceForge Trac tickets</ulink> (an SF login is required for Trac)."
+msgstr ""
+"<ulink url=\"http://bugs.debian.org/gpdftext\" type=\"http\">Debian BTS</ulink> "
+"(correo electrónico, no precisa identificarse) o <ulink "
+"url=\"http://sourceforge.net/apps/trac/gpdftext/newticket\" type=\"http\"> "
+"SourceForge Trac tickets</ulink> (precisa un perfil en SF para usar  Trac)."
+
+#: ../help/C/gpdftext.xml:271(para)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 3 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in "
+"the file COPYING included with the source code of this program."
+msgstr ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 3 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <ulink url=\"ghelp:gpl\" type=\"help\">link</ulink>, or in "
+"the file COPYING included with the source code of this program."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: ../help/C/gpdftext.xml:0(None)
+msgid "translator-credits"
+msgstr "Omar Campagne <ocampagne@gmail.com>, 2009"
