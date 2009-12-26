@@ -5,8 +5,9 @@ gpdftext (0.1.0-1) unstable; urgency=low
   * [INTL:es] Spanish user manual translation for gpdftext
     (Closes: #559434)
   * [INTL:ru] Russian program translation update (Closes: #562638)
+  * [INTL:ru] Russian manual translation update  (Closes: #562638)
 
- -- Neil Williams <codehelp@debian.org>  Sat, 26 Dec 2009 17:58:43 +0000
+ -- Neil Williams <codehelp@debian.org>  Sat, 26 Dec 2009 19:15:12 +0000
 
 gpdftext (0.0.2-1) unstable; urgency=low
 
