@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-12-04 15:35+0000\n"
+"POT-Creation-Date: 2009-12-26 11:43+0000\n"
 "PO-Revision-Date: 2009-10-20 15:00+0100\n"
 "Last-Translator: Hilmar Ackermann <debian-l10n-german@lists.debian.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Hilmar Ackermann <debian-l10n-german@lists.debian.org>"
 
-#: ../src/main.c:89 ../src/ebookui.c:440 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
 msgstr "eBook PDF Editor"
 
@@ -48,69 +48,75 @@ msgstr "Datei"
 msgid "GConf init failed: %s"
 msgstr "GConf Initialisierung ist fehlgeschlagen: %s"
 
-#: ../src/ebookui.c:324
+#: ../src/ebookui.c:322
 #, fuzzy
 msgid "Saving PDF file"
 msgstr "Speichere Text-Datei"
 
-#: ../src/ebookui.c:329
+#: ../src/ebookui.c:327
 msgid "Saving text file"
 msgstr "Speichere Text-Datei"
 
-#: ../src/ebookui.c:335
-msgid "Saved text file."
-msgstr "Text-Datei gespeichert."
-
-#: ../src/ebookui.c:374
+#: ../src/ebookui.c:370
 #, fuzzy
 msgid "Save file as"
 msgstr "Text-Datei gespeichert."
 
-#: ../src/ebookui.c:381
+#: ../src/ebookui.c:377
 msgid "All text files"
 msgstr "Alle Textdateien"
 
-#: ../src/ebookui.c:386
+#: ../src/ebookui.c:382
 #, fuzzy
 msgid "PDF files"
 msgstr "Datei"
 
-#: ../src/ebookui.c:439
+#: ../src/ebookui.c:435
 msgid "new file"
 msgstr "Neue Datei"
 
-#: ../src/pdf.c:165
-#, fuzzy
-msgid "Saved PDF file."
+#: ../src/pdf.c:140
+msgid "Error: Pango iter index is zero."
+msgstr ""
+
+#: ../src/pdf.c:173
+#, fuzzy, c-format
+msgid "Saved PDF file. (%ld page)"
+msgid_plural "Saved PDF file (%ld pages)."
+msgstr[0] "Text-Datei gespeichert."
+msgstr[1] "Text-Datei gespeichert."
+
+#: ../src/pdf.c:193
+msgid "Saved text file."
 msgstr "Text-Datei gespeichert."
 
 #. Translators: Please try to keep this string brief,
 #. there often isn't a lot of room in the statusbar.
-#: ../src/pdf.c:334
+#: ../src/pdf.c:383
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/pdf.c:343 ../src/pdf.c:551
+#: ../src/pdf.c:392 ../src/pdf.c:600
 msgid "Done"
 msgstr "Fertig"
 
-#: ../src/pdf.c:415
+#: ../src/pdf.c:464
 msgid "Loading ebook:"
 msgstr "Lade ebook:"
 
-#: ../src/pdf.c:501
+#: ../src/pdf.c:550
 #, fuzzy
 msgid "Open file"
 msgstr "Neue Datei"
 
-#: ../src/pdf.c:508
+#: ../src/pdf.c:557
 msgid "All PDF Files (*.pdf)"
 msgstr "Alle PDF-Dateien (*.pdf)"
 
-#: ../src/pdf.c:513
+#: ../src/pdf.c:562
 #, fuzzy
 msgid "ASCII text files (*.txt)"
 msgstr "Alle Textdateien"

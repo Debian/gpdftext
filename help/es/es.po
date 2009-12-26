@@ -23,7 +23,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
-"POT-Creation-Date: 2009-12-04 19:18+0000\n"
+"POT-Creation-Date: 2009-12-04 23:21+0000\n"
 "PO-Revision-Date: 2009-12-04 12:28+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -418,26 +418,34 @@ msgstr ""
 msgid "B5 176mm × 250mm 6.9 x 9.8 inches"
 msgstr ""
 
-#: ../help/C/gpdftext.xml:252(title)
+#: ../help/C/gpdftext.xml:250(para)
+msgid ""
+"See also: <ulink url=\"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html\"> "
+"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html</ulink> and <ulink url="
+"\"http://www.hintsandthings.co.uk/office/paper.htm\"> http://www."
+"hintsandthings.co.uk/office/paper.htm</ulink>"
+msgstr ""
+
+#: ../help/C/gpdftext.xml:258(title)
 msgid "Font selection"
 msgstr ""
 
-#: ../help/C/gpdftext.xml:253(para)
+#: ../help/C/gpdftext.xml:259(para)
 msgid ""
 "The font selected for the editor is the same font (at the same size) used to "
 "generate the PDF. This provides an approximation of WYSIWYG PDF editing. "
 "(What You See Is What You Get.)"
 msgstr ""
 
-#: ../help/C/gpdftext.xml:264(title)
+#: ../help/C/gpdftext.xml:270(title)
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: ../help/C/gpdftext.xml:266(title)
+#: ../help/C/gpdftext.xml:272(title)
 msgid "Creating text based PDF files for other uses"
 msgstr ""
 
-#: ../help/C/gpdftext.xml:267(para)
+#: ../help/C/gpdftext.xml:273(para)
 msgid ""
 "Creating text-based PDF files in <application>gPDFText</application> can "
 "mean that the resulting PDF does not provide text content when the PDF is "
@@ -445,7 +453,7 @@ msgid ""
 "content."
 msgstr ""
 
-#: ../help/C/gpdftext.xml:271(para)
+#: ../help/C/gpdftext.xml:277(para)
 msgid ""
 "Where the text content is a story or novel, this should be reported as a "
 "bug. Where the text content is some other kind of text file (like a source "
@@ -453,7 +461,7 @@ msgid ""
 "should be reopened instead of extracting from the PDF."
 msgstr ""
 
-#: ../help/C/gpdftext.xml:277(para)
+#: ../help/C/gpdftext.xml:283(para)
 #, fuzzy
 msgid ""
 "In particular, <application>gPDFText</application> is not able to extract "
@@ -462,11 +470,11 @@ msgstr ""
 "<application>gPDFText</application> le permite cargar el texto desde un "
 "archivo PDF de ebook, y devolver una estructura más natural al mismo."
 
-#: ../help/C/gpdftext.xml:282(title)
+#: ../help/C/gpdftext.xml:288(title)
 msgid "Future additions"
 msgstr "Adiciones futuras"
 
-#: ../help/C/gpdftext.xml:283(para)
+#: ../help/C/gpdftext.xml:289(para)
 msgid ""
 "Other ebook formats might be supportable, depending on whether there is free "
 "software support for reading the format in the first place."
@@ -474,7 +482,7 @@ msgstr ""
 "Otros formatos de ebook podrían ganar compatibilidad, dependiendo en primer "
 "lugar de si hay compatibilidad con software libre para poder leer el formato."
 
-#: ../help/C/gpdftext.xml:287(para)
+#: ../help/C/gpdftext.xml:293(para)
 msgid ""
 "Some form of search/replace will be needed in the editor as well - more than "
 "just the default Find and Find Next. Spelling support could also help "
@@ -485,11 +493,11 @@ msgstr ""
 "también ayudaría a identificar dónde no se reconstruyo el texto "
 "completamente."
 
-#: ../help/C/gpdftext.xml:303(title)
+#: ../help/C/gpdftext.xml:309(title)
 msgid "About <application>gPDFText</application>"
 msgstr "Acerca de <application>gPDFText</application>"
 
-#: ../help/C/gpdftext.xml:304(para)
+#: ../help/C/gpdftext.xml:310(para)
 msgid ""
 "<application>gPDFText</application> was written by Neil Williams "
 "(<email>linux@codehelp.co.uk</email>). To find more information about "
@@ -503,7 +511,7 @@ msgstr ""
 "sourceforge.net/apps/mediawiki/gpdftext/\" type=\"http\">gPDFText Wiki</"
 "ulink>."
 
-#: ../help/C/gpdftext.xml:310(para)
+#: ../help/C/gpdftext.xml:316(para)
 msgid ""
 "Please use the Debian Bug Tracking System or the upstream Trac tickets to "
 "file bug reports."
@@ -512,7 +520,7 @@ msgstr ""
 "Trac tickets de la fuente de software original para remitir informes de "
 "fallo."
 
-#: ../help/C/gpdftext.xml:312(para)
+#: ../help/C/gpdftext.xml:318(para)
 msgid ""
 "<ulink url=\"http://bugs.debian.org/gpdftext\" type=\"http\">Debian BTS</"
 "ulink> (email based, no login required) or <ulink url=\"http://sourceforge."
@@ -524,7 +532,7 @@ msgstr ""
 "sourceforge.net/apps/trac/gpdftext/newticket\" type=\"http\"> SourceForge "
 "Trac tickets</ulink> (precisa un perfil en SF para usar  Trac)."
 
-#: ../help/C/gpdftext.xml:318(para)
+#: ../help/C/gpdftext.xml:324(para)
 msgid ""
 "This program is distributed under the terms of the GNU General Public "
 "license as published by the Free Software Foundation; either version 3 of "
