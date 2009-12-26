@@ -13,3 +13,9 @@ RecentEntries
 Poppler
 	save as PDF? only seems to be save as PS support.
 
+Other formats
+	http://www.angelfire.com/ego2/idleloop/mbp_reader.html
+	http://www.fbreader.org/ http://freshmeat.net/projects/fbreader
+
+	Support via libzlcore0.10 could be possible, although that is C++.
+

@@ -1,3 +1,11 @@
+2009-12-26  Neil Williams  <linux@codehelp.co.uk>
+
+	* README: Add an idea about other input formats.
+	* help/C/gpdftext.xml: Some notes on writing text
+	as a new PDF.
+	* src/pdf.c: Check if the pango iter index is valid
+	and output the number of pages written as PDF.
+
 2009-12-04  Neil Williams  <linux@codehelp.co.uk>
 
 	* src/ebookui.c: Switch to async writes for text files.

@@ -24,12 +24,8 @@
 /** general PDF functions. */
 /**
 
-Idea: file_selector SaveAs to get a filename, then create a
- new PDF - without preview support - and choice of font.
-
-The problem (and the goal) is to harness pango and cairo
-to change the paper size from A4 to something more like a book.
-Something like A5 portrait or B5 portrait.
+Harness pango and cairo to change the paper size from A4 to
+something more like a book - A5 portrait or B5 portrait.
 http://www.cl.cam.ac.uk/~mgk25/iso-paper.html
 http://www.hintsandthings.co.uk/office/paper.htm
 
@@ -96,6 +92,7 @@ typedef struct _psync
 	gsize pos;
 	GtkProgressBar * progressbar;
 	GtkStatusbar * statusbar;
+	glong page_count;
 } Pqueue;
 
 static PangoLayout *
@@ -117,8 +114,10 @@ make_new_page (PangoContext * context, PangoFontDescription * desc,
 static void
 create_pages (Pqueue * queue)
 {
+	gchar * msg;
 	gdouble line_height;
-	guint i, index, id;
+	guint i, id;
+	glong index;
 	PangoLayoutLine * line;
 	PangoRectangle ink_rect, logical_rect;
 
@@ -134,6 +133,13 @@ create_pages (Pqueue * queue)
 			pango_layout_iter_next_line (queue->iter);
 			pango_layout_iter_get_line_extents (queue->iter, &ink_rect, &logical_rect);
 			index = pango_layout_iter_get_index (queue->iter);
+			if (index == 0)
+			{
+				i = queue->lines_per_page;
+				queue->pos = strlen (queue->text);
+				g_message ("%s", _("Error: Pango iter index is zero."));
+				continue;
+			}
 			line_height = logical_rect.height / PANGO_SCALE;
 			if ((queue->page_height + line_height) > (queue->height - (EDGE_MARGIN/2)))
 			{
@@ -142,6 +148,8 @@ create_pages (Pqueue * queue)
 				gtk_progress_bar_pulse (queue->progressbar);
 				pango_cairo_update_layout (queue->cr, queue->layout);
 				queue->layout = make_new_page (queue->context, queue->desc, queue->height, queue->width);
+				i = queue->lines_per_page;
+				queue->page_count++;
 				pango_layout_set_text (queue->layout, (queue->text+queue->pos), -1);
 				queue->iter = pango_layout_get_iter (queue->layout);
 				pango_cairo_show_layout_line (queue->cr, line);
@@ -162,7 +170,10 @@ create_pages (Pqueue * queue)
 	g_object_unref (queue->layout);
 	cairo_destroy (queue->cr);
 	id = gtk_statusbar_get_context_id (queue->statusbar, PACKAGE);
-	gtk_statusbar_push (queue->statusbar, id, _("Saved PDF file."));
+	msg = g_strdup_printf (ngettext("Saved PDF file. (%ld page)",
+		"Saved PDF file (%ld pages).", queue->page_count), queue->page_count);
+	gtk_statusbar_push (queue->statusbar, id, msg);
+	g_free (msg);
 }
 
 static void
@@ -212,6 +223,7 @@ void buffer_to_pdf (Ebook * ebook)
 	/* A4 initial */
 	queue.ebook = ebook;
 	queue.pos = 0;
+	queue.page_count = 1;
 	queue.width = 8.3 * POINTS;
 	queue.height = 11.7 * POINTS;
 	queue.page_height = 40.0;

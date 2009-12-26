@@ -10,7 +10,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 
 <articleinfo>
 	<title>gPDFText Manual</title>
-	<date>2009-12-04</date>
+	<date>2009-12-27</date>
 	<copyright>
 		<year>2009</year>
 		<holder>Neil Williams</holder>
@@ -39,7 +39,7 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <revhistory>
 <revision>
   <revnumber>&appversion;</revnumber>
-  <date>04 Dec 2009</date>
+  <date>27 Dec 2009</date>
 </revision>
 </revhistory>
 </articleinfo>
@@ -57,13 +57,15 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 
 <sect1 id="gpdftext-introduction">
 	<title>Introduction</title>
-	<para><command>&app;</command> is a GTK+ text editor
+	<para>
+	<command>&app;</command> is a GTK+ text editor
 	for ebook PDF files.</para>
 	<para>
-		&app; allows you to load the text from an ebook PDF file and
-		restore a more natural flow to the story.
+	&app; allows you to load the text from an ebook PDF file and
+	restore a more natural flow to the story.
 	</para>
-	<para>Many downloaded PDF files for ebook readers still use the A4
+	<para>
+	Many downloaded PDF files for ebook readers still use the A4
 	paper type (or letter which is similar in size) and when the PDF is
 	displayed on the ebook reader, the zoom required to display the
 	entire page makes the text too small. Simply exporting the PDF into
@@ -71,27 +73,33 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	ebook PDFs indicate page headers and footers make it hard to
 	automate the conversion.
 	</para>
-	<para><command>&app;</command> loads the PDF, extracts the
+	<para>
+	<command>&app;</command> loads the PDF, extracts the
 	text, reformats the paragraphs into single long lines and then puts
 	the text into a standard GTK+ editor where you can make other
 	adjustments.
 	</para>
-	<para>On the ebook reader, the plain text file then has no unwanted
+	<para>
+	On the ebook reader, the plain text file then has no unwanted
 	line breaks and can be zoomed to whatever text size you prefer.
 	</para>
-	<para>Each reformatting option can be turned off using the &app;
+	<para>
+	Each reformatting option can be turned off using the &app;
 	preferences window. See <link linkend="regexps">changing regular
 	expressions</link>.
 	</para>
-	<para>Spelling support helps identify areas where further editing may
+	<para>
+	Spelling support helps identify areas where further editing may
 	be needed or where page titles still remain in the extracted text.
 	</para>
-	<para>The extracted and edited text can be saved as a new PDF file
+	<para>
+	The extracted and edited text can be saved as a new PDF file
 	based on more useful paper sizes (A5 or B5) so that the ebook reader
 	can display the entire page at a time at a comfortable zoom. Once
 	saved, the PDF can be updated from within the editor.
 	</para>
-	<para>Any text file can also be opened and written out as a PDF,
+	<para>
+	Any text file can also be opened and written out as a PDF,
 	although files passed to &app; on the command line need to be
 	of PDF type.
 	</para>
@@ -151,15 +159,17 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 		<para>The editor built into &app; includes inline spell-checking.</para>
 		<sect3 id="editor-window-spelling">
 			<title>Spell Checking</title>
-			<para>To enable inline spell-checking, click <menuchoice>
+			<para>
+			To enable inline spell-checking, click <menuchoice>
 			<guisubmenu>View</guisubmenu><guimenuitem>Spell Check</guimenuitem>
-			</menuchoice> in the menu bar.  A wavy red line will appear underneath
-			misspelled words.  Right-clicking on the word will display a menu with a
-			<guimenuitem>Spelling Suggestions</guimenuitem> submenu.  Clicking on a
-			displayed suggestion will insert it in place of the misspelled word.
+			</menuchoice> in the menu bar. A wavy red line will appear underneath
+			misspelled words. Right-clicking on the word will display a menu with
+			a <guimenuitem>Spelling Suggestions</guimenuitem> submenu. Clicking
+			on a displayed suggestion will insert it in place of the misspelled
+			word.
 			</para>
-			<para>Press the <emphasis>F7</emphasis> key to quickly enable or disable
-			the spell-checker.</para>
+			<para>Press the <emphasis>F7</emphasis> key to quickly enable or
+			disable the spell-checker.</para>
 		</sect3>
 	</sect2>
 	<sect2 id="undo-redo">
