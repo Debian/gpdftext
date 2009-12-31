@@ -2,9 +2,9 @@
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: gpdftext-help 0.0.1-1\n"
+"Project-Id-Version: gpdftext-help 0.1.0-1\n"
 "POT-Creation-Date: 2009-12-04 23:21+0000\n"
-"PO-Revision-Date: 2009-10-25 00:57+0100\n"
+"PO-Revision-Date: 2009-12-28 01:50+0000\n"
 "Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,8 @@ msgid "gPDFText Manual"
 msgstr "Manual do gPDFText"
 
 #: ../help/C/gpdftext.xml:13(date)
-#, fuzzy
 msgid "2009-12-04"
-msgstr "2009-10-14"
+msgstr "2009-12-04"
 
 #: ../help/C/gpdftext.xml:15(year)
 msgid "2009"
@@ -51,9 +50,8 @@ msgid "linux@codehelp.co.uk"
 msgstr "linux@codehelp.co.uk"
 
 #: ../help/C/gpdftext.xml:42(date)
-#, fuzzy
 msgid "04 Dec 2009"
-msgstr "14 Outubro 2009"
+msgstr "04 Dezembro 2009"
 
 #: ../help/C/gpdftext.xml:48(primary)
 msgid "gPDFText"
@@ -121,21 +119,22 @@ msgstr ""
 "preferir."
 
 #: ../help/C/gpdftext.xml:82(para)
-#, fuzzy
 msgid ""
 "Each reformatting option can be turned off using the <application>gPDFText</"
 "application> preferences window. See <link linkend=\"regexps\">changing "
 "regular expressions</link>."
 msgstr ""
 "Cada opção de reformatação pode ser desligada usando a janela de "
-"preferências do <application>gPDFText</application>. Veja <link linkend="
-"\"preferences\">preferências</link>."
+"preferências do <application>gPDFText</application>. Veja <link "
+"linkend=\"regexps\">alterando expressões regulares</link>."
 
 #: ../help/C/gpdftext.xml:86(para)
 msgid ""
 "Spelling support helps identify areas where further editing may be needed or "
 "where page titles still remain in the extracted text."
 msgstr ""
+"O suporte ortográfico ajuda a identificar áreas onde possa ser necessário "
+"mais edição ou onde os títulos da página ainda permanecem no texto extraído."
 
 #: ../help/C/gpdftext.xml:89(para)
 msgid ""
@@ -144,6 +143,10 @@ msgid ""
 "entire page at a time at a comfortable zoom. Once saved, the PDF can be "
 "updated from within the editor."
 msgstr ""
+"O texto extraído e editado pode ser guardado com um novo ficheiro PDF "
+"baseado em tamanhos de papel mais úteis (A5 ou B5) para que o leitor ebook "
+"possa mostrar a página inteira de uma vez a um zoom confortável. Após "
+"gravado, o PDF pode ser actualizado de dentro do editor."
 
 #: ../help/C/gpdftext.xml:94(para)
 msgid ""
@@ -151,6 +154,9 @@ msgid ""
 "passed to <application>gPDFText</application> on the command line need to be "
 "of PDF type."
 msgstr ""
+"Qualquer ficheiro de texto pode também ser aberto e escrito em PDF, apesar "
+"dos ficheiros fornecidos ao <application>gPDFText</application> na linha de "
+"comandos necessitarem de ser do tipo PDF."
 
 #: ../help/C/gpdftext.xml:109(title)
 msgid "Getting Started"
@@ -200,24 +206,23 @@ msgstr ""
 
 #: ../help/C/gpdftext.xml:146(title)
 msgid "Usage"
-msgstr ""
+msgstr "Utilização"
 
 #: ../help/C/gpdftext.xml:150(title)
 msgid "Working in the gPDFText Editor Window"
-msgstr ""
+msgstr "Trabalhando na Janela do Editor gPDFText"
 
 #: ../help/C/gpdftext.xml:151(para)
-#, fuzzy
 msgid ""
 "The editor built into <application>gPDFText</application> includes inline "
 "spell-checking."
 msgstr ""
-"Você pode arrancar o <application>gPDFText</application> das seguintes "
-"maneiras: <placeholder-1/>"
+"O editor integrado no <application>gPDFText</application> inclui verificação "
+"ortográfica inline."
 
 #: ../help/C/gpdftext.xml:153(title)
 msgid "Spell Checking"
-msgstr ""
+msgstr "Verificação Ortográfica"
 
 #: ../help/C/gpdftext.xml:154(para)
 msgid ""
@@ -228,39 +233,49 @@ msgid ""
 "guimenuitem> submenu. Clicking on a displayed suggestion will insert it in "
 "place of the misspelled word."
 msgstr ""
+"Para activar a verificação ortográfica inline, clique em <menuchoice><"
+"guisubmenu>Ver</guisubmenu><guimenuitem>Verificador Ortográfico</guimenuitem>"
+"</menuchoice> na barra de menu. Uma linha vermelha ondulada irá aparecer por "
+"baixo das palavras mal escritas. Clicando com o botão direito na palavra irá "
+"mostrar um menu com um sub-menu de <guimenuitem>Sugestões Ortográficas<"
+"/guimenuitem>. Clicando numa sugestão mostrada irá inseri-la no lugar da "
+"palavra mal escrita."
 
 #: ../help/C/gpdftext.xml:161(para)
 msgid ""
 "Press the <emphasis>F7</emphasis> key to quickly enable or disable the spell-"
 "checker."
 msgstr ""
+"Carregue na tecla <emphasis>F7</emphasis> para activar ou desactivar "
+"rapidamente o verificador ortográfico."
 
 #: ../help/C/gpdftext.xml:166(title)
 msgid "Undo and Redo"
-msgstr ""
+msgstr "Desfazer e Refazer"
 
 #: ../help/C/gpdftext.xml:167(para)
 msgid ""
 "Use <emphasis>Ctrl-Z</emphasis> to undo edits and <emphasis>Shift-Ctrl-Z</"
 "emphasis> to redo the original change."
 msgstr ""
+"Use <emphasis>Ctrl-Z</emphasis> para desfazer alterações e <emphasis>"
+"Shift-Ctrl-Z</emphasis> para refazê-las."
 
 #: ../help/C/gpdftext.xml:172(title)
 msgid "Saving files"
-msgstr ""
+msgstr "Guardar ficheiros"
 
 #: ../help/C/gpdftext.xml:173(para)
-#, fuzzy
 msgid ""
 "<application>gPDFText</application> can save the text content as ASCII text "
 "files or as a customised PDF."
 msgstr ""
-"O <application>gPDFText</application> permite-lhe carregar o texto de um "
-"ficheiro ebook PDF e restaurar um fluxo mais natural da história."
+"O <application>gPDFText</application> pode guardar o conteúdo do texto como "
+"ficheiros de texto ASCII ou como um PDF personalizado."
 
 #: ../help/C/gpdftext.xml:182(title)
 msgid "Selecting regular expressions"
-msgstr ""
+msgstr "Seleccionar expressões regulares"
 
 #: ../help/C/gpdftext.xml:183(para)
 msgid ""
@@ -371,35 +386,41 @@ msgstr ""
 
 #: ../help/C/gpdftext.xml:236(title)
 msgid "Options to manage PDF files"
-msgstr ""
+msgstr "Opções para gerir ficheiros PDF"
 
 #: ../help/C/gpdftext.xml:238(title)
 msgid "Choosing a paper size for the PDF"
-msgstr ""
+msgstr "Escolher o tamanho do papel para o PDF"
 
 #: ../help/C/gpdftext.xml:239(para)
 msgid ""
 "ebook files are usually easiest to read if the paper size of the PDF is "
 "reduced from the default A4. A4 remains an option for other PDF files."
 msgstr ""
+"ficheiros ebook são geralmente mais fáceis de ler se o tamanho de papel do "
+"PDF for reduzido do A4 predefinido. A4 permanece uma opção para outros "
+"ficheiros PDF."
 
 #: ../help/C/gpdftext.xml:243(para)
 msgid ""
 "Paper sizes use a ratio of 0.7:1 and this is also why <application>gPDFText</"
 "application> has a slightly unusual shape of the main window by default."
 msgstr ""
+"Os tamanhos de papel usam um rácio de 0.7:1 e isto é também a razão do <"
+"application>gPDFText</application> ter uma forma predefinida ligeiramente "
+"fora do normal na janela principal."
 
 #: ../help/C/gpdftext.xml:247(para)
 msgid "A4 210mm x 297mm 8.3 x 11.7 inches"
-msgstr ""
+msgstr "A4 210mm x 297mm 8.3 x 11.7 polegadas"
 
 #: ../help/C/gpdftext.xml:248(para)
 msgid "A5 148mm × 210mm 5.8 x 8.3 inches"
-msgstr ""
+msgstr "A5 148mm × 210mm 5.8 x 8.3 polegadas"
 
 #: ../help/C/gpdftext.xml:249(para)
 msgid "B5 176mm × 250mm 6.9 x 9.8 inches"
-msgstr ""
+msgstr "B5 176mm × 250mm 6.9 x 9.8 polegadas"
 
 #: ../help/C/gpdftext.xml:250(para)
 msgid ""
@@ -408,10 +429,14 @@ msgid ""
 "\"http://www.hintsandthings.co.uk/office/paper.htm\"> http://www."
 "hintsandthings.co.uk/office/paper.htm</ulink>"
 msgstr ""
+"Veja também: <ulink url=\"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html\"> "
+"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html</ulink> e <ulink url="
+"\"http://www.hintsandthings.co.uk/office/paper.htm\"> http://www."
+"hintsandthings.co.uk/office/paper.htm</ulink>"
 
 #: ../help/C/gpdftext.xml:258(title)
 msgid "Font selection"
-msgstr ""
+msgstr "Selecção do tipo de letra (font)"
 
 #: ../help/C/gpdftext.xml:259(para)
 msgid ""
@@ -419,14 +444,17 @@ msgid ""
 "generate the PDF. This provides an approximation of WYSIWYG PDF editing. "
 "(What You See Is What You Get.)"
 msgstr ""
+"A font seleccionada para o editor é a mesma font (do mesmo tamanho) usada "
+"para gerar o PDF. Isto disponibiliza uma aproximação de edição de PDF em "
+"WYSIWYG (O que vê é o que obtém)."
 
 #: ../help/C/gpdftext.xml:270(title)
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Respostas às Perguntas mais Frequentes"
 
 #: ../help/C/gpdftext.xml:272(title)
 msgid "Creating text based PDF files for other uses"
-msgstr ""
+msgstr "Criando ficheiros PDF baseados em texto para outros usos"
 
 #: ../help/C/gpdftext.xml:273(para)
 msgid ""
@@ -435,6 +463,10 @@ msgid ""
 "opened by <application>gPDFText</application>, depending on the kind of text "
 "content."
 msgstr ""
+"A criação de ficheiros PDF baseados em texto no <application>gPDFText<"
+"/application> pode significar que o PDF resultante não disponibilize "
+"conteúdo de texto quando o PDF é aberto pelo <application>gPDFText<"
+"/application>, dependendo do tipo de conteúdo de texto."
 
 #: ../help/C/gpdftext.xml:277(para)
 msgid ""
@@ -443,15 +475,19 @@ msgid ""
 "code file or other a file with a similarly strict format), the original file "
 "should be reopened instead of extracting from the PDF."
 msgstr ""
+"Onde o conteúdo de texto é uma história ou romance, isto deve ser reportado "
+"como um bug. Onde o conteúdo de texto é outro tipo de ficheiro de texto "
+"(como um ficheiro de código fonte ou um ficheiro com um formato severo "
+"semelhante), o ficheiro original deve ser reaberto em vez de extrair do PDF."
 
 #: ../help/C/gpdftext.xml:283(para)
-#, fuzzy
 msgid ""
 "In particular, <application>gPDFText</application> is not able to extract "
 "text from PDF files that put text into tables or non-paragraph styles."
 msgstr ""
-"O <application>gPDFText</application> permite-lhe carregar o texto de um "
-"ficheiro ebook PDF e restaurar um fluxo mais natural da história."
+"Em particular, o <application>gPDFText</application> não é capaz de extrair "
+"texto de ficheiros PDF que colocam texto em tabelas ou estilos sem "
+"parágrafos."
 
 #: ../help/C/gpdftext.xml:288(title)
 msgid "Future additions"
