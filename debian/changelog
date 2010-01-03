@@ -9,8 +9,10 @@ gpdftext (0.1.0-1) unstable; urgency=low
   * [INTL:de] German program translation update  (Closes: #562818)
   * [INTL:pt] Updated Portuguese translation for help manual
     (Closes: #563169)
+  * [l10n:cs] Updated Czech translation of gpdftext manual
+    (Closes: #563511)
 
- -- Neil Williams <codehelp@debian.org>  Thu, 31 Dec 2009 15:25:07 +0000
+ -- Neil Williams <codehelp@debian.org>  Sun, 03 Jan 2010 17:51:19 +0000
 
 gpdftext (0.0.2-1) unstable; urgency=low
 

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gpdftext-help 0.0.1\n"
+"Project-Id-Version: gpdftext-help 0.1.0-1\n"
 "POT-Creation-Date: 2009-12-04 23:21+0000\n"
-"PO-Revision-Date: 2009-11-05 18:01+0100\n"
+"PO-Revision-Date: 2009-12-30 18:01+0100\n"
 "Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgid "gPDFText Manual"
 msgstr "Příručka pro gPDFText"
 
 #: ../help/C/gpdftext.xml:13(date)
-#, fuzzy
 msgid "2009-12-04"
-msgstr "14. 10. 2009"
+msgstr "4. 12. 2009"
 
 #: ../help/C/gpdftext.xml:15(year)
 msgid "2009"
@@ -52,9 +51,8 @@ msgid "linux@codehelp.co.uk"
 msgstr "linux@codehelp.co.uk"
 
 #: ../help/C/gpdftext.xml:42(date)
-#, fuzzy
 msgid "04 Dec 2009"
-msgstr "14 říj 2009"
+msgstr "4 pro 2009"
 
 #: ../help/C/gpdftext.xml:48(primary)
 msgid "gPDFText"
@@ -120,21 +118,22 @@ msgstr ""
 "nežádoucí mezery na konci řádku, být písmo zvětšeno na požadovanou velikost."
 
 #: ../help/C/gpdftext.xml:82(para)
-#, fuzzy
 msgid ""
 "Each reformatting option can be turned off using the <application>gPDFText</"
 "application> preferences window. See <link linkend=\"regexps\">changing "
 "regular expressions</link>."
 msgstr ""
 "Každou volbu přeformátování můžete vypnout v okně předvoleb "
-"application>gPDFText</application>. Podívejte se na <link linkend="
-"\"preferences\">předvolby</link>."
+"application>gPDFText</application>. Podívejte se na <link linkend=\"regexps\">změnu "
+"regulárních výrazů</link>."
 
 #: ../help/C/gpdftext.xml:86(para)
 msgid ""
 "Spelling support helps identify areas where further editing may be needed or "
 "where page titles still remain in the extracted text."
 msgstr ""
+"Podpora pravopisu pomáhá rozpoznat části, kde mohou být potřeba další úpravy, "
+"nebo pokud v extrahovaném textu zůstaly hlavičky stránek."
 
 #: ../help/C/gpdftext.xml:89(para)
 msgid ""
@@ -143,6 +142,10 @@ msgid ""
 "entire page at a time at a comfortable zoom. Once saved, the PDF can be "
 "updated from within the editor."
 msgstr ""
+"Extrahovaný a upravený text je možné uložit jako nový soubor PDF v "
+"nejpoužívanějších velikostech papíru (A5 nebo B5), takže čtečka elektronických "
+"knih může zobrazit celou stránku i v pohodlném zvětšení. Po uložení lze "
+"PDF upravit v editoru."
 
 #: ../help/C/gpdftext.xml:94(para)
 msgid ""
@@ -150,6 +153,9 @@ msgid ""
 "passed to <application>gPDFText</application> on the command line need to be "
 "of PDF type."
 msgstr ""
+"Každý textový soubor lze otevřít a uložit jej jako PDF, přestože "
+"je potřeba, aby soubory zpracované <application>gPDFText</application> "
+"na příkazové řádce byly typu PDF."
 
 #: ../help/C/gpdftext.xml:109(title)
 msgid "Getting Started"
@@ -174,8 +180,7 @@ msgstr "Na příkazové řádce"
 
 #: ../help/C/gpdftext.xml:126(para)
 msgid "Type <command>gpdftext</command>, then press <keycap>Return</keycap>."
-msgstr ""
-"Napište <command>gpdftext</command> a stiskněte <keycap>Enter</keycap>."
+msgstr "Napište <command>gpdftext</command> a stiskněte <keycap>Enter</keycap>."
 
 #: ../help/C/gpdftext.xml:129(para)
 msgid "There are no command-line options supported currently."
@@ -199,24 +204,23 @@ msgstr ""
 
 #: ../help/C/gpdftext.xml:146(title)
 msgid "Usage"
-msgstr ""
+msgstr "Používání"
 
 #: ../help/C/gpdftext.xml:150(title)
 msgid "Working in the gPDFText Editor Window"
-msgstr ""
+msgstr "Práce v okně editoru gPDFText"
 
 #: ../help/C/gpdftext.xml:151(para)
-#, fuzzy
 msgid ""
 "The editor built into <application>gPDFText</application> includes inline "
 "spell-checking."
 msgstr ""
-"<application>gPDFText</application> můžete spustit následujícími způsoby: "
-"<placeholder-1/>"
+"Editor vestavěný do <application>gPDFText</application> obsahuje "
+"kontrolu pravopisu."
 
 #: ../help/C/gpdftext.xml:153(title)
 msgid "Spell Checking"
-msgstr ""
+msgstr "Kontrola pravopisu"
 
 #: ../help/C/gpdftext.xml:154(para)
 msgid ""
@@ -227,39 +231,48 @@ msgid ""
 "guimenuitem> submenu. Clicking on a displayed suggestion will insert it in "
 "place of the misspelled word."
 msgstr ""
+"Pro zapnutí kontroly pravopisu klikněte v nástrojové liště na "
+"<menuchoice><guisubmenu>Zobrazit</guisubmenu><guimenuitem>Kontrola pravopisu"
+"</guimenuitem></menuchoice>. Slova podtržená červenou vlnovkou jsou chybná. "
+"Pravým kliknutím na takové slovo zobrazíte nabídku <guimenuitem>Navrhované opravy</"
+"guimenuitem>. Kliknutím na zobrazený návrh jej vložíte na místo chybného "
+"slova."
 
 #: ../help/C/gpdftext.xml:161(para)
 msgid ""
 "Press the <emphasis>F7</emphasis> key to quickly enable or disable the spell-"
 "checker."
 msgstr ""
+"Pro rychlé zapnutí a vypnutí kontroly pravopisu stiskněte klávesu "
+"<emphasis>F7</emphasis>."
 
 #: ../help/C/gpdftext.xml:166(title)
 msgid "Undo and Redo"
-msgstr ""
+msgstr "Zpět a Znovu"
 
 #: ../help/C/gpdftext.xml:167(para)
 msgid ""
 "Use <emphasis>Ctrl-Z</emphasis> to undo edits and <emphasis>Shift-Ctrl-Z</"
 "emphasis> to redo the original change."
 msgstr ""
+"Úpravy vrátíte zpět pomocí <emphasis>Ctrl+Z</emphasis> a znovu je vložíte "
+"pomocí <emphasis>Shift+Ctrl+Z</emphasis>."
 
 #: ../help/C/gpdftext.xml:172(title)
 msgid "Saving files"
-msgstr ""
+msgstr "Ukládání souborů"
 
 #: ../help/C/gpdftext.xml:173(para)
-#, fuzzy
 msgid ""
 "<application>gPDFText</application> can save the text content as ASCII text "
 "files or as a customised PDF."
 msgstr ""
-"<application>gPDFText</application> vám umožňuje nahrát PDF soubor "
-"elektronické knihy a znovu se ponořit do příběhu."
+"<application>gPDFText</application> umožňuje ukládat textový obsah jako "
+"ASCII text nebo upravené PDF."
 
 #: ../help/C/gpdftext.xml:182(title)
 msgid "Selecting regular expressions"
-msgstr ""
+msgstr "Výběr regulárních výrazů"
 
 #: ../help/C/gpdftext.xml:183(para)
 msgid ""
@@ -367,47 +380,55 @@ msgstr ""
 
 #: ../help/C/gpdftext.xml:236(title)
 msgid "Options to manage PDF files"
-msgstr ""
+msgstr "Volby pro správu souborů PDF"
 
 #: ../help/C/gpdftext.xml:238(title)
 msgid "Choosing a paper size for the PDF"
-msgstr ""
+msgstr "Výběr velikosti papíru pro PDF"
 
 #: ../help/C/gpdftext.xml:239(para)
 msgid ""
 "ebook files are usually easiest to read if the paper size of the PDF is "
 "reduced from the default A4. A4 remains an option for other PDF files."
 msgstr ""
+"Soubory elektronických knih se obvykle snadněji čtou, pokud je velikost "
+"papíru PDF zmenšena z původní A4. Volba A4 zůstává pro ostatní soubory PDF."
 
 #: ../help/C/gpdftext.xml:243(para)
 msgid ""
 "Paper sizes use a ratio of 0.7:1 and this is also why <application>gPDFText</"
 "application> has a slightly unusual shape of the main window by default."
 msgstr ""
+"Pro velikost papíru se používá poměr 0.7:1 a to je také důvod, proč má hlavní okno "
+"aplikace <application>gPDFText</application> ve výchozím stavu trochu neobvyklý tvar."
 
 #: ../help/C/gpdftext.xml:247(para)
 msgid "A4 210mm x 297mm 8.3 x 11.7 inches"
-msgstr ""
+msgstr "A4 210mm x 297mm 8.3 x 11.7 palců"
 
 #: ../help/C/gpdftext.xml:248(para)
 msgid "A5 148mm × 210mm 5.8 x 8.3 inches"
-msgstr ""
+msgstr "A5 148mm × 210mm 5.8 x 8.3 palců"
 
 #: ../help/C/gpdftext.xml:249(para)
 msgid "B5 176mm × 250mm 6.9 x 9.8 inches"
-msgstr ""
+msgstr "B5 176mm × 250mm 6.9 x 9.8 palců"
 
 #: ../help/C/gpdftext.xml:250(para)
 msgid ""
+"Podívejte se také na: <ulink url=\"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html\"> "
+"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html</ulink> a <ulink url="
+"\"http://www.hintsandthings.co.uk/office/paper.htm\"> http://www."
+"hintsandthings.co.uk/office/paper.htm</ulink>"
+msgstr ""
 "See also: <ulink url=\"http://www.cl.cam.ac.uk/~mgk25/iso-paper.html\"> "
 "http://www.cl.cam.ac.uk/~mgk25/iso-paper.html</ulink> and <ulink url="
 "\"http://www.hintsandthings.co.uk/office/paper.htm\"> http://www."
 "hintsandthings.co.uk/office/paper.htm</ulink>"
-msgstr ""
 
 #: ../help/C/gpdftext.xml:258(title)
 msgid "Font selection"
-msgstr ""
+msgstr "Výběr písma"
 
 #: ../help/C/gpdftext.xml:259(para)
 msgid ""
@@ -415,14 +436,17 @@ msgid ""
 "generate the PDF. This provides an approximation of WYSIWYG PDF editing. "
 "(What You See Is What You Get.)"
 msgstr ""
+"Písmo, které vyberete v editoru (ve stejné velikosti) bude použito při "
+"generování PDF. Je to podobné jako WYSIWYG upravování PDF. (What You See Is "
+"What You Get - Výsledek bude takový, jak vidíte.)"
 
 #: ../help/C/gpdftext.xml:270(title)
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Často kladené otázky"
 
 #: ../help/C/gpdftext.xml:272(title)
 msgid "Creating text based PDF files for other uses"
-msgstr ""
+msgstr "Vytváření textových PDF pro další zpracování"
 
 #: ../help/C/gpdftext.xml:273(para)
 msgid ""
@@ -431,6 +455,9 @@ msgid ""
 "opened by <application>gPDFText</application>, depending on the kind of text "
 "content."
 msgstr ""
+"Vytváření textových souborů PDF v <application>gPDFText</application> může "
+"znamenat, že PDF otevřené v <application>gPDFText</application> nebude "
+"obsahovat textový obsah, to závisí na druhu textového obsahu."
 
 #: ../help/C/gpdftext.xml:277(para)
 msgid ""
@@ -439,15 +466,18 @@ msgid ""
 "code file or other a file with a similarly strict format), the original file "
 "should be reopened instead of extracting from the PDF."
 msgstr ""
+"Je-li obsah textu příběh nebo román, měli by jste nahlásit chybu. "
+"Je-li obsahem textu jiný druh textového formuláře (jako je zdrojový kód "
+"souboru či jiný formulář s podobně omezeným formátováním), musíte původní "
+"soubor znovu otevřít namísto extrahování z PDF."
 
 #: ../help/C/gpdftext.xml:283(para)
-#, fuzzy
 msgid ""
 "In particular, <application>gPDFText</application> is not able to extract "
 "text from PDF files that put text into tables or non-paragraph styles."
 msgstr ""
-"<application>gPDFText</application> vám umožňuje nahrát PDF soubor "
-"elektronické knihy a znovu se ponořit do příběhu."
+"Především, <application>gPDFText</application> neumí extrahovat text ze "
+"souborů PDF, které mají text v tabulkách nebo neobsahují odstavce."
 
 #: ../help/C/gpdftext.xml:288(title)
 msgid "Future additions"
@@ -621,7 +651,6 @@ msgstr ""
 #~ "TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER "
 #~ "UNDERSTANDING THAT: <placeholder-1/>"
 
-#, fuzzy
 #~ msgid "0.1.0"
 #~ msgstr "0.0.1"
 
