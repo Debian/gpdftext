@@ -1,3 +1,10 @@
+2010-01-09  Neil Williams  <linux@codehelp.co.uk>
+
+	patch by: Vincenzo Campanella <vinz65@gmail.com>
+
+	* Makefile.am: Add it
+	* it/it.po: Added Italian translation of the manual
+
 2009-12-04  Neil Williams  <linux@codehelp.co.uk>
 
 	* C/gpdftext.xml: Describe saving PDF support.
