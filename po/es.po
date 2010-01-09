@@ -1,22 +1,46 @@
-# translation of es.po to español for the gpdftext package
-# Copyright (C) 2009 The gpdftext authors
-# This file is distributed under the same license as the gpdftext package.
-# Pedro Ribeiro <p.m42.ribeiro@gmail.com>
+# gpdftext po translation to Spanish
+# Copyright (C) AÑOS Software in the Public Interest
+# This file is distributed under the same license as the PAQUETE package.
 #
-# Miriam Ruiz <miriam@debian.org>, 2009.
+# Changes:
+#   - Initial translation
+#       Pedro Ribeiro <p.m42.ribeiro@gmail.com>, 2009
+#
+#   - Updates
+#       Miriam Ruiz <miriam@debian.org>, 2009
+#	Omar Campagne <ocampagne@gmail.com>, 2009
+#
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+#       info -n '(gettext)PO Files'
+#       info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor, lean antes de traducir
+# los siguientes documentos:
+#
+#   - El proyecto de traducción de Debian al español
+#     http://www.debian.org/intl/spanish/
+#     especialmente las notas de traducción en
+#     http://www.debian.org/intl/spanish/notas
+#
+#   - La guía de traducción de po's de debconf:
+#     /usr/share/doc/po-debconf/README-trans
+#     o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: gpdftext/po/es.po 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
 "POT-Creation-Date: 2009-12-26 11:43+0000\n"
-"PO-Revision-Date: 2009-11-22 15:49+0100\n"
-"Last-Translator: Miriam Ruiz <miriam@debian.org>\n"
-"Language-Team: español <es@li.org>\n"
+"PO-Revision-Date: 2009-12-29 18:40+0100\n"
+"Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
+"Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #.
 #. * Translators should localize the following string
@@ -24,11 +48,11 @@ msgstr ""
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
 #: ../src/main.c:76
 msgid "translator-credits"
-msgstr "Miriam Ruiz <little_miry@yahoo.es>"
+msgstr "Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
 
 #: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"
-msgstr "Editor de PDFs para eBooks"
+msgstr "Editor de PDF de eBook"
 
 #: ../src/main.c:93
 msgid ""
@@ -52,27 +76,24 @@ msgid "GConf init failed: %s"
 msgstr "Error en la inicialización de GConf: %s"
 
 #: ../src/ebookui.c:322
-#, fuzzy
 msgid "Saving PDF file"
-msgstr "Guardando archivo de texto"
+msgstr "Guardando archivo PDF"
 
 #: ../src/ebookui.c:327
 msgid "Saving text file"
 msgstr "Guardando archivo de texto"
 
 #: ../src/ebookui.c:370
-#, fuzzy
 msgid "Save file as"
-msgstr "Archivo de texto guardado."
+msgstr "Guardar archivo como"
 
 #: ../src/ebookui.c:377
 msgid "All text files"
 msgstr "Todos los archivos de texto"
 
 #: ../src/ebookui.c:382
-#, fuzzy
 msgid "PDF files"
-msgstr "archivo"
+msgstr "Archivos PDF"
 
 #: ../src/ebookui.c:435
 msgid "new file"
@@ -80,14 +101,14 @@ msgstr "archivo nuevo"
 
 #: ../src/pdf.c:140
 msgid "Error: Pango iter index is zero."
-msgstr ""
+msgstr "Error: El índice de Pango iter es cero."
 
 #: ../src/pdf.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
-msgstr[0] "Archivo de texto guardado."
-msgstr[1] "Archivo de texto guardado."
+msgstr[0] "Archivo PDF guardado (%ld página)."
+msgstr[1] "Archivo PDF guardado (%ld páginas)."
 
 #: ../src/pdf.c:193
 msgid "Saved text file."
@@ -99,35 +120,33 @@ msgstr "Archivo de texto guardado."
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Se eliminó %ld carácter no perteneciente a UTF-8"
+msgstr[1] "Se eliminaron %ld caracteres no pertenecientes a UTF-8"
 
 #: ../src/pdf.c:392 ../src/pdf.c:600
 msgid "Done"
-msgstr "Hecho"
+msgstr "Finalizado"
 
 #: ../src/pdf.c:464
 msgid "Loading ebook:"
 msgstr "Cargando libro electrónico:"
 
 #: ../src/pdf.c:550
-#, fuzzy
 msgid "Open file"
-msgstr "archivo nuevo"
+msgstr "Abrir archivo"
 
 #: ../src/pdf.c:557
 msgid "All PDF Files (*.pdf)"
 msgstr "Todos los archivos PDF (*.pdf)"
 
 #: ../src/pdf.c:562
-#, fuzzy
 msgid "ASCII text files (*.txt)"
-msgstr "Todos los archivos de texto"
+msgstr "Archivos de texto ASCII (*.txt)"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
-msgstr "El Idioma '%s' de GConf no está en la lista de idiomas disponibles\n"
+msgstr "El idioma '%s' de GConf no está en la lista de idiomas disponibles\n"
 
 #. Context: Spell check dictionary
 #: ../src/spell.c:230
@@ -136,15 +155,15 @@ msgstr "Predefinido por el sistema"
 
 #: ../src/gpdftext.glade.h:1
 msgid "A_4 paper size (portrait)"
-msgstr "Tamaño A_4 (vertical)"
+msgstr "Formato de papel A_4 (vertical)"
 
 #: ../src/gpdftext.glade.h:2
 msgid "A_5 book size (portrait)"
-msgstr "Tamaño A_5 (vertical)"
+msgstr "Formato de libro A_5 (vertical)"
 
 #: ../src/gpdftext.glade.h:3
 msgid "Default paper size"
-msgstr "Tamaño predefinido de papel"
+msgstr "Formato predefinido de papel"
 
 #: ../src/gpdftext.glade.h:4
 msgid "Di_ctionary"
@@ -160,7 +179,7 @@ msgstr "_Unir palabras divididas por guión"
 
 #: ../src/gpdftext.glade.h:7
 msgid "Regular expression preferences"
-msgstr "Preferencias para las expresiones regulares"
+msgstr "Preferencias de expresiones regulares"
 
 #: ../src/gpdftext.glade.h:8
 msgid "Spell _check"
@@ -168,11 +187,11 @@ msgstr "_Comprobación ortográfica"
 
 #: ../src/gpdftext.glade.h:9
 msgid "_B5 book size (portrait)"
-msgstr "Tamaño _B5 (vertical)"
+msgstr "Formato de libro _B5 (vertical)"
 
 #: ../src/gpdftext.glade.h:10
 msgid "_Default font"
-msgstr "Tipo de letra pre_definido"
+msgstr "_Tipo de letra predefinido"
 
 #: ../src/gpdftext.glade.h:11
 msgid "_Edit"

@@ -13,8 +13,9 @@ gpdftext (0.1.0-1) unstable; urgency=low
     (Closes: #563511)
   * [INTL:es] Spanish user manual translation for gpdftext
     (Closes: #559434)
+  * [INTL:es] Spanish gui translation for gpdftext (Closes: #559433)
 
- -- Neil Williams <codehelp@debian.org>  Sat, 09 Jan 2010 00:07:02 +0000
+ -- Neil Williams <codehelp@debian.org>  Sat, 09 Jan 2010 00:08:50 +0000
 
 gpdftext (0.0.2-1) unstable; urgency=low
 
