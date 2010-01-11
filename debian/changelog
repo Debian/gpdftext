@@ -5,15 +5,12 @@ gpdftext (0.1.0-1) unstable; urgency=low
   * [INTL:es] Spanish user manual translation for gpdftext
     (Closes: #559434)
   * [INTL:ru] Russian program translation update (Closes: #562638)
-  * [INTL:ru] Russian manual translation update  (Closes: #562638)
+  * [INTL:ru] Russian manual translation update  (Closes: #562648)
   * [INTL:de] German program translation update  (Closes: #562818)
   * [INTL:pt] Updated Portuguese translation for help manual
     (Closes: #563169)
   * [l10n:cs] Updated Czech translation of gpdftext manual
     (Closes: #563511)
-  * [INTL:es] Spanish user manual translation for gpdftext
-    (Closes: #559434)
-  * [INTL:es] Spanish gui translation for gpdftext (Closes: #559433)
   * [INTL:de] Updated German manual translation (Closes: #564675)
 
  -- Neil Williams <codehelp@debian.org>  Mon, 11 Jan 2010 09:56:32 +0000
