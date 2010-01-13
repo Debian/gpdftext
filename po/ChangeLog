@@ -1,3 +1,8 @@
+2010-01-13  yjwork <lennyupdate@gmail.com>
+
+	* LINGUAS: Add zh_CN
+	* zh_CN.po: Add Chinese translation.
+
 2009-12-28  Neil Williams  <linux@codehelp.co.uk>
 
 	patch by: "Łukasz A. Grabowski" <www@lucas.net.pl>
