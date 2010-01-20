@@ -1,3 +1,8 @@
+2010-01-20  Neil Williams  <linux@codehelp.co.uk>
+
+	* NEWS: Update for 0.1.0 release.
+	* README:
+
 2009-12-26  Neil Williams  <linux@codehelp.co.uk>
 
 	* README: Add an idea about other input formats.

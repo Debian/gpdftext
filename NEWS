@@ -1,3 +1,13 @@
+gPDFText 0.1.0 "import/export"
+=============================
+
+	* Add import from text file and export to PDF
+	of the selected size.
+	* Use asynchronous writes for PDF and text.
+	* save PDF files as background task.
+	* adds dependencies on cairo and pango for PDF
+	creation.
+
 gPDFText 0.0.2 "undo/redo"
 ==========================
 

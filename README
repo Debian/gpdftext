@@ -10,9 +10,6 @@ GConf support
 RecentEntries
 	- recently opened PDF's
 
-Poppler
-	save as PDF? only seems to be save as PS support.
-
 Other formats
 	http://www.angelfire.com/ego2/idleloop/mbp_reader.html
 	http://www.fbreader.org/ http://freshmeat.net/projects/fbreader

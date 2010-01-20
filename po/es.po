@@ -8,7 +8,7 @@
 #
 #   - Updates
 #       Miriam Ruiz <miriam@debian.org>, 2009
-#	Omar Campagne <ocampagne@gmail.com>, 2009
+# 	Omar Campagne <ocampagne@gmail.com>, 2009
 #
 # Traductores, si no conocen el formato PO, merece la pena leer la
 # de gettext, especialmente las secciones dedicadas a este
@@ -32,14 +32,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext/po/es.po 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-12-26 11:43+0000\n"
+"POT-Creation-Date: 2010-01-20 19:53+0000\n"
 "PO-Revision-Date: 2009-12-29 18:40+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #.
@@ -48,7 +48,8 @@ msgstr ""
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
 #: ../src/main.c:76
 msgid "translator-credits"
-msgstr "Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
+msgstr ""
+"Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
 
 #: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
 msgid "eBook PDF editor"

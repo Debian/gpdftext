@@ -13,7 +13,7 @@ gpdftext (0.1.0-1) unstable; urgency=low
     (Closes: #563511)
   * [INTL:de] Updated German manual translation (Closes: #564675)
 
- -- Neil Williams <codehelp@debian.org>  Mon, 11 Jan 2010 09:56:32 +0000
+ -- Neil Williams <codehelp@debian.org>  Wed, 20 Jan 2010 19:53:39 +0000
 
 gpdftext (0.0.2-1) unstable; urgency=low
 

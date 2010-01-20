@@ -3,12 +3,11 @@
 #
 # Thomas Mueller <thomas.mueller@tmit.eu>, 2009.
 # Hilmar Ackermann, before 2009
-
 msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.0\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-12-26 11:43+0000\n"
+"POT-Creation-Date: 2010-01-20 19:53+0000\n"
 "PO-Revision-Date: 2009-12-27 13:04+0100\n"
 "Last-Translator: Thomas Mueller <thomas.mueller@tmit.eu>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -79,7 +78,8 @@ msgstr "Neue Datei"
 msgid "Error: Pango iter index is zero."
 msgstr "Fehler: Index eines Pango-Iterators ist Null."
 
-#: ../src/pdf.c:173, c-format
+#: ../src/pdf.c:173
+#, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
 msgstr[0] "PDF-Datei gespeichert. (%ld Seite)"
