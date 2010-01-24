@@ -5,15 +5,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gpdftext_0.0.1-1\n"
+"Project-Id-Version: gpdftext_0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
 "POT-Creation-Date: 2010-01-20 19:53+0000\n"
-"PO-Revision-Date: 2009-11-03 21:15+0000\n"
+"PO-Revision-Date: 2010-01-11 23:15+0000\n"
 "Last-Translator: Pedro Ribeiro<p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 
 #.
 #. * Translators should localize the following string
@@ -49,27 +50,24 @@ msgid "GConf init failed: %s"
 msgstr "Inicialização do GConf falhou: %s"
 
 #: ../src/ebookui.c:322
-#, fuzzy
 msgid "Saving PDF file"
-msgstr "A guardar ficheiro de texto"
+msgstr "A guardar ficheiro PDF"
 
 #: ../src/ebookui.c:327
 msgid "Saving text file"
 msgstr "A guardar ficheiro de texto"
 
 #: ../src/ebookui.c:370
-#, fuzzy
 msgid "Save file as"
-msgstr "Ficheiro de texto guardado."
+msgstr "Guardar ficheiro como"
 
 #: ../src/ebookui.c:377
 msgid "All text files"
 msgstr "Todos os ficheiros de texto"
 
 #: ../src/ebookui.c:382
-#, fuzzy
 msgid "PDF files"
-msgstr "ficheiro"
+msgstr "ficheiros PDF"
 
 #: ../src/ebookui.c:435
 msgid "new file"
@@ -77,14 +75,14 @@ msgstr "novo ficheiro"
 
 #: ../src/pdf.c:140
 msgid "Error: Pango iter index is zero."
-msgstr ""
+msgstr "Erro: Index de Pango iter é zero."
 
 #: ../src/pdf.c:173
-#, fuzzy, c-format
+#, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
-msgstr[0] "Ficheiro de texto guardado."
-msgstr[1] "Ficheiro de texto guardado."
+msgstr[0] "Ficheiro PDF guardado. (%ld página)"
+msgstr[1] "Ficheiro PDF guardado (%ld páginas)."
 
 #: ../src/pdf.c:193
 msgid "Saved text file."
@@ -96,8 +94,8 @@ msgstr "Ficheiro de texto guardado."
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%ld caractere não-UTF8 removido"
+msgstr[1] "%ld caracteres não-UTF8 removidos"
 
 #: ../src/pdf.c:392 ../src/pdf.c:600
 msgid "Done"
@@ -108,18 +106,16 @@ msgid "Loading ebook:"
 msgstr "A carregar ebook:"
 
 #: ../src/pdf.c:550
-#, fuzzy
 msgid "Open file"
-msgstr "novo ficheiro"
+msgstr "Abrir ficheiro"
 
 #: ../src/pdf.c:557
 msgid "All PDF Files (*.pdf)"
 msgstr "Todos os ficheiros PDF (*.pdf)"
 
 #: ../src/pdf.c:562
-#, fuzzy
 msgid "ASCII text files (*.txt)"
-msgstr "Todos os ficheiros de texto"
+msgstr "Ficheiros de texto ASCII (*.txt)"
 
 #: ../src/spell.c:84 ../src/spell.c:332
 #, c-format

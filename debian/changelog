@@ -1,3 +1,9 @@
+gpdftext (0.1.1-1) unstable; urgency=low
+
+  * [INTL:pt] Updated Portuguese program translation (Closes: #566701)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 24 Jan 2010 17:34:52 +0000
+
 gpdftext (0.1.0-1) unstable; urgency=low
 
   * New upstream version. (Closes: #559433)
