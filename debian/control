@@ -6,7 +6,7 @@ Build-Depends: cdbs, debhelper (>= 7), docbook-xsl, autotools-dev,
  intltool, gnome-doc-utils, libtool, libxml-parser-perl, rarian-compat,
  libcairo2-dev, libgconf2-dev, libglib2.0-dev, libgtk2.0-dev (>= 2.16.5),
  libgtkspell-dev, libpango1.0-dev, libpoppler-glib-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Homepage: http://sourceforge.net/apps/mediawiki/gpdftext/
 Vcs-Browser: http://gpdftext.svn.sourceforge.net/viewvc/gpdftext/trunk
 Vcs-Svn: https://gpdftext.svn.sourceforge.net/svnroot/gpdftext
