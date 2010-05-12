@@ -70,4 +70,16 @@ xmlns:admin="http://webns.net/mvcb/">
   </Version>
  </release>
 
+ <release>
+  <Version>
+   <revision>0.1.1</revision>
+   <branch>trunk</branch>
+   <name>i18n</name>
+   <created>2010-05-12</created>
+   <file-release rdf:resource="http://sourceforge.net/projects/gpdftext/files/gpdftext/0.1.1/gpdftext-0.1.1.tar.gz/download" />
+   <dc:description>Translation updates.
+   </dc:description>
+  </Version>
+ </release>
+
 </Project>

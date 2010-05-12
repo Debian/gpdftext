@@ -3,7 +3,7 @@ gpdftext (0.1.1-1) unstable; urgency=low
   * [INTL:pt] Updated Portuguese program translation (Closes: #566701)
   * [INTL:vi] Vietnamese program translation (Closes: #576125)
 
- -- Neil Williams <codehelp@debian.org>  Thu, 01 Apr 2010 07:54:31 +0100
+ -- Neil Williams <codehelp@debian.org>  Wed, 12 May 2010 11:29:25 +0100
 
 gpdftext (0.1.0-1) unstable; urgency=low
 
