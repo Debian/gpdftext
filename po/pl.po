@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-01-20 19:53+0000\n"
+"POT-Creation-Date: 2010-05-13 20:16+0100\n"
 "PO-Revision-Date: 2009-10-20 15:00+0100\n"
 "Last-Translator: Lukasz A. Grabowski <www@lucas.net.pl>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "£ukasz A. Grabowski <www@lucas.net.pl>"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "eBook - Edytor PDF"
 
@@ -117,13 +117,13 @@ msgstr "Wszystkie pliki PDF (*.pdf)"
 msgid "ASCII text files (*.txt)"
 msgstr "Pliki tekstowe ASCII"
 
-#: ../src/spell.c:84 ../src/spell.c:332
+#: ../src/spell.c:84 ../src/spell.c:336
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "Jêzyk '%s' z GConf nie istnieje na li¶cie dostêpnych jêzyków\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:230
+#: ../src/spell.c:234
 msgid "System default"
 msgstr "Domy¶lny systemowy"
 
@@ -136,61 +136,107 @@ msgid "A_5 book size (portrait)"
 msgstr "Format ksi±¿ki A5 (Portret)"
 
 #: ../src/gpdftext.glade.h:3
+msgid "About gpdftext"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:4
 msgid "Default paper size"
 msgstr "Domy¶lny rozmiar papieru"
 
-#: ../src/gpdftext.glade.h:4
+#: ../src/gpdftext.glade.h:5
 msgid "Di_ctionary"
 msgstr "S³_ownik"
 
-#: ../src/gpdftext.glade.h:5
+#: ../src/gpdftext.glade.h:6
+#, fuzzy
+msgid "New file"
+msgstr "nowy plik"
+
+#: ../src/gpdftext.glade.h:7
+#, fuzzy
+msgid "Open a file"
+msgstr "Otwórz plik"
+
+#: ../src/gpdftext.glade.h:8
 msgid "Page _number removal"
 msgstr "Usuñ stronê _numer"
 
-#: ../src/gpdftext.glade.h:6
+#: ../src/gpdftext.glade.h:9
+#, fuzzy
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: ../src/gpdftext.glade.h:10
+#, fuzzy
+msgid "Quit"
+msgstr "Wyj¶cie"
+
+#: ../src/gpdftext.glade.h:11
 msgid "Re_join hyphenated words"
 msgstr "Ponownie po³±cz rozdzie_lone s³owa"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:12
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
 msgstr "Ustawienia wyra¿eñ regularnych"
 
-#: ../src/gpdftext.glade.h:8
+#: ../src/gpdftext.glade.h:14
+#, fuzzy
+msgid "Save text as PDF"
+msgstr "Zapisz plik jako"
+
+#: ../src/gpdftext.glade.h:15
 msgid "Spell _check"
 msgstr "_Sprawdzanie pisowni"
 
-#: ../src/gpdftext.glade.h:9
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Spell checking"
+msgstr "_Sprawdzanie pisowni"
+
+#: ../src/gpdftext.glade.h:17
+msgid "Undo the last action"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
 msgstr "Format ksi±¿ki _B5 (Portret)"
 
-#: ../src/gpdftext.glade.h:10
+#: ../src/gpdftext.glade.h:19
 msgid "_Default font"
 msgstr "_Domy¶lna czcionka"
 
-#: ../src/gpdftext.glade.h:11
+#: ../src/gpdftext.glade.h:20
 msgid "_Edit"
 msgstr "_Edytuj"
 
-#: ../src/gpdftext.glade.h:12
+#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "_Plik"
 
-#: ../src/gpdftext.glade.h:13
+#: ../src/gpdftext.glade.h:22
 msgid "_Help"
 msgstr "Po_moc"
 
 #. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:15
+#: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "£±czenie _linii"
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:25
 msgid "_View"
 msgstr "Pd_gl±d"
 
-#: ../src/gpdftext.glade.h:18
+#: ../src/gpdftext.glade.h:27
 msgid "gPDFText preferences"
 msgstr "Preferencje gPDFText"
+
+#: ../src/gpdftext.glade.h:28
+msgid "gpdfext user manual"
+msgstr ""
 
 #: ../data/gpdftext.desktop.in.h:1
 msgid "Edit text from ebook PDF files"
@@ -221,14 +267,6 @@ msgstr "gPDFText Edytor ebook-ów"
 #, fuzzy
 #~ msgid "Open"
 #~ msgstr "_Otwórz"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Preferencje"
-
-#, fuzzy
-#~ msgid "Quit"
-#~ msgstr "Wyj¶cie"
 
 #, fuzzy
 #~ msgid "Save"

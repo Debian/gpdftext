@@ -32,7 +32,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext/po/es.po 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-01-20 19:53+0000\n"
+"POT-Creation-Date: 2010-05-13 20:16+0100\n"
 "PO-Revision-Date: 2009-12-29 18:40+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -51,7 +51,7 @@ msgid "translator-credits"
 msgstr ""
 "Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Editor de PDF de eBook"
 
@@ -144,13 +144,13 @@ msgstr "Todos los archivos PDF (*.pdf)"
 msgid "ASCII text files (*.txt)"
 msgstr "Archivos de texto ASCII (*.txt)"
 
-#: ../src/spell.c:84 ../src/spell.c:332
+#: ../src/spell.c:84 ../src/spell.c:336
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "El idioma '%s' de GConf no está en la lista de idiomas disponibles\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:230
+#: ../src/spell.c:234
 msgid "System default"
 msgstr "Predefinido por el sistema"
 
@@ -163,61 +163,106 @@ msgid "A_5 book size (portrait)"
 msgstr "Formato de libro A_5 (vertical)"
 
 #: ../src/gpdftext.glade.h:3
+msgid "About gpdftext"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:4
 msgid "Default paper size"
 msgstr "Formato predefinido de papel"
 
-#: ../src/gpdftext.glade.h:4
+#: ../src/gpdftext.glade.h:5
 msgid "Di_ctionary"
 msgstr "Di_ccionario"
 
-#: ../src/gpdftext.glade.h:5
+#: ../src/gpdftext.glade.h:6
+#, fuzzy
+msgid "New file"
+msgstr "archivo nuevo"
+
+#: ../src/gpdftext.glade.h:7
+#, fuzzy
+msgid "Open a file"
+msgstr "Abrir archivo"
+
+#: ../src/gpdftext.glade.h:8
 msgid "Page _number removal"
 msgstr "Eliminación de _número de página"
 
-#: ../src/gpdftext.glade.h:6
+#: ../src/gpdftext.glade.h:9
+#, fuzzy
+msgid "Preferences"
+msgstr "Preferencias de gPDFText"
+
+#: ../src/gpdftext.glade.h:10
+msgid "Quit"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:11
 msgid "Re_join hyphenated words"
 msgstr "_Unir palabras divididas por guión"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:12
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
 msgstr "Preferencias de expresiones regulares"
 
-#: ../src/gpdftext.glade.h:8
+#: ../src/gpdftext.glade.h:14
+#, fuzzy
+msgid "Save text as PDF"
+msgstr "Guardar archivo como"
+
+#: ../src/gpdftext.glade.h:15
 msgid "Spell _check"
 msgstr "_Comprobación ortográfica"
 
-#: ../src/gpdftext.glade.h:9
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Spell checking"
+msgstr "_Comprobación ortográfica"
+
+#: ../src/gpdftext.glade.h:17
+msgid "Undo the last action"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
 msgstr "Formato de libro _B5 (vertical)"
 
-#: ../src/gpdftext.glade.h:10
+#: ../src/gpdftext.glade.h:19
 msgid "_Default font"
 msgstr "_Tipo de letra predefinido"
 
-#: ../src/gpdftext.glade.h:11
+#: ../src/gpdftext.glade.h:20
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../src/gpdftext.glade.h:12
+#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../src/gpdftext.glade.h:13
+#: ../src/gpdftext.glade.h:22
 msgid "_Help"
 msgstr "A_yuda"
 
 #. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:15
+#: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "Unir _Líneas"
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:25
 msgid "_View"
 msgstr "_Ver"
 
-#: ../src/gpdftext.glade.h:18
+#: ../src/gpdftext.glade.h:27
 msgid "gPDFText preferences"
 msgstr "Preferencias de gPDFText"
+
+#: ../src/gpdftext.glade.h:28
+msgid "gpdfext user manual"
+msgstr ""
 
 #: ../data/gpdftext.desktop.in.h:1
 msgid "Edit text from ebook PDF files"

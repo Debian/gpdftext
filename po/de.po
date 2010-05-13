@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.0\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-01-20 19:53+0000\n"
+"POT-Creation-Date: 2010-05-13 20:16+0100\n"
 "PO-Revision-Date: 2009-12-27 13:04+0100\n"
 "Last-Translator: Thomas Mueller <thomas.mueller@tmit.eu>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Thomas Müller <thomas.mueller@tmit.eu>"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "eBook-PDF-Editor"
 
@@ -118,14 +118,14 @@ msgstr "Alle PDF-Dateien (*.pdf)"
 msgid "ASCII text files (*.txt)"
 msgstr "ASCII-Textdateien (*.txt)"
 
-#: ../src/spell.c:84 ../src/spell.c:332
+#: ../src/spell.c:84 ../src/spell.c:336
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr ""
 "Sprache »%s« von GConf ist nicht in der Liste der verfügbaren Sprachen\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:230
+#: ../src/spell.c:234
 msgid "System default"
 msgstr "Systemvorgabe"
 
@@ -138,61 +138,106 @@ msgid "A_5 book size (portrait)"
 msgstr "A_5-Buchformat (Porträt)"
 
 #: ../src/gpdftext.glade.h:3
+msgid "About gpdftext"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:4
 msgid "Default paper size"
 msgstr "Standard-Papierformat"
 
-#: ../src/gpdftext.glade.h:4
+#: ../src/gpdftext.glade.h:5
 msgid "Di_ctionary"
 msgstr "Le_xikon"
 
-#: ../src/gpdftext.glade.h:5
+#: ../src/gpdftext.glade.h:6
+#, fuzzy
+msgid "New file"
+msgstr "Neue Datei"
+
+#: ../src/gpdftext.glade.h:7
+#, fuzzy
+msgid "Open a file"
+msgstr "Datei öffnen"
+
+#: ../src/gpdftext.glade.h:8
 msgid "Page _number removal"
 msgstr "Sei_tennummern entfernen"
 
-#: ../src/gpdftext.glade.h:6
+#: ../src/gpdftext.glade.h:9
+#, fuzzy
+msgid "Preferences"
+msgstr "gPDFText-Einstellungen"
+
+#: ../src/gpdftext.glade.h:10
+msgid "Quit"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:11
 msgid "Re_join hyphenated words"
 msgstr "mit Bindestrich getrennte Wörter _vereinen"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:12
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
 msgstr "Einstellungen für reguläre Ausdrücke"
 
-#: ../src/gpdftext.glade.h:8
+#: ../src/gpdftext.glade.h:14
+#, fuzzy
+msgid "Save text as PDF"
+msgstr "Speichere Datei als"
+
+#: ../src/gpdftext.glade.h:15
 msgid "Spell _check"
 msgstr "Rechtschreib_prüfung"
 
-#: ../src/gpdftext.glade.h:9
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Spell checking"
+msgstr "Rechtschreib_prüfung"
+
+#: ../src/gpdftext.glade.h:17
+msgid "Undo the last action"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
 msgstr "_B5-Buchformat (Porträt)"
 
-#: ../src/gpdftext.glade.h:10
+#: ../src/gpdftext.glade.h:19
 msgid "_Default font"
 msgstr "_Standard-Schriftart"
 
-#: ../src/gpdftext.glade.h:11
+#: ../src/gpdftext.glade.h:20
 msgid "_Edit"
 msgstr "Bea_rbeiten"
 
-#: ../src/gpdftext.glade.h:12
+#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "_Datei"
 
-#: ../src/gpdftext.glade.h:13
+#: ../src/gpdftext.glade.h:22
 msgid "_Help"
 msgstr "_Hilfe"
 
 #. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:15
+#: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "Einzelne _Zeilen zusammenfügen"
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:25
 msgid "_View"
 msgstr "_Ansicht"
 
-#: ../src/gpdftext.glade.h:18
+#: ../src/gpdftext.glade.h:27
 msgid "gPDFText preferences"
 msgstr "gPDFText-Einstellungen"
+
+#: ../src/gpdftext.glade.h:28
+msgid "gpdfext user manual"
+msgstr ""
 
 #: ../data/gpdftext.desktop.in.h:1
 msgid "Edit text from ebook PDF files"

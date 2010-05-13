@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2009-12-26 11:43+0000\n"
+"POT-Creation-Date: 2010-05-13 20:16+0100\n"
 "PO-Revision-Date: 2010-04-01 15:09+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -24,15 +24,17 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Clytie Siddall <clytie@riverland.net.au>"
 
-#: ../src/main.c:89
-#: ../src/ebookui.c:436
-#: ../src/gpdftext.glade.h:17
+#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Trình chỉnh sửa ebook PDF"
 
 #: ../src/main.c:93
-msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
-msgstr "Chương trình gPDFText chuyển đổi nội dung ebook PDF sang văn bản ASCII, định dạng lại cho đoạn văn dòng dài."
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"Chương trình gPDFText chuyển đổi nội dung ebook PDF sang văn bản ASCII, định "
+"dạng lại cho đoạn văn dòng dài."
 
 #: ../src/main.c:100
 msgid "Homepage"
@@ -93,8 +95,7 @@ msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "%ld ký tự khác UTF-8 đã được gỡ bỏ"
 
-#: ../src/pdf.c:392
-#: ../src/pdf.c:600
+#: ../src/pdf.c:392 ../src/pdf.c:600
 msgid "Done"
 msgstr "Hoàn tất"
 
@@ -114,14 +115,14 @@ msgstr "Mọi tập tin PDF (*.pdf)"
 msgid "ASCII text files (*.txt)"
 msgstr "Tập tin nhập thô ASCII (*.txt)"
 
-#: ../src/spell.c:84
-#: ../src/spell.c:332
+#: ../src/spell.c:84 ../src/spell.c:336
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
-msgstr "Ngôn ngữ « %s » từ GConf không phải trong danh sách các ngôn ngữ sẵn sàng\n"
+msgstr ""
+"Ngôn ngữ « %s » từ GConf không phải trong danh sách các ngôn ngữ sẵn sàng\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:230
+#: ../src/spell.c:234
 msgid "System default"
 msgstr "Mặc định của hệ thống"
 
@@ -134,61 +135,106 @@ msgid "A_5 book size (portrait)"
 msgstr "Cỡ trang sách A_5 (thẳng đứng)"
 
 #: ../src/gpdftext.glade.h:3
+msgid "About gpdftext"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:4
 msgid "Default paper size"
 msgstr "Kích cỡ giấy mặc định"
 
-#: ../src/gpdftext.glade.h:4
+#: ../src/gpdftext.glade.h:5
 msgid "Di_ctionary"
 msgstr "_Từ điển"
 
-#: ../src/gpdftext.glade.h:5
+#: ../src/gpdftext.glade.h:6
+#, fuzzy
+msgid "New file"
+msgstr "tập tin mới"
+
+#: ../src/gpdftext.glade.h:7
+#, fuzzy
+msgid "Open a file"
+msgstr "Mở tập tin"
+
+#: ../src/gpdftext.glade.h:8
 msgid "Page _number removal"
 msgstr "Bỏ _số thứ tự trang"
 
-#: ../src/gpdftext.glade.h:6
+#: ../src/gpdftext.glade.h:9
+#, fuzzy
+msgid "Preferences"
+msgstr "Tùy thích gPDFText"
+
+#: ../src/gpdftext.glade.h:10
+msgid "Quit"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:11
 msgid "Re_join hyphenated words"
 msgstr "_Nối lại từ có dấu nối ở giữa"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:12
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
 msgstr "Tùy thích biểu thức chính quy"
 
-#: ../src/gpdftext.glade.h:8
+#: ../src/gpdftext.glade.h:14
+#, fuzzy
+msgid "Save text as PDF"
+msgstr "Lưu tập tin là"
+
+#: ../src/gpdftext.glade.h:15
 msgid "Spell _check"
 msgstr "Kiểm tra _chính tả"
 
-#: ../src/gpdftext.glade.h:9
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Spell checking"
+msgstr "Kiểm tra _chính tả"
+
+#: ../src/gpdftext.glade.h:17
+msgid "Undo the last action"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
 msgstr "Cỡ trang sách _B5 (thẳng đứng)"
 
-#: ../src/gpdftext.glade.h:10
+#: ../src/gpdftext.glade.h:19
 msgid "_Default font"
 msgstr "_Phông mặc định"
 
-#: ../src/gpdftext.glade.h:11
+#: ../src/gpdftext.glade.h:20
 msgid "_Edit"
 msgstr "_Sửa"
 
-#: ../src/gpdftext.glade.h:12
+#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "_Tập tin"
 
-#: ../src/gpdftext.glade.h:13
+#: ../src/gpdftext.glade.h:22
 msgid "_Help"
 msgstr "Trợ g_iúp"
 
 #. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:15
+#: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "_Làm đoạn văn"
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:25
 msgid "_View"
 msgstr "_Xem"
 
-#: ../src/gpdftext.glade.h:18
+#: ../src/gpdftext.glade.h:27
 msgid "gPDFText preferences"
 msgstr "Tùy thích gPDFText"
+
+#: ../src/gpdftext.glade.h:28
+msgid "gpdfext user manual"
+msgstr ""
 
 #: ../data/gpdftext.desktop.in.h:1
 msgid "Edit text from ebook PDF files"
@@ -197,4 +243,3 @@ msgstr "Sửa văn bản từ tập tin ebook PDF"
 #: ../data/gpdftext.desktop.in.h:2
 msgid "gPDFText ebook editor"
 msgstr "Trình chỉnh sửa ebook gPDFText"
-
