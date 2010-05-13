@@ -91,6 +91,7 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
+                <signal name="activate" handler="editmenuitem_activate_cb"/>
                 <child type="submenu">
                   <object class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
@@ -191,6 +192,7 @@
             <child>
               <object class="GtkToolButton" id="new_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">New file</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-new</property>
               </object>
@@ -202,6 +204,7 @@
             <child>
               <object class="GtkToolButton" id="open_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Open a file</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-open</property>
               </object>
@@ -213,6 +216,7 @@
             <child>
               <object class="GtkToolButton" id="save_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Save text as PDF</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-save</property>
               </object>
@@ -224,6 +228,7 @@
             <child>
               <object class="GtkToolButton" id="undo_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Undo the last action</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-undo</property>
               </object>
@@ -235,6 +240,7 @@
             <child>
               <object class="GtkToolButton" id="redo_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Redo the last undo</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-redo</property>
               </object>
@@ -246,6 +252,7 @@
             <child>
               <object class="GtkToolButton" id="pref_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Preferences</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-preferences</property>
               </object>
@@ -255,8 +262,21 @@
               </packing>
             </child>
             <child>
+              <object class="GtkToggleToolButton" id="spellcheckbutton">
+                <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Spell checking</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-spell-check</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkToolButton" id="about_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">About gpdftext</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-about</property>
               </object>
@@ -268,6 +288,7 @@
             <child>
               <object class="GtkToolButton" id="help_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">gpdfext user manual</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-help</property>
               </object>
@@ -279,6 +300,7 @@
             <child>
               <object class="GtkToolButton" id="quit_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Quit</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-quit</property>
               </object>

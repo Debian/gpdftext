@@ -1,3 +1,11 @@
+2010-05-13  Neil Williams  <linux@codehelp.co.uk>
+
+	* configure.ac: Bump for new version
+	* src/ebookui.c: Add a spellcheck toolbar button
+	* src/gpdftext.glade: Add tooltips to the rest of the
+	toolbar.
+	* src/spell.c: Signal support for toolbar button.
+
 2010-01-20  Neil Williams  <linux@codehelp.co.uk>
 
 	* NEWS: Update for 0.1.0 release.

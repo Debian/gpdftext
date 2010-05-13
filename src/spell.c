@@ -144,7 +144,7 @@ spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointe
 #ifdef HAVE_GTKSPELL
 	GConfValue *value;
 	GtkSpell *spell;
-	GtkWidget * dict, * spell_check;
+	GtkWidget * dict, * spell_check, * spell_button;
 	GtkTextView * text_view;
 	gboolean state;
 	gchar *lang;
@@ -159,6 +159,7 @@ spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointe
 
 	text_view = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
 	spell_check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
+	spell_button = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckbutton"));
 	spell = gtkspell_get_from_text_view (text_view);
 	lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
 
@@ -168,10 +169,13 @@ spellcheck_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointe
 			gtkspell_new_attach (text_view,
 						(lang == NULL || *lang == '\0') ? NULL : lang, NULL);
 	}
-	else
-		if (spell)
+	else {
+		if (spell) {
 			gtkspell_detach (spell);
+		}
+	}
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (spell_check), state);
+	gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON (spell_button), state);
 
 #endif /* HAVE_GTKSPELL */
 }
@@ -283,7 +287,7 @@ setup_languages (Ebook * ebook)
 	GtkTreeIter iter;
 	GtkListStore *language_store;
 	GtkComboBox * combo;
-	GtkWidget * pref_window;
+	GtkWidget * pref_window, * spellcheck;
 	GSList *list;
 	gchar *string;
 	GtkCellRenderer *renderer;
@@ -335,6 +339,8 @@ setup_languages (Ebook * ebook)
 
 	gtk_combo_box_set_active (combo, sel);
 	pref_window = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefdialog"));
+	spellcheck = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckbutton"));
+	gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON(spellcheck), sel);
 	g_signal_connect (G_OBJECT (combo), "changed",
 			G_CALLBACK (spellcheck_language_cb), ebook);
 	g_signal_connect (G_OBJECT (pref_window), "destroy",

@@ -600,11 +600,23 @@ help_cb (GtkWidget *menu, gpointer data)
 	g_app_info_launch_default_for_uri ("ghelp:" PACKAGE, NULL, NULL);
 }
 
+static void
+toggle_misspelled_words_cb (GtkWidget *w, gpointer data)
+{
+	GtkWidget * spell_button;
+	gboolean state;
+	Ebook *ebook = (Ebook *)data;
+
+	spell_button = GTK_WIDGET(gtk_builder_get_object (ebook->builder,"spellcheckbutton"));
+	state = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON(spell_button));
+	gconf_client_set_bool (ebook->client, ebook->spell_check.key, state, NULL);
+}
+
 GtkWidget*
 create_window (Ebook * ebook)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *pref_btn, *manualbtn, *langbox, * textview;
+	GtkWidget *pref_btn, *manualbtn, *langbox, * textview, * spellbutton;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkWidget *undobutton, *redobutton, *undomenu, *redomenu;
@@ -641,6 +653,7 @@ create_window (Ebook * ebook)
 	saveasmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "saveasmenuitem"));
 	manualmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "manualmenuitem"));
 	spellmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
+	spellbutton = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckbutton"));
 	prefmenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "prefmenuitem"));
 	langbox = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "langboxentry"));
 	textview = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
@@ -650,16 +663,18 @@ create_window (Ebook * ebook)
 	redomenu = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "redomenuitem"));
 #ifndef HAVE_GTKSPELL
 	gtk_widget_set_sensitive (spellmenu, FALSE);
+	gtk_widget_set_sensitive (spellbutton, FALSE);
 	gtk_widget_set_sensitive (langbox, FALSE);
 #else
 	gtk_text_buffer_set_modified (buffer, FALSE);
 	if (gconf_client_get_bool (ebook->client, ebook->spell_check.key, NULL))
 	{
-		const gchar *spell_lang;
+		const gchar *spell_lang = NULL;
 		spell_lang = gconf_client_get_string (ebook->client, ebook->language.key, NULL);
 		gtkspell_new_attach (GTK_TEXT_VIEW (textview), 
 			(spell_lang == NULL || *spell_lang == '\0') ? NULL : spell_lang, NULL);
 		gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM(spellmenu), TRUE);
+		gtk_toggle_tool_button_set_active (GTK_TOGGLE_TOOL_BUTTON(spellbutton), TRUE);
 	}
 	editor_update_font (ebook);
 
@@ -698,6 +713,8 @@ create_window (Ebook * ebook)
 			G_CALLBACK (undo_cb), ebook);
 	g_signal_connect (G_OBJECT (redomenu), "activate", 
 			G_CALLBACK (redo_cb), ebook);
+	g_signal_connect (G_OBJECT (spellbutton), "toggled",
+			G_CALLBACK (toggle_misspelled_words_cb), ebook);
 	g_signal_connect (G_OBJECT (window), "delete_event",
 			G_CALLBACK (destroy_event_cb), ebook);
 	g_signal_connect (G_OBJECT (aboutmenu), "activate",
