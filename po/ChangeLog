@@ -2,6 +2,13 @@
 
 	* zh_CN.po: Updated Chinese translation.
 
+2010-05-24  Neil Williams  <linux@codehelp.co.uk>
+
+	patch by: Yarema aka Knedlyk <yupadmin@gmail.com> 
+
+	* LINGUAS: add UK
+	* uk.po: Add Ukrainian translation.
+
 2010-04-01  Neil Williams  <linux@codehelp.co.uk>
 
 	patch by: Clytie Siddall <clytie@riverland.net.au>
