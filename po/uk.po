@@ -2,27 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
-
 "Project-Id-Version: gpdftext\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 04:08+0000\n"
+"Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
+"POT-Creation-Date: 2010-05-26 08:44+0000\n"
 "PO-Revision-Date: 2010-05-24 00:21+0100\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: UKRAINIAN <translate@linux.org.ua>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Ukrainian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: UKRAINE\n"
 "X-Generator: Pootle 1.1.0\n"
 
-#.
 #. * Translators should localize the following string
 #. * which will give them credit in the About box.
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
@@ -36,7 +34,7 @@ msgstr "Редактор eBook PDF"
 
 #: ../src/main.c:93
 msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
-msgstr "gPDFText конвертує вміст PDF файлів електронних крижое до ASCII тексту, переформатовуючи параграфи з довгими стрічками."
+msgstr "gPDFText конвертує вміст PDF файлів електронних крижок до ASCII тексту, переформатовуючи параграфи з довгими стрічками."
 
 #: ../src/main.c:100
 msgid "Homepage"
@@ -177,7 +175,7 @@ msgstr "С_получити підкреслені слова"
 
 #: ../src/gpdftext.glade.h:12
 msgid "Redo the last undo"
-msgstr "Вернути назад останню зміну"
+msgstr "Повторити останню зміну"
 
 #: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
@@ -197,7 +195,7 @@ msgstr "Перевірка орфографії"
 
 #: ../src/gpdftext.glade.h:17
 msgid "Undo the last action"
-msgstr "Повернути останню дію"
+msgstr "Скасувати останню дію"
 
 #: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
@@ -219,7 +217,9 @@ msgstr "_Файл"
 msgid "_Help"
 msgstr "_Допомога"
 
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#. "Lengthen lines" refers to the option to enable a regular expression that
+#. reformats a series of lines back into a single paragraph on a single long
+#. line.
 #: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "_Розширення стрічок"
