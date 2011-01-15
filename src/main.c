@@ -4,17 +4,18 @@
  * Copyright (C) Neil Williams 2009 <linux@codehelp.co.uk>
  * 
  * gpdftext is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
  * 
  * gpdftext is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
  */
 
 #include <sys/types.h>
@@ -101,17 +102,19 @@ about_show (void)
 	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
 	gtk_about_dialog_set_license (GTK_ABOUT_DIALOG (dialog),
 		" gpdftext is free software: you can redistribute it and/or modify it\n"
-		" under the terms of the GNU General Public License as published by the\n"
-		" Free Software Foundation, either version 3 of the License, or\n"
-		" (at your option) any later version.\n"
+		" under the terms of the GNU General Public License\n"
+		" version 2 as published by the Free Software Foundation.\n"
 		"\n"
 		" gpdftext is distributed in the hope that it will be useful, but\n"
 		" WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 		" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 		" See the GNU General Public License for more details.\n"
 		"\n"
-		" You should have received a copy of the GNU General Public License along\n"
-		" with this program.  If not, see <http://www.gnu.org/licenses/>.\n");
+		" You should have received a copy of the GNU General Public License\n"
+		" along with this program; if not, write to the Free Software\n"
+		" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,\n"
+		" MA 02110-1301, USA.\n"
+		);
 
 	g_object_add_weak_pointer (G_OBJECT (dialog), (void **)&dialog);
 	gtk_dialog_run (GTK_DIALOG(dialog));

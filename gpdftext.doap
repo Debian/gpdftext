@@ -82,4 +82,16 @@ xmlns:admin="http://webns.net/mvcb/">
   </Version>
  </release>
 
+ <release>
+  <Version>
+   <revision>0.1.2</revision>
+   <branch>trunk</branch>
+   <name>licence</name>
+   <created>2011-01-15</created>
+   <file-release rdf:resource="http://sourceforge.net/projects/gpdftext/files/gpdftext/0.1.2/gpdftext-0.1.2.tar.gz/download" />
+   <dc:description>Relicence under GPL-2 only
+   </dc:description>
+  </Version>
+ </release>
+
 </Project>
