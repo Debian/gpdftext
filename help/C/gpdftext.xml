@@ -332,11 +332,13 @@ http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 	SourceForge Trac tickets</ulink> (an SF login is required for Trac).
 	</para>
 	<para>
-	This program is distributed under the terms of the GNU General Public
-	license as published by the Free Software Foundation; either version 3 of the
-	License, or (at your option) any later version. A copy of this license can
-	be found at this <ulink url="ghelp:gpl" type="help">link</ulink>, or in the
-	file COPYING included with the source code of this program.
+	This program is free software: you can redistribute it and/or modify it
+	under the terms of the GNU General Public License
+	version 2 as published by the Free Software Foundation.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+	MA 02110-1301, USA.
 	</para>
 </sect1>
 </article>
