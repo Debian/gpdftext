@@ -2,82 +2,88 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-05-26 08:44+0000\n"
+"POT-Creation-Date: 2011-02-23 07:59+0000\n"
 "PO-Revision-Date: 2010-05-24 00:21+0100\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: UKRAINIAN <translate@linux.org.ua>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Ukrainian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: UKRAINE\n"
 "X-Generator: Pootle 1.1.0\n"
 
+#.
 #. * Translators should localize the following string
 #. * which will give them credit in the About box.
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
-#: ../src/main.c:76
+#: ../src/main.c:77
 msgid "translator-credits"
 msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Редактор eBook PDF"
 
-#: ../src/main.c:93
-msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
-msgstr "gPDFText конвертує вміст PDF файлів електронних крижок до ASCII тексту, переформатовуючи параграфи з довгими стрічками."
+#: ../src/main.c:94
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFText конвертує вміст PDF файлів електронних крижок до ASCII тексту, "
+"переформатовуючи параграфи з довгими стрічками."
 
-#: ../src/main.c:100
+#: ../src/main.c:101
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: ../src/main.c:136
+#: ../src/main.c:139
 msgid "file"
 msgstr "файл"
 
-#: ../src/main.c:160
+#: ../src/main.c:163
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Ініціалізація GConf не вдалася: %s"
 
-#: ../src/ebookui.c:322
+#: ../src/ebookui.c:323
 msgid "Saving PDF file"
 msgstr "Збереження PDF файлу"
 
-#: ../src/ebookui.c:327
+#: ../src/ebookui.c:328
 msgid "Saving text file"
 msgstr "Збереження текстового файлу"
 
-#: ../src/ebookui.c:370
+#: ../src/ebookui.c:371
 msgid "Save file as"
 msgstr "Зберегти файл як"
 
-#: ../src/ebookui.c:377
+#: ../src/ebookui.c:378
 msgid "All text files"
 msgstr "Всі текстові файли"
 
-#: ../src/ebookui.c:382
+#: ../src/ebookui.c:383
 msgid "PDF files"
 msgstr "PDF файли"
 
-#: ../src/ebookui.c:435
+#: ../src/ebookui.c:436
 msgid "new file"
 msgstr "новий файл"
 
-#: ../src/pdf.c:140
+#: ../src/pdf.c:141
 msgid "Error: Pango iter index is zero."
 msgstr "Помилка: Pango iter index є нулем."
 
-#: ../src/pdf.c:173
+#: ../src/pdf.c:174
 #, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
@@ -85,13 +91,13 @@ msgstr[0] "Збережений PDF файл (%ld сторінка)."
 msgstr[1] "Збережений PDF файл (%ld сторінок)."
 msgstr[2] "Збережений PDF файл (%ld сторінок)."
 
-#: ../src/pdf.c:193
+#: ../src/pdf.c:194
 msgid "Saved text file."
 msgstr "Збережений текстовий файл."
 
 #. Translators: Please try to keep this string brief,
 #. there often isn't a lot of room in the statusbar.
-#: ../src/pdf.c:383
+#: ../src/pdf.c:384
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
@@ -99,33 +105,33 @@ msgstr[0] "%ld не UTF-8 символів вилучено"
 msgstr[1] "%ld не UTF-8 символів вилучено"
 msgstr[2] "%ld не UTF-8 символів вилучено"
 
-#: ../src/pdf.c:392 ../src/pdf.c:600
+#: ../src/pdf.c:393 ../src/pdf.c:601
 msgid "Done"
 msgstr "Зроблено"
 
-#: ../src/pdf.c:464
+#: ../src/pdf.c:465
 msgid "Loading ebook:"
 msgstr "Завантажую електронну книжку:"
 
-#: ../src/pdf.c:550
+#: ../src/pdf.c:551
 msgid "Open file"
 msgstr "Відкрити файл"
 
-#: ../src/pdf.c:557
+#: ../src/pdf.c:558
 msgid "All PDF Files (*.pdf)"
 msgstr "Всі PDF файли (*.pdf)"
 
-#: ../src/pdf.c:562
+#: ../src/pdf.c:563
 msgid "ASCII text files (*.txt)"
 msgstr "ASCII текстові файли (*.txt)"
 
-#: ../src/spell.c:84 ../src/spell.c:336
+#: ../src/spell.c:85 ../src/spell.c:337
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "Мови '%s' з GConf немає в списку доступних мов\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:234
+#: ../src/spell.c:235
 msgid "System default"
 msgstr "Типова системи"
 
@@ -217,9 +223,7 @@ msgstr "_Файл"
 msgid "_Help"
 msgstr "_Допомога"
 
-#. "Lengthen lines" refers to the option to enable a regular expression that
-#. reformats a series of lines back into a single paragraph on a single long
-#. line.
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
 #: ../src/gpdftext.glade.h:24
 msgid "_Lengthen lines"
 msgstr "_Розширення стрічок"

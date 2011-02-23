@@ -32,30 +32,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext/po/es.po 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-05-13 20:16+0100\n"
+"POT-Creation-Date: 2011-02-23 07:59+0000\n"
 "PO-Revision-Date: 2009-12-29 18:40+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #.
 #. * Translators should localize the following string
 #. * which will give them credit in the About box.
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
-#: ../src/main.c:76
+#: ../src/main.c:77
 msgid "translator-credits"
 msgstr ""
 "Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Editor de PDF de eBook"
 
-#: ../src/main.c:93
+#: ../src/main.c:94
 msgid ""
 "gPDFText converts ebook PDF content into ASCII text, reformatted for long "
 "line paragraphs."
@@ -63,94 +63,94 @@ msgstr ""
 "gPDFText convierte el contenido de los archivos PDF en texto ASCII, "
 "reformateado para párrafos con líneas largas."
 
-#: ../src/main.c:100
+#: ../src/main.c:101
 msgid "Homepage"
 msgstr "Página Web"
 
-#: ../src/main.c:136
+#: ../src/main.c:139
 msgid "file"
 msgstr "archivo"
 
-#: ../src/main.c:160
+#: ../src/main.c:163
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Error en la inicialización de GConf: %s"
 
-#: ../src/ebookui.c:322
+#: ../src/ebookui.c:323
 msgid "Saving PDF file"
 msgstr "Guardando archivo PDF"
 
-#: ../src/ebookui.c:327
+#: ../src/ebookui.c:328
 msgid "Saving text file"
 msgstr "Guardando archivo de texto"
 
-#: ../src/ebookui.c:370
+#: ../src/ebookui.c:371
 msgid "Save file as"
 msgstr "Guardar archivo como"
 
-#: ../src/ebookui.c:377
+#: ../src/ebookui.c:378
 msgid "All text files"
 msgstr "Todos los archivos de texto"
 
-#: ../src/ebookui.c:382
+#: ../src/ebookui.c:383
 msgid "PDF files"
 msgstr "Archivos PDF"
 
-#: ../src/ebookui.c:435
+#: ../src/ebookui.c:436
 msgid "new file"
 msgstr "archivo nuevo"
 
-#: ../src/pdf.c:140
+#: ../src/pdf.c:141
 msgid "Error: Pango iter index is zero."
 msgstr "Error: El índice de Pango iter es cero."
 
-#: ../src/pdf.c:173
+#: ../src/pdf.c:174
 #, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
 msgstr[0] "Archivo PDF guardado (%ld página)."
 msgstr[1] "Archivo PDF guardado (%ld páginas)."
 
-#: ../src/pdf.c:193
+#: ../src/pdf.c:194
 msgid "Saved text file."
 msgstr "Archivo de texto guardado."
 
 #. Translators: Please try to keep this string brief,
 #. there often isn't a lot of room in the statusbar.
-#: ../src/pdf.c:383
+#: ../src/pdf.c:384
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "Se eliminó %ld carácter no perteneciente a UTF-8"
 msgstr[1] "Se eliminaron %ld caracteres no pertenecientes a UTF-8"
 
-#: ../src/pdf.c:392 ../src/pdf.c:600
+#: ../src/pdf.c:393 ../src/pdf.c:601
 msgid "Done"
 msgstr "Finalizado"
 
-#: ../src/pdf.c:464
+#: ../src/pdf.c:465
 msgid "Loading ebook:"
 msgstr "Cargando libro electrónico:"
 
-#: ../src/pdf.c:550
+#: ../src/pdf.c:551
 msgid "Open file"
 msgstr "Abrir archivo"
 
-#: ../src/pdf.c:557
+#: ../src/pdf.c:558
 msgid "All PDF Files (*.pdf)"
 msgstr "Todos los archivos PDF (*.pdf)"
 
-#: ../src/pdf.c:562
+#: ../src/pdf.c:563
 msgid "ASCII text files (*.txt)"
 msgstr "Archivos de texto ASCII (*.txt)"
 
-#: ../src/spell.c:84 ../src/spell.c:336
+#: ../src/spell.c:85 ../src/spell.c:337
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "El idioma '%s' de GConf no está en la lista de idiomas disponibles\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:234
+#: ../src/spell.c:235
 msgid "System default"
 msgstr "Predefinido por el sistema"
 

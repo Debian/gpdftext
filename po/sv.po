@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2010-05-13 20:16+0100\n"
+"POT-Creation-Date: 2011-02-23 07:59+0000\n"
 "PO-Revision-Date: 2009-11-17 00:32+0100\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,18 +20,18 @@ msgstr ""
 #. * Translators should localize the following string
 #. * which will give them credit in the About box.
 #. * E.g. "Fulano de Tal <fulano@detal.com>"
-#: ../src/main.c:76
+#: ../src/main.c:77
 msgid "translator-credits"
 msgstr ""
 "Martin Bagge <brother@bsnet.se>, 2009\n"
 "Kommentarer och förslag rörande översättningen kan skickas till\n"
 "tp-sv@listor.tp-sv.se"
 
-#: ../src/main.c:89 ../src/ebookui.c:436 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "ebok-redigerare"
 
-#: ../src/main.c:93
+#: ../src/main.c:94
 msgid ""
 "gPDFText converts ebook PDF content into ASCII text, reformatted for long "
 "line paragraphs."
@@ -38,99 +39,99 @@ msgstr ""
 "gPDFText konverterar eböcker i PDF-format till vanlig text, långa rader "
 "omformatteras till stycken."
 
-#: ../src/main.c:100
+#: ../src/main.c:101
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: ../src/main.c:136
+#: ../src/main.c:139
 msgid "file"
 msgstr "fil"
 
-#: ../src/main.c:160
+#: ../src/main.c:163
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GConf misslyckades vid uppstart: %s"
 
-#: ../src/ebookui.c:322
+#: ../src/ebookui.c:323
 #, fuzzy
 msgid "Saving PDF file"
 msgstr "Sparar textfil"
 
-#: ../src/ebookui.c:327
+#: ../src/ebookui.c:328
 msgid "Saving text file"
 msgstr "Sparar textfil"
 
-#: ../src/ebookui.c:370
+#: ../src/ebookui.c:371
 #, fuzzy
 msgid "Save file as"
 msgstr "Sparade textfil."
 
-#: ../src/ebookui.c:377
+#: ../src/ebookui.c:378
 msgid "All text files"
 msgstr "Alla textfiler"
 
-#: ../src/ebookui.c:382
+#: ../src/ebookui.c:383
 #, fuzzy
 msgid "PDF files"
 msgstr "fil"
 
-#: ../src/ebookui.c:435
+#: ../src/ebookui.c:436
 msgid "new file"
 msgstr "ny fil"
 
-#: ../src/pdf.c:140
+#: ../src/pdf.c:141
 msgid "Error: Pango iter index is zero."
 msgstr ""
 
-#: ../src/pdf.c:173
+#: ../src/pdf.c:174
 #, fuzzy, c-format
 msgid "Saved PDF file. (%ld page)"
 msgid_plural "Saved PDF file (%ld pages)."
 msgstr[0] "Sparade textfil."
 msgstr[1] "Sparade textfil."
 
-#: ../src/pdf.c:193
+#: ../src/pdf.c:194
 msgid "Saved text file."
 msgstr "Sparade textfil."
 
 #. Translators: Please try to keep this string brief,
 #. there often isn't a lot of room in the statusbar.
-#: ../src/pdf.c:383
+#: ../src/pdf.c:384
 #, c-format
 msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/pdf.c:392 ../src/pdf.c:600
+#: ../src/pdf.c:393 ../src/pdf.c:601
 msgid "Done"
 msgstr "Klar"
 
-#: ../src/pdf.c:464
+#: ../src/pdf.c:465
 msgid "Loading ebook:"
 msgstr "Laddar ebok:"
 
-#: ../src/pdf.c:550
+#: ../src/pdf.c:551
 #, fuzzy
 msgid "Open file"
 msgstr "ny fil"
 
-#: ../src/pdf.c:557
+#: ../src/pdf.c:558
 msgid "All PDF Files (*.pdf)"
 msgstr "Alla PDF-filer (*.pdf)"
 
-#: ../src/pdf.c:562
+#: ../src/pdf.c:563
 #, fuzzy
 msgid "ASCII text files (*.txt)"
 msgstr "Alla textfiler"
 
-#: ../src/spell.c:84 ../src/spell.c:336
+#: ../src/spell.c:85 ../src/spell.c:337
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "Språket \"%s\" från GConf finns inte i listan med tillgängliga språk\n"
 
 #. Context: Spell check dictionary
-#: ../src/spell.c:234
+#: ../src/spell.c:235
 msgid "System default"
 msgstr "Systemstandard"
 

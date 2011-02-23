@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT(gpdftext, 0.1.3, http://sourceforge.net/projects/gpdftext/)
+AC_INIT(gpdftext, 0.1.4, http://sourceforge.net/projects/gpdftext/)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
