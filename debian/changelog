@@ -3,8 +3,10 @@ gpdftext (0.1.4-1) unstable; urgency=low
   * New upstream release.
   * [INTL:ru] Russian program translation update.
     (Closes: #614747)
+  * [INTL:es] Updated Spanish translation for gpdftext
+    (Closes: #619471)
 
- -- Neil Williams <codehelp@debian.org>  Wed, 23 Feb 2011 08:02:01 +0000
+ -- Neil Williams <codehelp@debian.org>  Thu, 24 Mar 2011 10:30:14 +0000
 
 gpdftext (0.1.3-1) unstable; urgency=low
 

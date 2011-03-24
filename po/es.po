@@ -1,39 +1,32 @@
 # gpdftext po translation to Spanish
-# Copyright (C) AÑOS Software in the Public Interest
-# This file is distributed under the same license as the PAQUETE package.
-#
+# Copyright (C) 2009 - 2011 Software in the Public Interest
+# This file is distributed under the same license as the gpdftext package.
 # Changes:
-#   - Initial translation
-#       Pedro Ribeiro <p.m42.ribeiro@gmail.com>, 2009
-#
-#   - Updates
-#       Miriam Ruiz <miriam@debian.org>, 2009
-# 	Omar Campagne <ocampagne@gmail.com>, 2009
-#
+# - Initial translation
+# Pedro Ribeiro <p.m42.ribeiro@gmail.com>, 2009
+# - Updates
+# Miriam Ruiz <miriam@debian.org>, 2009
+# Omar Campagne <ocampagne@gmail.com>, 2009, 2011
 # Traductores, si no conocen el formato PO, merece la pena leer la
-# de gettext, especialmente las secciones dedicadas a este
+# documentación de gettext, especialmente las secciones dedicadas a este
 # formato, por ejemplo ejecutando:
-#       info -n '(gettext)PO Files'
-#       info -n '(gettext)Header Entry'
-#
-# Equipo de traducción al español, por favor, lean antes de traducir
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Equipo de traducción al español, por favor lean antes de traducir
 # los siguientes documentos:
-#
-#   - El proyecto de traducción de Debian al español
-#     http://www.debian.org/intl/spanish/
-#     especialmente las notas de traducción en
-#     http://www.debian.org/intl/spanish/notas
-#
-#   - La guía de traducción de po's de debconf:
-#     /usr/share/doc/po-debconf/README-trans
-#     o http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
+# - El proyecto de traducción de Debian al español
+# http://www.debian.org/intl/spanish/
+# especialmente las notas y normas de traducción en
+# http://www.debian.org/intl/spanish/notas
+# - La guía de traducción de po's de debconf:
+# /usr/share/doc/po-debconf/README-trans
+# o http://www.debian.org/intl/l10n/po-debconf/README-trans
 msgid ""
 msgstr ""
-"Project-Id-Version: gpdftext/po/es.po 0.1.0-1\n"
+"Project-Id-Version: gpdftext 0.1.3-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
-"PO-Revision-Date: 2009-12-29 18:40+0100\n"
+"POT-Creation-Date: 2011-03-24 10:29+0000\n"
+"PO-Revision-Date: 2011-03-15 19:51+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
 "Language: es\n"
@@ -41,6 +34,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0-beta4\n"
+"X-Project-Style: default\n"
 
 #.
 #. * Translators should localize the following string
@@ -53,7 +48,7 @@ msgstr ""
 
 #: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
-msgstr "Editor de PDF de eBook"
+msgstr "Editor PDF de eBook"
 
 #: ../src/main.c:94
 msgid ""
@@ -61,11 +56,11 @@ msgid ""
 "line paragraphs."
 msgstr ""
 "gPDFText convierte el contenido de los archivos PDF en texto ASCII, "
-"reformateado para párrafos con líneas largas."
+"reformateado en los párrafos con líneas largas."
 
 #: ../src/main.c:101
 msgid "Homepage"
-msgstr "Página Web"
+msgstr "Página web"
 
 #: ../src/main.c:139
 msgid "file"
@@ -100,9 +95,11 @@ msgstr "Archivos PDF"
 msgid "new file"
 msgstr "archivo nuevo"
 
+# Para más información:
+# http://www.pygtk.org/docs/pygtk/class-pangolayoutiter.html
 #: ../src/pdf.c:141
 msgid "Error: Pango iter index is zero."
-msgstr "Error: El índice de Pango iter es cero."
+msgstr "Error: El índice de iteración de Pango es cero"
 
 #: ../src/pdf.c:174
 #, c-format
@@ -164,7 +161,7 @@ msgstr "Formato de libro A_5 (vertical)"
 
 #: ../src/gpdftext.glade.h:3
 msgid "About gpdftext"
-msgstr ""
+msgstr "Acerca de gpdftext"
 
 #: ../src/gpdftext.glade.h:4
 msgid "Default paper size"
@@ -175,12 +172,10 @@ msgid "Di_ctionary"
 msgstr "Di_ccionario"
 
 #: ../src/gpdftext.glade.h:6
-#, fuzzy
 msgid "New file"
-msgstr "archivo nuevo"
+msgstr "Archivo nuevo"
 
 #: ../src/gpdftext.glade.h:7
-#, fuzzy
 msgid "Open a file"
 msgstr "Abrir archivo"
 
@@ -189,13 +184,12 @@ msgid "Page _number removal"
 msgstr "Eliminación de _número de página"
 
 #: ../src/gpdftext.glade.h:9
-#, fuzzy
 msgid "Preferences"
-msgstr "Preferencias de gPDFText"
+msgstr "Preferencias"
 
 #: ../src/gpdftext.glade.h:10
 msgid "Quit"
-msgstr ""
+msgstr "Cerrar"
 
 #: ../src/gpdftext.glade.h:11
 msgid "Re_join hyphenated words"
@@ -203,29 +197,27 @@ msgstr "_Unir palabras divididas por guión"
 
 #: ../src/gpdftext.glade.h:12
 msgid "Redo the last undo"
-msgstr ""
+msgstr "Rehacer el último cambio desechado"
 
 #: ../src/gpdftext.glade.h:13
 msgid "Regular expression preferences"
 msgstr "Preferencias de expresiones regulares"
 
 #: ../src/gpdftext.glade.h:14
-#, fuzzy
 msgid "Save text as PDF"
-msgstr "Guardar archivo como"
+msgstr "Guardar texto como PDF"
 
 #: ../src/gpdftext.glade.h:15
 msgid "Spell _check"
-msgstr "_Comprobación ortográfica"
+msgstr "_Corrección ortográfica"
 
 #: ../src/gpdftext.glade.h:16
-#, fuzzy
 msgid "Spell checking"
-msgstr "_Comprobación ortográfica"
+msgstr "Corrección ortográfica"
 
 #: ../src/gpdftext.glade.h:17
 msgid "Undo the last action"
-msgstr ""
+msgstr "Deshacer la última acción"
 
 #: ../src/gpdftext.glade.h:18
 msgid "_B5 book size (portrait)"
@@ -262,7 +254,7 @@ msgstr "Preferencias de gPDFText"
 
 #: ../src/gpdftext.glade.h:28
 msgid "gpdfext user manual"
-msgstr ""
+msgstr "Manual de usuario de gpdftext"
 
 #: ../data/gpdftext.desktop.in.h:1
 msgid "Edit text from ebook PDF files"
