@@ -126,7 +126,6 @@ int
 main (int argc, char *argv[])
 {
 	GError * error;
-	GFile * gfile;
 	gint num_args;
 	GtkWidget *window;
 	gchar **remaining_args;
@@ -147,7 +146,6 @@ main (int argc, char *argv[])
 #endif
 
 	remaining_args = NULL;
-	gfile = NULL;
 	num_args = 0;
 	error = NULL;
 	g_type_init ();

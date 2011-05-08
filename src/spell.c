@@ -96,7 +96,7 @@ spell_language_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpo
 	GtkSpell *spell;
 	const gchar *gconf_lang;
 	gchar *lang;
-	GtkWidget * window, * spell_check;
+	GtkWidget * window, * G_GNUC_UNUSED spell_check;
 	GtkTextView * text_view;
 	gboolean spellcheck_wanted;
 

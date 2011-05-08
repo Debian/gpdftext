@@ -299,19 +299,16 @@ save_file (Ebook * ebook)
 {
 	GtkProgressBar * progressbar;
 	GtkStatusbar * statusbar;
-	GtkTextView * textview;
 	GtkTextBuffer * buffer;
 	GtkTextIter start, end;
 	GtkWindow * window;
-	gchar * text, * msg;
-	GError * err;
+	gchar * G_GNUC_UNUSED text, * msg;
 	guint id;
 
 	if (!ebook->builder)
 		return;
 	if (!ebook->filename)
 		return;
-	err = NULL;
 	window = GTK_WINDOW(gtk_builder_get_object (ebook->builder, "gpdfwindow"));
 	progressbar = GTK_PROGRESS_BAR(gtk_builder_get_object (ebook->builder, "progressbar"));
 	buffer = GTK_TEXT_BUFFER(gtk_builder_get_object (ebook->builder, "textbuffer1"));
@@ -326,7 +323,6 @@ save_file (Ebook * ebook)
 	else
 	{
 		gtk_statusbar_push (statusbar, id, _("Saving text file"));
-		textview = GTK_TEXT_VIEW(gtk_builder_get_object (ebook->builder, "textview"));
 		gtk_text_buffer_get_bounds (buffer, &start, &end);
 		text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
 		buffer_to_txt (ebook);
@@ -524,7 +520,7 @@ pref_cb (GtkWidget *menu, gpointer data)
 {
 	static GtkWidget *dialog;
 	GtkWidget * window, * a5, *b5, *a4, * pages, * lines, *hyphens;
-	GtkWidget * fontbut, * buffer;
+	GtkWidget * fontbut;
 	GdkPixbuf *logo;
 	gchar * path, * page_size;
 	gboolean state;
@@ -550,7 +546,6 @@ pref_cb (GtkWidget *menu, gpointer data)
 	lines = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "linecheckbutton"));
 	hyphens = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "hyphencheckbutton"));
 	fontbut = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "fontbutton"));
-	buffer = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "texview"));
 	gtk_window_set_icon (GTK_WINDOW(dialog), logo);
 	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 	/* set the widgets from the gconf data */
@@ -617,7 +612,7 @@ GtkWidget*
 create_window (Ebook * ebook)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *pref_btn, *manualbtn, *langbox, * textview, * spellbutton;
+	GtkWidget *pref_btn, *manualbtn, * G_GNUC_UNUSED langbox, * textview, * spellbutton;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkWidget *undobutton, *redobutton, *undomenu, *redomenu;
@@ -750,14 +745,8 @@ create_window (Ebook * ebook)
 static void
 font_changed_cb (GConfClient *client, guint id, GConfEntry *entry, gpointer data)
 {
-	GConfValue *value;
-	const gchar *string;
-	GtkWidget * editor;
 	Ebook *ebook = (Ebook *) data;
 
-	value = gconf_entry_get_value (entry);
-	string = gconf_value_get_string (value);
-	editor = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "textview"));
 	editor_update_font (ebook);
 }
 
