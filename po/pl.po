@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2009-10-20 15:00+0100\n"
 "Last-Translator: Lukasz A. Grabowski <www@lucas.net.pl>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "£ukasz A. Grabowski <www@lucas.net.pl>"
 
-#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "eBook - Edytor PDF"
 
@@ -41,36 +41,36 @@ msgstr ""
 msgid "Homepage"
 msgstr "Strona domowa"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "plik"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "B³±d inicjalizacji GConf: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 msgid "Saving PDF file"
 msgstr "Zapisywanie pliku PDF"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "Zapisywanie pliku tekstowego"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 msgid "Save file as"
 msgstr "Zapisz plik jako"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "Wszystkie pliki tekstowe"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 msgid "PDF files"
 msgstr "pliki PDF"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "nowy plik"
 
@@ -98,23 +98,23 @@ msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "%ld znak nie nie kodowany w UTF-8 zosta³ usuniêty"
 msgstr[1] "%ld znaków nie kodowanych w UTF-8 zosta³o usuniêtych"
 
-#: ../src/pdf.c:393 ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "Zrobione"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "£adowanie ebooka:"
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 msgid "Open file"
 msgstr "Otwórz plik"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "Wszystkie pliki PDF (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 msgid "ASCII text files (*.txt)"
 msgstr "Pliki tekstowe ASCII"
 

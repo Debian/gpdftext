@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.1-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2009-11-04 18:40+0100\n"
 "Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Michal Šimůnek <michal.simunek@gmail.com>"
 
-#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Editor elektronických knih PDF"
 
@@ -41,39 +41,39 @@ msgstr ""
 msgid "Homepage"
 msgstr "Domovská stránka"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "soubor"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Selhala inicializace GConf: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 #, fuzzy
 msgid "Saving PDF file"
 msgstr "Ukládání textového souboru"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "Ukládání textového souboru"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 #, fuzzy
 msgid "Save file as"
 msgstr "Textový soubor uložen"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "Všechny textové soubory"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 #, fuzzy
 msgid "PDF files"
 msgstr "soubor"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "nový soubor"
 
@@ -101,24 +101,24 @@ msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/pdf.c:393 ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "Proveď"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "Nahrávání elektronické knihy:"
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 #, fuzzy
 msgid "Open file"
 msgstr "nový soubor"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "Všechny PDF soubory (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 #, fuzzy
 msgid "ASCII text files (*.txt)"
 msgstr "Všechny textové soubory"

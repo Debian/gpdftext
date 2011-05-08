@@ -25,7 +25,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.3-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-03-24 10:29+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2011-03-15 19:51+0100\n"
 "Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -46,7 +46,7 @@ msgid "translator-credits"
 msgstr ""
 "Miriam Ruiz <little_miry@yahoo.es>, Omar Campagne <ocampagne@gmail.com>"
 
-#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Editor PDF de eBook"
 
@@ -62,36 +62,36 @@ msgstr ""
 msgid "Homepage"
 msgstr "Página web"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "archivo"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Error en la inicialización de GConf: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 msgid "Saving PDF file"
 msgstr "Guardando archivo PDF"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "Guardando archivo de texto"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 msgid "Save file as"
 msgstr "Guardar archivo como"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "Todos los archivos de texto"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 msgid "PDF files"
 msgstr "Archivos PDF"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "archivo nuevo"
 
@@ -121,23 +121,23 @@ msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "Se eliminó %ld carácter no perteneciente a UTF-8"
 msgstr[1] "Se eliminaron %ld caracteres no pertenecientes a UTF-8"
 
-#: ../src/pdf.c:393 ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "Finalizado"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "Cargando libro electrónico:"
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 msgid "Open file"
 msgstr "Abrir archivo"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "Todos los archivos PDF (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 msgid "ASCII text files (*.txt)"
 msgstr "Archivos de texto ASCII (*.txt)"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2010-04-01 15:09+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Clytie Siddall <clytie@riverland.net.au>"
 
-#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Trình chỉnh sửa ebook PDF"
 
@@ -41,36 +41,36 @@ msgstr ""
 msgid "Homepage"
 msgstr "Trang chủ"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "tập tin"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Lỗi sơ khởi GConf: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 msgid "Saving PDF file"
 msgstr "Đang lưu tập tin PDF"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "Đang lưu tập tin văn bản"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 msgid "Save file as"
 msgstr "Lưu tập tin là"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "Mọi tập tin văn bản"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 msgid "PDF files"
 msgstr "Tập tin PDF"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "tập tin mới"
 
@@ -96,23 +96,23 @@ msgid "%ld non-UTF8 character was removed"
 msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "%ld ký tự khác UTF-8 đã được gỡ bỏ"
 
-#: ../src/pdf.c:393 ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "Hoàn tất"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "Đang nạp ebook:"
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 msgid "Open file"
 msgstr "Mở tập tin"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "Mọi tập tin PDF (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 msgid "ASCII text files (*.txt)"
 msgstr "Tập tin nhập thô ASCII (*.txt)"
 

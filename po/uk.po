@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2010-05-24 00:21+0100\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: UKRAINIAN <translate@linux.org.ua>\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 
-#: ../src/main.c:90 ../src/ebookui.c:437 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "Редактор eBook PDF"
 
@@ -46,36 +46,36 @@ msgstr ""
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "файл"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Ініціалізація GConf не вдалася: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 msgid "Saving PDF file"
 msgstr "Збереження PDF файлу"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "Збереження текстового файлу"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 msgid "Save file as"
 msgstr "Зберегти файл як"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "Всі текстові файли"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 msgid "PDF files"
 msgstr "PDF файли"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "новий файл"
 
@@ -105,23 +105,23 @@ msgstr[0] "%ld не UTF-8 символів вилучено"
 msgstr[1] "%ld не UTF-8 символів вилучено"
 msgstr[2] "%ld не UTF-8 символів вилучено"
 
-#: ../src/pdf.c:393 ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "Зроблено"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "Завантажую електронну книжку:"
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 msgid "Open file"
 msgstr "Відкрити файл"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "Всі PDF файли (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 msgid "ASCII text files (*.txt)"
 msgstr "ASCII текстові файли (*.txt)"
 

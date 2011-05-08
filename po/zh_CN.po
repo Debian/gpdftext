@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-02-23 07:59+0000\n"
+"POT-Creation-Date: 2011-05-08 17:42+0100\n"
 "PO-Revision-Date: 2011-04-06 19:04+0800\n"
 "Last-Translator: 微尘 <squeeze@189.cn>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -26,50 +26,52 @@ msgstr ""
 msgid "translator-credits"
 msgstr "微尘 <squeeze@189.cn>"
 
-#: ../src/main.c:90
-#: ../src/ebookui.c:437
-#: ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
 msgid "eBook PDF editor"
 msgstr "PDF 电子书编辑"
 
 #: ../src/main.c:94
-msgid "gPDFText converts ebook PDF content into ASCII text, reformatted for long line paragraphs."
-msgstr "gPDFTex t是一个 GTK 的 PDF 电子书阅读器，它将其转换成普通的 ASCII 文本的文本内容，恢复原有的段落，并删除不需要的换行符"
+msgid ""
+"gPDFText converts ebook PDF content into ASCII text, reformatted for long "
+"line paragraphs."
+msgstr ""
+"gPDFTex t是一个 GTK 的 PDF 电子书阅读器，它将其转换成普通的 ASCII 文本的文本"
+"内容，恢复原有的段落，并删除不需要的换行符"
 
 #: ../src/main.c:101
 msgid "Homepage"
 msgstr "主页"
 
-#: ../src/main.c:139
+#: ../src/main.c:138
 msgid "file"
 msgstr "文件"
 
-#: ../src/main.c:163
+#: ../src/main.c:161
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GCconf 初始化失败: %s"
 
-#: ../src/ebookui.c:323
+#: ../src/ebookui.c:320
 msgid "Saving PDF file"
 msgstr "正在保存 PDF 文件"
 
-#: ../src/ebookui.c:328
+#: ../src/ebookui.c:325
 msgid "Saving text file"
 msgstr "正在保存文本文件"
 
-#: ../src/ebookui.c:371
+#: ../src/ebookui.c:367
 msgid "Save file as"
 msgstr "保存文件为"
 
-#: ../src/ebookui.c:378
+#: ../src/ebookui.c:374
 msgid "All text files"
 msgstr "所有文本文件"
 
-#: ../src/ebookui.c:383
+#: ../src/ebookui.c:379
 msgid "PDF files"
 msgstr "PDF 文件"
 
-#: ../src/ebookui.c:436
+#: ../src/ebookui.c:432
 msgid "new file"
 msgstr "新文件"
 
@@ -97,29 +99,27 @@ msgid_plural "%ld non-UTF-8 characters were removed"
 msgstr[0] "%ld 个非 UTF8 字符被移除"
 msgstr[1] "%ld 个非 UTF8 字符被移除"
 
-#: ../src/pdf.c:393
-#: ../src/pdf.c:601
+#: ../src/pdf.c:393 ../src/pdf.c:602
 msgid "Done"
 msgstr "完成"
 
-#: ../src/pdf.c:465
+#: ../src/pdf.c:469
 msgid "Loading ebook:"
 msgstr "正在导入电子书："
 
-#: ../src/pdf.c:551
+#: ../src/pdf.c:552
 msgid "Open file"
 msgstr "打开文件"
 
-#: ../src/pdf.c:558
+#: ../src/pdf.c:559
 msgid "All PDF Files (*.pdf)"
 msgstr "所有 PDF 文件 (*.pdf)"
 
-#: ../src/pdf.c:563
+#: ../src/pdf.c:564
 msgid "ASCII text files (*.txt)"
 msgstr "ASCII 文本文件 (*.txt)"
 
-#: ../src/spell.c:85
-#: ../src/spell.c:337
+#: ../src/spell.c:85 ../src/spell.c:337
 #, c-format
 msgid "Language '%s' from GConf isn't in the list of available languages\n"
 msgstr "GConf 语言 '%s' 不在可用语言列表内\n"
@@ -244,6 +244,6 @@ msgstr "gPDFText 电子书编辑"
 
 #~ msgid "Save as text file"
 #~ msgstr "另存为文本文件"
+
 #~ msgid "Open ebook (PDF)"
 #~ msgstr "打开电子书(PDF格式)"
-
