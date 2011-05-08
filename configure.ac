@@ -83,7 +83,10 @@ if test "$with_gtkspell" = "yes"; then
   fi
 fi
 
-PKG_CHECK_MODULES(GPDFTEXT, $MODULES) 
+PKG_CHECK_MODULES(GPDFTEXT, $MODULES)
+PKG_CHECK_MODULES(POPPLER_0_14_1, poppler-glib >= 0.14.1,
+	AC_DEFINE([HAVE_POPPLER_0_14_1],1,[Define if poppler-glib is >= 0.14.1]),
+	AC_DEFINE([HAVE_POPPLER_0_12],1,[Define if poppler-glib is < 0.14]))
 AC_SUBST(GPDFTEXT_CFLAGS)
 AC_SUBST(GPDFTEXT_LIBS)
 

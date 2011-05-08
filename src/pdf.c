@@ -407,7 +407,11 @@ load_pdf (gpointer data)
 	poppler_page_get_size (PDFPage, &width, &height);
 	queue->rect->x2 = width;
 	queue->rect->y2 = height;
-	page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);
+#ifdef HAVE_POPPLER_1_4_1
+	page = poppler_page_get_selected_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);
+#else
+    page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);
+#endif
 	set_text (queue->ebook, page, queue->lines, queue->pagenums, queue->hyphens);
 	g_free (page);
 	queue->c++;
@@ -428,7 +432,7 @@ open_file (Ebook * ebook, const gchar * filename)
 	GtkWidget * window;
 	PopplerRectangle * rect;
 	GError * err;
-	gint pages;
+	gint G_GNUC_UNUSED pages;
 	gchar * uri, * msg;
 	GVfs * vfs;
 	GFileInfo * ginfo;
@@ -492,13 +496,12 @@ open_file (Ebook * ebook, const gchar * filename)
 	{
 #ifdef HAVE_GTKSPELL
 		GtkSpell *spell;
-		gchar *lang;
+		gchar * G_GNUC_UNUSED lang;
 #endif
-		GtkWidget * spell_check;
+		GtkWidget * G_GNUC_UNUSED spell_check;
 		GtkTextView * text_view;
 		GtkTextBuffer * buffer;
 		gboolean state;
-		gdouble fraction, step;
 		static Equeue queue;
 
 		spell_check = GTK_WIDGET(gtk_builder_get_object (ebook->builder, "spellcheckmenuitem"));
@@ -513,8 +516,6 @@ open_file (Ebook * ebook, const gchar * filename)
 			gtkspell_detach (spell);
 #endif
 		pages = poppler_document_get_n_pages (ebook->PDFDoc);
-		fraction = 0.0;
-		step = 0.99/(gdouble)pages;
 		queue.ebook = ebook;
 		queue.c = 0;
 		queue.lines = lines;
