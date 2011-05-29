@@ -407,7 +407,7 @@ load_pdf (gpointer data)
 	poppler_page_get_size (PDFPage, &width, &height);
 	queue->rect->x2 = width;
 	queue->rect->y2 = height;
-#ifdef HAVE_POPPLER_1_4_1
+#if POPPLER_CHECK_VERSION(0, 14, 1)
 	page = poppler_page_get_selected_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);
 #else
     page = poppler_page_get_text (PDFPage, POPPLER_SELECTION_LINE, queue->rect);

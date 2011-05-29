@@ -1,3 +1,9 @@
+2011-05-29  Neil Williams  <linux@codehelp.co.uk>
+
+ * Replace configure.ac method with use of POPPLER_CHECK_VERSION
+   macro available in poppler itself. Idea from Michael Biebl
+   <biebl@debian.org>. 
+
 2011-05-08  Neil Williams  <linux@codehelp.co.uk>
 
  * Implement alternate support for poppler-glib 1.12 and

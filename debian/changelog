@@ -1,3 +1,11 @@
+gpdftext (0.1.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Fixes previous poppler version check to use macro from
+    poppler. (Closes: #627644)
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 29 May 2011 11:42:49 +0100
+
 gpdftext (0.1.4-1) unstable; urgency=low
 
   * New upstream release.

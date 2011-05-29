@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT(gpdftext, 0.1.4, http://sourceforge.net/projects/gpdftext/)
+AC_INIT(gpdftext, 0.1.5, http://sourceforge.net/projects/gpdftext/)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
@@ -84,9 +84,6 @@ if test "$with_gtkspell" = "yes"; then
 fi
 
 PKG_CHECK_MODULES(GPDFTEXT, $MODULES)
-PKG_CHECK_MODULES(POPPLER_0_14_1, poppler-glib >= 0.14.1,
-	AC_DEFINE([HAVE_POPPLER_0_14_1],1,[Define if poppler-glib is >= 0.14.1]),
-	AC_DEFINE([HAVE_POPPLER_0_12],1,[Define if poppler-glib is < 0.14]))
 AC_SUBST(GPDFTEXT_CFLAGS)
 AC_SUBST(GPDFTEXT_LIBS)
 
