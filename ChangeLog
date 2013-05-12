@@ -4,6 +4,7 @@
    in glib versions prior to 2.36.
  * Avoid set but not used warnings for conditional
    build support.
+ * Switch to GTK3 support.
 
 2011-05-29  Neil Williams  <linux@codehelp.co.uk>
 
