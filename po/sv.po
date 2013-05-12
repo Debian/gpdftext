@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2009-11-17 00:32+0100\n"
 "Last-Translator: Martin Bagge <brother@bsnet.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Kommentarer och förslag rörande översättningen kan skickas till\n"
 "tp-sv@listor.tp-sv.se"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "ebok-redigerare"
 
@@ -47,7 +47,7 @@ msgstr "Webbplats"
 msgid "file"
 msgstr "fil"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GConf misslyckades vid uppstart: %s"
@@ -135,125 +135,125 @@ msgstr "Språket \"%s\" från GConf finns inte i listan med tillgängliga språk
 msgid "System default"
 msgstr "Systemstandard"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "A_4-storlek (porträtt)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "A_5, bokstorlek (porträtt)"
+msgid "_File"
+msgstr "_Arkiv"
 
 #: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr ""
+msgid "_Edit"
+msgstr "_redigera"
 
 #: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "Standard storlek för sidor"
+msgid "_View"
+msgstr "_Visa"
 
 #: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "Lexikon"
+msgid "Spell _check"
+msgstr "Stavningskontroll"
 
 #: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../src/gpdftext.glade.h:7
 #, fuzzy
 msgid "New file"
 msgstr "ny fil"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:8
 #, fuzzy
 msgid "Open a file"
 msgstr "ny fil"
 
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "Ta bort sid_nummer."
-
 #: ../src/gpdftext.glade.h:9
-#, fuzzy
-msgid "Preferences"
-msgstr "_Egenskaper"
-
-#: ../src/gpdftext.glade.h:10
-#, fuzzy
-msgid "Quit"
-msgstr "A_vsluta"
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "Slå samman avstavade o_rd"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr ""
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "Egenskaper för reguljära uttryck"
-
-#: ../src/gpdftext.glade.h:14
 #, fuzzy
 msgid "Save text as PDF"
 msgstr "Sparade textfil."
 
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "Stavningskontroll"
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr ""
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:12
+#, fuzzy
+msgid "Preferences"
+msgstr "_Egenskaper"
+
+#: ../src/gpdftext.glade.h:13
 #, fuzzy
 msgid "Spell checking"
 msgstr "Stavningskontroll"
 
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
 msgstr ""
 
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "_B5, bokstorlek (porträtt)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "_Standard typsnitt"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "_redigera"
-
-#: ../src/gpdftext.glade.h:21
-msgid "_File"
-msgstr "_Arkiv"
-
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "_Hjälp"
-
-# den här funktionen bör man nog testa för att få bra översättning på =)
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "S_lå samman rader"
-
-#: ../src/gpdftext.glade.h:25
-msgid "_View"
-msgstr "_Visa"
-
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "Egenskaper för gPDFText"
-
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr ""
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "Redigera text från eböcker i PDF-format."
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Quit"
+msgstr "A_vsluta"
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "Egenskaper för gPDFText"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "Standard storlek för sidor"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "A_5, bokstorlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "_B5, bokstorlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "A_4-storlek (porträtt)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "Egenskaper för reguljära uttryck"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "Ta bort sid_nummer."
+
+# den här funktionen bör man nog testa för att få bra översättning på =)
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "S_lå samman rader"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "Slå samman avstavade o_rd"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "_Standard typsnitt"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "Lexikon"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "gPDFText ebok-redigerare"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "Redigera text från eböcker i PDF-format."
 
 #~ msgid "Save as text file"
 #~ msgstr "Spara som textfil"

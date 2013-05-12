@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.1-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2009-11-04 18:40+0100\n"
 "Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Michal Šimůnek <michal.simunek@gmail.com>"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "Editor elektronických knih PDF"
 
@@ -45,7 +45,7 @@ msgstr "Domovská stránka"
 msgid "file"
 msgstr "soubor"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Selhala inicializace GConf: %s"
@@ -133,122 +133,122 @@ msgstr "Jazyk '%s' z GConf není na seznamu dostupných jazyků\n"
 msgid "System default"
 msgstr "Výchozí nastavení systému"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "Velikost papíru A4 (na výšku)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "Velikost knihy A5 (na výšku)"
+msgid "_File"
+msgstr "_Soubor"
 
 #: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr ""
+msgid "_Edit"
+msgstr "U_pravit"
 
 #: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "Výchozí velikost papíru"
+msgid "_View"
+msgstr "_Zobrazit"
 
 #: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "S_lovník"
+msgid "Spell _check"
+msgstr "Kont_rola pravopisu"
 
 #: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "Nápo_věda"
+
+#: ../src/gpdftext.glade.h:7
 #, fuzzy
 msgid "New file"
 msgstr "nový soubor"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:8
 #, fuzzy
 msgid "Open a file"
 msgstr "nový soubor"
 
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "Ods_traňovat čísla stránek"
-
 #: ../src/gpdftext.glade.h:9
-msgid "Preferences"
-msgstr "_Předvolby"
-
-#: ../src/gpdftext.glade.h:10
-msgid "Quit"
-msgstr "Konec"
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "Spo_jovat rozdělená slova"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr ""
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "Volby regulárních výrazů"
-
-#: ../src/gpdftext.glade.h:14
 #, fuzzy
 msgid "Save text as PDF"
 msgstr "Textový soubor uložen"
 
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "Kont_rola pravopisu"
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr ""
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:12
+msgid "Preferences"
+msgstr "_Předvolby"
+
+#: ../src/gpdftext.glade.h:13
 #, fuzzy
 msgid "Spell checking"
 msgstr "Kont_rola pravopisu"
 
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
 msgstr ""
 
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "Velikost knihy _B5 (na výšku)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "Výchozí _písmo"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "U_pravit"
-
-#: ../src/gpdftext.glade.h:21
-msgid "_File"
-msgstr "_Soubor"
-
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "Nápo_věda"
-
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "Prodlouž_it řádky"
-
-#: ../src/gpdftext.glade.h:25
-msgid "_View"
-msgstr "_Zobrazit"
-
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "Předvolby gPDFText"
-
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr ""
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "Upravuje text ze souborů elektronických knih PDF"
+#: ../src/gpdftext.glade.h:16
+msgid "Quit"
+msgstr "Konec"
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "Předvolby gPDFText"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "Výchozí velikost papíru"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "Velikost knihy A5 (na výšku)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "Velikost knihy _B5 (na výšku)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "Velikost papíru A4 (na výšku)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "Volby regulárních výrazů"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "Ods_traňovat čísla stránek"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "Prodlouž_it řádky"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "Spo_jovat rozdělená slova"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "Výchozí _písmo"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "S_lovník"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "Editor elektronických knih gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "Upravuje text ze souborů elektronických knih PDF"
 
 #~ msgid "Save as text file"
 #~ msgstr "Uložit jako textový soubor"

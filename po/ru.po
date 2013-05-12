@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.3-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2011-02-23 10:34+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Юрий Козлов <yuray@komyakino.ru>, 2009, 2011"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "Редактор eBook PDF"
 
@@ -47,7 +47,7 @@ msgstr "Домашняя страница"
 msgid "file"
 msgstr "файл"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Не удалось инициализировать GConf: %s"
@@ -132,115 +132,115 @@ msgstr "В списке доступных языков нет языка «%s»
 msgid "System default"
 msgstr "Системный по умолчанию"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "A_4 (портрет)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "A_5 (портрет)"
-
-#: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr "О gpdftext"
-
-#: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "Размер бумаги по умолчанию"
-
-#: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "_Словарь"
-
-#: ../src/gpdftext.glade.h:6
-msgid "New file"
-msgstr "Новый файл"
-
-#: ../src/gpdftext.glade.h:7
-msgid "Open a file"
-msgstr "Открыть файл"
-
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "Удаление _номеров страниц"
-
-#: ../src/gpdftext.glade.h:9
-msgid "Preferences"
-msgstr "Параметры"
-
-#: ../src/gpdftext.glade.h:10
-msgid "Quit"
-msgstr "Выход"
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "Слияние слов с _переносом"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr "Вернуть последнюю отменённую операцию"
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "Настройки регулярного выражения"
-
-#: ../src/gpdftext.glade.h:14
-msgid "Save text as PDF"
-msgstr "Сохранить текст как PDF"
-
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "Проверка орфографии"
-
-#: ../src/gpdftext.glade.h:16
-msgid "Spell checking"
-msgstr "Проверка орфографии"
-
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
-msgstr "Отменить последнее действие"
-
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "_B5 (портрет)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "_Шрифт по умолчанию"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "_Правка"
-
-#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "_Файл"
 
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "_Справка"
+#: ../src/gpdftext.glade.h:3
+msgid "_Edit"
+msgstr "_Правка"
 
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "_Удлинение строк"
-
-#: ../src/gpdftext.glade.h:25
+#: ../src/gpdftext.glade.h:4
 msgid "_View"
 msgstr "_Вид"
 
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "Настройки gPDFText"
+#: ../src/gpdftext.glade.h:5
+msgid "Spell _check"
+msgstr "Проверка орфографии"
 
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "_Справка"
+
+#: ../src/gpdftext.glade.h:7
+msgid "New file"
+msgstr "Новый файл"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Open a file"
+msgstr "Открыть файл"
+
+#: ../src/gpdftext.glade.h:9
+msgid "Save text as PDF"
+msgstr "Сохранить текст как PDF"
+
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr "Отменить последнее действие"
+
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr "Вернуть последнюю отменённую операцию"
+
+#: ../src/gpdftext.glade.h:12
+msgid "Preferences"
+msgstr "Параметры"
+
+#: ../src/gpdftext.glade.h:13
+msgid "Spell checking"
+msgstr "Проверка орфографии"
+
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
+msgstr "О gpdftext"
+
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr "Руководство пользователя gpdfext"
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "Редактировать текст из файлов ebook PDF"
+#: ../src/gpdftext.glade.h:16
+msgid "Quit"
+msgstr "Выход"
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "Настройки gPDFText"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "Размер бумаги по умолчанию"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "A_5 (портрет)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "_B5 (портрет)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "A_4 (портрет)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "Настройки регулярного выражения"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "Удаление _номеров страниц"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "_Удлинение строк"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "Слияние слов с _переносом"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "_Шрифт по умолчанию"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "_Словарь"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "Редактор ebook gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "Редактировать текст из файлов ebook PDF"

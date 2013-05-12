@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext_0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2010-01-11 23:15+0000\n"
 "Last-Translator: Pedro Ribeiro<p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Pedro Ribeiro <p.m42.ribeiro@gmail.com>"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "editor de eBook PDF"
 
@@ -45,7 +45,7 @@ msgstr "Homepage"
 msgid "file"
 msgstr "ficheiro"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Inicialização do GConf falhou: %s"
@@ -128,124 +128,124 @@ msgstr "Idioma '%s' do GConf não está na lista de idiomas disponíveis\n"
 msgid "System default"
 msgstr "Pré-definição do sistema"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "Tamanho A_4 (retrato)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "Tamanho A_5 (retrato)"
+msgid "_File"
+msgstr "_Ficheiro"
 
 #: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr ""
+msgid "_Edit"
+msgstr "_Editar"
 
 #: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "Tamanho de papel pré-definido"
+msgid "_View"
+msgstr "_Ver"
 
 #: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "Di_cionário"
+msgid "Spell _check"
+msgstr "Verifi_cação ortográfica"
 
 #: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "Aj_uda"
+
+#: ../src/gpdftext.glade.h:7
 #, fuzzy
 msgid "New file"
 msgstr "novo ficheiro"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:8
 #, fuzzy
 msgid "Open a file"
 msgstr "Abrir ficheiro"
 
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "Remoção do _número de página"
-
 #: ../src/gpdftext.glade.h:9
-#, fuzzy
-msgid "Preferences"
-msgstr "_Preferências"
-
-#: ../src/gpdftext.glade.h:10
-#, fuzzy
-msgid "Quit"
-msgstr "Sai_r"
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "_Juntar palavras hifenizadas"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr ""
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "Preferências de expressões regulares"
-
-#: ../src/gpdftext.glade.h:14
 #, fuzzy
 msgid "Save text as PDF"
 msgstr "Guardar ficheiro como"
 
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "Verifi_cação ortográfica"
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr ""
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:12
+#, fuzzy
+msgid "Preferences"
+msgstr "_Preferências"
+
+#: ../src/gpdftext.glade.h:13
 #, fuzzy
 msgid "Spell checking"
 msgstr "Verifi_cação ortográfica"
 
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
 msgstr ""
 
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "Tamanho _B5 (retrato)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "Tipo de letra pré-_definido"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "_Editar"
-
-#: ../src/gpdftext.glade.h:21
-msgid "_File"
-msgstr "_Ficheiro"
-
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "Aj_uda"
-
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "Unir _Linhas"
-
-#: ../src/gpdftext.glade.h:25
-msgid "_View"
-msgstr "_Ver"
-
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "Preferências do gPDFText"
-
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr ""
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "Editar texto dos ficheiros PDF ebook"
+#: ../src/gpdftext.glade.h:16
+#, fuzzy
+msgid "Quit"
+msgstr "Sai_r"
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "Preferências do gPDFText"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "Tamanho de papel pré-definido"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "Tamanho A_5 (retrato)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "Tamanho _B5 (retrato)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "Tamanho A_4 (retrato)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "Preferências de expressões regulares"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "Remoção do _número de página"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "Unir _Linhas"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "_Juntar palavras hifenizadas"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "Tipo de letra pré-_definido"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "Di_cionário"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "Editor de ebook gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "Editar texto dos ficheiros PDF ebook"
 
 #~ msgid "Save as text file"
 #~ msgstr "Guardar como ficheiro de texto"

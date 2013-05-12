@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.0.2\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2011-04-06 19:04+0800\n"
 "Last-Translator: 微尘 <squeeze@189.cn>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "微尘 <squeeze@189.cn>"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "PDF 电子书编辑"
 
@@ -46,7 +46,7 @@ msgstr "主页"
 msgid "file"
 msgstr "文件"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "GCconf 初始化失败: %s"
@@ -129,118 +129,118 @@ msgstr "GConf 语言 '%s' 不在可用语言列表内\n"
 msgid "System default"
 msgstr "系统默认"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "A4页面纸张(纵向)(_4)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "A5书本尺寸(纵向)(_5)"
-
-#: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr "关于 gpdftext"
-
-#: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "默认页面尺寸"
-
-#: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "词典(_C)"
-
-#: ../src/gpdftext.glade.h:6
-msgid "New file"
-msgstr "新文件"
-
-#: ../src/gpdftext.glade.h:7
-msgid "Open a file"
-msgstr "打开文件"
-
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "去除页码(_N)"
-
-#: ../src/gpdftext.glade.h:9
-msgid "Preferences"
-msgstr "首选项"
-
-#: ../src/gpdftext.glade.h:10
-msgid "Quit"
-msgstr "退出"
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "去掉连字符(_J)"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr "重做最后的撤销"
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "正则表达式偏好设置"
-
-#: ../src/gpdftext.glade.h:14
-msgid "Save text as PDF"
-msgstr "保存文本为 PDF"
-
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "拼写检查(_C)"
-
-#: ../src/gpdftext.glade.h:16
-msgid "Spell checking"
-msgstr "拼写检查"
-
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
-msgstr "撤消上一个操作"
-
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "B5书本尺寸(纵向)(_B)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "默认字体(_D)"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "编辑(_E)"
-
-#: ../src/gpdftext.glade.h:21
 msgid "_File"
 msgstr "文件(_F)"
 
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "帮助(_H)"
+#: ../src/gpdftext.glade.h:3
+msgid "_Edit"
+msgstr "编辑(_E)"
 
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "延长线(_L)"
-
-#: ../src/gpdftext.glade.h:25
+#: ../src/gpdftext.glade.h:4
 msgid "_View"
 msgstr "查看(_V)"
 
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "gPDFText 首选项"
+#: ../src/gpdftext.glade.h:5
+msgid "Spell _check"
+msgstr "拼写检查(_C)"
 
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../src/gpdftext.glade.h:7
+msgid "New file"
+msgstr "新文件"
+
+#: ../src/gpdftext.glade.h:8
+msgid "Open a file"
+msgstr "打开文件"
+
+#: ../src/gpdftext.glade.h:9
+msgid "Save text as PDF"
+msgstr "保存文本为 PDF"
+
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr "撤消上一个操作"
+
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr "重做最后的撤销"
+
+#: ../src/gpdftext.glade.h:12
+msgid "Preferences"
+msgstr "首选项"
+
+#: ../src/gpdftext.glade.h:13
+msgid "Spell checking"
+msgstr "拼写检查"
+
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
+msgstr "关于 gpdftext"
+
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr "gpdfext 用户手册"
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "编辑 PDF 电子书文本"
+#: ../src/gpdftext.glade.h:16
+msgid "Quit"
+msgstr "退出"
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "gPDFText 首选项"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "默认页面尺寸"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "A5书本尺寸(纵向)(_5)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "B5书本尺寸(纵向)(_B)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "A4页面纸张(纵向)(_4)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "正则表达式偏好设置"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "去除页码(_N)"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "延长线(_L)"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "去掉连字符(_J)"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "默认字体(_D)"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "词典(_C)"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "gPDFText 电子书编辑"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "编辑 PDF 电子书文本"
 
 #~ msgid "Save as text file"
 #~ msgstr "另存为文本文件"

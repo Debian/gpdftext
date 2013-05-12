@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpdftext 0.1.0-1\n"
 "Report-Msgid-Bugs-To: linux@codehelp.co.uk\n"
-"POT-Creation-Date: 2011-05-08 17:42+0100\n"
+"POT-Creation-Date: 2013-05-12 18:53+0100\n"
 "PO-Revision-Date: 2010-04-01 15:09+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Clytie Siddall <clytie@riverland.net.au>"
 
-#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:26
+#: ../src/main.c:90 ../src/ebookui.c:433 ../src/gpdftext.glade.h:1
 msgid "eBook PDF editor"
 msgstr "Trình chỉnh sửa ebook PDF"
 
@@ -45,7 +45,7 @@ msgstr "Trang chủ"
 msgid "file"
 msgstr "tập tin"
 
-#: ../src/main.c:161
+#: ../src/main.c:164
 #, c-format
 msgid "GConf init failed: %s"
 msgstr "Lỗi sơ khởi GConf: %s"
@@ -127,120 +127,120 @@ msgstr ""
 msgid "System default"
 msgstr "Mặc định của hệ thống"
 
-#: ../src/gpdftext.glade.h:1
-msgid "A_4 paper size (portrait)"
-msgstr "Cỡ tờ giấy A_4 (thẳng đứng)"
-
 #: ../src/gpdftext.glade.h:2
-msgid "A_5 book size (portrait)"
-msgstr "Cỡ trang sách A_5 (thẳng đứng)"
+msgid "_File"
+msgstr "_Tập tin"
 
 #: ../src/gpdftext.glade.h:3
-msgid "About gpdftext"
-msgstr ""
+msgid "_Edit"
+msgstr "_Sửa"
 
 #: ../src/gpdftext.glade.h:4
-msgid "Default paper size"
-msgstr "Kích cỡ giấy mặc định"
+msgid "_View"
+msgstr "_Xem"
 
 #: ../src/gpdftext.glade.h:5
-msgid "Di_ctionary"
-msgstr "_Từ điển"
+msgid "Spell _check"
+msgstr "Kiểm tra _chính tả"
 
 #: ../src/gpdftext.glade.h:6
+msgid "_Help"
+msgstr "Trợ g_iúp"
+
+#: ../src/gpdftext.glade.h:7
 #, fuzzy
 msgid "New file"
 msgstr "tập tin mới"
 
-#: ../src/gpdftext.glade.h:7
+#: ../src/gpdftext.glade.h:8
 #, fuzzy
 msgid "Open a file"
 msgstr "Mở tập tin"
 
-#: ../src/gpdftext.glade.h:8
-msgid "Page _number removal"
-msgstr "Bỏ _số thứ tự trang"
-
 #: ../src/gpdftext.glade.h:9
-#, fuzzy
-msgid "Preferences"
-msgstr "Tùy thích gPDFText"
-
-#: ../src/gpdftext.glade.h:10
-msgid "Quit"
-msgstr ""
-
-#: ../src/gpdftext.glade.h:11
-msgid "Re_join hyphenated words"
-msgstr "_Nối lại từ có dấu nối ở giữa"
-
-#: ../src/gpdftext.glade.h:12
-msgid "Redo the last undo"
-msgstr ""
-
-#: ../src/gpdftext.glade.h:13
-msgid "Regular expression preferences"
-msgstr "Tùy thích biểu thức chính quy"
-
-#: ../src/gpdftext.glade.h:14
 #, fuzzy
 msgid "Save text as PDF"
 msgstr "Lưu tập tin là"
 
-#: ../src/gpdftext.glade.h:15
-msgid "Spell _check"
-msgstr "Kiểm tra _chính tả"
+#: ../src/gpdftext.glade.h:10
+msgid "Undo the last action"
+msgstr ""
 
-#: ../src/gpdftext.glade.h:16
+#: ../src/gpdftext.glade.h:11
+msgid "Redo the last undo"
+msgstr ""
+
+#: ../src/gpdftext.glade.h:12
+#, fuzzy
+msgid "Preferences"
+msgstr "Tùy thích gPDFText"
+
+#: ../src/gpdftext.glade.h:13
 #, fuzzy
 msgid "Spell checking"
 msgstr "Kiểm tra _chính tả"
 
-#: ../src/gpdftext.glade.h:17
-msgid "Undo the last action"
+#: ../src/gpdftext.glade.h:14
+msgid "About gpdftext"
 msgstr ""
 
-#: ../src/gpdftext.glade.h:18
-msgid "_B5 book size (portrait)"
-msgstr "Cỡ trang sách _B5 (thẳng đứng)"
-
-#: ../src/gpdftext.glade.h:19
-msgid "_Default font"
-msgstr "_Phông mặc định"
-
-#: ../src/gpdftext.glade.h:20
-msgid "_Edit"
-msgstr "_Sửa"
-
-#: ../src/gpdftext.glade.h:21
-msgid "_File"
-msgstr "_Tập tin"
-
-#: ../src/gpdftext.glade.h:22
-msgid "_Help"
-msgstr "Trợ g_iúp"
-
-#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
-#: ../src/gpdftext.glade.h:24
-msgid "_Lengthen lines"
-msgstr "_Làm đoạn văn"
-
-#: ../src/gpdftext.glade.h:25
-msgid "_View"
-msgstr "_Xem"
-
-#: ../src/gpdftext.glade.h:27
-msgid "gPDFText preferences"
-msgstr "Tùy thích gPDFText"
-
-#: ../src/gpdftext.glade.h:28
+#: ../src/gpdftext.glade.h:15
 msgid "gpdfext user manual"
 msgstr ""
 
-#: ../data/gpdftext.desktop.in.h:1
-msgid "Edit text from ebook PDF files"
-msgstr "Sửa văn bản từ tập tin ebook PDF"
+#: ../src/gpdftext.glade.h:16
+msgid "Quit"
+msgstr ""
 
-#: ../data/gpdftext.desktop.in.h:2
+#: ../src/gpdftext.glade.h:17
+msgid "gPDFText preferences"
+msgstr "Tùy thích gPDFText"
+
+#: ../src/gpdftext.glade.h:18
+msgid "Default paper size"
+msgstr "Kích cỡ giấy mặc định"
+
+#: ../src/gpdftext.glade.h:19
+msgid "A_5 book size (portrait)"
+msgstr "Cỡ trang sách A_5 (thẳng đứng)"
+
+#: ../src/gpdftext.glade.h:20
+msgid "_B5 book size (portrait)"
+msgstr "Cỡ trang sách _B5 (thẳng đứng)"
+
+#: ../src/gpdftext.glade.h:21
+msgid "A_4 paper size (portrait)"
+msgstr "Cỡ tờ giấy A_4 (thẳng đứng)"
+
+#: ../src/gpdftext.glade.h:22
+msgid "Regular expression preferences"
+msgstr "Tùy thích biểu thức chính quy"
+
+#: ../src/gpdftext.glade.h:23
+msgid "Page _number removal"
+msgstr "Bỏ _số thứ tự trang"
+
+#. "Lengthen lines" refers to the option to enable a regular expression that reformats a series of lines back into a single paragraph on a single long line.
+#: ../src/gpdftext.glade.h:25
+msgid "_Lengthen lines"
+msgstr "_Làm đoạn văn"
+
+#: ../src/gpdftext.glade.h:26
+msgid "Re_join hyphenated words"
+msgstr "_Nối lại từ có dấu nối ở giữa"
+
+#: ../src/gpdftext.glade.h:27
+msgid "_Default font"
+msgstr "_Phông mặc định"
+
+#: ../src/gpdftext.glade.h:28
+msgid "Di_ctionary"
+msgstr "_Từ điển"
+
+#: ../data/gpdftext.desktop.in.h:1
 msgid "gPDFText ebook editor"
 msgstr "Trình chỉnh sửa ebook gPDFText"
+
+#: ../data/gpdftext.desktop.in.h:2
+msgid "Edit text from ebook PDF files"
+msgstr "Sửa văn bản từ tập tin ebook PDF"
