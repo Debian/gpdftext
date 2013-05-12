@@ -148,7 +148,10 @@ main (int argc, char *argv[])
 	remaining_args = NULL;
 	num_args = 0;
 	error = NULL;
+	// deprecated and useless for glib >= 2.36 but needed before.
+#ifndef GLIB_DEPRECATED_IN_2_36
 	g_type_init ();
+#endif
 	option_context = g_option_context_new ("");
 	g_option_context_add_main_entries (option_context,
 		option_entries, GETTEXT_PACKAGE);
@@ -166,7 +169,6 @@ main (int argc, char *argv[])
 	/* create a context struct here and pass it around. */
 	ebook = new_ebook ();
 
-	gtk_set_locale ();
 	gtk_init (&argc, &argv);
 
 	window = create_window (ebook);

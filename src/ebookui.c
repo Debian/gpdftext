@@ -612,7 +612,7 @@ GtkWidget*
 create_window (Ebook * ebook)
 {
 	GtkWidget *window, *open, *save, *cancel, *about, *newbtn;
-	GtkWidget *pref_btn, *manualbtn, * G_GNUC_UNUSED langbox, * textview, * spellbutton;
+	GtkWidget *pref_btn, *manualbtn, * G_GNUC_UNUSED langbox, * G_GNUC_UNUSED textview, * spellbutton;
 	GtkWidget *newmenu, *openmenu, *quitmenu, *savemenu, *spellmenu;
 	GtkWidget *saveasmenu, *aboutmenu, *manualmenu, *prefmenu;
 	GtkWidget *undobutton, *redobutton, *undomenu, *redomenu;

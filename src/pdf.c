@@ -104,7 +104,7 @@ make_new_page (PangoContext * context, PangoFontDescription * desc,
 
 	layout = pango_layout_new (context);
 	pango_layout_set_justify (layout, TRUE);
-	pango_layout_set_spacing (layout, 1.5);
+	pango_layout_set_spacing (layout, 1.5 * PANGO_SCALE);
 	pango_layout_set_width (layout, pango_units_from_double(width - SIDE_MARGIN));
 	pango_layout_set_height (layout, pango_units_from_double(height - EDGE_MARGIN));
 	pango_layout_set_wrap (layout, PANGO_WRAP_WORD_CHAR);
@@ -340,7 +340,7 @@ load_pdf (gpointer data)
 	GtkStatusbar * statusbar;
 	GtkTextView * text_view;
 	GtkTextBuffer * buffer;
-	gchar *page, * msg, * lang;
+	gchar *page, * msg, * G_GNUC_UNUSED lang;
 	gdouble fraction, step, width, height;
 	PopplerPage * PDFPage;
 	const gchar * str;

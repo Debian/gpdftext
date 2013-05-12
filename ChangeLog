@@ -1,3 +1,10 @@
+2013-05-12  Neil Williams  <linux@codehelp.co.uk>
+
+ * Drop -Werror on default build and allow g_type_init
+   in glib versions prior to 2.36.
+ * Avoid set but not used warnings for conditional
+   build support.
+
 2011-05-29  Neil Williams  <linux@codehelp.co.uk>
 
  * Replace configure.ac method with use of POPPLER_CHECK_VERSION

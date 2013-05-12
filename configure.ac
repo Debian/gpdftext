@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.64])
-AC_INIT(gpdftext, 0.1.5, http://sourceforge.net/projects/gpdftext/)
+AC_INIT(gpdftext, 0.1.6, http://sourceforge.net/projects/gpdftext/)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
@@ -40,7 +40,7 @@ POPPLER_REQUIRED=0.8.7
 GCONF_REQUIRED=2.0.0
 GLIB_REQUIRED=2.16.6
 # need 2.16 for GtkBuilder
-GTK_REQUIRED=2.16.5
+GTK_REQUIRED=3
 CAIRO_REQUIRED=1.6.4
 PANGO_REQUIRED=1.20.5
 
@@ -54,10 +54,9 @@ AC_SUBST(PANGO_REQUIRED)
 MODULES="
 	glib-2.0 >= $GLIB_REQUIRED
 	gmodule-2.0 >= $GLIB_REQUIRED
-	gtk+-2.0 >= $GTK_REQUIRED
+	gtk+-3.0 >= $GTK_REQUIRED
 	gconf-2.0 >= $GCONF_REQUIRED
 	poppler-glib >= $POPPLER_REQUIRED
-	gdk-pixbuf-2.0 >= $GTK_REQUIRED
 	cairo-pdf >= $CAIRO_REQUIRED
 	pango >= $PANGO_REQUIRED
 "
@@ -71,12 +70,12 @@ AC_ARG_WITH(gtkspell, AS_HELP_STRING([--with-gtkspell],
 		      [Compile with GtkSpell support (default=autodetect)]), 
 		      [with_gtkspell=yes], [with_gtkspell=yes])
 if test "$with_gtkspell" = "yes"; then
-  AC_MSG_CHECKING(for gtkspell-2.0)
-  if $PKG_CONFIG --exists "gtkspell-2.0" ; then
+  AC_MSG_CHECKING(for gtkspell-3.0)
+  if $PKG_CONFIG --exists "gtkspell-3.0" ; then
 	AC_MSG_RESULT(yes)
 	HAVE_GTKSPELL=yes
-	AC_DEFINE(HAVE_GTKSPELL,1,[do we have gtkspell?])
-	MODULES="$MODULES	gtkspell-2.0
+	AC_DEFINE(HAVE_GTKSPELL,1,[do we have gtkspell3?])
+	MODULES="$MODULES	gtkspell-3.0
 "
   else
 	AC_MSG_RESULT(not found)
@@ -179,7 +178,7 @@ if test ${GCC}x = yesx; then
         no)  ;;
         *) AC_MSG_ERROR(bad value ${enableval} for --enable-error-on-warning) ;;
         esac],
-        [  WARN_CFLAGS="${WARN_CFLAGS} -Werror" ])
+        [  WARN_CFLAGS="${WARN_CFLAGS}" ])
   GCC_VERSION=`${CC} -dumpversion`
   if test `echo ${GCC_VERSION} | cut -d. -f1` -ge 3; then
      # This is gcc >= 3.x.x
