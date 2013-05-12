@@ -11,7 +11,7 @@ Build-Depends: cdbs, debhelper (>= 7), docbook-xsl, autotools-dev,
  libgtkspell-dev, 
  libpango1.0-dev, 
  libpoppler-glib-dev
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 Homepage: http://sourceforge.net/apps/mediawiki/gpdftext/
 Vcs-Browser: http://sourceforge.net/apps/trac/gpdftext/browser/trunk
 Vcs-Svn: https://gpdftext.svn.sourceforge.net/svnroot/gpdftext
